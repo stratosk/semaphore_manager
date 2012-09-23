@@ -1,0 +1,17 @@
+#!/system/bin/sh
+#Schedulers
+#Change I/O scheduler
+#CFQ
+
+insmod /system/lib/modules/cfq-iosched.ko
+
+MTD=`ls -d /sys/block/mtd*`;
+MMC=`ls -d /sys/block/mmc*`;
+
+for i in $MTD $MMC; do 
+    echo "cfq" > "$i"/queue/scheduler;
+done;
+
+sleep 1
+rmmod deadline_iosched
+rmmod sio_iosched

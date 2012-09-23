@@ -1,0 +1,31 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:key="logger"
+        android:title="@string/str_logger_title" />
+    <SwitchPreference
+        android:key="tun"
+        android:title="@string/str_tun_title" />
+    <SwitchPreference
+        android:key="cifs"
+        android:title="@string/str_cifs_title" />
+
+    <SwitchPreference
+        android:key="configs"
+        android:title="@string/str_configs_title" />
+    <SwitchPreference
+        android:key="radio_si4709_i2c"
+        android:title="@string/str_radio_si4709_i2c_title" />
+    <PreferenceCategory
+        android:title="@string/str_usb_title">
+        <SwitchPreference
+            android:key="mousedev"
+            android:title="@string/str_mousedev_title" />
+        <SwitchPreference
+            android:key="xbox"
+            android:title="@string/str_xbox_title" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

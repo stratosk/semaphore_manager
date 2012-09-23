@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Semaphore Manager</string>
+    <string name="str_app_version_title">1.1.0</string>
+    
+    <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
+    
+    <string name="str_cat_oc_title">Overclocking</string>
+    <string name="str_oc_title">LiveOC</string>
+    <string name="str_oc_summary">Change LiveOC value</string>
+ 
+    <string name="str_gov_title">Active governor</string>
+    <string name="str_gov_summary">Change CPU governor</string>
+    <string name="str_cat_gov_title">Governors</string>
+    <string-array name="array_gov_entries">
+        <item>Ondemand</item>
+        <item>Conservative</item>
+        <item>SmartassV2</item>
+    </string-array>
+ 
+    <string-array name="array_gov_values">
+        <item>ondemand</item>
+        <item>conservative</item>
+        <item>smartassV2</item>
+    </string-array>
+    
+    <string-array name="scripts">
+        <item>noop</item>
+        <item>deadline</item>
+        <item>cfq</item>
+        <item>sio</item>
+        <item>read_ahead</item>
+        <item>touchscreen_0</item>
+        <item>touchscreen_1</item>    
+        <item>touchscreen_2</item>    
+    </string-array>
+    
+    <string name="str_read_ahead_title">SD Card read ahead</string>
+    <string-array name="array_read_ahead_entries">
+        <item>128KB</item>
+        <item>256KB</item>
+        <item>512KB</item>
+        <item>1024KB</item>
+        <item>3072KB</item>
+    </string-array>
+ 
+    <string-array name="array_read_ahead_values">
+        <item>128KB</item>
+        <item>256KB</item>
+        <item>512KB</item>
+        <item>1024KB</item>
+        <item>3072KB</item>
+    </string-array>
+
+    <string name="str_touchscreen_title">Touch sensitivity</string>
+    <string-array name="array_touchscreen_entries">
+        <item>Stock</item>
+        <item>Sensitive</item>
+        <item>Sensitiver</item>
+    </string-array>
+ 
+    <string-array name="array_touchscreen_values">
+        <item>stock</item>
+        <item>sensitive</item>
+        <item>sensitiver</item>
+    </string-array>
+    
+    <string name="str_o_io_is_busy_title">io_is_busy</string>
+    <string name="str_o_sampling_down_factor_title">Sampling down factor</string>
+    <string name="str_o_sampling_down_factor_summary">Valid values 1-100000</string>
+    <string name="str_o_sampling_down_max_momentum_title">Sampling down max momentum</string>
+    <string name="str_o_sampling_down_max_momentum_summary">Valid values 1-1000</string>
+    <string name="str_o_sampling_rate_title">Sampling rate</string>
+    <string name="str_o_sampling_rate_summary">Valid values 10000-100000</string>
+    <string name="str_o_up_threshold_title">Up threshold</string>
+    <string name="str_o_up_threshold_summary">Valid values 1-100</string>
+    <string name="str_o_smooth_ui_title">Smooth UI</string>
+
+    <string name="str_c_freq_step_title">Frequency step</string>
+    <string name="str_c_freq_step_summary">Valid values 1-100</string>
+    <string name="str_c_sampling_down_factor_title">Sampling down factor</string>
+    <string name="str_c_sampling_down_factor_summary">Valid values 1-100000</string>
+    <string name="str_c_sampling_rate_title">Sampling rate</string>
+    <string name="str_c_sampling_rate_summary">Valid values 10000-100000</string>
+    <string name="str_c_up_threshold_title">Up threshold</string>
+    <string name="str_c_up_threshold_summary">Valid values 1-100</string>
+    <string name="str_c_down_threshold_title">Down threshold</string>
+    <string name="str_c_down_threshold_summary">Valid values 1-100</string>
+    <string name="str_c_smooth_ui_title">Smooth UI</string>
+
+    <string name="str_s_awake_ideal_freq_title">Awake ideal frequency</string>
+    <string name="str_s_awake_ideal_freq_summary">Valid values 1-100</string>
+    <string name="str_s_up_rate_title">Up rate</string>
+    <string name="str_s_up_rate_summary">Valid values 1-100</string>
+    <string name="str_s_down_rate_title">Down rate</string>
+    <string name="str_s_down_rate_summary">Valid values 1-100</string>
+    <string name="str_s_max_cpu_load_title">Max CPU load</string>
+    <string name="str_s_max_cpu_load_summary">Valid values 1-100</string>
+    <string name="str_s_min_cpu_load_title">Min CPU load</string>
+    <string name="str_s_min_cpu_load_summary">Valid values 1-100</string>
+    <string name="str_s_ramp_up_step_title">Ramp up step</string>
+    <string name="str_s_ramp_up_step_summary">Valid values 1-100</string>
+    <string name="str_s_ramp_down_step_title">Ramp down step</string>
+    <string name="str_s_ramp_down_step_summary">Valid values 1-100</string>
+    <string name="str_s_sleep_wakeup_freq_title">Sleep wakeup frequency</string>
+    <string name="str_s_sleep_wakeup_freq_summary">Valid values 1-100</string>
+    <string name="str_s_sleep_ideal_freq_title">Sleep ideal frequency</string>
+    <string name="str_s_sleep_ideal_freq_summary">Valid values 1-100</string>
+    <string name="str_s_sample_rate_jiffies_title">Sample rate jiffies</string>
+    <string name="str_s_sample_rate_jiffies_summary">Valid values 1-100</string>
+    <string name="str_s_smooth_ui_title">Smooth UI</string>
+
+    <string name="str_cat_deep_idle_title">Deep Idle</string>
+    <string name="str_deep_idle_title">Enabled</string>
+    <string name="str_deep_idle_stats_title">Statistics</string>
+    <string name="str_deep_idle_stats_show_title">Show statistics</string>
+
+    <string name="str_cpu_misc_title">Misc</string>
+    <string name="str_tweaks_misc_title">Misc</string>
+
+    <string name="str_lock_min_title">Lock min freq to 100MHz</string>
+    <string name="str_lock_min_summary">Lock min frequency to 100MHz when GPU inactive</string>
+
+    <string name="str_bluetooth_title">Power down bluetooth</string>
+    <string name="str_bluetooth_summary">Enabling again requires reboot</string>
+
+    <string name="str_logger_title">Logger</string>
+    <string name="str_logger_summary">must reboot</string>
+
+    <string name="str_tun_title">TUN</string>
+    <string name="str_tun_summary">for VPN</string>
+
+    <string name="str_cifs_title">CIFS</string>
+    <string name="str_cifs_summary">mount Windows shares</string>
+
+    <string name="str_bigmem_title">Bigmem</string>
+    <string name="str_bigmem_summary">must reboot</string>
+
+    <string name="str_autobr_title">Semaphore Auto Brightness</string>
+    <string name="str_sema_autobr_title">Enabled</string>
+    <string name="str_ab_profiles_title">Profiles</string>
+    <string name="str_sema_autobr_tunables_title">Tunables</string>
+    
+    <string name="str_ab_min_brightness_title">Min brightness</string>
+    <string name="str_ab_min_brightness_summary"></string>
+    <string name="str_ab_max_brightness_title">Max brightness</string>
+    <string name="str_ab_max_brightness_summary"></string>
+    <string name="str_ab_max_lux_title">Max lux</string>
+    <string name="str_ab_max_lux_summary"></string>
+    <string name="str_ab_instant_update_thres_title">Instant update threshold</string>
+    <string name="str_ab_instant_update_thres_summary"></string>
+    <string name="str_ab_effect_delay_ms_title">Effect delay</string>
+    <string name="str_ab_effect_delay_ms_summary"></string>
+
+    <string-array name="array_ab_profiles_entries">
+        <item>Bright</item>
+        <item>Normal</item>
+        <item>Dark</item>
+    </string-array>
+ 
+    <string-array name="array_ab_profiles_values">
+        <item>bright</item>
+        <item>normal</item>
+        <item>dark</item>
+    </string-array>
+
+    <string name="str_cat_scheduler_title">Schedulers</string>
+    <string name="str_scheduler_title">Active scheduler</string>
+ 
+    <string-array name="array_scheduler_entries">
+        <item>No-op</item>
+        <item>CFQ</item>
+        <item>Deadline</item>
+        <item>Simple I/O</item>
+    </string-array>
+ 
+    <string-array name="array_scheduler_values">
+        <item>noop</item>
+        <item>cfq</item>
+        <item>deadline</item>
+        <item>sio</item>
+    </string-array>
+
+    <string name="str_vibrator_title">Vibrator</string>
+    <string name="str_vibrator_dc_title">Level</string>
+
+    <string-array name="array_vibrator_entries">
+        <item>Default (Max)</item>
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
+        <item>Minimum</item>
+    </string-array>
+ 
+    <string-array name="array_vibrator_values">
+        <item>Default (Max)</item>
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
+        <item>Minimum</item>
+    </string-array>
+
+    <string name="str_configs_title">config.gz</string>
+    <string name="str_configs_summary">/proc/config.gz</string>
+
+    <string name="str_radio_si4709_i2c_title">Radio FM</string>
+    <string name="str_radio_si4709_i2c_summary">si4709</string>
+
+    <string name="str_usb_title">USB Host</string>
+
+    <string name="str_mousedev_title">Mouse</string>
+    <string name="str_mousedev_summary"></string>
+
+    <string name="str_xbox_title">X-Box pad</string>
+    <string name="str_xbox_summary"></string>
+
+    <string name="str_fastchg_title">Fast charge support</string>
+    <string name="str_fastchg_summary">Please use it at your own risk</string>
+
+    <string name="str_wififast_title">WiFi PM FAST</string>
+    <string name="str_wififast_summary">PM FAST when suspend</string>
+
+
+    <string name="str_touch_enable_title">Enabled</string>
+    <string name="str_touch_enable_summary"></string>
+
+    <string name="str_touch_title">Delay</string>
+    <string name="str_touch_summary">Delay in seconds</string>
+
+    <string name="str_about_title">About</string>
+
+    <string name="str_didle_dialog_title">Deep Idle Statistics"</string>
+    <string name="str_idle_state">Idle"</string>
+    <string name="str_top_on">TOP=ON"</string>
+    <string name="str_top_off">TOP=OFF"</string>
+
+
+    <string-array name="array_touch_entries">
+        <item>Disabled</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>90</item>
+    </string-array>
+ 
+    <string-array name="array_touch_values">
+        <item>Disabled</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>90</item>
+    </string-array>
+
+
+    <string-array name="array_spinner_entries">
+        <item>Disabled</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>90</item>
+    </string-array>
+</resources>

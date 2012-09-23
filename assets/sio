@@ -1,0 +1,17 @@
+#!/system/bin/sh
+#Schedulers
+#Change I/O scheduler
+#Simple I/O
+
+insmod /system/lib/modules/sio-iosched.ko
+
+MTD=`ls -d /sys/block/mtd*`;
+MMC=`ls -d /sys/block/mmc*`;
+
+for i in $MTD $MMC; do 
+    echo "sio" > "$i"/queue/scheduler;
+done;
+
+sleep 1
+rmmod deadline_iosched
+rmmod cfq_iosched

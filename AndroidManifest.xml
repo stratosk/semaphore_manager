@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.semaphore.sm"
+          android:versionCode="3"
+          android:versionName="1.1.0">
+    
+    <uses-sdk android:targetSdkVersion="16"
+              android:minSdkVersion="15"/>
+    
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    
+    <application android:label="@string/app_name" android:icon="@drawable/semaphore_app_icon">
+        <activity android:name="MainActivity"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <service android:name="com.semaphore.sm.SemaphoreService" >
+            <intent-filter>
+                <action android:name="com.semaphore.sm.SemaphoreService" >
+                </action>
+            </intent-filter>
+        </service>
+        
+        <receiver android:name="com.semaphore.sm.SMBroadcastReceiver">  
+            <intent-filter>  
+                <action android:name="android.intent.action.BOOT_COMPLETED" />  
+            </intent-filter>  
+        </receiver>
+    </application>
+</manifest>

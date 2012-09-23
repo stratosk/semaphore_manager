@@ -1,0 +1,832 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb">
+
+<head>
+	<script type="text/javascript">
+var siteurl='/';
+var tmplurl='/templates/jt_classic2/';
+var isRTL = false;
+</script>
+
+  <base href="http://78.46.194.137:80/" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="Semaphore, kernel, samsung galaxy s, voodoo sound, OC/UV, BLN, android, gingerbread, JVT, JVZ, JW1, JW4/5, ICS, JB" />
+  <meta name="rights" content="Copyright© 2011-2012, stratosk" />
+  <meta name="description" content="Semaphore kernel for Samsung Galaxy S GT-I9000" />
+  <meta name="generator" content="Joomla! - Open Source Content Management" />
+  <title>Semaphore - Kernel for Galaxy S GT-I9000</title>
+  <link href="/?format=feed&amp;type=rss" rel="alternate" type="application/rss+xml" title="RSS 2.0" />
+  <link href="/?format=feed&amp;type=atom" rel="alternate" type="application/atom+xml" title="Atom 1.0" />
+  <link rel="stylesheet" href="/templates/system/css/system.css" type="text/css" />
+  <link rel="stylesheet" href="/templates/system/css/general.css" type="text/css" />
+  <link rel="stylesheet" href="/plugins/system/jat3/jat3/base-themes/default/css/typo.css" type="text/css" />
+  <link rel="stylesheet" href="/plugins/system/jat3/jat3/base-themes/default/css/addons.css" type="text/css" />
+  <link rel="stylesheet" href="/plugins/system/jat3/jat3/base-themes/default/css/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/plugins/system/jat3/jat3/base-themes/default/css/template.css" type="text/css" />
+  <link rel="stylesheet" href="/plugins/system/jat3/jat3/base-themes/default/css/usertools.css" type="text/css" />
+  <link rel="stylesheet" href="/plugins/system/jat3/jat3/base-themes/default/css/css3.css" type="text/css" />
+  <link rel="stylesheet" href="/plugins/system/jat3/jat3/base-themes/default/css/menu/mega.css" type="text/css" />
+  <link rel="stylesheet" href="/templates/jt_classic2/css/typo.css" type="text/css" />
+  <link rel="stylesheet" href="/templates/jt_classic2/css/template.css" type="text/css" />
+  <link rel="stylesheet" href="/templates/jt_classic2/css/css3.css" type="text/css" />
+  <link rel="stylesheet" href="/templates/jt_classic2/css/menu/mega.css" type="text/css" />
+  <script src="/media/system/js/mootools-core.js" type="text/javascript"></script>
+  <script src="/media/system/js/core.js" type="text/javascript"></script>
+  <script src="/media/system/js/mootools-more.js" type="text/javascript"></script>
+  <script src="/plugins/system/jat3/jat3/base-themes/default/js/core.js" type="text/javascript"></script>
+  <script src="/plugins/system/jat3/jat3/base-themes/default/js/menu/mega.js" type="text/javascript"></script>
+  <script src="/media/system/js/caption.js" type="text/javascript"></script>
+  <script type="text/javascript">
+window.addEvent('load', function() {
+				new JCaption('img.caption');
+			});function keepAlive() {	var myAjax = new Request({method: "get", url: "index.php"}).send();} window.addEvent("domready", function(){ keepAlive.periodical(840000); });
+  </script>
+
+
+
+
+<link href="/plugins/system/jat3/jat3/base-themes/default/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+		
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Play" />
+
+<style type="text/css">
+/*dynamic css*/
+	body#bd, 
+	div.logo-text h1 a,
+	div.ja-moduletable h3, div.moduletable h3,
+	div.ja-module h3, div.module h3,
+	h1.componentheading, .componentheading,
+	.contentheading,
+	.article-content h1,
+	.article-content h2,
+	.article-content h3,
+	.article-content h4,
+	.article-content h5,
+	.article-content h6 
+	{font-family: 'Play';;}
+
+	body.bd .main {width: 95%;}
+	body.bd #ja-wrapper {min-width: 95%;}
+</style>
+
+
+<!-- Google Analytics for Joomla 1.6 by Analytics For Joomla v1.0 | http://www.analyticsforjoomla.com/ -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18701347-2']);
+    _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End of Google Analytics for Joomla 1.6 by Analytics For Joomla v1.0 -->
+
+
+</head>
+
+<body id="bd" class="bd fs5 com_content">
+<a name="Top" id="Top"></a>
+<div id="ja-wrapper">
+	
+	
+					<div id="ja-header" class="wrap ">		
+				
+			
+					<div class="main">
+		
+				
+		 
+			<div class="main-inner1 clearfix">
+		<div id="jt-logo">
+<div class="logo-text">
+	<h1><a href="/index.php" title="Semaphore"><span>Semaphore</span></a></h1>
+	<p class="site-slogan">Semaphore kernel for Galaxy S GT-I9000</p>
+</div>
+</div>
+
+<div id="jt-mainnav">
+<div class="ja-megamenu clearfix" id="ja-megamenu">
+<ul class="megamenu level0"><li  class="mega first haschild active"><a href="http://78.46.194.137:80/"  class="mega first haschild active" id="menu435" title="Home"><span class="menu-title">Home</span></a><div class="childcontent cols1 ">
+<div class="childcontent-inner-wrap">
+<div class="childcontent-inner clearfix" style="width: 200px;"><div class="megacol column1 first" style="width: 200px;"><ul class="megamenu level1"><li  class="mega first"><a href="/homepage/semaphore-gb"  class="mega first" id="menu486" title="Semaphore GB"><span class="menu-title">Semaphore GB</span></a></li><li  class="mega last"><a href="/homepage/semaphore-ics"  class="mega last" id="menu487" title="Semaphore ICS"><span class="menu-title">Semaphore ICS</span></a></li></ul></div></div>
+</div></div></li><li  class="mega haschild"><a href="/downloads"  class="mega haschild" id="menu478" title="Downloads"><span class="menu-title">Downloads</span></a><div class="childcontent cols1 ">
+<div class="childcontent-inner-wrap">
+<div class="childcontent-inner clearfix" style="width: 200px;"><div class="megacol column1 first" style="width: 200px;"><ul class="megamenu level1"><li  class="mega first"><a href="/downloads/i9000"  class="mega first" id="menu466" title="GT-I9000"><span class="menu-title">GT-I9000</span></a></li><li  class="mega"><a href="/downloads/gt-i9000-ics"  class="mega" id="menu481" title="GT-I9000 ICS"><span class="menu-title">GT-I9000 ICS</span></a></li><li  class="mega"><a href="/downloads/gt-i9000-jb"  class="mega" id="menu490" title="GT-I9000 JB"><span class="menu-title">GT-I9000 JB</span></a></li><li  class="mega"><a href="/downloads/captivate"  class="mega" id="menu479" title="SGH-I897 Captivate"><span class="menu-title">SGH-I897 Captivate</span></a></li><li  class="mega"><a href="/downloads/captivate-ics"  class="mega" id="menu482" title="SGH-I897 Captivate ICS"><span class="menu-title">SGH-I897 Captivate ICS</span></a></li><li  class="mega"><a href="/downloads/captivate-jb"  class="mega" id="menu492" title="SGH-I897 Captivate JB"><span class="menu-title">SGH-I897 Captivate JB</span></a></li><li  class="mega"><a href="/downloads/vibrant-ics"  class="mega" id="menu489" title="SGH-T959 Vibrant ICS"><span class="menu-title">SGH-T959 Vibrant ICS</span></a></li><li  class="mega"><a href="/downloads/vibrant-jb"  class="mega" id="menu493" title="SGH-T959 Vibrant JB"><span class="menu-title">SGH-T959 Vibrant JB</span></a></li><li  class="mega last"><a href="/downloads/boot-animations"  class="mega last" id="menu480" title="Boot animations"><span class="menu-title">Boot animations</span></a></li></ul></div></div>
+</div></div></li><li  class="mega haschild"><a href="/changelog"  class="mega haschild" id="menu467" title="Changelog"><span class="menu-title">Changelog</span></a><div class="childcontent cols1 ">
+<div class="childcontent-inner-wrap">
+<div class="childcontent-inner clearfix" style="width: 200px;"><div class="megacol column1 first" style="width: 200px;"><ul class="megamenu level1"><li  class="mega first"><a href="/changelog/gb-version"  class="mega first" id="menu484" title="GB version"><span class="menu-title">GB version</span></a></li><li  class="mega"><a href="/changelog/ics-version"  class="mega" id="menu485" title="ICS version"><span class="menu-title">ICS version</span></a></li><li  class="mega last"><a href="/changelog/jb-version"  class="mega last" id="menu491" title="JB version"><span class="menu-title">JB version</span></a></li></ul></div></div>
+</div></div></li><li  class="mega haschild"><a href="/how-to"  class="mega haschild" id="menu472" title="How to"><span class="menu-title">How to</span></a><div class="childcontent cols1 ">
+<div class="childcontent-inner-wrap">
+<div class="childcontent-inner clearfix" style="width: 200px;"><div class="megacol column1 first" style="width: 200px;"><ul class="megamenu level1"><li  class="mega first"><a href="/how-to/flash-semaphore-kernel"  class="mega first" id="menu471" title="flash Semaphore kernel"><span class="menu-title">flash Semaphore kernel</span></a></li><li  class="mega"><a href="/how-to/build-semaphore-ics-kernel"  class="mega" id="menu488" title="build Semaphore ICS kernel"><span class="menu-title">build Semaphore ICS kernel</span></a></li><li  class="mega"><a href="/how-to/use-semaphore-script-manager"  class="mega" id="menu476" title="use Semaphore Script Manager"><span class="menu-title">use Semaphore Script Manager</span></a></li><li  class="mega"><a href="/how-to/use-modules-and-scripts"  class="mega" id="menu477" title="use Modules and Scripts"><span class="menu-title">use Modules and Scripts</span></a></li><li  class="mega last"><a href="/how-to/deep-idle"  class="mega last" id="menu483" title="use Deep Idle"><span class="menu-title">use Deep Idle</span></a></li></ul></div></div>
+</div></div></li><li  class="mega"><a href="/faq"  class="mega" id="menu468" title="FAQ"><span class="menu-title">FAQ</span></a></li><li  class="mega last"><a href="/contact"  class="mega last" id="menu469" title="Contact"><span class="menu-title">Contact</span></a></li></ul>
+</div>			<script type="text/javascript">
+			var megamenu = new jaMegaMenuMoo ('ja-megamenu', {
+				'bgopacity': 0, 
+				'delayHide': 300, 
+				'slide': 1, 
+				'fading': 1,
+				'direction':'down',
+				'action':'mouseover',
+				'tips': false,
+				'duration': 300,
+				'hidestyle': 'fastwhenshow'
+			});			
+			</script>
+			<!-- jdoc:include type="menu" level="0" / -->
+
+<ul class="no-display">
+    <li><a href="#ja-content" title="Skip to content">Skip to content</a></li>
+</ul>
+
+</div>		 
+			</div>
+		 
+		
+				
+					</div>
+		
+			
+				</div>		
+								<div id="ja-topsl" class="wrap ">		
+				
+			
+					<div class="main">
+		
+				
+		 
+			<div class="main-inner1 clearfix">
+		<!-- SPOTLIGHT -->
+<div class="ja-box column ja-box-full" style="width: 100%;">
+		<div class="ja-moduletable moduletable  clearfix" id="Mod83">
+    
+				    <div class="jt-style-1">
+    <div class="jt-style-2">
+    <div class="jt-style-3">    
+		<div class="ja-box-ct clearfix">
+		
+
+<div class="custom"  >
+	<div align="center"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-7111130612620862";
+/* Adbanner */
+google_ad_slot = "8617719843";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div></div>
+		</div>
+    </div>
+    </div>
+    </div>    
+    </div>
+	
+</div>
+<!-- SPOTLIGHT -->
+
+<script type="text/javascript">
+	window.addEvent('load', function (){ equalHeight ('#ja-topsl .ja-box') });
+</script>		 
+			</div>
+		 
+		
+				
+					</div>
+		
+			
+				</div>		
+				
+	<!-- MAIN CONTAINER -->
+	<div id="ja-container" class="wrap ja-l1r1">
+					
+			
+					<div class="main clearfix">
+		
+				
+				<div id="ja-mainbody" style="width:80%">
+			<!-- CONTENT -->
+			<div id="ja-main" style="width:75%">
+			<div class="inner clearfix">
+				
+				
+<div id="system-message-container">
+</div>
+				
+				<div id="ja-contentwrap" class="clearfix ">
+					<div id="ja-content" class="column" style="width:100%">
+						<div id="ja-current-content" class="column" style="width:100%">
+														
+														<div id="ja-content-main" class="ja-content-main clearfix">
+								
+
+<div class="blog-featured">
+
+
+<div class="items-leading">
+			<div class="leading leading-0 clearfix">
+			
+<div class="contentpaneopen">
+
+
+	<h2 class="contentheading">
+					<a href="/77-main/92-semaphore-jb">
+			Semaphore JB 2.0.3 (2.0.6)</a>
+			</h2>
+
+
+
+<p>This is a kernel based on the pawitp's one and it works for Android 4.1.1 JB ROMs.</p>
+<p> </p>
+<p><strong>This is a beta version and works for Jelly Bean ROMs without /datadata partition.</strong></p>
+<p> </p>
+<h3>Features</h3>
+<p>- LiveOC</p>
+<p>- Custom Voltage</p>
+<p>- Voodoo Sound</p>
+<p>- BLN </p>
+<p>- 373.5MB - 398.7MB available RAM</p>
+<p>- Compiled with Linaro 4.7.2</p>
+<p>- O3 optimization</p>
+<p>- Semaphore Script Manager 0.75</p>
+<p>- Auto brightness driver</p>
+<p>- Touch Wake</p>
+<p>- Vibration intensity</p>
+<p>- Deep Idle</p>
+<p>- USB host driver</p>
+<p>- Governor ondemand (default)</p>
+<p>- ondemand: sampling_down_factor tunable by momentum, smooth_ui</p>
+<p>- Governor conservative (module, smooth_ui)</p>
+<p>- Governor smartassV2 (module, smooth_ui)</p>
+<p>- Noop I/O scheduler (default)</p>
+<p>- Deadline I/O Scheduler (module)</p>
+<p>- Simple I/O Scheduler (module)</p>
+<p>- CFQ Scheduler (module)</p>
+<p>- Netfilter (iptables) as modules</p>
+<p>- CIFS as module</p>
+<p>- TUN as module</p>
+<p>- Logcat disabled (as module only)</p>
+<p>- Standard network packet scheduler</p>
+<p>- Kernel log buffer size 4KB (from 128KB)</p>
+<p>- Reduced debug info </p>
+<p>- TinyRCU</p>
+<p>- Fast Charge support</p>
+<p>- WiFi PM_MAX when suspend</p>
+<p>- CWM: AROMA Filemanager</p>
+<p>- /system/etc/init.d directory creation if not exist </p>
+<p> </p>
+<p>In order to load various modules of the kernel and enable or disable features use <a href="http://forum.xda-developers.com/showthread.php?t=1277627">HM.Carbide's Semaphore Script Manager application</a>. It automatically copies and runs the respective scripts from /res/scripts to /system/etc/init.d directory. The scripts:</p>
+<p> </p>
+<p>- S05enable_oc_0800 (disable overclocking - caps max freq to 800Mhz)</p>
+<p>- S05enable_oc_1000_default (disable overclocking)</p>
+<p>- S05enable_oc_1100 (enable overclocking - max freq 1100MHz)</p>
+<p>- S05enable_oc_1140 (enable overclocking - max freq 1140MHz)</p>
+<p>- S05enable_oc_1200 (enable overclocking - max freq 1200MHz)</p>
+<p>- S10enable_gov_conservative (load and enable conservative governor module)</p>
+<p>- S10enable_gov_ondemand_default (enable ondemand governor)</p>
+<p>- S10enable_gov_smartassV2 (load and enable conservative smartassV2 module)</p>
+<p>- S15enable_sched_deadline (load and enable the deadline I/O scheduler module)</p>
+<p>- S15enable_sched_noop_default (enable noop scheduler)</p>
+<p>- S15enable_sched_sio (enable and load SIO scheduler module)</p>
+<p>- S30enable_logger (enable logging) </p>
+<p>- S35enable_tun (load tun module)</p>
+<p>- S40enable_cifs (load cifs module)</p>
+<p> </p>
+<p>Custom Voltage may be configured with Voltage control or similar applications.</p>
+<p>For questions or issues about Semaphore Script Manager please visit HM.Carbide <a href="http://forum.xda-developers.com/showthread.php?t=1277627">thread</a></p>
+<p> </p>
+<h3>Thanks to</h3>
+<p>pawitp for his kernel.</p>
+<p>zacharias.maladroit for his useful information about CM's initramfs</p>
+<p>HM.Carbide for his Semaphore Script Manager application.</p>
+<p>Ezekeel for LiveOC, Custom Voltage</p>
+<p>sztupy for USB host driver</p>
+<p>koush for CWM</p>
+<p>xcaliburinhand for his work about dock support</p>
+<p>mialwe for his vibrator intensity and other fixes</p>
+<p>ShadowInkDesigns for Android logo</p>
+<p>trailblazerz11 for his help with Linaro and other changes</p>
+<p>DerTeufel1980 for various hints</p>
+<p>All people who support this kernel by testing, reporting issues, donating or simply using it.</p>
+<p> </p>
+<p>View <a href="/changelog/jb-version">changelog</a></p>
+
+
+</div>
+
+<div class="item-separator"></div>
+		</div>
+			</div>
+	
+	
+		<div class="items-row cols-1 row-0 clearfix">
+				<div class="item column-1">
+			
+<div class="contentpaneopen">
+
+
+	<h2 class="contentheading">
+					<a href="/homepage/semaphore-ics">
+			Semaphore ICS 1.3.0</a>
+			</h2>
+
+
+
+<p>This is a kernel based on the pawitp's one and it works for Android 4.0.x ICS ROMs.</p>
+<p> </p>
+<h3>Features</h3>
+<p>- LiveOC</p>
+<p>- Custom Voltage</p>
+<p>- Voodoo Sound</p>
+<p>- BLN </p>
+<p>- 373.5MB - 398.7MB available RAM</p>
+<p>- Compiled with Linaro 4.7.2 toolchain</p>
+<p>- O3 optimization flag</p>
+<p>- Semaphore Script Manager 0.75</p>
+<p>- Auto brightness driver</p>
+<p>- Touch Wake</p>
+<p>- Vibration intensity</p>
+<p>- Deep Idle</p>
+<p>- USB host driver</p>
+<p>- Governor ondemand (default)</p>
+<p>- ondemand: sampling_down_factor tunable by momentum, smooth_ui</p>
+<p>- Governor conservative (module, smooth_ui)</p>
+<p>- Governor smartassV2 (module, smooth_ui)</p>
+<p>- Noop I/O scheduler (default)</p>
+<p>- Deadline I/O Scheduler (module)</p>
+<p>- Simple I/O Scheduler (module)</p>
+<p>- CFQ I/O Scheduler (module)</p>
+<p>- Netfilter (iptables) as modules</p>
+<p>- CIFS as module</p>
+<p>- TUN as module</p>
+<p>- Logcat disabled (as module only)</p>
+<p>- Standard network packet scheduler</p>
+<p>- Kernel log buffer size 4KB (from 128KB)</p>
+<p>- Reduced debug info </p>
+<p>- TinyRCU</p>
+<p>- Fast Charge support</p>
+<p>- WiFi PM_MAX when suspended</p>
+<p>- Bootloop detection</p>
+<p>- CWM 6</p>
+<p>- /system/etc/init.d directory creation if not exist </p>
+<p> </p>
+<p>In order to load various modules of the kernel and enable or disable features use <a href="http://forum.xda-developers.com/showthread.php?t=1277627">HM.Carbide's Semaphore Script Manager application</a>. It automatically copies and runs the respective scripts from /res/scripts to /system/etc/init.d directory. The scripts:</p>
+<p> </p>
+<p>- S05enable_oc_0800 (disable overclocking - caps max freq to 800Mhz)</p>
+<p>- S05enable_oc_1000_default (disable overclocking)</p>
+<p>- S05enable_oc_1100 (enable overclocking - max freq 1100MHz)</p>
+<p>- S05enable_oc_1140 (enable overclocking - max freq 1140MHz)</p>
+<p>- S05enable_oc_1200 (enable overclocking - max freq 1200MHz)</p>
+<p>- S10enable_gov_conservative (load and enable conservative governor module)</p>
+<p>- S10enable_gov_ondemand_default (enable ondemand governor)</p>
+<p>- S10enable_gov_smartassV2 (load and enable conservative smartassV2 module)</p>
+<p>- S15enable_sched_deadline (load and enable the deadline I/O scheduler module)</p>
+<p>- S15enable_sched_noop_default (enable noop scheduler)</p>
+<p>- S15enable_sched_sio (enable and load SIO scheduler module)</p>
+<p>- S20enable_netfilter (<strong>load netfilter modules for firewall or WiFi, USB tethering</strong>)</p>
+<p>- S30enable_logger (enable logging) </p>
+<p>- S35enable_tun (load tun module)</p>
+<p>- S40enable_cifs (load cifs module)</p>
+<p> </p>
+<p>Custom Voltage may be configured with Voltage control or similar applications.</p>
+<p>For questions or issues about Semaphore Script Manager please visit HM.Carbide <a href="http://forum.xda-developers.com/showthread.php?t=1277627">thread</a></p>
+<p>Thanks to Superuser, you may download a wonderful custom bootanimation for CM9 from <a href="/downloads/boot-animations">here</a> </p>
+<p> </p>
+<p><strong>Thanks to</strong></p>
+<p>pawitp for his kernel</p>
+<p>zacharias.maladroit for his useful information about CM's initramfs</p>
+<p>HM.Carbide for his Semaphore Script Manager application.</p>
+<p>Ezekeel for LiveOC, Custom Voltage</p>
+<p>sztupy for USB host driver</p>
+<p>koush for CWM</p>
+<p>xcaliburinhand for his work about dock support</p>
+<p>mialwe for his vibrator intensity and other fixes</p>
+<p>ShadowInkDesigns for Android logo</p>
+<p>trailblazerz11 for his help with Linaro and other changes</p>
+<p>DerTeufel1980 for various hints </p>
+<p>All people who support this kernel by testing, reporting issues, donating or simply using it. </p>
+<p> </p>
+<p>View <a href="/changelog/ics-version">changelog</a></p>
+
+
+</div>
+
+<div class="item-separator"></div>
+		</div>
+									<!--span class="row-separator"></span-->
+			</div>
+				
+	
+		<div class="items-row cols-1 row-1 clearfix">
+				<div class="item column-1">
+			
+<div class="contentpaneopen">
+
+
+	<h2 class="contentheading">
+					<a href="/homepage/semaphore-gb">
+			 Semaphore 2.7.4 (CF-Root + Voodoo Sound v10 + OC/UV + BLN)</a>
+			</h2>
+
+
+
+<p><span class="Apple-style-span" style="line-height: 19px;">This is a kernel rebuilt from the latest updated gingerbread sources and based on the CF-Root kernel (<a href="http://forum.xda-developers.com/showthread.php?t=788108" target="_blank">http://forum.xda-developers.com/showthread.php?t=788108</a>)</span></p>
+<h3><span class="Apple-style-span" style="line-height: 19px;"><br /></span></h3>
+<h3><span class="Apple-style-span" style="line-height: 19px;">Features</span></h3>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - Voodoo Sound v10 </span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - Voodoo Color</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - OC/UV (1200MHz, 1300MHz)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - BLN</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- CWM v5.0.2.7</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - Speedmod color fix</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - Patched with the latest Samsung kernel sources.</span></p>
+<p> - JVU initramfs</p>
+<p> - compiled with Linaro GCC 4.6.2-2011.11 toolchain</p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - O3 and other compiler optimizations</span></p>
+<p> - 337 MB available RAM (353 bigmem versions - it breaks 720 video recording)</p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - Reworked cpufreq driver. cpu states 100-200-400-800-1000/1200/1300. </span></p>
+<p> - Bundled with Semaphore Script Manager to v0.71</p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - su binary v3.0.3.2</span></p>
+<p> - Governor ondemand (default)</p>
+<p> - ondemand: sampling down factor tunable by momentum </p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - Governor conservative (module)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - G</span><span class="Apple-style-span" style="line-height: 19px;">overnor </span><span class="Apple-style-span" style="line-height: 19px;">smartassV2 (module)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - Noop I/O scheduler (default)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - </span><span class="Apple-style-span" style="line-height: 19px;">Deadline </span><span class="Apple-style-span" style="line-height: 19px;">I/O Scheduler (module)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - Simple I/O Scheduler (module)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - Netfilter (iptables) as modules</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - CIFS as module</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - TUN as module</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - Logcat disabled (as module only)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - cpufreq statistics as module (is loaded by default)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - Standard network packet scheduler</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - Kernel log buffer size 4KB (from 128KB)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - deleting boot sounds procedure creates backup on /data/local </span></p>
+<p><span style="line-height: 19px;"> - Battery polling to 60 seconds</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - jhash3</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - No debug info </span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - TinyRCU</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - CPU frequency on stock music player when screen off to 400 MHz</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - /system/etc/init.d directory creation if not exist </span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - Custom boot animation </span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - HM.Cardide's Addon scripts.</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - VM dirty chainfire's tweak as script</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - Kernel scheduler tweak as script</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - noatime chainfire's tweak by default</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - IPv6 privacy addon script</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - OC test scripts to 1200MHz, 1300MHz (Script Manager)</span></p>
+<p> - enable /proc/config.gz (as module)</p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - bootloop detection (clears init.d directory, if the phone does not complete 2 minutes of normal operation)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"> - Script to change /cache to virtual 50MB (in case you want to download apps &gt; 30MB from Market) </span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">Make sure to disable this option before convert to ext4. You may enable this after the conversion</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"><br /></span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">In order to control voodoo sound and color and BLN you have to download Voodoo Control and BLN control applications respectively from android market.</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">The max CPU frequency is by default 1Ghz. </span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">You may use applications like Voltage Control to control UV.</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"><br /></span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">In order to load various modules of the kernel and enable or disable features use HM.Carbide's Semaphore Script Manager application. It automatically copies and runs the respective scripts from /res/scripts to /system/etc/init.d directory. The scripts:</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- S05enable_oc_1000_default (disable overclocking)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- S05enable_oc_1200 (enable overclocking to 1200MHz)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- S05enable_oc_1300 (enable overclocking to 1300MHz)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- S10enable_gov_conservative (load and enable conservative governor module)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- S10enable_gov_ondemand_default (enable ondemand governor)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- S10enable_gov_smartassV2 (load and enable conservative smartassV2 module)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- S15enable_sched_deadline (load and enable the deadline I/O scheduler module)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- S15enable_sched_noop_default (enable noop scheduler)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- S15enable_sched_sio (enable and load SIO scheduler module)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- S20enable_netfilter (load netfilter modules for firewall or WiFi, USB tethering)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- S25enable_sm_cold (enable SpeedMod cold preset)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- S25enable_sm_neutral (enable SpeedMod neutral preset)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- S25enable_sm_warm (SpeedMod warm preset)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- S30enable_logger (enable logging) </span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- S35enable_tun (load tun module)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- S40enable_cifs (load cifs module)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">- S42enable_bl_dis (disable bootloop detection)</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"><br /></span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">Please check first the <a href="/faq">F.A.Q.</a> article if you have any questions and before send any questions.  </span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">For questions or issues about Semaphore Script Manager please visit <a href="http://forum.xda-developers.com/showthread.php?t=1277627">HM.Carbide's thread</a></span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">You may find custom Semaphore specific boot animation <a href="/downloads/boot-animations">here</a></span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"><br /></span></p>
+<h3><span class="Apple-style-span" style="line-height: 19px;">Thanks to</span></h3>
+<p><span class="Apple-style-span" style="line-height: 19px;">Special thanks to Chainfire who allowed me to use his initramfs and distribute his applications with my kernel.</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">Supercurio for Voodoo sound and Voodoo color</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">Neldar for BLN</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">Existz for OC/UC, his work on porting the Nexus S driver, Voodoo color and for the bigmem settings and for his helpful hints. </span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">HM.Carbide about Semaphore Script Manager application.</span></p>
+<p>Hardcore for the 334 MB configuration and color fix and his hints. </p>
+<p><span class="Apple-style-span" style="line-height: 19px;">Rebel2k, quangmach for their help on testing the fix for the BT issue. </span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">darckengel about his investigation about cpu frequencies. </span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">malcho for his support and for making custom boot animation for this kernel and for semaphore logo.</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">Mialwe for his hints and for his mount code for CWM.</span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">All people who support this kernel by testing, reporting issues, donating or simply using it. </span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;"><br /></span></p>
+<p><span class="Apple-style-span" style="line-height: 19px;">View <a href="/changelog/gb-version">changelog</a></span></p>
+
+
+</div>
+
+<div class="item-separator"></div>
+		</div>
+									<!--span class="row-separator"></span-->
+			</div>
+				
+
+
+</div>
+
+							</div>
+							
+													</div>
+						
+											</div>
+
+										
+				</div>
+
+							</div>
+			</div>
+			<!-- //CONTENT -->
+						<!-- LEFT COLUMN--> 
+			<div id="ja-left" class="column sidebar" style="width:25%">
+				
+								<div class="ja-colswrap clearfix ja-l1">
+									<div id="ja-left1" class="ja-col  column" style="width:100%">
+							<div class="ja-moduletable moduletable  clearfix" id="Mod33">
+    
+				    <div class="jt-style-1">
+    <div class="jt-style-2">
+    <div class="jt-style-3">    
+		<div class="ja-box-ct clearfix">
+		<div class="random-image">
+	<img src="/images/random/semaphore_logo.jpg" alt="semaphore_logo.jpg" width="180" height="126" /></div>
+		</div>
+    </div>
+    </div>
+    </div>    
+    </div>
+		<div class="ja-moduletable moduletable  clearfix" id="Mod28">
+    
+						<h3><span>Latest News</span></h3>
+		    <div class="jt-style-1">
+    <div class="jt-style-2">
+    <div class="jt-style-3">    
+		<div class="ja-box-ct clearfix">
+		<ul class="latestnews">
+	<li>
+		<a href="/80-latests/81-semaphore-auto-brightness-driver">
+			Semaphore Auto Brightness driver</a>
+	</li>
+	<li>
+		<a href="/80-latests/80-sampling-down-momentum">
+			Sampling down momentum</a>
+	</li>
+	<li>
+		<a href="/80-latests/78-semaphore-kernel-for-captivate">
+			Semaphore kernel for Captivate</a>
+	</li>
+</ul>
+		</div>
+    </div>
+    </div>
+    </div>    
+    </div>
+		<div class="ja-moduletable moduletable  clearfix" id="Mod81">
+    
+						<h3><span>Useful Links</span></h3>
+		    <div class="jt-style-1">
+    <div class="jt-style-2">
+    <div class="jt-style-3">    
+		<div class="ja-box-ct clearfix">
+		<ul class="weblinks">
+<li>
+	<a href="http://forum.xda-developers.com/forumdisplay.php?f=665" rel="no follow">XDA android development forum</a>	
+	</li>
+<li>
+	<a href="http://forum.xda-developers.com/showthread.php?t=1468795" rel="no follow">XDA Semaphore ICS kernel thread</a>	
+	</li>
+<li>
+	<a href="http://forum.xda-developers.com/showthread.php?t=1112908" rel="no follow">XDA Semaphore kernel thread</a>	
+	</li>
+<li>
+	<a href="http://forum.xda-developers.com/showthread.php?t=1786220" rel="no follow">XDA Semaphore JB kernel thread</a>	
+	</li>
+<li>
+	<a href="http://forum.xda-developers.com/showthread.php?p=19175952" rel="no follow">XDA Semaphore kernel thread for Captivate</a>	
+	</li>
+<li>
+	<a href="http://forum.xda-developers.com/showthread.php?t=1277627" rel="no follow">HM.Carbide's Semaphore Script Manager thread</a>	
+	</li>
+</ul>
+		</div>
+    </div>
+    </div>
+    </div>    
+    </div>
+		<div class="ja-moduletable moduletable  clearfix" id="Mod80">
+    
+						<h3><span>Sources</span></h3>
+		    <div class="jt-style-1">
+    <div class="jt-style-2">
+    <div class="jt-style-3">    
+		<div class="ja-box-ct clearfix">
+		<ul class="weblinks">
+<li>
+	<a href="http://www.kernel.org/" rel="no follow">The Linux Kernel</a>	
+	</li>
+<li>
+	<a href="https://opensource.samsung.com/" rel="no follow">Samsung Kernel Sources</a>	
+	</li>
+<li>
+	<a href="https://github.com/project-voodoo/linux_gt-i9000/tree/gingerbread-voodoo" rel="no follow">Supercurio's Voodoo Sound v10</a>	
+	</li>
+<li>
+	<a href="https://github.com/existz/galaxys-i9000-OC-kernel-source-patches" rel="no follow">Existz's OC/UV</a>	
+	</li>
+<li>
+	<a href="https://github.com/neldar/backlightnotification" rel="no follow">Neldar's BLN</a>	
+	</li>
+<li>
+	<a href="https://github.com/stratosk/semaphore" rel="no follow">Semaphore kernel </a>	
+	</li>
+</ul>
+		</div>
+    </div>
+    </div>
+    </div>    
+    </div>
+					
+					</div>
+				
+								</div>
+											</div>
+			<!-- //LEFT COLUMN--> 
+						
+		</div>
+				<!-- RIGHT COLUMN--> 
+		<div id="ja-right" class="column sidebar" style="width:20%">
+
+			
+						<div class="ja-colswrap clearfix ja-r1">
+								<div id="ja-right1" class="ja-col  column" style="width:100%">
+						<div class="ja-moduletable moduletable  clearfix" id="Mod88">
+    
+				    <div class="jt-style-1">
+    <div class="jt-style-2">
+    <div class="jt-style-3">    
+		<div class="ja-box-ct clearfix">
+		
+
+<div class="custom"  >
+	<!-- Place this tag where you want the +1 button to render. -->
+<div class="g-plusone" data-annotation="inline" data-width="120"></div>
+
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script></div>
+		</div>
+    </div>
+    </div>
+    </div>    
+    </div>
+		<div class="ja-moduletable moduletable  clearfix" id="Mod35">
+    
+						<h3><span>Search</span></h3>
+		    <div class="jt-style-1">
+    <div class="jt-style-2">
+    <div class="jt-style-3">    
+		<div class="ja-box-ct clearfix">
+		<form action="/" method="post" class="search">
+		<label for="mod-search-searchword">Search...</label><input name="searchword" id="mod-search-searchword" maxlength="20"  class="inputbox" type="text" size="20" value="type keywords"  onblur="if (this.value=='') this.value='type keywords';" onfocus="if (this.value=='type keywords') this.value='';" /><input type="submit" value="Go" class="button" onclick="this.form.searchword.focus();"/>	<input type="hidden" name="task" value="search" />
+	<input type="hidden" name="option" value="com_search" />
+	<input type="hidden" name="Itemid" value="435" />
+</form>
+		</div>
+    </div>
+    </div>
+    </div>    
+    </div>
+		<div class="ja-moduletable moduletable  clearfix" id="Mod44">
+    
+						<h3><span>Login</span></h3>
+		    <div class="jt-style-1">
+    <div class="jt-style-2">
+    <div class="jt-style-3">    
+		<div class="ja-box-ct clearfix">
+		<form action="/" method="post" id="login-form" >
+		<fieldset class="userdata">
+	<p id="form-login-username">
+		<label for="modlgn-username">User Name</label>
+		<input id="modlgn-username" type="text" name="username" class="inputbox"  size="18" />
+	</p>
+	<p id="form-login-password">
+		<label for="modlgn-passwd">Password</label>
+		<input id="modlgn-passwd" type="password" name="password" class="inputbox" size="18"  />
+	</p>
+		<p id="form-login-remember">
+		<label for="modlgn-remember">Remember Me</label>
+		<input id="modlgn-remember" type="checkbox" name="remember" class="inputbox" value="yes"/>
+	</p>
+		<p id="form-login-submit">
+        <input type="submit" name="Submit" class="button" value="Log in" />
+    </p>
+	<input type="hidden" name="option" value="com_users" />
+	<input type="hidden" name="task" value="user.login" />
+	<input type="hidden" name="return" value="aW5kZXgucGhwP0l0ZW1pZD00MzU=" />
+	<input type="hidden" name="3a9cc4f73353e9a8dd815122cb98d6d0" value="1" />	</fieldset>
+	<ul>
+		<li>
+			<a href="/component/users/?view=reset">
+			Forgot your password?</a>
+		</li>
+		<li>
+			<a href="/component/users/?view=remind">
+			Forgot your username?</a>
+		</li>
+				<li>
+			<a href="/component/users/?view=registration">
+				Create an account</a>
+		</li>
+			</ul>
+	</form>
+		</div>
+    </div>
+    </div>
+    </div>    
+    </div>
+		<div class="ja-moduletable moduletable  clearfix" id="Mod82">
+    
+				    <div class="jt-style-1">
+    <div class="jt-style-2">
+    <div class="jt-style-3">    
+		<div class="ja-box-ct clearfix">
+		
+<div class="paypal_donation">
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+        <input type="hidden" name="cmd" value="_donations" />
+        <input type="hidden" name="business" value="stratosk@semaphore.gr" />
+        <input type="hidden" name="item_name" value="Semaphore donation" />
+        <input type="hidden" name="no_shipping" value="0" />
+        <input type="hidden" name="no_note" value="1" />
+        <input type="hidden" name="currency_code" value="USD" />
+        <input type="hidden" name="tax" value="0" />
+        <input type="hidden" name="bn" value="PP-DonationsBF" />
+            <input type="hidden" name="amount" value="" />   
+        <input type="image" src="https://www.paypal.com/en_GB/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal Donation" />            <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+    </form>
+</div>		</div>
+    </div>
+    </div>
+    </div>    
+    </div>
+						
+				</div>
+				
+							</div>
+								</div>
+		<!-- //RIGHT COLUMN--> 
+					 
+		
+				
+					</div>
+		
+			
+					</div>
+		<!-- //MAIN CONTAINER -->
+
+					<div id="ja-footer" class="wrap ">		
+				
+			
+					<div class="main clearfix">
+		
+				
+		<div id="jt-footer">
+<p>Copyright © 2011-2012, stratosk. All rights reserved.</p>
+<ul class="jt-links">
+	<li class="jt-top"><a href="#Top" title="Back to top">Top</a></li>
+</ul>
+</div>		 
+		
+				
+					</div>
+		
+			
+				</div>		
+				
+</div>
+
+
+
+</body>
+
+</html>

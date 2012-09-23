@@ -1,0 +1,16 @@
+#!/system/bin/sh
+#Schedulers
+#Change I/O scheduler
+#No-op*
+
+MTD=`ls -d /sys/block/mtd*`;
+MMC=`ls -d /sys/block/mmc*`;
+
+for i in $MTD $MMC; do 
+    echo "noop" > "$i"/queue/scheduler;
+done;
+
+sleep 1
+rmmod sio_iosched
+rmmod deadline_iosched
+rmmod cfq_isosched

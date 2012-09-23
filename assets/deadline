@@ -1,0 +1,17 @@
+#!/system/bin/sh
+#Schedulers
+#Change I/O scheduler
+#Deadline
+
+insmod /system/lib/modules/deadline-iosched.ko
+
+MTD=`ls -d /sys/block/mtd*`;
+MMC=`ls -d /sys/block/mmc*`;
+
+for i in $MTD $MMC; do 
+    echo "deadline" > "$i"/queue/scheduler;
+done;
+
+sleep 1
+rmmod sio_iosched
+rmmod cfq_iosched
