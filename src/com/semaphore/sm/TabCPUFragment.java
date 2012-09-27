@@ -222,7 +222,8 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             sp.lock_min.writeValue();
         } else if (key.equals(sp.bluetooth.getName())) {
             sp.bluetooth.setValue(sharedPreferences.getBoolean(key, sp.bluetooth.getDefBoolean()) == true ? 1 : 0);
-            sp.bluetooth.writeValue();
+            if (sp.bluetooth.getBoolean())
+                sp.bluetooth.writeValue();
         }
 
     }

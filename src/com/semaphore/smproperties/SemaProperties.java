@@ -121,7 +121,8 @@ public class SemaProperties {
         deep_idle.writeBatch(cmds);
         deep_idle_stats.writeBatch(cmds);
         lock_min.writeBatch(cmds);
-        bluetooth.writeBatch(cmds);
+        if (bluetooth.getBoolean())
+            bluetooth.writeBatch(cmds);
 
         logger.writeBatch(cmds);
         tun.writeBatch(cmds);
@@ -154,7 +155,8 @@ public class SemaProperties {
         deep_idle.writeValue();
         deep_idle_stats.writeValue();
         lock_min.writeValue();
-        bluetooth.writeValue();
+        if (bluetooth.getBoolean())
+            bluetooth.writeValue();
 
         logger.writeValue();
         tun.writeValue();
