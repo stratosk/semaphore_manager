@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Semaphore Manager</string>
-    <string name="str_app_version_title">1.1.0</string>
+    <string name="str_app_version_title">1.1.5</string>
     
     <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
     
@@ -16,12 +16,14 @@
         <item>Ondemand</item>
         <item>Conservative</item>
         <item>SmartassV2</item>
+        <item>Interactive</item>
     </string-array>
  
     <string-array name="array_gov_values">
         <item>ondemand</item>
         <item>conservative</item>
         <item>smartassV2</item>
+        <item>interactive</item>
     </string-array>
     
     <string-array name="scripts">
@@ -109,6 +111,18 @@
     <string name="str_s_sample_rate_jiffies_title">Sample rate jiffies</string>
     <string name="str_s_sample_rate_jiffies_summary">Valid values 1-100</string>
     <string name="str_s_smooth_ui_title">Smooth UI</string>
+
+    <string name="str_i_hispeed_freq_title">Hi speed frequency</string>
+    <string name="str_i_hispeed_freq_summary">Valid values 1-100</string>
+    <string name="str_i_go_hispeed_load_title">Go hi speed load</string>
+    <string name="str_i_go_hispeed_load_summary">Valid values 1-100000</string>
+    <string name="str_i_min_sampling_time_title">Min sampling time</string>
+    <string name="str_i_min_sampling_time_summary">Valid values 10000-100000</string>
+    <string name="str_i_above_hispeed_delay_title">Above hi speed delay</string>
+    <string name="str_i_above_hispeed_delay_summary">Valid values 1-100</string>
+    <string name="str_i_timer_rate_title">Timer rate</string>
+    <string name="str_i_timer_rate_summary">Valid values 1-100</string>
+    <string name="str_i_input_boost_title">Input Boost</string>
 
     <string name="str_cat_deep_idle_title">Deep Idle</string>
     <string name="str_deep_idle_title">Enabled</string>

@@ -168,6 +168,45 @@
                 android:title="@string/str_s_smooth_ui_title" />
 
         </PreferenceScreen> 
+        <PreferenceScreen
+            android:title="Interactive">
+            <!--android:summary="tunables"-->
+
+            <EditTextPreference
+                android:key="i_hispeed_freq"
+                android:title="@string/str_i_hispeed_freq_title"
+                android:summary="@string/str_i_hispeed_freq_summary"
+                android:numeric="integer"
+                android:inputType="number" />
+            <EditTextPreference
+                android:key="i_go_hispeed_load"
+                android:title="@string/str_i_go_hispeed_load_title"
+                android:summary="@string/str_i_go_hispeed_load_summary"
+                android:numeric="integer"
+                android:inputType="number" />
+            <EditTextPreference
+                android:key="i_min_sampling_time"
+                android:title="@string/str_i_min_sampling_time_title"
+                android:summary="@string/str_i_min_sampling_time_summary"
+                android:numeric="integer"
+                android:inputType="number" />
+            <EditTextPreference
+                android:key="i_above_hispeed_delay"
+                android:title="@string/str_i_above_hispeed_delay_title"
+                android:summary="@string/str_i_above_hispeed_delay_summary"
+                android:numeric="integer"
+                android:inputType="number" />
+            <EditTextPreference
+                android:key="i_timer_rate"
+                android:title="@string/str_i_timer_rate_title"
+                android:summary="@string/str_i_timer_rate_summary"
+                android:numeric="integer"
+                android:inputType="number" />
+            <SwitchPreference
+                android:key="i_input_boost"
+                android:title="@string/str_i_input_boost_title" />
+
+        </PreferenceScreen>
     </PreferenceCategory>
          
     <PreferenceCategory

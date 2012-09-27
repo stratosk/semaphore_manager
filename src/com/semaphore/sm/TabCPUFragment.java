@@ -169,6 +169,24 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         } else if (key.equals(sp.conservative.smooth_ui.getName())) {
             sp.smartass.smooth_ui.setValue(sharedPreferences.getBoolean(key, sp.smartass.smooth_ui.getDefBoolean()) == true ? 1 : 0);
             sp.smartass.smooth_ui.writeValue();
+        } else if (key.equals(sp.interactive.hispeed_freq.getName())) { // Interactive
+            sp.interactive.hispeed_freq.setValue(Integer.parseInt(sharedPreferences.getString(key, sp.interactive.hispeed_freq.getDefString())));
+            sp.interactive.hispeed_freq.writeValue();
+        } else if (key.equals(sp.interactive.go_hispeed_load.getName())) {
+            sp.interactive.go_hispeed_load.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.go_hispeed_load.getDefault()))));
+            sp.interactive.go_hispeed_load.writeValue();
+        } else if (key.equals(sp.interactive.min_sampling_time.getName())) {
+            sp.interactive.min_sampling_time.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.min_sampling_time.getDefault()))));
+            sp.interactive.min_sampling_time.writeValue();
+        } else if (key.equals(sp.interactive.above_hispeed_delay.getName())) {
+            sp.interactive.above_hispeed_delay.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.above_hispeed_delay.getDefault()))));
+            sp.interactive.above_hispeed_delay.writeValue();
+        } else if (key.equals(sp.interactive.timer_rate.getName())) {
+            sp.interactive.timer_rate.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.timer_rate.getDefault()))));
+            sp.interactive.timer_rate.writeValue();
+        } else if (key.equals(sp.interactive.input_boost.getName())) {
+            sp.interactive.input_boost.setValue(sharedPreferences.getBoolean(key, sp.interactive.input_boost.getDefBoolean()) == true ? 1 : 0);
+            sp.interactive.input_boost.writeValue();
         } else if (key.equals(sp.gov.getName())) {
             if (sharedPreferences.getString(sp.gov.getName(), sp.gov.getDefValue()).equals(sp.ondemand.getName())) {
                 sp.gov.setValue(sharedPreferences.getString(key, sp.gov.getDefValue()));
@@ -210,6 +228,17 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
                 ((SwitchPreference) findPreference(sp.smartass.smooth_ui.getName())).setChecked(sp.smartass.smooth_ui.getBoolean());
                 sp.conservative.cons.setValue(false);
                 sp.conservative.cons.writeValue();
+            } else if (sharedPreferences.getString(sp.gov.getName(), sp.gov.getDefValue()).equals(sp.interactive.getName())) {
+                sp.interactive.inter.setValue(true);
+                sp.interactive.inter.writeValue();
+                sp.gov.setValue(sharedPreferences.getString(key, sp.gov.getDefValue()));
+                sp.gov.writeValue();
+                ((EditTextPreference) findPreference(sp.interactive.hispeed_freq.getName())).setText(sp.interactive.hispeed_freq.getValString());
+                ((EditTextPreference) findPreference(sp.interactive.go_hispeed_load.getName())).setText(sp.interactive.go_hispeed_load.getValString());
+                ((EditTextPreference) findPreference(sp.interactive.min_sampling_time.getName())).setText(sp.interactive.min_sampling_time.getValString());
+                ((EditTextPreference) findPreference(sp.interactive.above_hispeed_delay.getName())).setText(sp.interactive.above_hispeed_delay.getValString());
+                ((EditTextPreference) findPreference(sp.interactive.timer_rate.getName())).setText(sp.interactive.timer_rate.getValString());
+                ((SwitchPreference) findPreference(sp.interactive.input_boost.getName())).setChecked(sp.interactive.input_boost.getBoolean());
             }
         } else if (key.equals(sp.deep_idle.getName())) {
             sp.deep_idle.setValue(sharedPreferences.getBoolean(key, sp.deep_idle.getDefBoolean()) == true ? 1 : 0);
@@ -282,6 +311,17 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         pref = findPreference(sp.smartass.sleep_ideal_freq.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.smartass.sample_rate_jiffies.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        
+        pref = findPreference(sp.interactive.hispeed_freq.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.interactive.go_hispeed_load.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.interactive.min_sampling_time.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.interactive.above_hispeed_delay.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.interactive.timer_rate.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
     }
 

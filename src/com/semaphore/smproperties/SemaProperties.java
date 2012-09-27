@@ -24,6 +24,7 @@ public class SemaProperties {
     public SMOndemandProperty ondemand;
     public SMConservativeProperty conservative;
     public SMSmartassProperty smartass;
+    public SMInteractiveProperty interactive;
     public SMIntProperty deep_idle;
     public SMIntProperty deep_idle_stats;
     public SMIntProperty bluetooth;
@@ -53,6 +54,7 @@ public class SemaProperties {
         ondemand = new SMOndemandProperty();
         conservative = new SMConservativeProperty();
         smartass = new SMSmartassProperty();
+        interactive = new SMInteractiveProperty();
         deep_idle = new SMIntProperty("deep_idle", "/sys/devices/virtual/misc/deepidle/enabled", false, 0, 1, 0);
         deep_idle_stats = new SMIntProperty("deep_idle_stats", "/sys/devices/virtual/misc/deepidle/stats_enabled", false, 0, 1, 0);
         lock_min = new SMIntProperty("lock_min", "/sys/devices/system/cpu/cpu0/cpufreq/lock_scaling_min", false, 0, 1, 0);
@@ -84,6 +86,7 @@ public class SemaProperties {
         ondemand.readValue();
         conservative.readValue();
         smartass.readValue();
+        interactive.readValue();
         deep_idle.readValue();
         deep_idle_stats.readValue();
         lock_min.readValue();
@@ -117,6 +120,7 @@ public class SemaProperties {
         ondemand.writeBatch(cmds);
         conservative.writebatch(cmds);
         smartass.writebatch(cmds);
+        interactive.writebatch(cmds);
         deep_idle.writeBatch(cmds);
         deep_idle.writeBatch(cmds);
         deep_idle_stats.writeBatch(cmds);
@@ -152,6 +156,7 @@ public class SemaProperties {
         ondemand.writeValue();
         conservative.writeValue();
         smartass.writeValue();
+        interactive.writeValue();
         deep_idle.writeValue();
         deep_idle_stats.writeValue();
         lock_min.writeValue();
@@ -212,7 +217,15 @@ public class SemaProperties {
         edit.putString(smartass.sleep_ideal_freq.getName(), smartass.sleep_ideal_freq.getValString());
         edit.putString(smartass.sample_rate_jiffies.getName(), smartass.sample_rate_jiffies.getValString());
         edit.putBoolean(smartass.smooth_ui.getName(), conservative.smooth_ui.getBoolean());
-
+        // interactive
+        edit.putBoolean(interactive.inter.getName(), interactive.inter.getValue());
+        edit.putString(interactive.hispeed_freq.getName(), interactive.hispeed_freq.getValString());
+        edit.putString(interactive.go_hispeed_load.getName(), interactive.go_hispeed_load.getValString());
+        edit.putString(interactive.min_sampling_time.getName(), interactive.min_sampling_time.getValString());
+        edit.putString(interactive.above_hispeed_delay.getName(), interactive.above_hispeed_delay.getValString());
+        edit.putString(interactive.timer_rate.getName(), interactive.timer_rate.getValString());
+        edit.putBoolean(interactive.input_boost.getName(), interactive.input_boost.getBoolean());
+        
         edit.putBoolean(deep_idle.getName(), deep_idle.getBoolean());
         edit.putBoolean(deep_idle_stats.getName(), deep_idle_stats.getBoolean());
         edit.putBoolean(lock_min.getName(), lock_min.getBoolean());
@@ -278,6 +291,14 @@ public class SemaProperties {
         smartass.sample_rate_jiffies.setValue(prefs.getString(smartass.sample_rate_jiffies.getName(), smartass.sample_rate_jiffies.getDefString()));
         smartass.smooth_ui.setValue(prefs.getBoolean(smartass.smooth_ui.getName(), smartass.smooth_ui.getDefBoolean()) == true ? 1 : 0);
 
+        interactive.inter.setValue(prefs.getBoolean(interactive.inter.getName(), interactive.inter.getDefValue()));
+        interactive.hispeed_freq.setValue(prefs.getString(interactive.hispeed_freq.getName(), interactive.hispeed_freq.getDefString()));
+        interactive.go_hispeed_load.setValue(prefs.getString(interactive.go_hispeed_load.getName(), interactive.go_hispeed_load.getDefString()));
+        interactive.min_sampling_time.setValue(prefs.getString(interactive.min_sampling_time.getName(), interactive.min_sampling_time.getDefString()));
+        interactive.above_hispeed_delay.setValue(prefs.getString(interactive.above_hispeed_delay.getName(), interactive.above_hispeed_delay.getDefString()));
+        interactive.timer_rate.setValue(prefs.getString(interactive.timer_rate.getName(), interactive.timer_rate.getDefString()));
+        interactive.input_boost.setValue(prefs.getBoolean(interactive.input_boost.getName(), interactive.input_boost.getDefBoolean()) == true ? 1 : 0);
+
         deep_idle.setValue((prefs.getBoolean(deep_idle.getName(), deep_idle.getDefBoolean()) == true ? 1 : 0));
         deep_idle_stats.setValue((prefs.getBoolean(deep_idle_stats.getName(), deep_idle_stats.getDefBoolean()) == true ? 1 : 0));
         lock_min.setValue((prefs.getBoolean(lock_min.getName(), lock_min.getDefBoolean()) == true ? 1 : 0));
@@ -340,6 +361,14 @@ public class SemaProperties {
         smartass.sample_rate_jiffies.setValue(smartass.sample_rate_jiffies.getDefString());
         smartass.smooth_ui.setValue(smartass.smooth_ui.getDefault());
 
+        interactive.inter.setValue(interactive.inter.getDefValue());
+        interactive.hispeed_freq.setValue(interactive.hispeed_freq.getDefString());
+        interactive.go_hispeed_load.setValue(interactive.go_hispeed_load.getDefString());
+        interactive.min_sampling_time.setValue(interactive.min_sampling_time.getDefString());
+        interactive.above_hispeed_delay.setValue(interactive.above_hispeed_delay.getDefString());
+        interactive.timer_rate.setValue(interactive.timer_rate.getDefString());
+        interactive.input_boost.setValue(interactive.input_boost.getDefault());
+        
         deep_idle.setValue(deep_idle.getDefault());
         deep_idle_stats.setValue(deep_idle_stats.getDefault());
         lock_min.setValue(lock_min.getDefault());
