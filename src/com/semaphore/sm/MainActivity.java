@@ -35,43 +35,65 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends FragmentActivity {
 
     public class PagerAdapter extends FragmentPagerAdapter {
 
-        PreferenceListFragment[] fragments;
-        String[] titles;
+        List<Fragment> fragments;
+        List<String> titles;
+        private boolean kmsg_visible = false;
+        private boolean logcat_visible = false;
 
         public PagerAdapter(FragmentManager fm, Context context) {
             super(fm);
-            fragments = new PreferenceListFragment[4];
-            fragments[0] = new TabCPUFragment();
-            fragments[1] = new TabTweaksFragment();
-            fragments[2] = new TabModulesFragment();
-            fragments[3] = new TabInfoFragment();
+            fragments = new ArrayList<Fragment>();
+            fragments.add(new TabCPUFragment());
+            fragments.add(new TabTweaksFragment());
+            fragments.add(new TabModulesFragment());
+            fragments.add(new TabInfoFragment());
 
-            titles = new String[4];
-            titles[0] = "CPU";
-            titles[1] = "TWEAKS";
-            titles[2] = "MODULES";
-            titles[3] = "INFO";
+            titles = new ArrayList<String>();
+            titles.add("CPU");
+            titles.add("TWEAKS");
+            titles.add("MODULES");
+            titles.add("INFO");
+            //titles[4] = "KMSG";
 
         }
 
         @Override
         public Fragment getItem(int position) {
-            return fragments[position];
+            return fragments.get(position);
         }
 
         @Override
         public int getCount() {
-            return fragments.length;
+            return fragments.size();
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return titles[position];
+            return titles.get(position);
+        }
+
+        public void addKmsg() {
+            if (!kmsg_visible) {
+                fragments.add(new TabKmsgFragment());
+                titles.add("KMSG");
+                kmsg_visible = true;
+            }
+        }
+
+        public int getFragment(Class<?> ftype) {
+            for (int i = 0; i < fragments.size(); i++) {
+                if (fragments.get(i).getClass() == ftype) {
+                    return i;
+                }
+            }
+            return -1;
         }
     }
     ViewPager mViewPager;
@@ -101,11 +123,16 @@ public class MainActivity extends FragmentActivity {
                 clearInitd();
             }
             break;
+            case R.id.menuitem4: {
+                mPagerAdapter.addKmsg();
+                mViewPager.setCurrentItem(mPagerAdapter.getFragment(TabKmsgFragment.class), true);
+            }
+            break;
             default:
                 break;
         }
 
-        return true;
+        return false;
     }
 
     private void checkFirstRun() {
@@ -227,15 +254,14 @@ public class MainActivity extends FragmentActivity {
 
         updateSummaries();
 
-
     }
 
     private void updateSummaries() {
-        TabCPUFragment cpu = (TabCPUFragment) mPagerAdapter.fragments[0];
+        TabCPUFragment cpu = (TabCPUFragment) mPagerAdapter.fragments.get(0);
         if (cpu != null) {
             cpu.updateSummaries();
         }
-        TabTweaksFragment tweaks = (TabTweaksFragment) mPagerAdapter.fragments[1];
+        TabTweaksFragment tweaks = (TabTweaksFragment) mPagerAdapter.fragments.get(1);
         if (tweaks != null) {
             tweaks.updateSummaries();
         }

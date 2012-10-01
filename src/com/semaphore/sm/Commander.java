@@ -29,14 +29,18 @@ public class Commander {
     private static Commander instance = null;
     private List<String> errResult;
     private List<String> outResult;
+    private List<String> kmsg;
     private Process p;
     OutputStreamWriter osw;
+    OutputStreamWriter oswk;
+    OutputStreamWriter oswl;
 //        BufferedReader err;
 //        BufferedReader out;
 
     protected Commander() {
         errResult = new ArrayList<String>();
         outResult = new ArrayList<String>();
+        kmsg = new ArrayList<String>();
     }
 
     public static Commander getInstance() {
@@ -52,6 +56,10 @@ public class Commander {
 
     public List<String> getOutResult() {
         return outResult;
+    }
+
+    public List<String> getKmsg() {
+        return kmsg;
     }
 
     public void openShell() {
@@ -133,14 +141,6 @@ public class Commander {
             Thread outt = new streamReader(p.getInputStream(), outResult);
             errt.start();
             outt.start();
-            /*String line;
-             while ((line = err.readLine()) != null) {
-             errResult.add(line);
-             }
-
-             while ((line = out.readLine()) != null) {
-             outResult.add(line);
-             }*/
 
             try {
                 p.waitFor();
@@ -196,14 +196,6 @@ public class Commander {
             Thread outt = new streamReader(p.getInputStream(), outResult);
             errt.start();
             outt.start();
-            /*String line;
-             while ((line = err.readLine()) != null) {
-             errResult.add(line);
-             }
-
-             while ((line = out.readLine()) != null) {
-             outResult.add(line);
-             }*/
 
             try {
                 p.waitFor();
@@ -236,6 +228,35 @@ public class Commander {
 //            toastMessage("not root");
         }
         return result;
+    }
+
+    public int readKmsg() {
+        int result = 0;
+
+        ProcessBuilder pb = new ProcessBuilder("su", "-c", "/system/bin/sh");
+        try {
+            p = pb.start();
+            OutputStream os = p.getOutputStream();
+            oswk = new OutputStreamWriter(os);
+
+            oswk.write("cat /proc/kmsg");
+            oswk.flush();
+            oswk.close();
+
+            kmsg.clear();
+
+            Thread outt = new streamReader(p.getInputStream(), kmsg);
+            outt.start();
+
+        } catch (IOException e) {
+            // TODO Code to run in input/output exception
+//            toastMessage("not root");
+        }
+        return result;
+    }
+
+    public void clearKmsg() {
+        kmsg.clear();
     }
 
     public int run(String cmd) {

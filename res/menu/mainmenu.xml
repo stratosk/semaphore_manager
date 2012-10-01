@@ -16,4 +16,9 @@
         android:showAsAction="never"
         android:title="Clear init.d">
     </item>
+    <item
+        android:id="@+id/menuitem4"
+        android:showAsAction="never"
+        android:title="Display kmsg">
+    </item>
 </menu> 

@@ -2,18 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/menuitem1"
+        android:id="@+id/menuitem6"
         android:showAsAction="never"
-        android:title="Read System Settings">
+        android:title="Clear kmsg">
     </item>
     <item
-        android:id="@+id/menuitem2"
+        android:id="@+id/menuitem7"
         android:showAsAction="never"
-        android:title="Reset to default">
-    </item>
-    <item
-        android:id="@+id/menuitem3"
-        android:showAsAction="never"
-        android:title="Clear init.d">
+        android:title="Save kmsg">
     </item>
 </menu> 
