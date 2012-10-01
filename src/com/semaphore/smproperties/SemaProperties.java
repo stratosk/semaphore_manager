@@ -116,6 +116,13 @@ public class SemaProperties {
         List<String> cmds = new ArrayList<String>();
 
         oc.writeBatch(cmds);
+        if (gov.getValue().equals(conservative.getName())) {
+            conservative.cons.writeBatch(cmds);
+        } else if (gov.getValue().equals(smartass.getName())) {
+            smartass.smart.writeBatch(cmds);
+        } else if (gov.getValue().equals(interactive.getName())) {
+            interactive.inter.writeBatch(cmds);
+        }
         gov.writeBatch(cmds);
         ondemand.writeBatch(cmds);
         conservative.writebatch(cmds);
@@ -152,6 +159,13 @@ public class SemaProperties {
 
     public void writeValues() {
         oc.writeValue();
+        if (gov.getValue().equals(conservative.getName())) {
+            conservative.cons.writeValue();
+        } else if (gov.getValue().equals(smartass.getName())) {
+            smartass.smart.writeValue();
+        } else if (gov.getValue().equals(interactive.getName())) {
+            interactive.inter.writeValue();
+        }
         gov.writeValue();
         ondemand.writeValue();
         conservative.writeValue();
