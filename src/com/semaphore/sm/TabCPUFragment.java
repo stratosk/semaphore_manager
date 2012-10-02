@@ -239,6 +239,8 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
                 ((EditTextPreference) findPreference(sp.interactive.above_hispeed_delay.getName())).setText(sp.interactive.above_hispeed_delay.getValString());
                 ((EditTextPreference) findPreference(sp.interactive.timer_rate.getName())).setText(sp.interactive.timer_rate.getValString());
                 ((SwitchPreference) findPreference(sp.interactive.input_boost.getName())).setChecked(sp.interactive.input_boost.getBoolean());
+                sp.conservative.cons.setValue(false);
+                sp.conservative.cons.writeValue();
             }
         } else if (key.equals(sp.deep_idle.getName())) {
             sp.deep_idle.setValue(sharedPreferences.getBoolean(key, sp.deep_idle.getDefBoolean()) == true ? 1 : 0);
