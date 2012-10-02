@@ -117,11 +117,24 @@ public class SemaProperties {
 
         oc.writeBatch(cmds);
         if (gov.getValue().equals(conservative.getName())) {
+            conservative.cons.setValue(true);
+            smartass.smart.setValue(false);
+            interactive.inter.setValue(false);
             conservative.cons.writeBatch(cmds);
         } else if (gov.getValue().equals(smartass.getName())) {
+            conservative.cons.setValue(false);
+            smartass.smart.setValue(true);
+            interactive.inter.setValue(false);
             smartass.smart.writeBatch(cmds);
         } else if (gov.getValue().equals(interactive.getName())) {
+            conservative.cons.setValue(false);
+            smartass.smart.setValue(false);
+            interactive.inter.setValue(true);
             interactive.inter.writeBatch(cmds);
+        } else {
+            conservative.cons.setValue(false);
+            smartass.smart.setValue(false);
+            interactive.inter.setValue(false);            
         }
         gov.writeBatch(cmds);
         ondemand.writeBatch(cmds);
@@ -154,17 +167,31 @@ public class SemaProperties {
         //touchscreen.writeValue();
         read_ahead.writeBatch(cmds);
 
+        //Log.d("semaphore cmds: ", cmds.toString());
         Commander.getInstance().runSuBatch(cmds);
     }
 
     public void writeValues() {
         oc.writeValue();
         if (gov.getValue().equals(conservative.getName())) {
+            conservative.cons.setValue(true);
+            smartass.smart.setValue(false);
+            interactive.inter.setValue(false);
             conservative.cons.writeValue();
         } else if (gov.getValue().equals(smartass.getName())) {
+            conservative.cons.setValue(false);
+            smartass.smart.setValue(true);
+            interactive.inter.setValue(false);
             smartass.smart.writeValue();
         } else if (gov.getValue().equals(interactive.getName())) {
+            conservative.cons.setValue(false);
+            smartass.smart.setValue(false);
+            interactive.inter.setValue(true);
             interactive.inter.writeValue();
+        } else {
+            conservative.cons.setValue(false);
+            smartass.smart.setValue(false);
+            interactive.inter.setValue(false);            
         }
         gov.writeValue();
         ondemand.writeValue();
