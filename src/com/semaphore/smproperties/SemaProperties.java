@@ -70,7 +70,7 @@ public class SemaProperties {
 
         scheduler = new SMSchedulerProperty("scheduler", "noop");
         autobr = new SMAbProperty();
-        vibrator = new SMIntProperty("vibrator", "/sys/devices/virtual/timed_output/vibrator/duty", false, 23500, 43640, 43640);
+        vibrator = new SMIntProperty("vibrator", "/sys/devices/virtual/misc/pwm_duty/pwm_duty", false, 0, 100, 100);
         touch_enable = new SMIntProperty("touch_enable", "/sys/devices/virtual/misc/touchwake/enabled", false, 0, 1, 0);
         touch = new SMIntProperty("touch", "/sys/devices/virtual/misc/touchwake/delay", false, 0, 90000, 0);
         bigmem = new SMIntProperty("bigmem", "sys/kernel/bigmem/enable", false, 0, 1, 0);

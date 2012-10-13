@@ -86,10 +86,10 @@
         <com.semaphore.sm.SeekBarPreference android:key="vibrator"
                                             android:title="@string/str_vibrator_dc_title"
                                             android:dialogMessage="Vibrator duty cycle"
-                                            android:defaultValue="43640"
+                                            android:defaultValue="100"
                                             android:text=""
-                                            semaphore:min="23500"
-                                            android:max="43640"
+                                            semaphore:min="0"
+                                            android:max="100"
         />
     </PreferenceCategory>
     
