@@ -239,7 +239,7 @@ public class Commander {
             OutputStream os = p.getOutputStream();
             oswk = new OutputStreamWriter(os);
 
-            oswk.write("cat /proc/kmsg");
+            oswk.write("cat /proc/kmsg\n");
             oswk.flush();
             oswk.close();
 
