@@ -91,6 +91,11 @@
                                             semaphore:min="0"
                                             android:max="100"
         />
+        <Preference
+            android:key="vibrator_test"
+            android:title="@string/str_vibrator_test_title"
+            android:summary="@string/str_vibrator_test_summary">
+        </Preference>
     </PreferenceCategory>
     
     <PreferenceCategory

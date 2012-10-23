@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Semaphore Manager</string>
-    <string name="str_app_version_title">1.1.8</string>
+    <string name="str_app_version_title">1.2.0</string>
     
     <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
     
@@ -197,6 +197,8 @@
 
     <string name="str_vibrator_title">Vibrator</string>
     <string name="str_vibrator_dc_title">Level</string>
+    <string name="str_vibrator_test_title">Test</string>
+    <string name="str_vibrator_test_summary">touch to test</string>
 
     <string-array name="array_vibrator_entries">
         <item>Default (Max)</item>

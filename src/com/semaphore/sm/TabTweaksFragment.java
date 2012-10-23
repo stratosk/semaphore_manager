@@ -9,14 +9,16 @@
  */
 package com.semaphore.sm;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import com.semaphore.smproperties.SemaProperties;
 
-public class TabTweaksFragment extends PreferenceListFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
+public class TabTweaksFragment extends PreferenceListFragment implements SharedPreferences.OnSharedPreferenceChangeListener, Preference.OnPreferenceClickListener {
 
     public TabTweaksFragment() {
         super(R.xml.preferences_tweaks);
@@ -28,6 +30,10 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
 
         //addPreferencesFromResource(R.xml.preferences_tweaks);
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+        
+        Preference pref = findPreference("vibrator_test");
+        pref.setOnPreferenceClickListener(this);
+        
         updateSummaries();
     }
 
@@ -70,6 +76,8 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
     }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (MainActivity.readingValues)
+            return;
         Preference pref = findPreference(key);
         if (pref instanceof ListPreference) {
             ListPreference listPref = (ListPreference) pref;
@@ -147,5 +155,19 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
             sp.read_ahead.setValue(sharedPreferences.getString(key, sp.read_ahead.getDefValue()));
             sp.read_ahead.writeValue();
         }
+    }
+    
+    public boolean onPreferenceClick(Preference preference) {
+        boolean ret = false;
+        if (preference.getKey().equals("vibrator_test")) {
+            vibratorTest();
+            ret = true;
+        }
+        return ret;
+    }
+    
+    public void vibratorTest() {
+        Vibrator v = (Vibrator) this.getActivity().getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(750);
     }
 }
