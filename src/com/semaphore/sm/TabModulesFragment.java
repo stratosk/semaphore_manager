@@ -28,6 +28,8 @@ public class TabModulesFragment extends PreferenceListFragment implements Shared
     }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (MainActivity.readingValues)
+            return;
         SemaProperties sp = MainActivity.sp;
         if (key.equals(sp.logger.getName())) {
             sp.logger.setValue(sharedPreferences.getBoolean(key, sp.logger.getDefValue()));

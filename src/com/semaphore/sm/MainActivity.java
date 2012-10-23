@@ -100,6 +100,7 @@ public class MainActivity extends FragmentActivity {
     PagerAdapter mPagerAdapter;
     public static final SemaProperties sp = new SemaProperties();
     private String SemaphoreVer = "";
+    public static boolean readingValues = false; 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -273,6 +274,7 @@ public class MainActivity extends FragmentActivity {
         SemaProperties sp;
 
         protected String doInBackground(SemaProperties... params) {
+            readingValues = true;
             sp = params[0];
             sp.readValues();
             sp.setPreferences(MainActivity.this);
@@ -293,7 +295,7 @@ public class MainActivity extends FragmentActivity {
             if (this.pd != null) {
                 this.pd.dismiss();
             }
-
+            readingValues = false;
         }
     }
 

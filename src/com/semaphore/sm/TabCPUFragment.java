@@ -82,6 +82,9 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
     }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (MainActivity.readingValues)
+            return;
+
         Preference pref = findPreference(key);
 
         if (pref instanceof ListPreference) {
