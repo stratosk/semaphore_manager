@@ -43,7 +43,7 @@ public class SemaProperties {
     public SMIntProperty touch;
     public SMIntProperty bigmem;
     public SMIntProperty wififast;
-    public SMModuleProperty fastchg;
+    public SMIntProperty forcefastchg;
     //public SMTouchscreenProperty touchscreen;
     public SMReadaheadProperty read_ahead;
 
@@ -75,7 +75,7 @@ public class SemaProperties {
         touch = new SMIntProperty("touch", "/sys/devices/virtual/misc/touchwake/delay", false, 0, 90000, 0);
         bigmem = new SMIntProperty("bigmem", "sys/kernel/bigmem/enable", false, 0, 1, 0);
         wififast = new SMIntProperty("wififast", "/sys/module/bcmdhd/parameters/wifi_pm", false, 0, 1, 0);
-        fastchg = new SMModuleProperty("fastchg", "fastchg", false, false);
+        forcefastchg = new SMIntProperty("forcefastchg", "/sys/kernel/fast_charge/force_fast_charge", false, 0, 1, 0);
         //touchscreen = new SMTouchscreenProperty("touchscreen", "stock");
         read_ahead = new SMReadaheadProperty("read_ahead", "128KB");
     }
@@ -107,7 +107,7 @@ public class SemaProperties {
         touch.readValue();
         bigmem.readValue();
         wififast.readValue();
-        fastchg.readValue();
+        forcefastchg.readValue();
         //touchscreen.readValue();
         read_ahead.readValue();
     }
@@ -163,7 +163,7 @@ public class SemaProperties {
         touch.writeBatch(cmds);
         bigmem.writeBatch(cmds);
         wififast.writeBatch(cmds);
-        fastchg.writeBatch(cmds);
+        forcefastchg.writeBatch(cmds);
         //touchscreen.writeValue();
         read_ahead.writeBatch(cmds);
 
@@ -219,7 +219,7 @@ public class SemaProperties {
         touch.writeValue();
         bigmem.writeValue();
         wififast.writeValue();
-        fastchg.writeValue();
+        forcefastchg.writeValue();
         //touchscreen.writeValue();
         read_ahead.writeValue();
     }
@@ -293,7 +293,7 @@ public class SemaProperties {
         edit.putInt(touch.getName(), touch.getValue());
         edit.putBoolean(bigmem.getName(), bigmem.getBoolean());
         edit.putBoolean(wififast.getName(), wififast.getBoolean());
-        edit.putBoolean(fastchg.getName(), fastchg.getValue());
+        edit.putBoolean(forcefastchg.getName(), forcefastchg.getBoolean());
         //edit.putString(touchscreen.getName(), touchscreen.getValue());
         edit.putString(read_ahead.getName(), read_ahead.getValue());
         edit.commit();
@@ -366,7 +366,7 @@ public class SemaProperties {
         touch.setValue(prefs.getInt(touch.getName(), touch.getDefault()));
         bigmem.setValue(prefs.getBoolean(bigmem.getName(), bigmem.getDefBoolean()) == true ? 1 : 0);
         wififast.setValue(prefs.getBoolean(wififast.getName(), wififast.getDefBoolean()) == true ? 1 : 0);
-        fastchg.setValue(prefs.getBoolean(fastchg.getName(), fastchg.getDefValue()));
+        forcefastchg.setValue(prefs.getBoolean(forcefastchg.getName(), forcefastchg.getDefBoolean()) == true ? 1 : 0);
         //touchscreen.setValue(prefs.getString(touchscreen.getName(), touchscreen.getDefValue()));
         read_ahead.setValue(prefs.getString(read_ahead.getName(), read_ahead.getDefValue()));
     }
@@ -436,7 +436,7 @@ public class SemaProperties {
         touch.setValue(touch.getDefault());
         bigmem.setValue(bigmem.getDefault());
         wififast.setValue(wififast.getDefault());
-        fastchg.setValue(fastchg.getValue());
+        forcefastchg.setValue(forcefastchg.getValue());
         //touchscreen.setValue(touchscreen.getDefValue());
         read_ahead.setValue(read_ahead.getDefValue());
     }

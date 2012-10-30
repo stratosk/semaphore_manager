@@ -109,7 +109,7 @@
             android:title="@string/str_wififast_title"
             android:summary="@string/str_wififast_summary" />
         <CheckBoxPreference
-            android:key="fastchg"
+            android:key="forcefastchg"
             android:title="@string/str_fastchg_title"
             android:summary="@string/str_fastchg_summary" />
 

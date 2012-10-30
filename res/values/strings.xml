@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Semaphore Manager</string>
-    <string name="str_app_version_title">1.2.0</string>
+    <string name="str_app_version_title">1.2.1</string>
     
     <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
     
@@ -230,7 +230,7 @@
     <string name="str_xbox_title">X-Box pad</string>
     <string name="str_xbox_summary"></string>
 
-    <string name="str_fastchg_title">Fast charge support</string>
+    <string name="str_fastchg_title">Fast charge</string>
     <string name="str_fastchg_summary">Please use it at your own risk</string>
 
     <string name="str_wififast_title">WiFi PM FAST</string>

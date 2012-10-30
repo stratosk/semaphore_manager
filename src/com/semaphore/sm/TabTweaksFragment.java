@@ -148,9 +148,9 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         } else if (key.equals(sp.wififast.getName())) {
             sp.wififast.setValue(sharedPreferences.getBoolean(key, sp.wififast.getDefBoolean()) == true ? 1 : 0);
             sp.wififast.writeValue();
-        } else if (key.equals(sp.fastchg.getName())) {
-            sp.fastchg.setValue(sharedPreferences.getBoolean(key, sp.fastchg.getDefValue()));
-            sp.fastchg.writeValue();
+        } else if (key.equals(sp.forcefastchg.getName())) {
+            sp.forcefastchg.setValue(sharedPreferences.getBoolean(key, sp.forcefastchg.getDefBoolean()) == true ? 1 : 0);
+            sp.forcefastchg.writeValue();
         } else if (key.equals(sp.read_ahead.getName())) {
             sp.read_ahead.setValue(sharedPreferences.getString(key, sp.read_ahead.getDefValue()));
             sp.read_ahead.writeValue();
