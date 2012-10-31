@@ -160,7 +160,10 @@ public class MainActivity extends FragmentActivity {
             });
             ad.show();
         } else {
-            SemaphoreVer = cm.getOutResult().get(0);
+            if (cm.getOutResult().size() > 0)
+                SemaphoreVer = cm.getOutResult().get(0);
+            else
+                SemaphoreVer = "";
         }
     }
 

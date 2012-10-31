@@ -226,6 +226,7 @@ public class Commander {
         } catch (IOException e) {
             // TODO Code to run in input/output exception
 //            toastMessage("not root");
+            result = 1;
         }
         return result;
     }
