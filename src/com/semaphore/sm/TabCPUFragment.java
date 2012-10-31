@@ -46,7 +46,9 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
     private void showIdleDialog() {
         Commander cm = Commander.getInstance();
         cm.readFile("/sys/class/misc/deepidle/idle_stats");
-
+        
+        if (cm.getOutResult().isEmpty())
+            return;
         String idle = cm.getOutResult().get(2);
         idle = idle.substring(23, idle.indexOf("ms") + 2).trim();
         String topon = cm.getOutResult().get(3);
