@@ -340,4 +340,16 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         }
         return ret;
     }
+    
+    @Override
+    public void onPause() {
+        super.onPause();
+        getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+    }
 }

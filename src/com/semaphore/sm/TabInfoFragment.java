@@ -14,7 +14,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.Preference;
 
-public class TabInfoFragment extends PreferenceListFragment implements OnSharedPreferenceChangeListener {
+public class TabInfoFragment extends PreferenceListFragment {
 
     public TabInfoFragment() {
         super(R.xml.preferences_info);
@@ -25,7 +25,7 @@ public class TabInfoFragment extends PreferenceListFragment implements OnSharedP
         super.onCreate(savedInstanceState);
 
         //addPreferencesFromResource(R.xml.preferences_info);
-        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+        //getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
 
         Commander cm = Commander.getInstance();
         cm.readFile("/proc/version");
@@ -33,6 +33,6 @@ public class TabInfoFragment extends PreferenceListFragment implements OnSharedP
         pref.setSummary(cm.getOutResult().get(0));
     }
 
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-    }
+//    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+//    }
 }

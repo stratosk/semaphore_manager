@@ -24,12 +24,13 @@ public class TabModulesFragment extends PreferenceListFragment implements Shared
         super.onCreate(savedInstanceState);
 
         //addPreferencesFromResource(R.xml.preferences_modules);
-        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+        //getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
     }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (MainActivity.readingValues)
+        if (MainActivity.readingValues) {
             return;
+        }
         SemaProperties sp = MainActivity.sp;
         if (key.equals(sp.logger.getName())) {
             sp.logger.setValue(sharedPreferences.getBoolean(key, sp.logger.getDefValue()));
@@ -53,5 +54,17 @@ public class TabModulesFragment extends PreferenceListFragment implements Shared
             sp.xbox.setValue(sharedPreferences.getBoolean(key, sp.xbox.getDefValue()));
             sp.xbox.writeValue();
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
     }
 }
