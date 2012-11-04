@@ -13,6 +13,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import com.semaphore.sai.SAIService;
 
 public class SMBroadcastReceiver extends BroadcastReceiver {
 
@@ -23,5 +24,8 @@ public class SMBroadcastReceiver extends BroadcastReceiver {
 
         Log.d(LOG_TAG, "onReceive");
         context.startService(new Intent(context, SemaphoreService.class));
+        
+        
+        context.startService(new Intent(context, SAIService.class));
     }
 }
