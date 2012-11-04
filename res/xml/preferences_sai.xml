@@ -1,0 +1,32 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:semaphore="http://semaphore.gr">
+    <SwitchPreference
+        android:key="sai_enable"
+        android:title="@string/str_sai_enable_title" />
+
+    <PreferenceCategory
+        android:title="@string/str_vibrator_call_title"
+        android:dependency="sai_enable">
+        <com.semaphore.sm.SeekBarPreference android:key="vibrator_near"
+                                            android:title="@string/str_vibrator_near_title"
+                                            android:dependency="sai_enable"
+                                            android:dialogMessage="Vibrator duty cycle"
+                                            android:defaultValue="100"
+                                            android:text=""
+                                            semaphore:min="0"
+                                            android:max="100"
+        />
+        <com.semaphore.sm.SeekBarPreference android:key="vibrator_far"
+                                            android:title="@string/str_vibrator_far_title"
+                                            android:dependency="sai_enable"
+                                            android:dialogMessage="Vibrator duty cycle"
+                                            android:defaultValue="25"
+                                            android:text=""
+                                            semaphore:min="0"
+                                            android:max="100"
+        />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

@@ -14,6 +14,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
@@ -30,6 +31,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.ViewConfiguration;
 import android.widget.Toast;
+import com.semaphore.sai.SAIService;
 import com.semaphore.smproperties.SemaProperties;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -53,15 +55,15 @@ public class MainActivity extends FragmentActivity {
             fragments.add(new TabCPUFragment());
             fragments.add(new TabTweaksFragment());
             fragments.add(new TabModulesFragment());
+            fragments.add(new TabSAIFragment());
             fragments.add(new TabInfoFragment());
 
             titles = new ArrayList<String>();
             titles.add("CPU");
             titles.add("TWEAKS");
             titles.add("MODULES");
+            titles.add("SAI");
             titles.add("INFO");
-            //titles[4] = "KMSG";
-
         }
 
         @Override
@@ -215,7 +217,6 @@ public class MainActivity extends FragmentActivity {
     @Override
     public void onResume() {
         super.onResume();
-
     }
 
     @Override
@@ -268,6 +269,10 @@ public class MainActivity extends FragmentActivity {
         TabTweaksFragment tweaks = (TabTweaksFragment) mPagerAdapter.fragments.get(1);
         if (tweaks != null) {
             tweaks.updateSummaries();
+        }
+        TabSAIFragment sai = (TabSAIFragment) mPagerAdapter.fragments.get(3);
+        if (sai != null) {
+            sai.updateSummaries();
         }
     }
 
