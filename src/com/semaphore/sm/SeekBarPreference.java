@@ -26,6 +26,16 @@ public class SeekBarPreference extends DialogPreference implements SeekBar.OnSee
     private Context mContext;
     private String mDialogMessage, mSuffix;
     private int mDefault, mMax, mMin, mValue = 0;
+    private int mStep = 1;
+
+    public int getStep() {
+        return mStep;
+    }
+
+    public void setStep(int Step) {
+        if (Step > 0)
+            this.mStep = Step;
+    }
 
     public int getValue() {
         return mValue;
@@ -103,7 +113,7 @@ public class SeekBarPreference extends DialogPreference implements SeekBar.OnSee
 //        if (shouldPersist()) {
 //            persistInt(value + mMin);
 //        }
-        callChangeListener(new Integer(value + mMin));
+        callChangeListener(Integer.valueOf(value + mMin));
     }
 
     @Override
