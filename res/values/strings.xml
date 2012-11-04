@@ -12,6 +12,18 @@
     <string name="str_gov_title">Active governor</string>
     <string name="str_gov_summary">Change CPU governor</string>
     <string name="str_cat_gov_title">Governors</string>
+    
+    <string name="str_custom_volt_title">Custom Voltages</string>
+    <string name="str_cv_enable_title">Enable</string>
+    <string name="str_cv_enable_summary">Please use it at your own risk</string>
+    
+    <string name="str_max_arm_title">Maximum Voltage</string>
+    <string name="str_cv_l0_title">L0 (stock 1000MHz)</string>
+    <string name="str_cv_l1_title">L1 (stock 800MHz)</string>
+    <string name="str_cv_l2_title">L2 (stock 400MHz)</string>
+    <string name="str_cv_l3_title">L3 (stock 200MHz)</string>
+    <string name="str_cv_l4_title">L4 (stock 100MHz)</string>
+    
     <string-array name="array_gov_entries">
         <item>Ondemand</item>
         <item>Conservative</item>
@@ -278,4 +290,9 @@
         <item>60</item>
         <item>90</item>
     </string-array>
+    
+    <string name="str_sai_enable_title">Enable</string>
+    <string name="str_vibrator_call_title">Vibrator on Phone ringing</string>    
+    <string name="str_vibrator_near_title">Proximity Near</string>    
+    <string name="str_vibrator_far_title">Proximity Far</string>    
 </resources>

@@ -240,6 +240,64 @@
         
     </PreferenceCategory>
 
-        
+    <PreferenceCategory
+        android:title="@string/str_custom_volt_title">  
+        <CheckBoxPreference
+            android:key="cv_enable"
+            android:title="@string/str_cv_enable_title" 
+            android:summary="@string/str_cv_enable_summary"/> 
+        <PreferenceScreen
+            android:title="@string/str_custom_volt_title"
+            android:dependency="cv_enable">
+            <com.semaphore.sm.SeekBarPreference android:key="cv_max_arm"
+                                                android:title="@string/str_max_arm_title"
+                                                android:dialogMessage="Voltage"
+                                                android:defaultValue="1350"
+                                                android:text="mV"
+                                                semaphore:min="1300"
+                                                android:max="1500"
+        />
+            <com.semaphore.sm.SeekBarPreference android:key="cv_l0"
+                                                android:title="@string/str_cv_l0_title"
+                                                android:dialogMessage="Voltage"
+                                                android:defaultValue="1275"
+                                                android:text="mV"
+                                                semaphore:min="850"
+                                                android:max="120"
+        />
+            <com.semaphore.sm.SeekBarPreference android:key="cv_l1"
+                                                android:title="@string/str_cv_l1_title"
+                                                android:dialogMessage="Voltage"
+                                                android:defaultValue="1200"
+                                                android:text="mV"
+                                                semaphore:min="850"
+                                                android:max="120"
+        />
+            <com.semaphore.sm.SeekBarPreference android:key="cv_l2"
+                                                android:title="@string/str_cv_l2_title"
+                                                android:dialogMessage="Voltage"
+                                                android:defaultValue="1050"
+                                                android:text="mV"
+                                                semaphore:min="850"
+                                                android:max="120"
+        />
+            <com.semaphore.sm.SeekBarPreference android:key="cv_l3"
+                                                android:title="@string/str_cv_l3_title"
+                                                android:dialogMessage="Voltage"
+                                                android:defaultValue="950"
+                                                android:text="mV"
+                                                semaphore:min="850"
+                                                android:max="120"
+        />
+            <com.semaphore.sm.SeekBarPreference android:key="cv_l4"
+                                                android:title="@string/str_cv_l4_title"
+                                                android:dialogMessage="Voltage"
+                                                android:defaultValue="950"
+                                                android:text="mV"
+                                                semaphore:min="850"
+                                                android:max="120"
+        />
+        </PreferenceScreen>
+    </PreferenceCategory>
     
 </PreferenceScreen>
