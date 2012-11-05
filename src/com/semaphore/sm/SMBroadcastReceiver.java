@@ -12,6 +12,8 @@ package com.semaphore.sm;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import com.semaphore.sai.SAIService;
 
@@ -25,7 +27,10 @@ public class SMBroadcastReceiver extends BroadcastReceiver {
         Log.d(LOG_TAG, "onReceive");
         context.startService(new Intent(context, SemaphoreService.class));
         
-        
-        context.startService(new Intent(context, SAIService.class));
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean sai_enable = prefs.getBoolean("sai_enable", false);
+        if (sai_enable) {
+            context.startService(new Intent(context, SAIService.class));
+        }
     }
 }

@@ -9,7 +9,6 @@
  */
 package com.semaphore.sai;
 
-import android.app.IntentService;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +17,10 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
 import android.preference.PreferenceManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
@@ -34,39 +36,42 @@ public class SAIService extends Service {
     private TelephonyManager telephonyManager;
     private int vibratorNear;
     private int vibratorFar;
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
+    private int vibratorDef;
+    public static final int MSG_RELOAD = 1;
 
     @Override
     public void onCreate() {
-        Toast.makeText(this, "SAIService Created", Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "SAIService Created", Toast.LENGTH_LONG).show();
         Log.d(TAG, "onCreate");
     }
 
     @Override
     public void onDestroy() {
-        Toast.makeText(this, "SAIService Stopped", Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "SAIService Stopped", Toast.LENGTH_LONG).show();
         Log.d(TAG, "onDestroy");
-        
+
         sensorService.unregisterListener(mySensorEventListener);
         telephonyManager.listen(phoneListener, PhoneStateListener.LISTEN_NONE);
     }
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Toast.makeText(this, "SAIService Started", Toast.LENGTH_LONG).show();
-        Log.d(TAG, "onStart");
-        
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+    private void readSettings() {
+        Context ctx = getApplicationContext();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         vibratorFar = prefs.getInt("vibrator_far", 25);
         vibratorNear = prefs.getInt("vibrator_near", 100);
+        vibratorDef = prefs.getInt("vibrator", 100);        
+    }
+    
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+//        Toast.makeText(this, "SAIService Started", Toast.LENGTH_LONG).show();
+        Log.d(TAG, "onStart");
+
+        readSettings();
         
         telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         telephonyManager.listen(phoneListener, PhoneStateListener.LISTEN_CALL_STATE);
-        
+
         sensorService = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensor = sensorService.getDefaultSensor(Sensor.TYPE_PROXIMITY);
 
@@ -94,32 +99,37 @@ public class SAIService extends Service {
             Log.d(TAG, "onCallStateChanged: " + stateString);
         }
     };
-    
+
     private void enableVibrationListener() {
         if (sensor != null) {
             sensorService.registerListener(mySensorEventListener, sensor,
                     SensorManager.SENSOR_DELAY_FASTEST);
             Log.i(TAG, "Registerered for PROXIMITY Sensor");
-
         }
     }
-    
+
     private void disableVibrationListener() {
         if (sensor != null) {
             sensorService.unregisterListener(mySensorEventListener);
             Log.i(TAG, "Unregisterered for PROXIMITY Sensor");
-
         }
+        setVibration(2);
     }
-    
+
     private void setVibration(int state) {
         Commander cm = Commander.getInstance();
         switch (state) {
-            case 0:
-                cm.run("echo 100 > /sys/devices/virtual/misc/pwm_duty/pwm_duty");
+            case 0: // Far
+                cm.run("echo " + String.valueOf(vibratorFar) + " > /sys/devices/virtual/misc/pwm_duty/pwm_duty", false);
+                Log.d(TAG, "echo " + String.valueOf(vibratorFar) + " > /sys/devices/virtual/misc/pwm_duty/pwm_duty");
                 break;
-            case 1:
-                cm.run("echo 15 > /sys/devices/virtual/misc/pwm_duty/pwm_duty");
+            case 1: // Near
+                cm.run("echo " + String.valueOf(vibratorNear) + " > /sys/devices/virtual/misc/pwm_duty/pwm_duty", false);
+                Log.d(TAG, "echo " + String.valueOf(vibratorNear) + " > /sys/devices/virtual/misc/pwm_duty/pwm_duty");
+                break;
+            case 2: // Default
+                cm.run("echo " + String.valueOf(vibratorDef) + " > /sys/devices/virtual/misc/pwm_duty/pwm_duty", false);
+                Log.d(TAG, "echo " + String.valueOf(vibratorDef) + " > /sys/devices/virtual/misc/pwm_duty/pwm_duty");
                 break;
         }
     }
@@ -130,11 +140,10 @@ public class SAIService extends Service {
             if (event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
                 Log.i(TAG, "Proximity Sensor Reading:"
                         + String.valueOf(event.values[0]));
-//                Toast.makeText(SAIService.this, "Proximity Sensor Reading:" + String.valueOf(event.values[0]), Toast.LENGTH_SHORT).show();
                 if (event.values[0] > 0) {  // far
-                    setVibration(1);
-                } else {                    // near
                     setVibration(0);
+                } else {                    // near
+                    setVibration(1);
                 }
             }
         }
@@ -143,4 +152,36 @@ public class SAIService extends Service {
             //throw new UnsupportedOperationException("Not supported yet.");
         }
     };
+
+    /**
+     * Handler of incoming messages from clients.
+     */
+    class IncomingHandler extends Handler {
+
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MSG_RELOAD:
+                    //Toast.makeText(getApplicationContext(), "hello!", Toast.LENGTH_SHORT).show();
+                    readSettings();
+                    break;
+                default:
+                    super.handleMessage(msg);
+            }
+        }
+    }
+    /**
+     * Target we publish for clients to send messages to IncomingHandler.
+     */
+    final Messenger mMessenger = new Messenger(new IncomingHandler());
+
+    /**
+     * When binding to the service, we return an interface to our messenger for
+     * sending messages to the service.
+     */
+    @Override
+    public IBinder onBind(Intent intent) {
+        Toast.makeText(getApplicationContext(), "binding", Toast.LENGTH_SHORT).show();
+        return mMessenger.getBinder();
+    }
 }
