@@ -256,6 +256,7 @@
                                                 android:text="mV"
                                                 semaphore:min="1300"
                                                 android:max="1500"
+                                                semaphore:step="25"
         />
             <com.semaphore.sm.SeekBarPreference android:key="cv_l0"
                                                 android:title="@string/str_cv_l0_title"
@@ -263,7 +264,8 @@
                                                 android:defaultValue="1275"
                                                 android:text="mV"
                                                 semaphore:min="850"
-                                                android:max="120"
+                                                android:max="1500"
+                                                semaphore:step="25"
         />
             <com.semaphore.sm.SeekBarPreference android:key="cv_l1"
                                                 android:title="@string/str_cv_l1_title"
@@ -271,7 +273,8 @@
                                                 android:defaultValue="1200"
                                                 android:text="mV"
                                                 semaphore:min="850"
-                                                android:max="120"
+                                                android:max="1500"
+                                                semaphore:step="25"
         />
             <com.semaphore.sm.SeekBarPreference android:key="cv_l2"
                                                 android:title="@string/str_cv_l2_title"
@@ -279,7 +282,8 @@
                                                 android:defaultValue="1050"
                                                 android:text="mV"
                                                 semaphore:min="850"
-                                                android:max="120"
+                                                android:max="1500"
+                                                semaphore:step="25"
         />
             <com.semaphore.sm.SeekBarPreference android:key="cv_l3"
                                                 android:title="@string/str_cv_l3_title"
@@ -287,7 +291,8 @@
                                                 android:defaultValue="950"
                                                 android:text="mV"
                                                 semaphore:min="850"
-                                                android:max="120"
+                                                android:max="1500"
+                                                semaphore:step="25"
         />
             <com.semaphore.sm.SeekBarPreference android:key="cv_l4"
                                                 android:title="@string/str_cv_l4_title"
@@ -295,7 +300,8 @@
                                                 android:defaultValue="950"
                                                 android:text="mV"
                                                 semaphore:min="850"
-                                                android:max="120"
+                                                android:max="1500"
+                                                semaphore:step="25"
         />
         </PreferenceScreen>
     </PreferenceCategory>

@@ -50,7 +50,7 @@ public class SeekBarPreference extends DialogPreference implements SeekBar.OnSee
         mDefault = attrs.getAttributeIntValue(androidns, "defaultValue", 0);
         mMax = attrs.getAttributeIntValue(androidns, "max", 100);
         mMin = attrs.getAttributeIntValue(semaphorens, "min", 0);
-
+        mStep = attrs.getAttributeIntValue(semaphorens, "step", 1);
     }
 
     @Override
@@ -102,11 +102,11 @@ public class SeekBarPreference extends DialogPreference implements SeekBar.OnSee
         } else {
             mValue = (Integer) defaultValue - mMin;
         }
-
     }
 
     public void onProgressChanged(SeekBar seek, int value, boolean fromTouch) {
 
+        value = ((int)Math.round(value / mStep)) * mStep;
         String t = String.valueOf(value + mMin);
         mValueText.setText(mSuffix == null ? t : t.concat(mSuffix));
 //        mValue = value + mMin;
@@ -124,7 +124,7 @@ public class SeekBarPreference extends DialogPreference implements SeekBar.OnSee
             return;
         }
         if (shouldPersist()) {
-            mValue = mSeekBar.getProgress() + mMin;
+            mValue = ((int)Math.round(mSeekBar.getProgress() / mStep)) * mStep + mMin;
             int p = getProgress();
             persistInt(p);
             setSummary(String.valueOf(p));
