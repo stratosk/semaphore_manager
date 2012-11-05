@@ -88,6 +88,14 @@ public class Commander {
         }
     }
 
+    public boolean needSU(String path) {
+        File f = new File(path);
+        if (f.exists() && f.isFile() && f.canWrite()) {
+            return false;
+        }
+        return true;   
+    }
+    
     public int readFile(String path) {
         int result = 1;
 
@@ -157,28 +165,27 @@ public class Commander {
                         result = 1;
                     }
 
-                    // TODO Code to run on success
-//                    toastMessage("root");
                 } else {
                     result = 1;
-                    // TODO Code to run on unsuccessful
-//                    toastMessage("not root");
                 }
             } catch (InterruptedException e) {
-                // TODO Code to run in interrupted exception
-//                toastMessage("not root");
+                result = 1;
             }
         } catch (IOException e) {
-            // TODO Code to run in input/output exception
-//            toastMessage("not root");
+                result = 1;
         }
         return result;
     }
 
-    public int runSu(String cmd) {
+    public int run(String cmd, boolean su) {
         int result = 0;
 
-        ProcessBuilder pb = new ProcessBuilder("su", "-c", "/system/bin/sh");
+        ProcessBuilder pb;
+        if (su) {
+            pb = new ProcessBuilder("su", "-c", "/system/bin/sh");
+        } else {
+            pb = new ProcessBuilder("/system/bin/sh");            
+        }
         try {
             p = pb.start();
             OutputStream os = p.getOutputStream();
@@ -212,20 +219,13 @@ public class Commander {
                         result = 1;
                     }
 
-                    // TODO Code to run on success
-//                    toastMessage("root");
                 } else {
                     result = 1;
-                    // TODO Code to run on unsuccessful
-//                    toastMessage("not root");
                 }
             } catch (InterruptedException e) {
-                // TODO Code to run in interrupted exception
-//                toastMessage("not root");
+                result = 1;
             }
         } catch (IOException e) {
-            // TODO Code to run in input/output exception
-//            toastMessage("not root");
             result = 1;
         }
         return result;
@@ -250,70 +250,12 @@ public class Commander {
             outt.start();
 
         } catch (IOException e) {
-            // TODO Code to run in input/output exception
-//            toastMessage("not root");
         }
         return result;
     }
 
     public void clearKmsg() {
         kmsg.clear();
-    }
-
-    public int run(String cmd) {
-        int result = 0;
-        BufferedReader err;
-        BufferedReader out;
-
-        ProcessBuilder pb = new ProcessBuilder("/system/bin/sh");
-        try {
-            p = pb.start();
-            OutputStream os = p.getOutputStream();
-            osw = new OutputStreamWriter(os);
-
-            osw.write(cmd);
-            osw.write("\nexit\n");
-            osw.flush();
-            osw.close();
-
-            err = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-            out = new BufferedReader(new InputStreamReader(p.getInputStream()));
-
-            errResult.clear();
-            outResult.clear();
-            String line;
-            while ((line = err.readLine()) != null) {
-                errResult.add(line);
-            }
-
-            while ((line = out.readLine()) != null) {
-                outResult.add(line);
-            }
-
-            if (errResult.isEmpty()) {
-                result = 0;
-            } else {
-                result = 1;
-            }
-
-            try {
-                p.waitFor();
-                if (p.exitValue() != 255) {
-                    // TODO Code to run on success
-//                    toastMessage("root");
-                } else {
-                    // TODO Code to run on unsuccessful
-//                    toastMessage("not root");
-                }
-            } catch (InterruptedException e) {
-                // TODO Code to run in interrupted exception
-//                toastMessage("not root");
-            }
-        } catch (IOException e) {
-            // TODO Code to run in input/output exception
-//            toastMessage("not root");
-        }
-        return result;
     }
 
     private class streamReader extends Thread {

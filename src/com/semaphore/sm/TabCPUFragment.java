@@ -67,7 +67,7 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         ad.setPositiveButton("Reset", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Commander.getInstance().runSu("echo 1 > /sys/class/misc/deepidle/reset_stats");
+                Commander.getInstance().run("echo 1 > /sys/class/misc/deepidle/reset_stats", false);
                 dialog.dismiss();
             }
         });

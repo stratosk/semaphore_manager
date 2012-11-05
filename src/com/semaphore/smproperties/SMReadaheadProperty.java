@@ -76,7 +76,7 @@ public class SMReadaheadProperty extends SMBaseProperty {
                 p2 = "3072";
                 p3 = "128";
             }
-            res = cm.runSu("/data/data/com.semaphore.sm/scripts/read_ahead " + p1 + " " + p2 + " " + p3);
+            res = cm.run("/data/data/com.semaphore.sm/scripts/read_ahead " + p1 + " " + p2 + " " + p3, true);
         }
     }
 

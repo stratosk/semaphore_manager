@@ -38,7 +38,7 @@ public class SMLoggerProperty extends SMBaseProperty {
     @Override
     public void readValue() {
         Commander cm = Commander.getInstance();
-        int res = cm.runSu("ls /data/local/logger.ko | grep logger.ko");
+        int res = cm.run("ls /data/local/logger.ko | grep logger.ko", false);
         if (cm.getOutResult().isEmpty()) {
             setValue(false);
         } else {
@@ -51,9 +51,9 @@ public class SMLoggerProperty extends SMBaseProperty {
         Commander cm = Commander.getInstance();
         int res;
         if (Value == true) {
-            res = cm.runSu("cp /system/lib/modules/logger.ko /data/local/logger.ko");
+            res = cm.run("cp /system/lib/modules/logger.ko /data/local/logger.ko", true);
         } else {
-            res = cm.runSu("rm /data/local/logger.ko");
+            res = cm.run("rm /data/local/logger.ko", true);
         }
     }
 

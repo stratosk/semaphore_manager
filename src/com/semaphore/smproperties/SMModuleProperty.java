@@ -35,7 +35,7 @@ public class SMModuleProperty extends SMProperty {
             return;
         }
         Commander cm = Commander.getInstance();
-        int res = cm.runSu("lsmod | grep ".concat(getName()));
+        int res = cm.run("lsmod | grep ".concat(getName()), false);
 //        int res = cm.readFile(getPath());
         if (cm.getOutResult().isEmpty()) {
             setValue(false);
@@ -48,10 +48,10 @@ public class SMModuleProperty extends SMProperty {
         Commander cm = Commander.getInstance();
         int res;
         if (Value == true) {
-            res = cm.runSu("insmod ".concat(modpath).concat(getPath()).concat(".ko"));
+            res = cm.run("insmod ".concat(modpath).concat(getPath()).concat(".ko"), true);
         } else {
             if (!getName().equals("cpufreq_smartass2")) {
-                res = cm.runSu("rmmod ".concat(getName()));
+                res = cm.run("rmmod ".concat(getName()), true);
             }
         }
     }

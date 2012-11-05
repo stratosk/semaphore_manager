@@ -46,7 +46,9 @@ public class SMStringProperty extends SMProperty {
 
     public void writeValue() {
         Commander cm = Commander.getInstance();
-        int res = cm.runSu("echo \"".concat(getValue()).concat("\" > ").concat(getPath()));
+        String cmd = "echo \"".concat(getValue()).concat("\" > ").concat(getPath());
+        
+        int res= cm.run(cmd, cm.needSU(getPath()));
     }
 
     public void writeBatch(List<String> cmds) {

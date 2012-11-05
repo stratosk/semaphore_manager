@@ -150,7 +150,7 @@ public class MainActivity extends FragmentActivity {
 
     private void checkSU() {
         Commander cm = Commander.getInstance();
-        int ret = cm.runSu("uname -r");
+        int ret = cm.run("uname -r", true);
         if (ret == 1) {
             AlertDialog.Builder ad = new AlertDialog.Builder(this);
             ad.setMessage("No root access!\nSemaphore Manager needs root access to run.");
@@ -203,7 +203,7 @@ public class MainActivity extends FragmentActivity {
         ad.setCancelable(false);
         ad.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                int ret = Commander.getInstance().runSu("rm -r /system/etc/init.d/*");
+                int ret = Commander.getInstance().run("rm -r /system/etc/init.d/*", true);
                 if (ret == 0) {
                     Toast toast = Toast.makeText(getApplicationContext(), "init.d cleared successfully", Toast.LENGTH_LONG);
                     toast.show();
@@ -359,8 +359,8 @@ public class MainActivity extends FragmentActivity {
         String appPath = getResources().getString(R.string.app_path);
 
         Commander cm = Commander.getInstance();
-        int res = cm.run("rm -r ".concat(appPath));
-        res = cm.run("mkdir ".concat(appPath));
+        int res = cm.run("rm -r ".concat(appPath), false);
+        res = cm.run("mkdir ".concat(appPath), false);
 
         String[] scripts = getResources().getStringArray(R.array.scripts);
         for (String f : scripts) {
@@ -368,7 +368,7 @@ public class MainActivity extends FragmentActivity {
                 copyAsset(f, appPath + f);
             } catch (IOException ex) {
             }
-            res = Commander.getInstance().run("chmod 0755 ".concat(appPath + f));
+            res = Commander.getInstance().run("chmod 0755 ".concat(appPath + f), false);
         }
     }
 }

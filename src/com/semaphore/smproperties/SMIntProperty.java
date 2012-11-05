@@ -87,9 +87,13 @@ public class SMIntProperty extends SMProperty {
 
     public void writeValue() {
         Commander cm = Commander.getInstance();
-        int res = cm.runSu("echo \"".concat(String.valueOf(getValue())).concat("\" > ").concat(getPath()));
+        String cmd = "echo \"".concat(String.valueOf(getValue())).concat("\" > ").concat(getPath());
+        
+        int res = cm.run(cmd, cm.needSU(getPath()));
+        
         if (getName().equals("oc")) {
-            res = cm.runSu("echo \"".concat(String.valueOf(getValue() * 10000)).concat("\" > ").concat("/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"));
+                res = cm.run("echo \"".concat(String.valueOf(getValue() * 10000)).concat("\" > ").concat("/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"),
+                            cm.needSU("/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"));
         }
     }
 

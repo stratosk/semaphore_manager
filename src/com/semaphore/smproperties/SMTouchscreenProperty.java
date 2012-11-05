@@ -44,7 +44,7 @@ public class SMTouchscreenProperty extends SMBaseProperty {
         Commander cm = Commander.getInstance();
         int res;
         if (!Value.isEmpty()) {
-            res = cm.runSu("/data/data/com.semaphore.sm/scripts/" + getValue());
+            res = cm.run("/data/data/com.semaphore.sm/scripts/" + getValue(), true);
         }
     }
 }
