@@ -17,6 +17,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -75,7 +76,7 @@ public class SAIService extends Service {
         sensorService = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensor = sensorService.getDefaultSensor(Sensor.TYPE_PROXIMITY);
 
-        return 0;
+        return START_STICKY; //START_REDELIVER_INTENT
     }
     
     private PhoneStateListener phoneListener = new PhoneStateListener() {
@@ -160,14 +161,17 @@ public class SAIService extends Service {
 
         @Override
         public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case MSG_RELOAD:
-                    //Toast.makeText(getApplicationContext(), "hello!", Toast.LENGTH_SHORT).show();
-                    readSettings();
-                    break;
-                default:
-                    super.handleMessage(msg);
-            }
+            Bundle bundle = msg.getData();
+            
+            vibratorNear = bundle.getInt("vibrator_near");
+            vibratorFar = bundle.getInt("vibrator_far");
+            vibratorDef = bundle.getInt("vibrator");
+            Toast.makeText(getApplicationContext(), 
+                            "vibratorNear: " + String.valueOf(vibratorNear) + "\n" +                        
+                            "vibratorFar: " + String.valueOf(vibratorFar) + "\n" +
+                            "vibratorDef: " + String.valueOf(vibratorDef), 
+                            Toast.LENGTH_SHORT).show();
+            super.handleMessage(msg);
         }
     }
     /**

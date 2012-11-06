@@ -13,7 +13,7 @@
                                             android:dependency="sai_enable"
                                             android:dialogMessage="Vibrator duty cycle"
                                             android:defaultValue="100"
-                                            android:text=""
+                                            android:text=" %"
                                             semaphore:min="0"
                                             android:max="100"
         />
@@ -22,7 +22,7 @@
                                             android:dependency="sai_enable"
                                             android:dialogMessage="Vibrator duty cycle"
                                             android:defaultValue="25"
-                                            android:text=""
+                                            android:text=" %"
                                             semaphore:min="0"
                                             android:max="100"
         />

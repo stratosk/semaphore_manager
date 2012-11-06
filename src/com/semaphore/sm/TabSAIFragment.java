@@ -55,13 +55,19 @@ public class TabSAIFragment extends PreferenceListFragment implements SharedPref
         }
     };
 
-    public void sayHello(View v) {
+    public void sayHello(int near, int far, int vibrator) {
         if (!mBound) {
             return;
         }
         // Create and send a message to the service, using a supported 'what' value
         Message msg;
-        msg = Message.obtain(null, SAIService.MSG_RELOAD, 0, 0);
+//        msg = Message.obtain(null, SAIService.MSG_RELOAD, 0, 0);
+        msg = new Message();
+        Bundle bundle = new Bundle();
+        bundle.putInt("vibrator_near", near);
+        bundle.putInt("vibrator_far", far);
+        bundle.putInt("vibrator", vibrator);
+        msg.setData(bundle);
         try {
             mService.send(msg);
         } catch (RemoteException e) {
@@ -107,7 +113,9 @@ public class TabSAIFragment extends PreferenceListFragment implements SharedPref
         }
 
         if ((key.equals("vibrator_near") || key.equals("vibrator_far")) && isSAIServiceRunning()) {
-            sayHello(null);
+            sayHello(sharedPreferences.getInt("vibrator_near", 100),
+                     sharedPreferences.getInt("vibrator_far", 25),
+                     sharedPreferences.getInt("vibrator", 100));
         }
     }
 
