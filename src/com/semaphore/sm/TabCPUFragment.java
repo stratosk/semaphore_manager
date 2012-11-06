@@ -330,6 +330,19 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.interactive.timer_rate.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
+        
+        pref = findPreference(sp.cv_max_arm.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+        /*pref = findPreference(sp.cv_l0.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+        pref = findPreference(sp.cv_l1.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+        pref = findPreference(sp.cv_l2.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+        pref = findPreference(sp.cv_l3.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+        pref = findPreference(sp.cv_l4.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));*/
     }
 
     public boolean onPreferenceClick(Preference preference) {

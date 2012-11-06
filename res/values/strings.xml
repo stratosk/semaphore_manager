@@ -16,7 +16,13 @@
     <string name="str_custom_volt_title">Custom Voltages</string>
     <string name="str_cv_enable_title">Enable</string>
     <string name="str_cv_enable_summary">Please use it at your own risk</string>
-    
+    <string name="str_cv_apply_title">Apply</string>
+    <string name="str_cv_apply_summary">Apply custom voltages</string>
+    <string name="str_cv_reset_title">Reset</string>
+    <string name="str_cv_reset_summary">Reset custom voltages to default</string>
+    <string name="str_cv_apply_boot_title">Apply on Boot</string>
+    <string name="str_cv_apply_boot_summary">Select to re-apply after boot</string>
+            
     <string name="str_max_arm_title">Maximum Voltage</string>
     <string name="str_cv_l0_title">L0 (stock 1000MHz)</string>
     <string name="str_cv_l1_title">L1 (stock 800MHz)</string>

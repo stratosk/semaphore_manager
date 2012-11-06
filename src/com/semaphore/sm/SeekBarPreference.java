@@ -68,7 +68,8 @@ public class SeekBarPreference extends DialogPreference implements SeekBar.OnSee
 
         mValueText = new TextView(mContext);
         mValueText.setGravity(Gravity.CENTER_HORIZONTAL);
-        mValueText.setTextSize(16);
+        mValueText.setTextSize(20);
+        mValueText.setPadding(0, 0, 0, 25);
         params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);

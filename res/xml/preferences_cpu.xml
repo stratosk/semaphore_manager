@@ -7,7 +7,7 @@
                                             android:title="@string/str_oc_title"
                                             android:dialogMessage="Overclock %"
                                             android:defaultValue="100"
-                                            android:text="%"
+                                            android:text=" %"
                                             semaphore:min="100"
                                             android:max="120"
         />
@@ -253,7 +253,7 @@
                                                 android:title="@string/str_max_arm_title"
                                                 android:dialogMessage="Voltage"
                                                 android:defaultValue="1350"
-                                                android:text="mV"
+                                                android:text=" mV"
                                                 semaphore:min="1300"
                                                 android:max="1500"
                                                 semaphore:step="25"
@@ -304,6 +304,21 @@
                                                 semaphore:step="25"
         />
         </PreferenceScreen>
+        <Preference 
+            android:key="cv_apply"
+            android:title="@string/str_cv_apply_title"
+            android:summary="@string/str_cv_apply_summary"
+            android:dependency="cv_enable"/>
+        <Preference 
+            android:key="cv_reset"
+            android:title="@string/str_cv_reset_title"
+            android:summary="@string/str_cv_reset_summary"
+            android:dependency="cv_enable"/>
+        <CheckBoxPreference
+            android:key="cv_apply_boot"
+            android:title="@string/str_cv_apply_boot_title"
+            android:summary="@string/str_cv_apply_boot_summary"
+            android:dependency="cv_enable" />
     </PreferenceCategory>
     
 </PreferenceScreen>
