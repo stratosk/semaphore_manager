@@ -185,7 +185,7 @@ public class SAIService extends Service {
      */
     @Override
     public IBinder onBind(Intent intent) {
-        Toast.makeText(getApplicationContext(), "binding", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "binding", Toast.LENGTH_SHORT).show();
         return mMessenger.getBinder();
     }
 }
