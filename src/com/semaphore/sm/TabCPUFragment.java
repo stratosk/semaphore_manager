@@ -21,6 +21,7 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.SwitchPreference;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.semaphore.smproperties.SemaProperties;
 
 public class TabCPUFragment extends PreferenceListFragment implements OnSharedPreferenceChangeListener, OnPreferenceClickListener {
@@ -39,7 +40,11 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
         Preference pref = findPreference("deep_idle_stats_show");
         pref.setOnPreferenceClickListener(this);
-
+        pref = findPreference("cv_apply");
+        pref.setOnPreferenceClickListener(this);
+        pref = findPreference("cv_reset");
+        pref.setOnPreferenceClickListener(this);
+        
         updateSummaries();
     }
 
@@ -260,8 +265,23 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             sp.bluetooth.setValue(sharedPreferences.getBoolean(key, sp.bluetooth.getDefBoolean()) == true ? 1 : 0);
             if (sp.bluetooth.getBoolean())
                 sp.bluetooth.writeValue();
+        } else if (key.equals("cv_apply_boot")) {
+            sp.cv.apply_boot = sharedPreferences.getBoolean(key, false);
+        } else if (key.equals("cv_enable")) {
+            sp.cv.enabled = sharedPreferences.getBoolean(key, false);
+        } else if (key.equals("cv_max_arm")) {
+            sp.cv.cv_max_arm.setValue(sharedPreferences.getInt(key, sp.cv.cv_max_arm.getDefault()));
+        } else if (key.equals("cv_l0")) {
+            sp.cv.cv_l0.setValue(sharedPreferences.getInt(key, sp.cv.cv_l0.getDefault()));
+        } else if (key.equals("cv_l1")) {
+            sp.cv.cv_l1.setValue(sharedPreferences.getInt(key, sp.cv.cv_l1.getDefault()));
+        } else if (key.equals("cv_l2")) {
+            sp.cv.cv_l2.setValue(sharedPreferences.getInt(key, sp.cv.cv_l2.getDefault()));
+        } else if (key.equals("cv_l3")) {
+            sp.cv.cv_l3.setValue(sharedPreferences.getInt(key, sp.cv.cv_l3.getDefault()));
+        } else if (key.equals("cv_l4")) {
+            sp.cv.cv_l4.setValue(sharedPreferences.getInt(key, sp.cv.cv_l4.getDefault()));
         }
-
     }
 
     public void updateSummaries() {
@@ -331,18 +351,18 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         pref = findPreference(sp.interactive.timer_rate.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
         
-        pref = findPreference(sp.cv_max_arm.getName());
+        pref = findPreference(sp.cv.cv_max_arm.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
-        /*pref = findPreference(sp.cv_l0.getName());
+        pref = findPreference(sp.cv.cv_l0.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
-        pref = findPreference(sp.cv_l1.getName());
+        pref = findPreference(sp.cv.cv_l1.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
-        pref = findPreference(sp.cv_l2.getName());
+        pref = findPreference(sp.cv.cv_l2.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
-        pref = findPreference(sp.cv_l3.getName());
+        pref = findPreference(sp.cv.cv_l3.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
-        pref = findPreference(sp.cv_l4.getName());
-        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));*/
+        pref = findPreference(sp.cv.cv_l4.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
     }
 
     public boolean onPreferenceClick(Preference preference) {
@@ -350,6 +370,20 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         if (preference.getKey().equals("deep_idle_stats_show")) {
             showIdleDialog();
             ret = true;
+        } else if (preference.getKey().equals("cv_apply")) {
+            SemaProperties sp = MainActivity.sp;
+            sp.cv.writeValue();
+            Toast.makeText(getActivity(), "Custom voltages applied", Toast.LENGTH_SHORT).show();
+        } else if (preference.getKey().equals("cv_reset")) {
+            SemaProperties sp = MainActivity.sp;
+            sp.cv.cv_max_arm.setValue(sp.cv.cv_max_arm.getDefault());
+            sp.cv.cv_l0.setValue(sp.cv.cv_l0.getDefault());
+            sp.cv.cv_l1.setValue(sp.cv.cv_l1.getDefault());
+            sp.cv.cv_l2.setValue(sp.cv.cv_l2.getDefault());
+            sp.cv.cv_l3.setValue(sp.cv.cv_l3.getDefault());
+            sp.cv.cv_l4.setValue(sp.cv.cv_l4.getDefault());
+            sp.cv.writeValue();
+            Toast.makeText(getActivity(), "Custom voltages reset to default", Toast.LENGTH_SHORT).show();
         }
         return ret;
     }
