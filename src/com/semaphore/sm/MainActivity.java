@@ -14,7 +14,6 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
@@ -31,7 +30,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.ViewConfiguration;
 import android.widget.Toast;
-import com.semaphore.sai.SAIService;
 import com.semaphore.smproperties.SemaProperties;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -140,7 +138,7 @@ public class MainActivity extends FragmentActivity {
 
     private void checkFirstRun() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-        if (!prefs.contains("oc")) {
+        if (!prefs.contains("oc") || !prefs.contains("cv_l0")) {
             PropTask pt = new PropTask();
             pt.execute(sp);
         } else {

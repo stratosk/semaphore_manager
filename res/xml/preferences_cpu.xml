@@ -247,6 +247,7 @@
             android:title="@string/str_cv_enable_title" 
             android:summary="@string/str_cv_enable_summary"/> 
         <PreferenceScreen
+            android:key="cv_cv"
             android:title="@string/str_custom_volt_title"
             android:dependency="cv_enable">
             <com.semaphore.sm.SeekBarPreference android:key="cv_max_arm"
@@ -303,7 +304,6 @@
                                                 android:max="1500"
                                                 semaphore:step="25"
         />
-        </PreferenceScreen>
         <Preference 
             android:key="cv_apply"
             android:title="@string/str_cv_apply_title"
@@ -314,6 +314,8 @@
             android:title="@string/str_cv_reset_title"
             android:summary="@string/str_cv_reset_summary"
             android:dependency="cv_enable"/>
+        </PreferenceScreen>
+
         <CheckBoxPreference
             android:key="cv_apply_boot"
             android:title="@string/str_cv_apply_boot_title"

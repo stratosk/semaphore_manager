@@ -39,6 +39,11 @@ public class SMCVProperty extends SMBatchProperty {
         enabled = false;
     }
 
+    public String getVolts() {
+        return cv_l0.getValString() + " " + cv_l1.getValString() + " " + cv_l2.getValString() + " " +
+               cv_l3.getValString() + " " + cv_l4.getValString();
+    }
+    
     public void readValue() {
         Commander cm = Commander.getInstance();
         
@@ -76,10 +81,8 @@ public class SMCVProperty extends SMBatchProperty {
         if (enabled) {
             cv_max_arm.writeValue();
 
-            String volts = cv_l0.getValString() + " " + cv_l1.getValString() + " " + cv_l2.getValString() + " " +
-                           cv_l3.getValString() + " " + cv_l4.getValString();
             Commander cm = Commander.getInstance();
-            String cmd = "echo \"" + volts + "\" > /sys/devices/virtual/misc/customvoltage/arm_volt";
+            String cmd = "echo \"" + getVolts() + "\" > /sys/devices/virtual/misc/customvoltage/arm_volt";
 
             int res= cm.run(cmd, cm.needSU("/sys/devices/virtual/misc/customvoltage/arm_volt"));
         }
@@ -89,9 +92,7 @@ public class SMCVProperty extends SMBatchProperty {
         if (enabled && apply_boot) {
             cv_max_arm.writeBatch(cmds);
 
-            String volts = cv_l0.getValString() + " " + cv_l1.getValString() + " " + cv_l2.getValString() +
-                           cv_l3.getValString() + " " + cv_l4.getValString();
-            String cmd = "echo \"" + volts + "\" > /sys/devices/virtual/misc/customvoltage/arm_volt";
+            String cmd = "echo \"" + getVolts() + "\" > /sys/devices/virtual/misc/customvoltage/arm_volt";
             cmds.add(cmd);
         }
     }

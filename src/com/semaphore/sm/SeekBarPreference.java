@@ -40,6 +40,11 @@ public class SeekBarPreference extends DialogPreference implements SeekBar.OnSee
     public int getValue() {
         return mValue;
     }
+    
+    public void setValue(int value) {
+        mValue = value; 
+        //mSeekBar.setProgress(mValue - mMin);
+    }
 
     public SeekBarPreference(Context context, AttributeSet attrs) {
         super(context, attrs);

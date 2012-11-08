@@ -166,10 +166,10 @@ public class SAIService extends Service {
             vibratorNear = bundle.getInt("vibrator_near");
             vibratorFar = bundle.getInt("vibrator_far");
             vibratorDef = bundle.getInt("vibrator");
-            Toast.makeText(getApplicationContext(), 
-                            "vibratorNear: " + String.valueOf(vibratorNear) + "\n" +                        
-                            "vibratorFar: " + String.valueOf(vibratorFar) + "\n" +
-                            "vibratorDef: " + String.valueOf(vibratorDef), 
+            Toast.makeText(getApplicationContext(), "SAI service notified with updated values\n" +
+                            "vibrator near: " + String.valueOf(vibratorNear) + "\n" +                        
+                            "vibrator far: " + String.valueOf(vibratorFar) + "\n" +
+                            "vibrator default: " + String.valueOf(vibratorDef), 
                             Toast.LENGTH_SHORT).show();
             super.handleMessage(msg);
         }

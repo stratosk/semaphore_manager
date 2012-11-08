@@ -13,11 +13,14 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
+import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
 import android.view.View;
 import android.widget.TextView;
@@ -88,6 +91,24 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
     public void onPreferenceChange(Preference preference, Object newValue) {
     }
 
+    public void updateCVTitles () {
+        SemaProperties sp = MainActivity.sp;
+
+        Resources res = getResources();
+        Preference pref;
+
+        pref = findPreference("cv_l0");
+        pref.setTitle(res.getString(R.string.str_cv_l0_title) + " (" + String.valueOf(1000 * sp.oc.getValue() / 100) + "MHz)");
+        pref = findPreference("cv_l1");
+        pref.setTitle(res.getString(R.string.str_cv_l1_title) + " (" + String.valueOf(800 * sp.oc.getValue() / 100) + "MHz)");
+        pref = findPreference("cv_l2");
+        pref.setTitle(res.getString(R.string.str_cv_l2_title) + " (" + String.valueOf(400 * sp.oc.getValue() / 100) + "MHz)");
+        pref = findPreference("cv_l3");
+        pref.setTitle(res.getString(R.string.str_cv_l3_title) + " (" + String.valueOf(200 * sp.oc.getValue() / 100) + "MHz)");
+        pref = findPreference("cv_l4");
+        pref.setTitle(res.getString(R.string.str_cv_l4_title) + " (" + String.valueOf(100 * sp.oc.getValue() / 100) + "MHz)");
+    }
+    
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (MainActivity.readingValues)
             return;
@@ -110,6 +131,8 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         if (key.equals(sp.oc.getName())) {
             sp.oc.setValue(sharedPreferences.getInt(key, sp.oc.getDefault()));
             sp.oc.writeValue();
+            
+            updateCVTitles();
         } else if (key.equals(sp.ondemand.io_is_busy.getName())) {
             sp.ondemand.io_is_busy.setValue(sharedPreferences.getBoolean(key, sp.ondemand.io_is_busy.getDefBoolean()) == true ? 1 : 0);
             sp.ondemand.io_is_busy.writeValue();
@@ -269,8 +292,13 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             sp.cv.apply_boot = sharedPreferences.getBoolean(key, false);
         } else if (key.equals("cv_enable")) {
             sp.cv.enabled = sharedPreferences.getBoolean(key, false);
+            if (!sp.cv.enabled) {
+                pref = findPreference("cv_apply_boot");
+                ((CheckBoxPreference) pref).setChecked(false);
+            }
         } else if (key.equals("cv_max_arm")) {
             sp.cv.cv_max_arm.setValue(sharedPreferences.getInt(key, sp.cv.cv_max_arm.getDefault()));
+            //((SeekBarPreference) findPreference(sp.cv.cv_max_arm.getName())).setProgress(sp.cv.cv_max_arm.getDefault());
         } else if (key.equals("cv_l0")) {
             sp.cv.cv_l0.setValue(sharedPreferences.getInt(key, sp.cv.cv_l0.getDefault()));
         } else if (key.equals("cv_l1")) {
@@ -282,6 +310,8 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         } else if (key.equals("cv_l4")) {
             sp.cv.cv_l4.setValue(sharedPreferences.getInt(key, sp.cv.cv_l4.getDefault()));
         }
+        pref = findPreference("cv_cv");
+        pref.setSummary(sp.cv.getVolts());
     }
 
     public void updateSummaries() {
@@ -363,6 +393,11 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
         pref = findPreference(sp.cv.cv_l4.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+        
+        pref = findPreference("cv_cv");
+        pref.setSummary(sp.cv.getVolts());
+        
+        updateCVTitles();
     }
 
     public boolean onPreferenceClick(Preference preference) {
@@ -383,7 +418,19 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             sp.cv.cv_l3.setValue(sp.cv.cv_l3.getDefault());
             sp.cv.cv_l4.setValue(sp.cv.cv_l4.getDefault());
             sp.cv.writeValue();
+            sp.oc.writeValue(); // Also re-apply oc value to set L0, L1 voltages
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            SharedPreferences.Editor edit = prefs.edit();            
+            edit.putInt(sp.cv.cv_max_arm.getName(), sp.cv.cv_max_arm.getDefault());
+            edit.putInt(sp.cv.cv_l0.getName(), sp.cv.cv_l0.getDefault());
+            edit.putInt(sp.cv.cv_l1.getName(), sp.cv.cv_l1.getDefault());
+            edit.putInt(sp.cv.cv_l2.getName(), sp.cv.cv_l2.getDefault());
+            edit.putInt(sp.cv.cv_l3.getName(), sp.cv.cv_l3.getDefault());
+            edit.putInt(sp.cv.cv_l4.getName(), sp.cv.cv_l4.getDefault());
+            edit.commit();
+            updateSummaries();
             Toast.makeText(getActivity(), "Custom voltages reset to default", Toast.LENGTH_SHORT).show();
+            getActivity().recreate();
         }
         return ret;
     }
