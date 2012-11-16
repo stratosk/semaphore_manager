@@ -26,32 +26,51 @@ import android.preference.PreferenceManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.widget.Toast;
 import com.semaphore.sm.Commander;
 
 public class SAIService extends Service {
 
-    private static final String TAG = "SAIService";
+    private static final String TAG = "SAIService:";
     private static SensorManager sensorService;
     private Sensor sensor;
+    private Sensor mAccSensor;
+    private Sensor mMagSensor;
+
     private TelephonyManager telephonyManager;
     private int vibratorNear;
     private int vibratorFar;
     private int vibratorDef;
+    private boolean blinkLeds;
+    private int blinkInterval;
+    private boolean pickupPhone;
     public static final int MSG_RELOAD = 1;
-
+    private SAIBlinkLED blink;
+    
+    private float mAzimuth;
+    private float mPitch;
+    private float mRoll;
+    private final float rad2deg = 57.2957795f;
+    float[] I = new float[16];
+    float[] R = new float[16];
+    private float[] mMagneticValues = new float[3];
+    private float[] mAccelerometerValues = new float[3];
+    private boolean proximityNear = false;
+    private boolean almostFlat = false;
+    
     @Override
     public void onCreate() {
-//        Toast.makeText(this, "SAIService Created", Toast.LENGTH_LONG).show();
         Log.d(TAG, "onCreate");
     }
 
     @Override
     public void onDestroy() {
-//        Toast.makeText(this, "SAIService Stopped", Toast.LENGTH_LONG).show();
         Log.d(TAG, "onDestroy");
 
         sensorService.unregisterListener(mySensorEventListener);
+        sensorService.unregisterListener(orSensorEventListener);
+
         telephonyManager.listen(phoneListener, PhoneStateListener.LISTEN_NONE);
     }
 
@@ -60,25 +79,50 @@ public class SAIService extends Service {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         vibratorFar = prefs.getInt("vibrator_far", 25);
         vibratorNear = prefs.getInt("vibrator_near", 100);
-        vibratorDef = prefs.getInt("vibrator", 100);        
+        vibratorDef = prefs.getInt("vibrator", 100);
+        blinkLeds = prefs.getBoolean("blink_leds", false);
+        blinkInterval = prefs.getInt("blink_interval", 200);
+        pickupPhone = prefs.getBoolean("pickup_phone", false);
     }
-    
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-//        Toast.makeText(this, "SAIService Started", Toast.LENGTH_LONG).show();
         Log.d(TAG, "onStart");
 
         readSettings();
-        
+
         telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         telephonyManager.listen(phoneListener, PhoneStateListener.LISTEN_CALL_STATE);
 
         sensorService = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensor = sensorService.getDefaultSensor(Sensor.TYPE_PROXIMITY);
 
+        mAccSensor = sensorService.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mMagSensor = sensorService.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+
         return START_STICKY; //START_REDELIVER_INTENT
     }
-    
+
+    private void answerCall() {
+        Intent buttonDown = new Intent(Intent.ACTION_MEDIA_BUTTON);
+        buttonDown.putExtra(Intent.EXTRA_KEY_EVENT, new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_HEADSETHOOK));
+        this.sendOrderedBroadcast(buttonDown, "android.permission.CALL_PRIVILEGED");
+
+        Intent buttonUp = new Intent(Intent.ACTION_MEDIA_BUTTON);
+        buttonUp.putExtra(Intent.EXTRA_KEY_EVENT, new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_HEADSETHOOK));
+        this.sendOrderedBroadcast(buttonUp, "android.permission.CALL_PRIVILEGED");
+    }
+
+    private void startBlink() {
+        blink = new SAIBlinkLED(blinkInterval);
+        blink.start();
+    }
+
+    private void stopBlink() {
+        if (blink != null) {
+            blink.interrupt();
+        }
+    }
     private PhoneStateListener phoneListener = new PhoneStateListener() {
         @Override
         public void onCallStateChanged(int state, String incomingNumber) {
@@ -87,50 +131,88 @@ public class SAIService extends Service {
                 case TelephonyManager.CALL_STATE_IDLE:
                     stateString = "Idle";
                     disableVibrationListener();
+                    
+                    if (pickupPhone)
+                        disableOrientationListener();
+                    
+                    if (blinkLeds)
+                        stopBlink();
+                    
+                    almostFlat = false;
                     break;
                 case TelephonyManager.CALL_STATE_OFFHOOK:
                     stateString = "Off Hook";
                     disableVibrationListener();
+                    
+                    if (pickupPhone)
+                        disableOrientationListener();
+                    
+                    if (blinkLeds)
+                        stopBlink();
+                    
+                    almostFlat = false;
                     break;
                 case TelephonyManager.CALL_STATE_RINGING:
                     stateString = "Ringing";
                     enableVibrationListener();
+                    
+                    if (pickupPhone)
+                        enableOrientationListener();
+                    
+                    if (blinkLeds)
+                        startBlink();
                     break;
             }
             Log.d(TAG, "onCallStateChanged: " + stateString);
         }
     };
 
+    private void enableOrientationListener() {
+        sensorService.registerListener(orSensorEventListener, mAccSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        Log.d(TAG, "Registerered for Accelerometer Sensor");
+        sensorService.registerListener(orSensorEventListener, mMagSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        Log.d(TAG, "Registerered for Magnetic Field Sensor");
+    }
+    
+    private void disableOrientationListener() {
+        if (mAccSensor != null) {
+            sensorService.unregisterListener(orSensorEventListener);
+            Log.d(TAG, "Unregisterered for Accelerometer Sensor");
+        }
+        if (mMagSensor != null) {
+            sensorService.unregisterListener(orSensorEventListener);
+            Log.d(TAG, "Unregisterered for Magnetic Field Sensor");
+        }
+    }
+    
     private void enableVibrationListener() {
         if (sensor != null) {
             sensorService.registerListener(mySensorEventListener, sensor,
                     SensorManager.SENSOR_DELAY_FASTEST);
-            Log.i(TAG, "Registerered for PROXIMITY Sensor");
+            Log.d(TAG, "Registerered for PROXIMITY Sensor");
         }
     }
 
     private void disableVibrationListener() {
         if (sensor != null) {
             sensorService.unregisterListener(mySensorEventListener);
-            Log.i(TAG, "Unregisterered for PROXIMITY Sensor");
+            Log.d(TAG, "Unregisterered for PROXIMITY Sensor");
         }
         setVibration(2);
     }
 
     private void setVibration(int state) {
         Commander cm = Commander.getInstance();
+        String path = "/sys/devices/virtual/misc/pwm_duty/pwm_duty";
         switch (state) {
             case 0: // Far
-                cm.run("echo " + String.valueOf(vibratorFar) + " > /sys/devices/virtual/misc/pwm_duty/pwm_duty", false);
-                Log.d(TAG, "echo " + String.valueOf(vibratorFar) + " > /sys/devices/virtual/misc/pwm_duty/pwm_duty");
+                cm.writeFile(path, String.valueOf(vibratorFar));
                 break;
             case 1: // Near
-                cm.run("echo " + String.valueOf(vibratorNear) + " > /sys/devices/virtual/misc/pwm_duty/pwm_duty", false);
-                Log.d(TAG, "echo " + String.valueOf(vibratorNear) + " > /sys/devices/virtual/misc/pwm_duty/pwm_duty");
+                cm.writeFile(path, String.valueOf(vibratorNear));
                 break;
             case 2: // Default
-                cm.run("echo " + String.valueOf(vibratorDef) + " > /sys/devices/virtual/misc/pwm_duty/pwm_duty", false);
-                Log.d(TAG, "echo " + String.valueOf(vibratorDef) + " > /sys/devices/virtual/misc/pwm_duty/pwm_duty");
+                cm.writeFile(path, String.valueOf(vibratorDef));
                 break;
         }
     }
@@ -139,12 +221,55 @@ public class SAIService extends Service {
         @Override
         public void onSensorChanged(SensorEvent event) {
             if (event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
-                Log.i(TAG, "Proximity Sensor Reading:"
+                Log.d(TAG, "Proximity Sensor Reading: "
                         + String.valueOf(event.values[0]));
                 if (event.values[0] > 0) {  // far
                     setVibration(0);
+                    proximityNear = false;
                 } else {                    // near
                     setVibration(1);
+                    proximityNear = true;
+                }
+            }
+        }
+
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+            //throw new UnsupportedOperationException("Not supported yet.");
+        }
+    };
+    
+    private SensorEventListener orSensorEventListener = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            switch (event.sensor.getType()) {
+                case Sensor.TYPE_MAGNETIC_FIELD:
+                    mMagneticValues = event.values.clone();
+                    break;
+                case Sensor.TYPE_ACCELEROMETER:
+                    mAccelerometerValues = event.values.clone();
+                    break;
+            }
+
+            if (mMagneticValues != null && mAccelerometerValues != null) {
+                boolean success = SensorManager.getRotationMatrix(R, I, mAccelerometerValues, mMagneticValues);
+                if (success) {
+                    float[] orientation = new float[3];
+                    SensorManager.getOrientation(R, orientation);
+                    //mAzimuth = orientation[0] * rad2deg;
+                    mPitch = orientation[1] * rad2deg;
+                    mRoll = orientation[2] * rad2deg;
+
+                    //Log.d("SAIOrientation: Azimuth: ", String.valueOf(mAzimuth));
+                    //Log.d("SAIOrientation: Pitch: ", String.valueOf(mPitch));
+                    //Log.d("SAIOrientation: Roll: ", String.valueOf(mRoll));
+                    
+                    if (!proximityNear && Math.abs(mRoll) < 30 && Math.abs(mPitch) < 30) {
+                        almostFlat = true;
+                    }
+                    if (almostFlat && proximityNear && Math.abs(mRoll) > 40 && Math.abs(mPitch) < 70) {
+                        almostFlat = false;
+                        answerCall();
+                    }
                 }
             }
         }
@@ -162,15 +287,20 @@ public class SAIService extends Service {
         @Override
         public void handleMessage(Message msg) {
             Bundle bundle = msg.getData();
-            
+
             vibratorNear = bundle.getInt("vibrator_near");
             vibratorFar = bundle.getInt("vibrator_far");
             vibratorDef = bundle.getInt("vibrator");
-            Toast.makeText(getApplicationContext(), "SAI service notified with updated values\n" +
-                            "vibrator near: " + String.valueOf(vibratorNear) + "\n" +                        
-                            "vibrator far: " + String.valueOf(vibratorFar) + "\n" +
-                            "vibrator default: " + String.valueOf(vibratorDef), 
-                            Toast.LENGTH_SHORT).show();
+            blinkLeds = bundle.getBoolean("blink_leds");
+            blinkInterval = bundle.getInt("blink_interval");
+            pickupPhone = bundle.getBoolean("pickup_phone");
+            Toast.makeText(getApplicationContext(), "SAI service notified with new values", Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "vibrator near: " + String.valueOf(vibratorNear));
+            Log.d(TAG, "vibrator far: " + String.valueOf(vibratorFar));
+            Log.d(TAG, "vibrator default: " + String.valueOf(vibratorDef));
+            Log.d(TAG, "pickup phone: " + (pickupPhone ? "true":"false")); 
+            Log.d(TAG, "blink leds: " + (blinkLeds ? "true":"false")); 
+            Log.d(TAG, "blink interval: " + String.valueOf(blinkInterval));
             super.handleMessage(msg);
         }
     }

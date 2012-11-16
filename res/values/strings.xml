@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Semaphore Manager</string>
-    <string name="str_app_version_title">2.0.0</string>
+    <string name="str_app_version_title">2.2.0</string>
     
     <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
     
@@ -14,7 +14,7 @@
     <string name="str_cat_gov_title">Governors</string>
     
     <string name="str_custom_volt_title">Voltages</string>
-    <string name="str_cv_enable_title">Enable</string>
+    <string name="str_cv_enable_title">Enabled</string>
     <string name="str_cv_enable_summary">Please use it at your own risk</string>
     <string name="str_cv_apply_title">Apply</string>
     <string name="str_cv_apply_summary">Apply custom voltages</string>
@@ -297,8 +297,17 @@
         <item>90</item>
     </string-array>
     
-    <string name="str_sai_enable_title">Enable</string>
+    <string name="str_sai_enable_title">Enabled</string>
     <string name="str_vibrator_call_title">Vibrator on Phone ringing</string>    
     <string name="str_vibrator_near_title">Proximity Near</string>    
     <string name="str_vibrator_far_title">Proximity Far</string>    
+
+    <string name="str_pickup_phone_cat_title">Pickup Phone</string>    
+    <string name="str_pickup_phone_title">Enabled</string>    
+    <string name="str_pickup_phone_summary">Pickup phone without touch the screen</string>
+        
+    <string name="str_blink_leds_cat_title">Blink LEDs on Phone ringing</string>    
+    <string name="str_blink_leds_title">Enabled</string>    
+    <string name="str_blink_leds_summary">Blink LEDs on Phone ringing</string>
+    <string name="str_blink_interval_title">Blinking interval</string>    
 </resources>
