@@ -14,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -45,7 +46,11 @@ public class Commander {
 
     public static Commander getInstance() {
         if (instance == null) {
-            instance = new Commander();
+            synchronized (Commander.class) {
+                if (instance == null) {
+                    instance = new Commander();
+                }
+            }
         }
         return instance;
     }
@@ -93,9 +98,9 @@ public class Commander {
         if (f.exists() && f.isFile() && f.canWrite()) {
             return false;
         }
-        return true;   
+        return true;
     }
-    
+
     public int readFile(String path) {
         int result = 1;
 
@@ -124,6 +129,27 @@ public class Commander {
         }
 
         return result;
+    }
+
+    public int writeFile(String path, String value) {
+        try {
+            File file = new File(path);
+
+            if (!file.exists() || !file.canWrite()) {
+                return 1;
+            }
+            
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            fw.write(value);
+//            BufferedWriter bw = new BufferedWriter(fw);
+//            bw.write(value);
+            fw.close();
+            
+            return 0;
+        } catch (IOException e) {
+            Log.e(Commander.class.getName(), "Error writing file: ".concat(path));
+            return 1;
+        }
     }
 
     public int runSuBatch(List<String> cmds) {
@@ -172,7 +198,7 @@ public class Commander {
                 result = 1;
             }
         } catch (IOException e) {
-                result = 1;
+            result = 1;
         }
         return result;
     }
@@ -184,7 +210,7 @@ public class Commander {
         if (su) {
             pb = new ProcessBuilder("su", "-c", "/system/bin/sh");
         } else {
-            pb = new ProcessBuilder("/system/bin/sh");            
+            pb = new ProcessBuilder("/system/bin/sh");
         }
         try {
             p = pb.start();
