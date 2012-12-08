@@ -199,7 +199,7 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         } else if (key.equals(sp.smartass.sample_rate_jiffies.getName())) {
             sp.smartass.sample_rate_jiffies.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.smartass.sample_rate_jiffies.getDefault()))));
             sp.smartass.sample_rate_jiffies.writeValue();
-        } else if (key.equals(sp.conservative.smooth_ui.getName())) {
+        } else if (key.equals(sp.smartass.smooth_ui.getName())) {
             sp.smartass.smooth_ui.setValue(sharedPreferences.getBoolean(key, sp.smartass.smooth_ui.getDefBoolean()) == true ? 1 : 0);
             sp.smartass.smooth_ui.writeValue();
         } else if (key.equals(sp.interactive.hispeed_freq.getName())) { // Interactive
