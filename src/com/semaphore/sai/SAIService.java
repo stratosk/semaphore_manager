@@ -138,7 +138,6 @@ public class SAIService extends Service {
                     if (blinkLeds)
                         stopBlink();
                     
-                    almostFlat = false;
                     break;
                 case TelephonyManager.CALL_STATE_OFFHOOK:
                     stateString = "Off Hook";
@@ -150,7 +149,6 @@ public class SAIService extends Service {
                     if (blinkLeds)
                         stopBlink();
                     
-                    almostFlat = false;
                     break;
                 case TelephonyManager.CALL_STATE_RINGING:
                     stateString = "Ringing";
@@ -183,6 +181,7 @@ public class SAIService extends Service {
             sensorService.unregisterListener(orSensorEventListener);
             Log.d(TAG, "Unregisterered for Magnetic Field Sensor");
         }
+        almostFlat = false;
     }
     
     private void enableVibrationListener() {
@@ -199,6 +198,7 @@ public class SAIService extends Service {
             Log.d(TAG, "Unregisterered for PROXIMITY Sensor");
         }
         setVibration(2);
+        proximityNear = false;
     }
 
     private void setVibration(int state) {
