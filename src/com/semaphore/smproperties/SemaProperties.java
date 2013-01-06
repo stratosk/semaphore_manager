@@ -271,7 +271,8 @@ public class SemaProperties {
         edit.putString(interactive.min_sampling_time.getName(), interactive.min_sampling_time.getValString());
         edit.putString(interactive.above_hispeed_delay.getName(), interactive.above_hispeed_delay.getValString());
         edit.putString(interactive.timer_rate.getName(), interactive.timer_rate.getValString());
-        edit.putBoolean(interactive.input_boost.getName(), interactive.input_boost.getBoolean());
+        edit.putString(interactive.timer_slack.getName(), interactive.timer_slack.getValString());
+        edit.putString(interactive.boostpulse_duration.getName(), interactive.boostpulse_duration.getValString());
         
         edit.putBoolean(deep_idle.getName(), deep_idle.getBoolean());
         edit.putBoolean(deep_idle_stats.getName(), deep_idle_stats.getBoolean());
@@ -351,7 +352,8 @@ public class SemaProperties {
         interactive.min_sampling_time.setValue(prefs.getString(interactive.min_sampling_time.getName(), interactive.min_sampling_time.getDefString()));
         interactive.above_hispeed_delay.setValue(prefs.getString(interactive.above_hispeed_delay.getName(), interactive.above_hispeed_delay.getDefString()));
         interactive.timer_rate.setValue(prefs.getString(interactive.timer_rate.getName(), interactive.timer_rate.getDefString()));
-        interactive.input_boost.setValue(prefs.getBoolean(interactive.input_boost.getName(), interactive.input_boost.getDefBoolean()) == true ? 1 : 0);
+        interactive.timer_slack.setValue(prefs.getString(interactive.timer_slack.getName(), interactive.timer_slack.getDefString()));
+        interactive.boostpulse_duration.setValue(prefs.getString(interactive.boostpulse_duration.getName(), interactive.boostpulse_duration.getDefString()));
 
         deep_idle.setValue((prefs.getBoolean(deep_idle.getName(), deep_idle.getDefBoolean()) == true ? 1 : 0));
         deep_idle_stats.setValue((prefs.getBoolean(deep_idle_stats.getName(), deep_idle_stats.getDefBoolean()) == true ? 1 : 0));
@@ -430,7 +432,8 @@ public class SemaProperties {
         interactive.min_sampling_time.setValue(interactive.min_sampling_time.getDefString());
         interactive.above_hispeed_delay.setValue(interactive.above_hispeed_delay.getDefString());
         interactive.timer_rate.setValue(interactive.timer_rate.getDefString());
-        interactive.input_boost.setValue(interactive.input_boost.getDefault());
+        interactive.timer_slack.setValue(interactive.timer_slack.getDefString());
+        interactive.boostpulse_duration.setValue(interactive.boostpulse_duration.getDefString());
         
         deep_idle.setValue(deep_idle.getDefault());
         deep_idle_stats.setValue(deep_idle_stats.getDefault());

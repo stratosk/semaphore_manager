@@ -217,9 +217,12 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         } else if (key.equals(sp.interactive.timer_rate.getName())) {
             sp.interactive.timer_rate.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.timer_rate.getDefault()))));
             sp.interactive.timer_rate.writeValue();
-        } else if (key.equals(sp.interactive.input_boost.getName())) {
-            sp.interactive.input_boost.setValue(sharedPreferences.getBoolean(key, sp.interactive.input_boost.getDefBoolean()) == true ? 1 : 0);
-            sp.interactive.input_boost.writeValue();
+        } else if (key.equals(sp.interactive.timer_slack.getName())) {
+            sp.interactive.timer_slack.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.timer_slack.getDefault()))));
+            sp.interactive.timer_slack.writeValue();
+        } else if (key.equals(sp.interactive.boostpulse_duration.getName())) {
+            sp.interactive.boostpulse_duration.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.boostpulse_duration.getDefault()))));
+            sp.interactive.boostpulse_duration.writeValue();
         } else if (key.equals(sp.gov.getName())) {
             if (sharedPreferences.getString(sp.gov.getName(), sp.gov.getDefValue()).equals(sp.ondemand.getName())) {
                 sp.gov.setValue(sharedPreferences.getString(key, sp.gov.getDefValue()));
@@ -271,8 +274,8 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
                 ((EditTextPreference) findPreference(sp.interactive.min_sampling_time.getName())).setText(sp.interactive.min_sampling_time.getValString());
                 ((EditTextPreference) findPreference(sp.interactive.above_hispeed_delay.getName())).setText(sp.interactive.above_hispeed_delay.getValString());
                 ((EditTextPreference) findPreference(sp.interactive.timer_rate.getName())).setText(sp.interactive.timer_rate.getValString());
-                ((SwitchPreference) findPreference(sp.interactive.input_boost.getName())).setChecked(sp.interactive.input_boost.getBoolean());
-                sp.conservative.cons.setValue(false);
+                ((EditTextPreference) findPreference(sp.interactive.timer_slack.getName())).setText(sp.interactive.timer_slack.getValString());                sp.conservative.cons.setValue(false);
+                ((EditTextPreference) findPreference(sp.interactive.boostpulse_duration.getName())).setText(sp.interactive.boostpulse_duration.getValString());                sp.conservative.cons.setValue(false);
                 sp.conservative.cons.writeValue();
             }
         } else if (key.equals(sp.deep_idle.getName())) {
@@ -379,6 +382,10 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         pref = findPreference(sp.interactive.above_hispeed_delay.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.interactive.timer_rate.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.interactive.timer_slack.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.interactive.boostpulse_duration.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
         
         pref = findPreference(sp.cv.cv_max_arm.getName());

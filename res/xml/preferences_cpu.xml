@@ -202,9 +202,18 @@
                 android:summary="@string/str_i_timer_rate_summary"
                 android:numeric="integer"
                 android:inputType="number" />
-            <SwitchPreference
-                android:key="i_input_boost"
-                android:title="@string/str_i_input_boost_title" />
+            <EditTextPreference
+                android:key="i_timer_slack"
+                android:title="@string/str_i_timer_slack_title"
+                android:summary="@string/str_i_timer_slack_summary"
+                android:numeric="integer"
+                android:inputType="number" />
+            <EditTextPreference
+                android:key="i_boostpulse_duration"
+                android:title="@string/str_i_boostpulse_duration_title"
+                android:summary="@string/str_i_boostpulse_duration_summary"
+                android:numeric="integer"
+                android:inputType="number" />
 
         </PreferenceScreen>
     </PreferenceCategory>

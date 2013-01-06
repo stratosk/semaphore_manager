@@ -19,7 +19,8 @@ public class SMInteractiveProperty extends SMBatchProperty {
     public SMIntProperty min_sampling_time;
     public SMIntProperty above_hispeed_delay;
     public SMIntProperty timer_rate;
-    public SMIntProperty input_boost;
+    public SMIntProperty timer_slack;
+    public SMIntProperty boostpulse_duration;
 
     public SMInteractiveProperty() {
         super("interactive");
@@ -29,11 +30,12 @@ public class SMInteractiveProperty extends SMBatchProperty {
         inter = new SMModuleProperty("cpufreq_interactive", "cpufreq_interactive", false, false);
 
         hispeed_freq = new SMIntProperty("i_hispeed_freq", basepath.concat("hispeed_freq"), false, 100000, 1200000, 800000);
-        go_hispeed_load = new SMIntProperty("i_go_hispeed_load", basepath.concat("go_hispeed_load"), false, 1, 100, 85);
+        go_hispeed_load = new SMIntProperty("i_go_hispeed_load", basepath.concat("go_hispeed_load"), false, 1, 100, 99);
         min_sampling_time = new SMIntProperty("i_min_sampling_time", basepath.concat("min_sampling_time"), false, 10000, 100000, 80000);
         above_hispeed_delay = new SMIntProperty("i_above_hispeed_delay", basepath.concat("above_hispeed_delay"), false, 10000, 100000, 20000);
         timer_rate = new SMIntProperty("i_timer_rate", basepath.concat("timer_rate"), false, 10000, 100000, 20000);
-        input_boost = new SMIntProperty("i_input_boost", basepath.concat("input_boost"), false, 0, 1, 0);
+        timer_slack = new SMIntProperty("i_timer_slack", basepath.concat("timer_slack"), false, 10000, 200000, 80000);
+        boostpulse_duration = new SMIntProperty("i_boostpulse_duration", basepath.concat("timer_slack"), false, 10000, 200000, 80000);
     }
 
     public void readValue() {
@@ -42,7 +44,8 @@ public class SMInteractiveProperty extends SMBatchProperty {
         min_sampling_time.readValue();
         above_hispeed_delay.readValue();
         timer_rate.readValue();
-        input_boost.readValue();
+        timer_slack.readValue();
+        boostpulse_duration.readValue();
     }
 
     public void writeValue() {
@@ -51,7 +54,8 @@ public class SMInteractiveProperty extends SMBatchProperty {
         min_sampling_time.writeValue();
         above_hispeed_delay.writeValue();
         timer_rate.writeValue();
-        input_boost.writeValue();
+        timer_slack.writeValue();
+        boostpulse_duration.writeValue();
     }
 
     public void writebatch(List<String> cmds) {
@@ -60,6 +64,7 @@ public class SMInteractiveProperty extends SMBatchProperty {
         min_sampling_time.writeBatch(cmds);
         above_hispeed_delay.writeBatch(cmds);
         timer_rate.writeBatch(cmds);
-        input_boost.writeBatch(cmds);
+        timer_slack.writeBatch(cmds);
+        boostpulse_duration.writeBatch(cmds);
     }
 }
