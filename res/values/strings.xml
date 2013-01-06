@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Semaphore Manager</string>
-    <string name="str_app_version_title">2.2.1</string>
+    <string name="str_app_version_title">2.2.6</string>
     
     <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
     
@@ -49,6 +49,7 @@
         <item>deadline</item>
         <item>cfq</item>
         <item>sio</item>
+        <item>row</item>
         <item>read_ahead</item>
         <item>touchscreen_0</item>
         <item>touchscreen_1</item>    
@@ -139,8 +140,11 @@
     <string name="str_i_above_hispeed_delay_title">Above hi speed delay</string>
     <string name="str_i_above_hispeed_delay_summary">Valid values 1-100</string>
     <string name="str_i_timer_rate_title">Timer rate</string>
-    <string name="str_i_timer_rate_summary">Valid values 1-100</string>
-    <string name="str_i_input_boost_title">Input Boost</string>
+    <string name="str_i_timer_rate_summary">Valid values 10000-100000</string>
+    <string name="str_i_timer_slack_title">Timer slack</string>
+    <string name="str_i_timer_slack_summary">Valid values 10000-200000</string>
+    <string name="str_i_boostpulse_duration_title">Boostpulse duration</string>
+    <string name="str_i_boostpulse_duration_summary">Valid values 10000-200000</string>
 
     <string name="str_cat_deep_idle_title">Deep Idle</string>
     <string name="str_deep_idle_title">Enabled</string>
@@ -204,6 +208,7 @@
         <item>CFQ</item>
         <item>Deadline</item>
         <item>Simple I/O</item>
+        <item>ROW</item>
     </string-array>
  
     <string-array name="array_scheduler_values">
@@ -211,6 +216,7 @@
         <item>cfq</item>
         <item>deadline</item>
         <item>sio</item>
+        <item>row</item>
     </string-array>
 
     <string name="str_vibrator_title">Vibrator</string>
