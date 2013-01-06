@@ -154,6 +154,7 @@ public class Commander {
 
     public int runSuBatch(List<String> cmds) {
         int result = 0;
+        int exitValue = -99;
 
         ProcessBuilder pb = new ProcessBuilder("su", "-c", "/system/bin/sh");
         try {
@@ -177,14 +178,14 @@ public class Commander {
             outt.start();
 
             try {
-                p.waitFor();
+                exitValue = p.waitFor();
                 try {
                     errt.join();
                     outt.join();
                 } catch (InterruptedException ex) {
                 }
 
-                if (p.exitValue() == 0) {
+                if (exitValue == 0) {
                     if (errResult.isEmpty()) {
                         result = 0;
                     } else {
