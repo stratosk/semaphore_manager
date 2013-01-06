@@ -12,6 +12,11 @@
             android:title="Kernel"
             android:summary="version">
         </Preference>
+        <Preference
+            android:key="system_memory"
+            android:title="Memory"
+            android:summary="MB">
+        </Preference>
     </PreferenceCategory>
     <Preference
         android:title="Author"

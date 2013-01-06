@@ -9,8 +9,9 @@
  */
 package com.semaphore.sm;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.app.ActivityManager;
+import android.app.ActivityManager.MemoryInfo;
+import android.content.Context;
 import android.os.Bundle;
 import android.preference.Preference;
 
@@ -24,15 +25,19 @@ public class TabInfoFragment extends PreferenceListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //addPreferencesFromResource(R.xml.preferences_info);
-        //getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-
         Commander cm = Commander.getInstance();
         cm.readFile("/proc/version");
         Preference pref = findPreference("kernel_version");
         pref.setSummary(cm.getOutResult().get(0));
-    }
+        
+        MemoryInfo mi = new MemoryInfo();
+        ActivityManager activityManager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
+        activityManager.getMemoryInfo(mi);
+//        long availableMegs = mi.availMem / 1048576L;
+        long totalMegs = mi.totalMem / 1048576L;
 
-//    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-//    }
+        pref = findPreference("system_memory");
+        pref.setSummary(String.valueOf(totalMegs) + " MB");
+        
+    }
 }
