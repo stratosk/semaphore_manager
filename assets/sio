@@ -15,3 +15,4 @@ done;
 sleep 1
 rmmod deadline_iosched
 rmmod cfq_iosched
+rmmod row_iosched
