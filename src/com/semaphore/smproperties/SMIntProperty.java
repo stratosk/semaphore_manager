@@ -66,7 +66,10 @@ public class SMIntProperty extends SMProperty {
     }
 
     public void setValue(String Value) {
-        setValue(Integer.parseInt(Value));
+        if (Value == null || Value.isEmpty())
+            setValue(getDefault());
+        else
+            setValue(Integer.parseInt(Value));
     }
 
     public void readValue() {
