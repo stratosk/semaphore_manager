@@ -38,7 +38,7 @@ public class SMLoggerProperty extends SMBaseProperty {
     @Override
     public void readValue() {
         Commander cm = Commander.getInstance();
-        int res = cm.run("ls /data/local/logger.ko | grep logger.ko", false);
+        int res = cm.run("ls /data/local/logger.ko | grep logger.ko", true);
         if (cm.getOutResult().isEmpty()) {
             setValue(false);
         } else {
