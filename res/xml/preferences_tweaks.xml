@@ -118,11 +118,10 @@
             android:entries="@array/array_read_ahead_entries"
             android:entryValues="@array/array_read_ahead_values"
             android:title="@string/str_read_ahead_title" />
-        <!--ListPreference
-        android:key="touchscreen"
-        android:entries="@array/array_touchscreen_entries"
-        android:entryValues="@array/array_touchscreen_values"
-        android:title="@string/str_touchscreen_title" -->    
+        <CheckBoxPreference
+            android:key="bln"
+            android:title="@string/str_bln_title"
+            android:summary="@string/str_bln_summary" />
     </PreferenceCategory>
     
 </PreferenceScreen>

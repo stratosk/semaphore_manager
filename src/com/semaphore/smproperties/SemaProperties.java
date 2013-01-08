@@ -46,8 +46,9 @@ public class SemaProperties {
     public SMIntProperty forcefastchg;
     //public SMTouchscreenProperty touchscreen;
     public SMReadaheadProperty read_ahead;
+    public SMBLNProperty bln;
     public SMCVProperty cv;
-    
+
     public SemaProperties() {
 
         oc = new SMIntProperty("oc", "/sys/devices/virtual/misc/liveoc/oc_value", false, 100, 120, 100);
@@ -79,7 +80,8 @@ public class SemaProperties {
         forcefastchg = new SMIntProperty("forcefastchg", "/sys/kernel/fast_charge/force_fast_charge", false, 0, 1, 0);
         //touchscreen = new SMTouchscreenProperty("touchscreen", "stock");
         read_ahead = new SMReadaheadProperty("read_ahead", "128KB");
-        
+        bln = new SMBLNProperty("bln", false);
+
         cv = new SMCVProperty();
     }
 
@@ -113,6 +115,7 @@ public class SemaProperties {
         forcefastchg.readValue();
         //touchscreen.readValue();
         read_ahead.readValue();
+        bln.readValue();
         cv.readValue();
     }
 
@@ -170,8 +173,9 @@ public class SemaProperties {
         forcefastchg.writeBatch(cmds);
         //touchscreen.writeValue();
         read_ahead.writeBatch(cmds);
+        bln.writeBatch(cmds);
         cv.writeBatch(cmds);
-        
+
         //Log.d("semaphore cmds: ", cmds.toString());
         Commander.getInstance().runSuBatch(cmds);
     }
@@ -227,6 +231,7 @@ public class SemaProperties {
         forcefastchg.writeValue();
         //touchscreen.writeValue();
         read_ahead.writeValue();
+        bln.writeValue();
         cv.writeValue();
     }
 
@@ -303,7 +308,8 @@ public class SemaProperties {
         edit.putBoolean(forcefastchg.getName(), forcefastchg.getBoolean());
         //edit.putString(touchscreen.getName(), touchscreen.getValue());
         edit.putString(read_ahead.getName(), read_ahead.getValue());
-        
+        edit.putBoolean(bln.getName(), bln.getValue());
+
         edit.putInt(cv.cv_max_arm.getName(), cv.cv_max_arm.getValue());
         edit.putInt(cv.cv_l0.getName(), cv.cv_l0.getValue());
         edit.putInt(cv.cv_l1.getName(), cv.cv_l1.getValue());
@@ -384,7 +390,8 @@ public class SemaProperties {
         forcefastchg.setValue(prefs.getBoolean(forcefastchg.getName(), forcefastchg.getDefBoolean()) == true ? 1 : 0);
         //touchscreen.setValue(prefs.getString(touchscreen.getName(), touchscreen.getDefValue()));
         read_ahead.setValue(prefs.getString(read_ahead.getName(), read_ahead.getDefValue()));
-        
+        bln.setValue(prefs.getBoolean(bln.getName(), bln.getDefValue()));
+
         cv.enabled = prefs.getBoolean("cv_enable", false);
         cv.apply_boot = prefs.getBoolean("cv_apply_boot", false);
         cv.cv_max_arm.setValue(prefs.getInt(cv.cv_max_arm.getName(), cv.cv_max_arm.getDefault()));
@@ -464,7 +471,8 @@ public class SemaProperties {
         forcefastchg.setValue(forcefastchg.getValue());
         //touchscreen.setValue(touchscreen.getDefValue());
         read_ahead.setValue(read_ahead.getDefValue());
-        
+        bln.setValue(bln.getDefValue());
+
         cv.cv_max_arm.setValue(cv.cv_max_arm.getDefault());
         cv.cv_l0.setValue(cv.cv_l0.getDefault());
         cv.cv_l1.setValue(cv.cv_l1.getDefault());

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Semaphore Manager</string>
-    <string name="str_app_version_title">2.2.6</string>
+    <string name="str_app_version_title">2.2.7</string>
     
     <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
     
@@ -260,6 +260,8 @@
     <string name="str_wififast_title">WiFi PM FAST</string>
     <string name="str_wififast_summary">PM FAST when suspend</string>
 
+    <string name="str_bln_title">BLN</string>
+    <string name="str_bln_summary">Use BLN instead of CM Led (must reboot)</string>
 
     <string name="str_touch_enable_title">Enabled</string>
     <string name="str_touch_enable_summary"></string>
