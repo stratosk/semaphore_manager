@@ -232,14 +232,14 @@ public class Commander {
             outt.start();
 
             try {
-                p.waitFor();
+                int exitVal = p.waitFor();
                 try {
                     errt.join();
                     outt.join();
                 } catch (InterruptedException ex) {
                 }
 
-                if (p.exitValue() == 0) {
+                if (exitVal == 0) {
                     if (errResult.isEmpty()) {
                         result = 0;
                     } else {
