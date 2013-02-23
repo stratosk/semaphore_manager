@@ -259,6 +259,9 @@
     <string name="str_xbox_title">X-Box pad</string>
     <string name="str_xbox_summary"></string>
 
+    <string name="str_usbhid_title">USB HID</string>
+    <string name="str_usbhid_summary"></string>
+
     <string name="str_fastchg_title">Fast charge</string>
     <string name="str_fastchg_summary">Please use it at your own risk</string>
 

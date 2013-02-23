@@ -25,6 +25,9 @@
         <SwitchPreference
             android:key="xbox"
             android:title="@string/str_xbox_title" />
+        <SwitchPreference
+            android:key="usbhid"
+            android:title="@string/str_usbhid_title" />
     </PreferenceCategory>
 
 

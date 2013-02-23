@@ -36,6 +36,7 @@ public class SemaProperties {
     public SMModuleProperty radio_si4709_i2c;
     public SMModuleProperty mousedev;
     public SMXboxProperty xbox;
+    public SMModuleProperty usbhid;
     public SMSchedulerProperty scheduler;
     public SMAbProperty autobr;
     public SMIntProperty vibrator;
@@ -69,6 +70,7 @@ public class SemaProperties {
         radio_si4709_i2c = new SMModuleProperty("radio_si4709_i2c", "radio-si4709-i2c", false, false);
         mousedev = new SMModuleProperty("mousedev", "mousedev", false, false);
         xbox = new SMXboxProperty(false);
+        usbhid = new SMModuleProperty("usbhid", "usbhid", false, false);
 
         scheduler = new SMSchedulerProperty("scheduler", "noop");
         autobr = new SMAbProperty();
@@ -104,6 +106,7 @@ public class SemaProperties {
         radio_si4709_i2c.readValue();
         mousedev.readValue();
         xbox.readValue();
+        usbhid.readValue();
 
         scheduler.readValue();
         autobr.readValue();
@@ -162,6 +165,7 @@ public class SemaProperties {
         radio_si4709_i2c.writeBatch(cmds);
         mousedev.writeBatch(cmds);
         xbox.writeBatch(cmds);
+        usbhid.writeBatch(cmds);
 
         scheduler.writeBatch(cmds);
         autobr.writeBatch(cmds);
@@ -220,6 +224,7 @@ public class SemaProperties {
         radio_si4709_i2c.writeValue();
         mousedev.writeValue();
         xbox.writeValue();
+        usbhid.writeValue();
 
         scheduler.writeValue();
         autobr.writeValue();
@@ -294,7 +299,8 @@ public class SemaProperties {
         edit.putBoolean(radio_si4709_i2c.getName(), radio_si4709_i2c.getValue());
         edit.putBoolean(mousedev.getName(), mousedev.getValue());
         edit.putBoolean(xbox.getName(), xbox.getValue());
-
+        edit.putBoolean(usbhid.getName(), usbhid.getValue());
+        
         edit.putString(scheduler.getName(), scheduler.getValue());
         edit.putBoolean(autobr.sema_autobr.getName(), autobr.sema_autobr.getValue());
         edit.putString(autobr.min_brightness.getName(), String.valueOf(autobr.min_brightness.getValue()));
@@ -379,7 +385,8 @@ public class SemaProperties {
         radio_si4709_i2c.setValue(prefs.getBoolean(radio_si4709_i2c.getName(), radio_si4709_i2c.getDefValue()));
         mousedev.setValue(prefs.getBoolean(mousedev.getName(), mousedev.getDefValue()));
         xbox.setValue(prefs.getBoolean(xbox.getName(), xbox.getValue()));
-
+        usbhid.setValue(prefs.getBoolean(usbhid.getName(), usbhid.getDefValue()));
+        
         scheduler.setValue(prefs.getString(scheduler.getName(), scheduler.getDefValue()));
         autobr.sema_autobr.setValue(prefs.getBoolean(autobr.sema_autobr.getName(), autobr.sema_autobr.getDefValue()));
         autobr.min_brightness.setValue(prefs.getString(autobr.min_brightness.getName(), autobr.min_brightness.getDefString()));
@@ -463,6 +470,7 @@ public class SemaProperties {
         radio_si4709_i2c.setValue(radio_si4709_i2c.getDefValue());
         mousedev.setValue(mousedev.getDefValue());
         xbox.setValue(xbox.getValue());
+        usbhid.setValue(usbhid.getDefValue());
 
         scheduler.setValue(scheduler.getDefValue());
         autobr.sema_autobr.setValue(autobr.sema_autobr.getDefValue());
