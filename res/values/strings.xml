@@ -148,6 +148,8 @@
     <string name="str_i_timer_slack_summary">Valid values 10000-200000</string>
     <string name="str_i_boostpulse_duration_title">Boostpulse duration</string>
     <string name="str_i_boostpulse_duration_summary">Valid values 10000-200000</string>
+    <string name="str_i_target_loads_title">Target loads</string>
+    <string name="str_i_target_loads_summary">Valid values 1-100</string>
 
     <string name="str_cat_deep_idle_title">Deep Idle</string>
     <string name="str_deep_idle_title">Enabled</string>

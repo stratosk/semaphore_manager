@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012-2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -280,6 +280,7 @@ public class SemaProperties {
         edit.putString(interactive.timer_rate.getName(), interactive.timer_rate.getValString());
         edit.putString(interactive.timer_slack.getName(), interactive.timer_slack.getValString());
         edit.putString(interactive.boostpulse_duration.getName(), interactive.boostpulse_duration.getValString());
+        edit.putString(interactive.target_loads.getName(), interactive.target_loads.getValue());
         
         edit.putBoolean(deep_idle.getName(), deep_idle.getBoolean());
         edit.putBoolean(deep_idle_stats.getName(), deep_idle_stats.getBoolean());
@@ -364,6 +365,7 @@ public class SemaProperties {
         interactive.timer_rate.setValue(prefs.getString(interactive.timer_rate.getName(), interactive.timer_rate.getDefString()));
         interactive.timer_slack.setValue(prefs.getString(interactive.timer_slack.getName(), interactive.timer_slack.getDefString()));
         interactive.boostpulse_duration.setValue(prefs.getString(interactive.boostpulse_duration.getName(), interactive.boostpulse_duration.getDefString()));
+        interactive.target_loads.setValue(prefs.getString(interactive.target_loads.getName(), interactive.target_loads.getDefValue()));
 
         deep_idle.setValue((prefs.getBoolean(deep_idle.getName(), deep_idle.getDefBoolean()) == true ? 1 : 0));
         deep_idle_stats.setValue((prefs.getBoolean(deep_idle_stats.getName(), deep_idle_stats.getDefBoolean()) == true ? 1 : 0));
@@ -447,6 +449,7 @@ public class SemaProperties {
         interactive.timer_rate.setValue(interactive.timer_rate.getDefString());
         interactive.timer_slack.setValue(interactive.timer_slack.getDefString());
         interactive.boostpulse_duration.setValue(interactive.boostpulse_duration.getDefString());
+        interactive.target_loads.setValue(interactive.target_loads.getDefValue());
         
         deep_idle.setValue(deep_idle.getDefault());
         deep_idle_stats.setValue(deep_idle_stats.getDefault());

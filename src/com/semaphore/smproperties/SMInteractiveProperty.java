@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012-2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -21,6 +21,7 @@ public class SMInteractiveProperty extends SMBatchProperty {
     public SMIntProperty timer_rate;
     public SMIntProperty timer_slack;
     public SMIntProperty boostpulse_duration;
+    public SMStringProperty target_loads;
 
     public SMInteractiveProperty() {
         super("interactive");
@@ -36,6 +37,7 @@ public class SMInteractiveProperty extends SMBatchProperty {
         timer_rate = new SMIntProperty("i_timer_rate", basepath.concat("timer_rate"), false, 10000, 100000, 20000);
         timer_slack = new SMIntProperty("i_timer_slack", basepath.concat("timer_slack"), false, 10000, 200000, 80000);
         boostpulse_duration = new SMIntProperty("i_boostpulse_duration", basepath.concat("timer_slack"), false, 10000, 200000, 80000);
+        target_loads = new SMStringProperty("i_target_loads", basepath.concat("target_loads"), false, "90");
     }
 
     public void readValue() {
@@ -46,6 +48,7 @@ public class SMInteractiveProperty extends SMBatchProperty {
         timer_rate.readValue();
         timer_slack.readValue();
         boostpulse_duration.readValue();
+        target_loads.readValue();
     }
 
     public void writeValue() {
@@ -56,6 +59,7 @@ public class SMInteractiveProperty extends SMBatchProperty {
         timer_rate.writeValue();
         timer_slack.writeValue();
         boostpulse_duration.writeValue();
+        target_loads.writeValue();
     }
 
     public void writebatch(List<String> cmds) {
@@ -66,5 +70,6 @@ public class SMInteractiveProperty extends SMBatchProperty {
         timer_rate.writeBatch(cmds);
         timer_slack.writeBatch(cmds);
         boostpulse_duration.writeBatch(cmds);
+        target_loads.writeBatch(cmds);
     }
 }

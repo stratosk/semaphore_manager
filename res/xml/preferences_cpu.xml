@@ -224,6 +224,12 @@
                 android:summary="@string/str_i_boostpulse_duration_summary"
                 android:numeric="integer"
                 android:inputType="number" />
+            <EditTextPreference
+                android:key="i_target_loads"
+                android:title="@string/str_i_target_loads_title"
+                android:summary="@string/str_i_target_loads_summary"
+                android:numeric="integer"
+                android:inputType="textNoSuggestions" />
 
         </PreferenceScreen>
     </PreferenceCategory>
