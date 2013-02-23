@@ -19,6 +19,8 @@ public class SMOndemandProperty extends SMBatchProperty {
     public SMIntProperty sampling_rate;
     public SMIntProperty up_threshold;
     public SMIntProperty smooth_ui;
+    public SMIntProperty early_demand;
+    public SMIntProperty grad_up_threshold; 
 
     public SMOndemandProperty() {
         super("ondemand");
@@ -29,8 +31,10 @@ public class SMOndemandProperty extends SMBatchProperty {
         sampling_down_factor = new SMIntProperty("o_sampling_down_factor", basepath.concat("sampling_down_factor"), true, 1, 1000, 4);
         sampling_down_max_momentum = new SMIntProperty("o_sampling_down_max_momentum", basepath.concat("sampling_down_max_momentum"), true, 1, 1000, 16);
         sampling_rate = new SMIntProperty("o_sampling_rate", basepath.concat("sampling_rate"), false, 10000, 40000, 20000);
-        up_threshold = new SMIntProperty("o_up_threshold", basepath.concat("up_threshold"), false, 1, 100, 85);
+        up_threshold = new SMIntProperty("o_up_threshold", basepath.concat("up_threshold"), false, 11, 100, 85);
         smooth_ui = new SMIntProperty("o_smooth_ui", basepath.concat("smooth_ui"), false, 0, 1, 0);
+        early_demand = new SMIntProperty("o_early_demand", basepath.concat("early_demand"), false, 0, 1, 0);
+        grad_up_threshold = new SMIntProperty("o_grad_up_threshold", basepath.concat("grad_up_threshold"), false, 11, 100, 50);
     }
 
     @Override
@@ -41,6 +45,8 @@ public class SMOndemandProperty extends SMBatchProperty {
         sampling_rate.readValue();
         up_threshold.readValue();
         smooth_ui.readValue();
+        early_demand.readValue();
+        grad_up_threshold.readValue();
     }
 
     @Override
@@ -51,6 +57,8 @@ public class SMOndemandProperty extends SMBatchProperty {
         sampling_rate.writeValue();
         up_threshold.writeValue();
         smooth_ui.writeValue();
+        early_demand.writeValue();
+        grad_up_threshold.writeValue();
     }
 
     public void writeBatch(List<String> cmds) {
@@ -60,5 +68,7 @@ public class SMOndemandProperty extends SMBatchProperty {
         sampling_rate.writeBatch(cmds);
         up_threshold.writeBatch(cmds);
         smooth_ui.writeBatch(cmds);
+        early_demand.writeValue();
+        grad_up_threshold.writeValue();
     }
 }

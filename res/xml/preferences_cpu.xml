@@ -58,6 +58,16 @@
             <SwitchPreference
                 android:key="o_smooth_ui"
                 android:title="@string/str_o_smooth_ui_title" />
+            <SwitchPreference
+                android:key="o_early_demand"
+                android:title="@string/str_o_early_demand_title" />
+            <EditTextPreference
+                android:key="o_grad_up_threshold"
+                android:title="@string/str_o_grad_up_threshold_title"
+                android:summary="@string/str_o_grad_up_threshold_summary"
+                android:numeric="integer"
+                android:inputType="number" 
+                android:dependency="o_early_demand"/>
 
         </PreferenceScreen>
         <PreferenceScreen

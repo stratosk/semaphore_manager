@@ -94,8 +94,11 @@
     <string name="str_o_sampling_rate_title">Sampling rate</string>
     <string name="str_o_sampling_rate_summary">Valid values 10000-100000</string>
     <string name="str_o_up_threshold_title">Up threshold</string>
-    <string name="str_o_up_threshold_summary">Valid values 1-100</string>
+    <string name="str_o_up_threshold_summary">Valid values 11-100</string>
     <string name="str_o_smooth_ui_title">Smooth UI</string>
+    <string name="str_o_early_demand_title">Early demand</string>
+    <string name="str_o_grad_up_threshold_title">Gradient up threshold</string>
+    <string name="str_o_grad_up_threshold_summary">Valid values 11-100</string>
 
     <string name="str_c_freq_step_title">Frequency step</string>
     <string name="str_c_freq_step_summary">Valid values 1-100</string>
