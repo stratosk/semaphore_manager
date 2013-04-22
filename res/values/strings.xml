@@ -44,6 +44,18 @@
         <item>interactive</item>
     </string-array>
     
+    <string-array name="array_gov_entries_n4">
+        <item>Ondemand</item>
+        <item>Conservative</item>
+        <item>Interactive</item>
+    </string-array>
+ 
+    <string-array name="array_gov_values_n4">
+        <item>ondemand</item>
+        <item>conservative</item>
+        <item>interactive</item>
+    </string-array>
+
     <string-array name="scripts">
         <item>noop</item>
         <item>deadline</item>

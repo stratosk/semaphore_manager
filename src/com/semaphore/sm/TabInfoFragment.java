@@ -17,7 +17,9 @@ import android.preference.Preference;
 public class TabInfoFragment extends PreferenceListFragment {
 
     public TabInfoFragment() {
-        super(R.xml.preferences_info);
+        super();
+        
+        super.setxmlId(R.xml.preferences_info);
     }
 
     @Override

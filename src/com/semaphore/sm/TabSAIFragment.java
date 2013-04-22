@@ -77,7 +77,12 @@ public class TabSAIFragment extends PreferenceListFragment implements SharedPref
     }
 
     public TabSAIFragment() {
-        super(R.xml.preferences_sai);
+        super();
+        
+        if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+            super.setxmlId(R.xml.preferences_sai_n4);
+        else
+            super.setxmlId(R.xml.preferences_sai_i9000);
     }
 
     @Override

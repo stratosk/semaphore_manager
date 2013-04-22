@@ -16,12 +16,20 @@ import android.os.Vibrator;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import com.semaphore.smproperties.SemaProperties;
+import com.semaphore.smproperties.SemaCommonProperties;
+import com.semaphore.smproperties.SemaI9000Properties;
+import com.semaphore.smproperties.SemaN4Properties;
 
 public class TabTweaksFragment extends PreferenceListFragment implements SharedPreferences.OnSharedPreferenceChangeListener, Preference.OnPreferenceClickListener {
+    private SemaCommonProperties scp;
 
     public TabTweaksFragment() {
-        super(R.xml.preferences_tweaks);
+        super();
+        
+        if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+            super.setxmlId(R.xml.preferences_tweaks_n4);
+        else
+            super.setxmlId(R.xml.preferences_tweaks_i9000);
     }
 
     @Override
@@ -31,14 +39,14 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         //addPreferencesFromResource(R.xml.preferences_tweaks);
         //getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
 
-        Preference pref = findPreference("vibrator_test");
-        pref.setOnPreferenceClickListener(this);
-
         updateSummaries();
+        Preference pref = findPreference("vibrator_test");
+        if (pref != null)
+                pref.setOnPreferenceClickListener(this);
     }
 
-    public void updateSummaries() {
-        SemaProperties sp = MainActivity.sp;
+    private void updateSummariesI9000() {
+        SemaI9000Properties sp = (SemaI9000Properties) scp;
 
         Preference pref = findPreference("scheduler");
         if (pref == null) {
@@ -72,27 +80,41 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         pref = findPreference(sp.autobr.instant_update_thres.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.autobr.effect_delay_ms.getName());
-        pref.setSummary(((EditTextPreference) pref).getText());
+        pref.setSummary(((EditTextPreference) pref).getText());        
     }
+    
+    private void updateSummariesN4() {
+        SemaN4Properties sp = (SemaN4Properties) scp;
 
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (MainActivity.readingValues) {
+        Preference pref = findPreference("scheduler");
+        if (pref == null) {
             return;
         }
-        Preference pref = findPreference(key);
-        if (pref instanceof ListPreference) {
-            ListPreference listPref = (ListPreference) pref;
-            if (listPref.getEntry() != null) {
-                pref.setSummary(listPref.getEntry().toString());
-            }
-        } else if (pref instanceof EditTextPreference) {
-            EditTextPreference epref = (EditTextPreference) pref;
-            if (epref.getText() != null) {
-                epref.setSummary(epref.getText());
-            }
+        if (((ListPreference) pref).getEntry() != null) {
+            pref.setSummary(((ListPreference) pref).getEntry().toString());
         }
 
-        SemaProperties sp = MainActivity.sp;
+        pref = findPreference(sp.touch.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+    }
+
+    public void updateSummaries() {
+        scp = MainActivity.sp;
+        
+        if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+            updateSummariesN4();
+        else
+            updateSummariesI9000();
+    }
+
+    private void writeMako(SharedPreferences sharedPreferences, String key) {
+        SemaN4Properties sp = (SemaN4Properties) scp;        
+
+    }
+    
+    private void writeI9000(SharedPreferences sharedPreferences, String key) {
+        SemaI9000Properties sp = (SemaI9000Properties) scp;        
+
         if (key.equals(sp.scheduler.getName())) {
             sp.scheduler.setValue(sharedPreferences.getString(key, sp.scheduler.getDefValue()));
             sp.scheduler.writeValue();
@@ -159,6 +181,31 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
             sp.bln.setValue(sharedPreferences.getBoolean(key, sp.bln.getDefValue()));
             sp.bln.writeValue();
         }
+    }
+    
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (MainActivity.readingValues) {
+            return;
+        }
+        Preference pref = findPreference(key);
+        if (pref instanceof ListPreference) {
+            ListPreference listPref = (ListPreference) pref;
+            if (listPref.getEntry() != null) {
+                pref.setSummary(listPref.getEntry().toString());
+            }
+        } else if (pref instanceof EditTextPreference) {
+            EditTextPreference epref = (EditTextPreference) pref;
+            if (epref.getText() != null) {
+                epref.setSummary(epref.getText());
+            }
+        }
+
+        scp = MainActivity.sp;
+        
+        if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+            writeMako(sharedPreferences, key);
+        else
+            writeI9000(sharedPreferences, key);
     }
 
     public boolean onPreferenceClick(Preference preference) {

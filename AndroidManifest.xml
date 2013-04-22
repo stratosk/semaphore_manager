@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.semaphore.sm"
-          android:versionCode="18"
-          android:versionName="2.3.0">
+          android:versionCode="20"
+          android:versionName="2.5.0">
     
-    <uses-sdk android:targetSdkVersion="16"
-              android:minSdkVersion="15"/>
+    <uses-sdk android:targetSdkVersion="17"
+              android:minSdkVersion="17"/>
     
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>

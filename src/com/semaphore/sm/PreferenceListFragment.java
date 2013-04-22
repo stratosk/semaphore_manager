@@ -51,11 +51,13 @@ public class PreferenceListFragment extends ListFragment {
     };
     private ListView lv;
     private int xmlId;
-    private OnPreferenceAttachedListener listener;
     
-    public PreferenceListFragment(int xmlId){
+    public void setxmlId(int xmlId) {
         this.xmlId = xmlId;
     }
+    
+    private OnPreferenceAttachedListener listener;
+    
     //must be provided
     public PreferenceListFragment(){
         

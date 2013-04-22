@@ -25,29 +25,37 @@ import android.preference.SwitchPreference;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.semaphore.smproperties.SemaProperties;
+import com.semaphore.smproperties.SemaCommonProperties;
+import com.semaphore.smproperties.SemaI9000Properties;
+import com.semaphore.smproperties.SemaN4Properties;
 
 public class TabCPUFragment extends PreferenceListFragment implements OnSharedPreferenceChangeListener, OnPreferenceClickListener {
-
+    private SemaCommonProperties scp;
+    
     public TabCPUFragment() {
-        super(R.xml.preferences_cpu);
+        super();
+        
+        if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+            super.setxmlId(R.xml.preferences_cpu_n4);
+        else
+            super.setxmlId(R.xml.preferences_cpu_i9000);
     }
 
-    ;
-    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 //        addPreferencesFromResource(R.xml.preferences_cpu);
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-        Preference pref = findPreference("deep_idle_stats_show");
-        pref.setOnPreferenceClickListener(this);
-        pref = findPreference("cv_apply");
-        pref.setOnPreferenceClickListener(this);
-        pref = findPreference("cv_reset");
-        pref.setOnPreferenceClickListener(this);
         
+        if (MainActivity.Device == MainActivity.SemaDevices.I9000) {
+            Preference pref = findPreference("deep_idle_stats_show");
+            pref.setOnPreferenceClickListener(this);
+            pref = findPreference("cv_apply");
+            pref.setOnPreferenceClickListener(this);
+            pref = findPreference("cv_reset");
+            pref.setOnPreferenceClickListener(this);
+        }
         updateSummaries();
     }
 
@@ -91,27 +99,8 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
     public void onPreferenceChange(Preference preference, Object newValue) {
     }
 
-    public void updateCVTitles () {
-        SemaProperties sp = MainActivity.sp;
-
-        Resources res = getResources();
-        Preference pref;
-
-        pref = findPreference("cv_l0");
-        pref.setTitle(res.getString(R.string.str_cv_l0_title) + " (" + String.valueOf(1000 * sp.oc.getValue() / 100) + "MHz)");
-        pref = findPreference("cv_l1");
-        pref.setTitle(res.getString(R.string.str_cv_l1_title) + " (" + String.valueOf(800 * sp.oc.getValue() / 100) + "MHz)");
-        pref = findPreference("cv_l2");
-        pref.setTitle(res.getString(R.string.str_cv_l2_title) + " (" + String.valueOf(400 * sp.oc.getValue() / 100) + "MHz)");
-        pref = findPreference("cv_l3");
-        pref.setTitle(res.getString(R.string.str_cv_l3_title) + " (" + String.valueOf(200 * sp.oc.getValue() / 100) + "MHz)");
-        pref = findPreference("cv_l4");
-        pref.setTitle(res.getString(R.string.str_cv_l4_title) + " (" + String.valueOf(100 * sp.oc.getValue() / 100) + "MHz)");
-    }
-    
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (MainActivity.readingValues)
-            return;
+    private void writeMako(SharedPreferences sharedPreferences, String key) {
+        SemaN4Properties sp = (SemaN4Properties) scp;        
 
         Preference pref = findPreference(key);
 
@@ -127,7 +116,133 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             }
         }
 
-        SemaProperties sp = MainActivity.sp;
+        if (key.equals(sp.ondemand.io_is_busy.getName())) {
+            sp.ondemand.io_is_busy.setValue(sharedPreferences.getBoolean(key, sp.ondemand.io_is_busy.getDefBoolean()) == true ? 1 : 0);
+            sp.ondemand.io_is_busy.writeValue();
+        } else if (key.equals(sp.ondemand.sampling_down_factor.getName())) {
+            sp.ondemand.sampling_down_factor.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.sampling_down_factor.getDefault()))));
+            sp.ondemand.sampling_down_factor.writeValue();
+        } else if (key.equals(sp.ondemand.sampling_down_max_momentum.getName())) {
+            sp.ondemand.sampling_down_max_momentum.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.sampling_down_max_momentum.getDefault()))));
+            sp.ondemand.sampling_down_max_momentum.writeValue();
+        } else if (key.equals(sp.ondemand.sampling_rate.getName())) {
+            sp.ondemand.sampling_rate.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.sampling_rate.getDefault()))));
+            sp.ondemand.sampling_rate.writeValue();
+        } else if (key.equals(sp.ondemand.up_threshold.getName())) {
+            sp.ondemand.up_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.up_threshold.getDefault()))));
+            sp.ondemand.up_threshold.writeValue();
+        } else if (key.equals(sp.ondemand.smooth_ui.getName())) {
+            sp.ondemand.smooth_ui.setValue(sharedPreferences.getBoolean(key, sp.ondemand.smooth_ui.getDefBoolean()) == true ? 1 : 0);
+            sp.ondemand.smooth_ui.writeValue();
+        } else if (key.equals(sp.ondemand.early_demand.getName())) {
+            sp.ondemand.early_demand.setValue(sharedPreferences.getBoolean(key, sp.ondemand.early_demand.getDefBoolean()) == true ? 1 : 0);
+            sp.ondemand.early_demand.writeValue();
+        } else if (key.equals(sp.ondemand.grad_up_threshold.getName())) {
+            sp.ondemand.grad_up_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.grad_up_threshold.getDefault()))));
+            sp.ondemand.grad_up_threshold.writeValue();
+        } else if (key.equals(sp.conservative.freq_step.getName())) { // Conservative
+            sp.conservative.freq_step.setValue(Integer.parseInt(sharedPreferences.getString(key, sp.conservative.freq_step.getDefString())));
+            sp.conservative.freq_step.writeValue();
+        } else if (key.equals(sp.conservative.sampling_down_factor.getName())) {
+            sp.conservative.sampling_down_factor.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.conservative.sampling_down_factor.getDefault()))));
+            sp.conservative.sampling_down_factor.writeValue();
+        } else if (key.equals(sp.conservative.sampling_rate.getName())) {
+            sp.conservative.sampling_rate.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.conservative.sampling_rate.getDefault()))));
+            sp.conservative.sampling_rate.writeValue();
+        } else if (key.equals(sp.conservative.up_threshold.getName())) {
+            sp.conservative.up_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.conservative.up_threshold.getDefault()))));
+            sp.conservative.up_threshold.writeValue();
+        } else if (key.equals(sp.conservative.down_threshold.getName())) {
+            sp.conservative.down_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.conservative.down_threshold.getDefault()))));
+            sp.conservative.down_threshold.writeValue();
+        } else if (key.equals(sp.conservative.smooth_ui.getName())) {
+            sp.conservative.smooth_ui.setValue(sharedPreferences.getBoolean(key, sp.conservative.smooth_ui.getDefBoolean()) == true ? 1 : 0);
+            sp.conservative.smooth_ui.writeValue();
+        } else if (key.equals(sp.interactive.hispeed_freq.getName())) { // Interactive
+            sp.interactive.hispeed_freq.setValue(Integer.parseInt(sharedPreferences.getString(key, sp.interactive.hispeed_freq.getDefString())));
+            sp.interactive.hispeed_freq.writeValue();
+        } else if (key.equals(sp.interactive.go_hispeed_load.getName())) {
+            sp.interactive.go_hispeed_load.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.go_hispeed_load.getDefault()))));
+            sp.interactive.go_hispeed_load.writeValue();
+        } else if (key.equals(sp.interactive.min_sampling_time.getName())) {
+            sp.interactive.min_sampling_time.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.min_sampling_time.getDefault()))));
+            sp.interactive.min_sampling_time.writeValue();
+        } else if (key.equals(sp.interactive.above_hispeed_delay.getName())) {
+            sp.interactive.above_hispeed_delay.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.above_hispeed_delay.getDefault()))));
+            sp.interactive.above_hispeed_delay.writeValue();
+        } else if (key.equals(sp.interactive.timer_rate.getName())) {
+            sp.interactive.timer_rate.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.timer_rate.getDefault()))));
+            sp.interactive.timer_rate.writeValue();
+        } else if (key.equals(sp.interactive.timer_slack.getName())) {
+            sp.interactive.timer_slack.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.timer_slack.getDefault()))));
+            sp.interactive.timer_slack.writeValue();
+        } else if (key.equals(sp.interactive.boostpulse_duration.getName())) {
+            sp.interactive.boostpulse_duration.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.boostpulse_duration.getDefault()))));
+            sp.interactive.boostpulse_duration.writeValue();
+        } else if (key.equals(sp.interactive.target_loads.getName())) {
+            sp.interactive.target_loads.setValue(sharedPreferences.getString(key, String.valueOf(sp.interactive.target_loads.getDefValue())));
+            sp.interactive.target_loads.writeValue();
+        } else if (key.equals(sp.gov.getName())) {
+            if (sharedPreferences.getString(sp.gov.getName(), sp.gov.getDefValue()).equals(sp.ondemand.getName())) {
+                sp.gov.setValue(sharedPreferences.getString(key, sp.gov.getDefValue()));
+                sp.gov.writeValue();
+                ((SwitchPreference) findPreference(sp.ondemand.io_is_busy.getName())).setChecked(sp.ondemand.io_is_busy.getBoolean());
+                ((EditTextPreference) findPreference(sp.ondemand.sampling_down_factor.getName())).setText(sp.ondemand.sampling_down_factor.getValString());
+                ((EditTextPreference) findPreference(sp.ondemand.sampling_down_max_momentum.getName())).setText(sp.ondemand.sampling_down_max_momentum.getValString());
+                ((EditTextPreference) findPreference(sp.ondemand.sampling_rate.getName())).setText(sp.ondemand.sampling_rate.getValString());
+                ((EditTextPreference) findPreference(sp.ondemand.up_threshold.getName())).setText(sp.ondemand.up_threshold.getValString());
+                ((SwitchPreference) findPreference(sp.ondemand.smooth_ui.getName())).setChecked(sp.ondemand.smooth_ui.getBoolean());
+                ((SwitchPreference) findPreference(sp.ondemand.early_demand.getName())).setChecked(sp.ondemand.early_demand.getBoolean());
+                ((EditTextPreference) findPreference(sp.ondemand.grad_up_threshold.getName())).setText(sp.ondemand.grad_up_threshold.getValString());
+                sp.conservative.cons.setValue(false);
+                sp.conservative.cons.writeValue();
+            } else if (sharedPreferences.getString(sp.gov.getName(), sp.gov.getDefValue()).equals(sp.conservative.getName())) {
+                sp.conservative.cons.setValue(true);
+                sp.conservative.cons.writeValue();
+                sp.gov.setValue(sharedPreferences.getString(key, sp.gov.getDefValue()));
+                sp.gov.writeValue();
+                ((EditTextPreference) findPreference(sp.conservative.freq_step.getName())).setText(sp.conservative.freq_step.getValString());
+                ((EditTextPreference) findPreference(sp.conservative.sampling_down_factor.getName())).setText(sp.conservative.sampling_down_factor.getValString());
+                ((EditTextPreference) findPreference(sp.conservative.sampling_rate.getName())).setText(sp.conservative.sampling_rate.getValString());
+                ((EditTextPreference) findPreference(sp.conservative.up_threshold.getName())).setText(sp.conservative.up_threshold.getValString());
+                ((EditTextPreference) findPreference(sp.conservative.down_threshold.getName())).setText(sp.conservative.down_threshold.getValString());
+                ((SwitchPreference) findPreference(sp.conservative.smooth_ui.getName())).setChecked(sp.conservative.smooth_ui.getBoolean());
+            } else if (sharedPreferences.getString(sp.gov.getName(), sp.gov.getDefValue()).equals(sp.interactive.getName())) {
+                sp.interactive.inter.setValue(true);
+                sp.interactive.inter.writeValue();
+                sp.gov.setValue(sharedPreferences.getString(key, sp.gov.getDefValue()));
+                sp.gov.writeValue();
+                ((EditTextPreference) findPreference(sp.interactive.hispeed_freq.getName())).setText(sp.interactive.hispeed_freq.getValString());
+                ((EditTextPreference) findPreference(sp.interactive.go_hispeed_load.getName())).setText(sp.interactive.go_hispeed_load.getValString());
+                ((EditTextPreference) findPreference(sp.interactive.min_sampling_time.getName())).setText(sp.interactive.min_sampling_time.getValString());
+                ((EditTextPreference) findPreference(sp.interactive.above_hispeed_delay.getName())).setText(sp.interactive.above_hispeed_delay.getValString());
+                ((EditTextPreference) findPreference(sp.interactive.timer_rate.getName())).setText(sp.interactive.timer_rate.getValString());
+                ((EditTextPreference) findPreference(sp.interactive.timer_slack.getName())).setText(sp.interactive.timer_slack.getValString());
+                ((EditTextPreference) findPreference(sp.interactive.boostpulse_duration.getName())).setText(sp.interactive.boostpulse_duration.getValString());
+                ((EditTextPreference) findPreference(sp.interactive.target_loads.getName())).setText(sp.interactive.target_loads.getValue());
+                sp.conservative.cons.setValue(false);
+                sp.conservative.cons.writeValue();
+            }
+        }
+    }
+    
+    private void writeI9000(SharedPreferences sharedPreferences, String key) {
+        SemaI9000Properties sp = (SemaI9000Properties) scp;
+
+        Preference pref = findPreference(key);
+
+        if (pref instanceof ListPreference) {
+            ListPreference listPref = (ListPreference) pref;
+            if (listPref.getEntry() != null) {
+                pref.setSummary(listPref.getEntry().toString());
+            }
+        } else if (pref instanceof EditTextPreference) {
+            EditTextPreference epref = (EditTextPreference) pref;
+            if (epref.getText() != null) {
+                epref.setSummary(epref.getText());
+            }
+        }
+
         if (key.equals(sp.oc.getName())) {
             sp.oc.setValue(sharedPreferences.getInt(key, sp.oc.getDefault()));
             sp.oc.writeValue();
@@ -327,11 +442,102 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             sp.cv.cv_l4.setValue(sharedPreferences.getInt(key, sp.cv.cv_l4.getDefault()));
         }
         pref = findPreference("cv_cv");
-        pref.setSummary(sp.cv.getVolts());
+        pref.setSummary(sp.cv.getVolts());        
+    }
+    
+    public void updateCVTitles () {
+        SemaI9000Properties sp = (SemaI9000Properties) scp;
+
+        Resources res = getResources();
+        Preference pref;
+
+        pref = findPreference("cv_l0");
+        pref.setTitle(res.getString(R.string.str_cv_l0_title) + " (" + String.valueOf(1000 * sp.oc.getValue() / 100) + "MHz)");
+        pref = findPreference("cv_l1");
+        pref.setTitle(res.getString(R.string.str_cv_l1_title) + " (" + String.valueOf(800 * sp.oc.getValue() / 100) + "MHz)");
+        pref = findPreference("cv_l2");
+        pref.setTitle(res.getString(R.string.str_cv_l2_title) + " (" + String.valueOf(400 * sp.oc.getValue() / 100) + "MHz)");
+        pref = findPreference("cv_l3");
+        pref.setTitle(res.getString(R.string.str_cv_l3_title) + " (" + String.valueOf(200 * sp.oc.getValue() / 100) + "MHz)");
+        pref = findPreference("cv_l4");
+        pref.setTitle(res.getString(R.string.str_cv_l4_title) + " (" + String.valueOf(100 * sp.oc.getValue() / 100) + "MHz)");
+    }
+
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (MainActivity.readingValues)
+            return;
+
+        scp = MainActivity.sp;
+        
+        if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+            writeMako(sharedPreferences, key);
+        else
+            writeI9000(sharedPreferences, key);
     }
 
     public void updateSummaries() {
-        SemaProperties sp = MainActivity.sp;
+        scp = MainActivity.sp;
+
+        if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+            updateSummariesN4();
+        else
+            updateSummariesI9000();
+    }
+    
+    private void updateSummariesN4() {
+        SemaN4Properties sp = (SemaN4Properties) scp;
+
+        Preference pref = findPreference(sp.gov.getName());
+        if (pref == null) {
+            return;
+        }
+
+        if (((ListPreference) pref).getEntry() != null) {
+            pref.setSummary(((ListPreference) pref).getEntry().toString());
+        }
+
+        pref = findPreference(sp.ondemand.sampling_down_factor.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.ondemand.sampling_down_max_momentum.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.ondemand.sampling_rate.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.ondemand.up_threshold.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.ondemand.grad_up_threshold.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+
+        pref = findPreference(sp.conservative.freq_step.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.conservative.sampling_down_factor.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.conservative.sampling_rate.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.conservative.up_threshold.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.conservative.down_threshold.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+
+        pref = findPreference(sp.interactive.hispeed_freq.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.interactive.go_hispeed_load.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.interactive.min_sampling_time.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.interactive.above_hispeed_delay.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.interactive.timer_rate.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.interactive.timer_slack.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.interactive.boostpulse_duration.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.interactive.target_loads.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+    }
+    
+    private void updateSummariesI9000() {
+        SemaI9000Properties sp = (SemaI9000Properties) scp;
 
         Preference pref = findPreference(sp.gov.getName());
         if (pref == null) {
@@ -430,11 +636,11 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             showIdleDialog();
             ret = true;
         } else if (preference.getKey().equals("cv_apply")) {
-            SemaProperties sp = MainActivity.sp;
+            SemaI9000Properties sp = (SemaI9000Properties) scp;
             sp.cv.writeValue();
             Toast.makeText(getActivity(), "Custom voltages applied", Toast.LENGTH_SHORT).show();
         } else if (preference.getKey().equals("cv_reset")) {
-            SemaProperties sp = MainActivity.sp;
+            SemaI9000Properties sp = (SemaI9000Properties) scp;
             sp.cv.cv_max_arm.setValue(sp.cv.cv_max_arm.getDefault());
             sp.cv.cv_l0.setValue(sp.cv.cv_l0.getDefault());
             sp.cv.cv_l1.setValue(sp.cv.cv_l1.getDefault());
@@ -452,7 +658,7 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             edit.putInt(sp.cv.cv_l3.getName(), sp.cv.cv_l3.getDefault());
             edit.putInt(sp.cv.cv_l4.getName(), sp.cv.cv_l4.getDefault());
             edit.commit();
-            updateSummaries();
+            updateSummariesI9000();
             Toast.makeText(getActivity(), "Custom voltages reset to default", Toast.LENGTH_SHORT).show();
             getActivity().recreate();
         }

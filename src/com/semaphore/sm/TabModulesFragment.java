@@ -11,12 +11,20 @@ package com.semaphore.sm;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import com.semaphore.smproperties.SemaProperties;
+import com.semaphore.smproperties.SemaCommonProperties;
+import com.semaphore.smproperties.SemaI9000Properties;
+import com.semaphore.smproperties.SemaN4Properties;
 
 public class TabModulesFragment extends PreferenceListFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
-
+    private SemaCommonProperties scp;
+            
     public TabModulesFragment() {
-        super(R.xml.preferences_modules);
+        super();
+        
+        if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+            super.setxmlId(R.xml.preferences_modules_n4);
+        else
+            super.setxmlId(R.xml.preferences_modules_i9000);
     }
 
     @Override
@@ -27,11 +35,13 @@ public class TabModulesFragment extends PreferenceListFragment implements Shared
         //getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
     }
 
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (MainActivity.readingValues) {
-            return;
-        }
-        SemaProperties sp = MainActivity.sp;
+    private void writeMako(SharedPreferences sharedPreferences, String key) {
+        SemaN4Properties sp = (SemaN4Properties) scp;        
+    }
+    
+    private void writeI9000(SharedPreferences sharedPreferences, String key) {
+        SemaI9000Properties sp = (SemaI9000Properties) scp;
+        
         if (key.equals(sp.logger.getName())) {
             sp.logger.setValue(sharedPreferences.getBoolean(key, sp.logger.getDefValue()));
             sp.logger.writeValue();
@@ -56,7 +66,19 @@ public class TabModulesFragment extends PreferenceListFragment implements Shared
         } else if (key.equals(sp.usbhid.getName())) {
             sp.usbhid.setValue(sharedPreferences.getBoolean(key, sp.usbhid.getDefValue()));
             sp.usbhid.writeValue();
+        }        
+    }
+
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (MainActivity.readingValues) {
+            return;
         }
+        scp = MainActivity.sp;
+        
+        if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+            writeMako(sharedPreferences, key);
+        else
+            writeI9000(sharedPreferences, key);
     }
 
     @Override

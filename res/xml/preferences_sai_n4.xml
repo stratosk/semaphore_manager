@@ -1,0 +1,36 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:semaphore="http://semaphore.gr">
+    <SwitchPreference
+        android:key="sai_enable"
+        android:title="@string/str_sai_enable_title" />
+
+    <PreferenceCategory
+        android:title="@string/str_pickup_phone_cat_title"
+        android:dependency="sai_enable">
+        <SwitchPreference
+            android:key="pickup_phone"
+            android:title="@string/str_pickup_phone_title" 
+            android:summary="@string/str_pickup_phone_summary"
+            android:dependency="sai_enable" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/str_blink_leds_cat_title"
+        android:dependency="sai_enable">
+        <SwitchPreference
+            android:key="blink_leds"
+            android:dependency="sai_enable"
+            android:title="@string/str_blink_leds_title" />
+        <com.semaphore.sm.SeekBarPreference android:key="blink_interval"
+                                            android:title="@string/str_blink_interval_title"
+                                            android:dependency="blink_leds"
+                                            android:dialogMessage="Blinking interval"
+                                            android:defaultValue="200"
+                                            android:text=" ms"
+                                            semaphore:min="100"
+                                            android:max="1000"
+                                            semaphore:step="25" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

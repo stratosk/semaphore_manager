@@ -1,0 +1,30 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:semaphore="http://semaphore.gr">
+    <PreferenceCategory
+        android:title="@string/str_cat_scheduler_title">
+        <ListPreference
+            android:key="scheduler"
+            android:entries="@array/array_scheduler_entries"
+            android:entryValues="@array/array_scheduler_values"
+            android:title="@string/str_scheduler_title"
+    />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Touch Wake">
+        <SwitchPreference
+            android:key="touch_enable"
+            android:title="@string/str_touch_enable_title" />
+    
+        <com.semaphore.sm.SeekBarPreference android:key="touch"
+                                            android:title="@string/str_touch_title"
+                                            android:dependency="touch_enable"
+                                            android:dialogMessage=""
+                                            android:defaultValue="0"
+                                            android:text=" ms"
+                                            android:max="90000"
+        />
+    </PreferenceCategory>
+    
+</PreferenceScreen>

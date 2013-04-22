@@ -12,7 +12,7 @@ package com.semaphore.sm;
 import android.app.IntentService;
 import android.content.Intent;
 import android.util.Log;
-import com.semaphore.smproperties.SemaProperties;
+import com.semaphore.smproperties.SemaCommonProperties;
 
 public class SemaphoreService extends IntentService {
 
@@ -26,7 +26,7 @@ public class SemaphoreService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         Log.d(LOG_TAG, "Applying settings");
 
-        SemaProperties sp = MainActivity.sp;
+        SemaCommonProperties sp = MainActivity.sp;
         sp.getPreferences(this);
         sp.writeBatch();
 

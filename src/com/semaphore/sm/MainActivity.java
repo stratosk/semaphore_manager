@@ -30,7 +30,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.ViewConfiguration;
 import android.widget.Toast;
-import com.semaphore.smproperties.SemaProperties;
+import com.semaphore.smproperties.SemaCommonProperties;
+import com.semaphore.smproperties.SemaI9000Properties;
+import com.semaphore.smproperties.SemaN4Properties;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,6 +42,9 @@ import java.util.List;
 
 public class MainActivity extends FragmentActivity {
 
+    public enum SemaDevices {I9000, Mako};
+    public static SemaDevices Device;
+    
     public class PagerAdapter extends FragmentPagerAdapter {
 
         List<Fragment> fragments;
@@ -98,7 +103,7 @@ public class MainActivity extends FragmentActivity {
     }
     ViewPager mViewPager;
     PagerAdapter mPagerAdapter;
-    public static final SemaProperties sp = new SemaProperties();
+    public static SemaCommonProperties sp;
     private String SemaphoreVer = "";
     public static boolean readingValues = false; 
 
@@ -234,6 +239,16 @@ public class MainActivity extends FragmentActivity {
             // Ignore
         }
 
+        if ("mako".equals(android.os.Build.DEVICE))
+            Device = SemaDevices.Mako;
+        else
+            Device = SemaDevices.I9000;
+
+        if (Device == SemaDevices.Mako)
+            sp = new SemaN4Properties();
+        else 
+            sp = new SemaI9000Properties();
+        
         checkSU();
         unpackScripts();
 
@@ -274,12 +289,12 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-    private class PropTask extends AsyncTask<SemaProperties, Void, String> {
+    private class PropTask extends AsyncTask<SemaCommonProperties, Void, String> {
 
         ProgressDialog pd = null;
-        SemaProperties sp;
+        SemaCommonProperties sp;
 
-        protected String doInBackground(SemaProperties... params) {
+        protected String doInBackground(SemaCommonProperties... params) {
             readingValues = true;
             sp = params[0];
             sp.readValues();
@@ -305,12 +320,12 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-    private class defaultTask extends AsyncTask<SemaProperties, Void, String> {
+    private class defaultTask extends AsyncTask<SemaCommonProperties, Void, String> {
 
         ProgressDialog pd = null;
-        SemaProperties sp;
+        SemaCommonProperties sp;
 
-        protected String doInBackground(SemaProperties... params) {
+        protected String doInBackground(SemaCommonProperties... params) {
             sp = params[0];
             sp.resetDefaults();
             sp.setPreferences(MainActivity.this);
