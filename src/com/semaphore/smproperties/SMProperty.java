@@ -17,6 +17,10 @@ public abstract class SMProperty extends SMBaseProperty {
     public boolean isDynamic() {
         return Dynamic;
     }
+    
+    public void setDynamic(boolean Dynamic) {
+        this.Dynamic = Dynamic;
+    }
 
     public String getPath() {
         return Path;

@@ -9,6 +9,8 @@
  */
 package com.semaphore.sai;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -202,8 +204,12 @@ public class SAIService extends Service {
     }
 
     private void setVibration(int state) {
+        String path;
         Commander cm = Commander.getInstance();
-        String path = "/sys/devices/virtual/misc/pwm_duty/pwm_duty";
+        if ("mako".equals(android.os.Build.DEVICE))
+            path = "/sys/class/timed_output/vibrator/amp";
+        else
+            path = "/sys/devices/virtual/misc/pwm_duty/pwm_duty";
         switch (state) {
             case 0: // Far
                 cm.writeFile(path, String.valueOf(vibratorFar));

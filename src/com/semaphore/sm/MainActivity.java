@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -57,14 +57,16 @@ public class MainActivity extends FragmentActivity {
             fragments = new ArrayList<Fragment>();
             fragments.add(new TabCPUFragment());
             fragments.add(new TabTweaksFragment());
-            fragments.add(new TabModulesFragment());
+            if (Device == SemaDevices.I9000)
+                fragments.add(new TabModulesFragment());
             fragments.add(new TabSAIFragment());
             fragments.add(new TabInfoFragment());
 
             titles = new ArrayList<String>();
             titles.add("CPU");
             titles.add("TWEAKS");
-            titles.add("MODULES");
+            if (Device == SemaDevices.I9000)
+                titles.add("MODULES");
             titles.add("SAI");
             titles.add("INFO");
         }
@@ -143,7 +145,7 @@ public class MainActivity extends FragmentActivity {
 
     private void checkFirstRun() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-        if (!prefs.contains("oc") || !prefs.contains("cv_l0")) {
+        if (!prefs.contains("gov")) {
             PropTask pt = new PropTask();
             pt.execute(sp);
         } else {
@@ -275,6 +277,8 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void updateSummaries() {
+        int pos = 2;
+        
         TabCPUFragment cpu = (TabCPUFragment) mPagerAdapter.fragments.get(0);
         if (cpu != null) {
             cpu.updateSummaries();
@@ -283,7 +287,9 @@ public class MainActivity extends FragmentActivity {
         if (tweaks != null) {
             tweaks.updateSummaries();
         }
-        TabSAIFragment sai = (TabSAIFragment) mPagerAdapter.fragments.get(3);
+        if (Device == SemaDevices.I9000)
+            pos = 3;
+        TabSAIFragment sai = (TabSAIFragment) mPagerAdapter.fragments.get(pos);
         if (sai != null) {
             sai.updateSummaries();
         }
@@ -299,7 +305,6 @@ public class MainActivity extends FragmentActivity {
             sp = params[0];
             sp.readValues();
             sp.setPreferences(MainActivity.this);
-
             return null;
         }
 

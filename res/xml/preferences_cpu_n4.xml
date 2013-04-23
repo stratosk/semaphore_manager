@@ -25,12 +25,6 @@
                 android:numeric="integer"
                 android:inputType="number" />
             <EditTextPreference
-                android:key="o_sampling_down_max_momentum"
-                android:title="@string/str_o_sampling_down_max_momentum_title"
-                android:summary="@string/str_o_sampling_down_max_momentum_summary"
-                android:numeric="integer"
-                android:inputType="number" />
-            <EditTextPreference
                 android:key="o_sampling_rate"
                 android:title="@string/str_o_sampling_rate_title"
                 android:summary="@string/str_o_sampling_rate_summary"
@@ -42,9 +36,6 @@
                 android:summary="@string/str_o_up_threshold_summary"
                 android:numeric="integer"
                 android:inputType="number" />
-            <SwitchPreference
-                android:key="o_smooth_ui"
-                android:title="@string/str_o_smooth_ui_title" />
             <SwitchPreference
                 android:key="o_early_demand"
                 android:title="@string/str_o_early_demand_title" />
@@ -91,9 +82,6 @@
                 android:summary="@string/str_c_down_threshold_summary"
                 android:numeric="integer"
                 android:inputType="number" />
-            <SwitchPreference
-                android:key="c_smooth_ui"
-                android:title="@string/str_c_smooth_ui_title" />
 
         </PreferenceScreen>
         <PreferenceScreen
@@ -130,24 +118,6 @@
                 android:summary="@string/str_i_timer_rate_summary"
                 android:numeric="integer"
                 android:inputType="number" />
-            <EditTextPreference
-                android:key="i_timer_slack"
-                android:title="@string/str_i_timer_slack_title"
-                android:summary="@string/str_i_timer_slack_summary"
-                android:numeric="integer"
-                android:inputType="number" />
-            <EditTextPreference
-                android:key="i_boostpulse_duration"
-                android:title="@string/str_i_boostpulse_duration_title"
-                android:summary="@string/str_i_boostpulse_duration_summary"
-                android:numeric="integer"
-                android:inputType="number" />
-            <EditTextPreference
-                android:key="i_target_loads"
-                android:title="@string/str_i_target_loads_title"
-                android:summary="@string/str_i_target_loads_summary"
-                android:numeric="integer"
-                android:inputType="textNoSuggestions" />
 
         </PreferenceScreen>
     </PreferenceCategory>

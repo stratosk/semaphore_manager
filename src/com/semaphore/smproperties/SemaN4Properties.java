@@ -20,21 +20,36 @@ import java.util.List;
 public class SemaN4Properties extends SemaCommonProperties {
 
     public SMStringProperty gov;
-    public SMOndemandProperty ondemand;
+    public SMOndemandN4Property ondemand;
     public SMConservativeProperty conservative;
     public SMInteractiveProperty interactive;
     public SMSchedulerProperty scheduler;
+    public SMIntProperty vibrator;
     public SMIntProperty touch_enable;
     public SMIntProperty touch;
 
     public SemaN4Properties() {
 
         gov = new SMStringProperty("gov", "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor", false, "ondemand");
-        ondemand = new SMOndemandProperty();
+        ondemand = new SMOndemandN4Property();
+        
         conservative = new SMConservativeProperty();
+        conservative.down_threshold.setDefault(20);
+        conservative.up_threshold.setDefault(80);
+        conservative.sampling_rate.setDefault(200000);
+        
         interactive = new SMInteractiveProperty();
-
+        interactive.min_sampling_time.setDefault(80000);
+        interactive.timer_rate.setDefault(20000);
+        interactive.above_hispeed_delay.setDefault(20000);
+        interactive.go_hispeed_load.setDefault(85);
+        interactive.hispeed_freq.setMaxValue(1512000);
+        interactive.hispeed_freq.setDefault(1512000);
+        
         scheduler = new SMSchedulerProperty("scheduler", "row");
+        scheduler.basepath = "/sys/block/mmcblk0/queue/scheduler";
+
+        vibrator = new SMIntProperty("vibrator", "/sys/class/timed_output/vibrator/amp", false, 0, 100, 70);        
         touch_enable = new SMIntProperty("touch_enable", "/sys/devices/virtual/misc/touchwake/enabled", false, 0, 1, 0);
         touch = new SMIntProperty("touch", "/sys/devices/virtual/misc/touchwake/delay", false, 0, 90000, 45000);
         //touchscreen = new SMTouchscreenProperty("touchscreen", "stock");
@@ -48,6 +63,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         interactive.readValue();
 
         scheduler.readValue();
+        vibrator.readValue();
         touch_enable.readValue();
         touch.readValue();
     }
@@ -74,6 +90,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         interactive.writebatch(cmds);
 
         scheduler.writeBatch(cmds);
+        vibrator.writeBatch(cmds);
         touch_enable.writeBatch(cmds);
         touch.writeBatch(cmds);
 
@@ -101,6 +118,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         interactive.writeValue();
 
         scheduler.writeValue();
+        vibrator.writeValue();
         touch_enable.writeValue();
         touch.writeValue();
     }
@@ -114,11 +132,9 @@ public class SemaN4Properties extends SemaCommonProperties {
         // ondemand tunables
         edit.putBoolean(ondemand.io_is_busy.getName(), ondemand.io_is_busy.getBoolean());
         edit.putString(ondemand.sampling_down_factor.getName(), ondemand.sampling_down_factor.getValString());
-        edit.putString(ondemand.sampling_down_max_momentum.getName(), ondemand.sampling_down_max_momentum.getValString());
         edit.putString(ondemand.sampling_rate.getName(), ondemand.sampling_rate.getValString());
         edit.putString(ondemand.up_threshold.getName(), ondemand.up_threshold.getValString());
-        edit.putBoolean(ondemand.smooth_ui.getName(), ondemand.smooth_ui.getBoolean());
-        edit.putBoolean(ondemand.smooth_ui.getName(), ondemand.early_demand.getBoolean());
+        edit.putBoolean(ondemand.early_demand.getName(), ondemand.early_demand.getBoolean());
         edit.putString(ondemand.grad_up_threshold.getName(), ondemand.grad_up_threshold.getValString());
         // conservative
         edit.putBoolean(conservative.cons.getName(), conservative.cons.getValue());
@@ -139,6 +155,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         edit.putString(interactive.boostpulse_duration.getName(), interactive.boostpulse_duration.getValString());
         edit.putString(interactive.target_loads.getName(), interactive.target_loads.getValue());
         
+        edit.putString(scheduler.getName(), scheduler.getValue());
+        edit.putInt(vibrator.getName(), vibrator.getValue());
         edit.putBoolean(touch_enable.getName(), touch_enable.getBoolean());
         edit.putInt(touch.getName(), touch.getValue());
         edit.commit();
@@ -151,10 +169,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         gov.setValue(prefs.getString(gov.getName(), gov.getDefValue()));
         ondemand.io_is_busy.setValue(prefs.getBoolean(ondemand.io_is_busy.getName(), ondemand.io_is_busy.getDefault() == 1 ? true : false) == true ? 1 : 0);
         ondemand.sampling_down_factor.setValue(prefs.getString(ondemand.sampling_down_factor.getName(), ondemand.sampling_down_factor.getDefString()));
-        ondemand.sampling_down_max_momentum.setValue(prefs.getString(ondemand.sampling_down_max_momentum.getName(), ondemand.sampling_down_max_momentum.getDefString()));
         ondemand.sampling_rate.setValue(prefs.getString(ondemand.sampling_rate.getName(), ondemand.sampling_rate.getDefString()));
         ondemand.up_threshold.setValue(prefs.getString(ondemand.up_threshold.getName(), ondemand.up_threshold.getDefString()));
-        ondemand.smooth_ui.setValue(prefs.getBoolean(ondemand.smooth_ui.getName(), ondemand.smooth_ui.getDefBoolean()) == true ? 1 : 0);
         ondemand.early_demand.setValue(prefs.getBoolean(ondemand.early_demand.getName(), ondemand.early_demand.getDefBoolean()) == true ? 1 : 0);
         ondemand.grad_up_threshold.setValue(prefs.getString(ondemand.grad_up_threshold.getName(), ondemand.grad_up_threshold.getDefString()));
 
@@ -177,6 +193,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         interactive.target_loads.setValue(prefs.getString(interactive.target_loads.getName(), interactive.target_loads.getDefValue()));
 
         scheduler.setValue(prefs.getString(scheduler.getName(), scheduler.getDefValue()));
+        vibrator.setValue(prefs.getInt(vibrator.getName(), vibrator.getDefault()));
         touch_enable.setValue(prefs.getBoolean(touch_enable.getName(), touch_enable.getDefBoolean()) == true ? 1 : 0);
         touch.setValue(prefs.getInt(touch.getName(), touch.getDefault()));
     }
@@ -186,10 +203,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         gov.setValue(gov.getDefValue());
         ondemand.io_is_busy.setValue(ondemand.io_is_busy.getDefault());
         ondemand.sampling_down_factor.setValue(ondemand.sampling_down_factor.getDefString());
-        ondemand.sampling_down_max_momentum.setValue(ondemand.sampling_down_max_momentum.getDefString());
         ondemand.sampling_rate.setValue(ondemand.sampling_rate.getDefString());
         ondemand.up_threshold.setValue(ondemand.up_threshold.getDefString());
-        ondemand.smooth_ui.setValue(ondemand.smooth_ui.getDefault());
         ondemand.early_demand.setValue(ondemand.early_demand.getDefault());
         ondemand.grad_up_threshold.setValue(ondemand.grad_up_threshold.getDefString());
 
@@ -212,6 +227,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         interactive.target_loads.setValue(interactive.target_loads.getDefValue());
         
         scheduler.setValue(scheduler.getDefValue());
+        vibrator.setValue(vibrator.getDefault());
         touch_enable.setValue(touch_enable.getDefault());
         touch.setValue(touch.getDefault());
     }

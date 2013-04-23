@@ -94,6 +94,9 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
             pref.setSummary(((ListPreference) pref).getEntry().toString());
         }
 
+        pref = findPreference(sp.vibrator.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+
         pref = findPreference(sp.touch.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
     }
@@ -110,6 +113,19 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
     private void writeMako(SharedPreferences sharedPreferences, String key) {
         SemaN4Properties sp = (SemaN4Properties) scp;        
 
+        if (key.equals(sp.scheduler.getName())) {
+            sp.scheduler.setValue(sharedPreferences.getString(key, sp.scheduler.getDefValue()));
+            sp.scheduler.writeValue();
+        } else if (key.equals(sp.vibrator.getName())) {
+            sp.vibrator.setValue(sharedPreferences.getInt(key, sp.vibrator.getDefault()));
+            sp.vibrator.writeValue();
+        } else if (key.equals(sp.touch_enable.getName())) {
+            sp.touch_enable.setValue(sharedPreferences.getBoolean(key, sp.touch_enable.getDefBoolean()) == true ? 1 : 0);
+            sp.touch_enable.writeValue();
+        } else if (key.equals(sp.touch.getName())) {
+            sp.touch.setValue(sharedPreferences.getInt(key, sp.touch.getDefault()));
+            sp.touch.writeValue();
+        }
     }
     
     private void writeI9000(SharedPreferences sharedPreferences, String key) {

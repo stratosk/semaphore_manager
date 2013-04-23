@@ -16,7 +16,8 @@ public class SMSchedulerProperty extends SMBaseProperty {
 
     private String Value;
     private String defValue;
-
+    public String basepath;
+    
     public String getDefValue() {
         return defValue;
     }

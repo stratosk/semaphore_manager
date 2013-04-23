@@ -10,9 +10,25 @@
             android:title="@string/str_scheduler_title"
     />
     </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/str_vibrator_title">
+        <com.semaphore.sm.SeekBarPreference android:key="vibrator"
+                                            android:title="@string/str_vibrator_dc_title"
+                                            android:dialogMessage="Vibrator duty cycle"
+                                            android:defaultValue="100"
+                                            android:text=""
+                                            semaphore:min="0"
+                                            android:max="100"
+        />
+        <Preference
+            android:key="vibrator_test"
+            android:title="@string/str_vibrator_test_title"
+            android:summary="@string/str_vibrator_test_summary">
+        </Preference>
+    </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="Touch Wake">
+        android:title="Touch Wake (Experimental)">
         <SwitchPreference
             android:key="touch_enable"
             android:title="@string/str_touch_enable_title" />

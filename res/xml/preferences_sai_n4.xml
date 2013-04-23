@@ -4,6 +4,28 @@
     <SwitchPreference
         android:key="sai_enable"
         android:title="@string/str_sai_enable_title" />
+    <PreferenceCategory
+        android:title="@string/str_vibrator_call_title"
+        android:dependency="sai_enable">
+        <com.semaphore.sm.SeekBarPreference android:key="vibrator_near"
+                                            android:title="@string/str_vibrator_near_title"
+                                            android:dependency="sai_enable"
+                                            android:dialogMessage="Vibrator duty cycle"
+                                            android:defaultValue="100"
+                                            android:text=" %"
+                                            semaphore:min="0"
+                                            android:max="100"
+        />
+        <com.semaphore.sm.SeekBarPreference android:key="vibrator_far"
+                                            android:title="@string/str_vibrator_far_title"
+                                            android:dependency="sai_enable"
+                                            android:dialogMessage="Vibrator duty cycle"
+                                            android:defaultValue="35"
+                                            android:text=" %"
+                                            semaphore:min="0"
+                                            android:max="100"
+        />
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:title="@string/str_pickup_phone_cat_title"
@@ -13,23 +35,6 @@
             android:title="@string/str_pickup_phone_title" 
             android:summary="@string/str_pickup_phone_summary"
             android:dependency="sai_enable" />
-    </PreferenceCategory>
-    <PreferenceCategory
-        android:title="@string/str_blink_leds_cat_title"
-        android:dependency="sai_enable">
-        <SwitchPreference
-            android:key="blink_leds"
-            android:dependency="sai_enable"
-            android:title="@string/str_blink_leds_title" />
-        <com.semaphore.sm.SeekBarPreference android:key="blink_interval"
-                                            android:title="@string/str_blink_interval_title"
-                                            android:dependency="blink_leds"
-                                            android:dialogMessage="Blinking interval"
-                                            android:defaultValue="200"
-                                            android:text=" ms"
-                                            semaphore:min="100"
-                                            android:max="1000"
-                                            semaphore:step="25" />
     </PreferenceCategory>
 
 

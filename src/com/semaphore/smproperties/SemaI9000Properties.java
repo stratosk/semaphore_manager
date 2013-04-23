@@ -21,7 +21,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
 
     public SMIntProperty oc;
     public SMStringProperty gov;
-    public SMOndemandProperty ondemand;
+    public SMOndemandI9000Property ondemand;
     public SMConservativeProperty conservative;
     public SMSmartassProperty smartass;
     public SMInteractiveProperty interactive;
@@ -54,7 +54,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
 
         oc = new SMIntProperty("oc", "/sys/devices/virtual/misc/liveoc/oc_value", false, 100, 120, 100);
         gov = new SMStringProperty("gov", "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor", false, "ondemand");
-        ondemand = new SMOndemandProperty();
+        ondemand = new SMOndemandI9000Property();
         conservative = new SMConservativeProperty();
         smartass = new SMSmartassProperty();
         interactive = new SMInteractiveProperty();
@@ -73,6 +73,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         usbhid = new SMModuleProperty("usbhid", "usbhid", false, false);
 
         scheduler = new SMSchedulerProperty("scheduler", "noop");
+        scheduler.basepath = "/sys/block/mmcblk0/queue/scheduler";
         autobr = new SMAbProperty();
         vibrator = new SMIntProperty("vibrator", "/sys/devices/virtual/misc/pwm_duty/pwm_duty", false, 0, 100, 100);
         touch_enable = new SMIntProperty("touch_enable", "/sys/devices/virtual/misc/touchwake/enabled", false, 0, 1, 0);
@@ -257,7 +258,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         edit.putString(ondemand.sampling_rate.getName(), ondemand.sampling_rate.getValString());
         edit.putString(ondemand.up_threshold.getName(), ondemand.up_threshold.getValString());
         edit.putBoolean(ondemand.smooth_ui.getName(), ondemand.smooth_ui.getBoolean());
-        edit.putBoolean(ondemand.smooth_ui.getName(), ondemand.early_demand.getBoolean());
+        edit.putBoolean(ondemand.early_demand.getName(), ondemand.early_demand.getBoolean());
         edit.putString(ondemand.grad_up_threshold.getName(), ondemand.grad_up_threshold.getValString());
         // conservative
         edit.putBoolean(conservative.cons.getName(), conservative.cons.getValue());

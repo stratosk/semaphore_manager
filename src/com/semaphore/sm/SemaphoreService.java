@@ -13,6 +13,8 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.util.Log;
 import com.semaphore.smproperties.SemaCommonProperties;
+import com.semaphore.smproperties.SemaI9000Properties;
+import com.semaphore.smproperties.SemaN4Properties;
 
 public class SemaphoreService extends IntentService {
 
@@ -26,7 +28,11 @@ public class SemaphoreService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         Log.d(LOG_TAG, "Applying settings");
 
-        SemaCommonProperties sp = MainActivity.sp;
+        SemaCommonProperties sp;// = MainActivity.sp;
+        if ("mako".equals(android.os.Build.DEVICE))
+            sp = new SemaN4Properties();
+        else 
+            sp = new SemaI9000Properties();
         sp.getPreferences(this);
         sp.writeBatch();
 

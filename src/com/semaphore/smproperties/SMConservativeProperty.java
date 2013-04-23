@@ -30,7 +30,7 @@ public class SMConservativeProperty extends SMBatchProperty {
 
         freq_step = new SMIntProperty("c_freq_step", basepath.concat("freq_step"), false, 1, 100, 5);
         sampling_down_factor = new SMIntProperty("c_sampling_down_factor", basepath.concat("sampling_down_factor"), true, 1, 1000, 1);
-        sampling_rate = new SMIntProperty("c_sampling_rate", basepath.concat("sampling_rate"), false, 10000, 100000, 78124);
+        sampling_rate = new SMIntProperty("c_sampling_rate", basepath.concat("sampling_rate"), false, 10000, 300000, 78124);
         up_threshold = new SMIntProperty("c_up_threshold", basepath.concat("up_threshold"), false, 1, 100, 90);
         down_threshold = new SMIntProperty("c_down_threshold", basepath.concat("down_threshold"), false, 1, 100, 40);
         smooth_ui = new SMIntProperty("c_smooth_ui", basepath.concat("smooth_ui"), false, 0, 1, 0);

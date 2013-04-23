@@ -22,6 +22,10 @@ public class SMIntProperty extends SMProperty {
     public int getDefault() {
         return defValue;
     }
+    
+    public void setDefault(int defValue) {
+        this.defValue = defValue;
+    }
 
     public String getDefString() {
         return String.valueOf(defValue);
