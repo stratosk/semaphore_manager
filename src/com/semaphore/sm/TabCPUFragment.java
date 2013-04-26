@@ -462,7 +462,9 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
     
     private void updateSummariesN4() {
         SemaN4Properties sp = (SemaN4Properties) scp;
-
+        if (sp == null)
+            return;
+        
         Preference pref = findPreference(sp.gov.getName());
         if (pref == null) {
             return;
@@ -507,6 +509,9 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
     
     private void updateSummariesI9000() {
         SemaI9000Properties sp = (SemaI9000Properties) scp;
+
+        if (sp == null)
+            return;
 
         Preference pref = findPreference(sp.gov.getName());
         if (pref == null) {
