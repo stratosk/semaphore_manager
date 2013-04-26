@@ -9,8 +9,6 @@
  */
 package com.semaphore.sai;
 
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -47,6 +45,7 @@ public class SAIService extends Service {
     private boolean blinkLeds;
     private int blinkInterval;
     private boolean pickupPhone;
+    private boolean touchwake_disable;
     public static final int MSG_RELOAD = 1;
     private SAIBlinkLED blink;
     
@@ -85,6 +84,7 @@ public class SAIService extends Service {
         blinkLeds = prefs.getBoolean("blink_leds", false);
         blinkInterval = prefs.getInt("blink_interval", 200);
         pickupPhone = prefs.getBoolean("pickup_phone", false);
+        touchwake_disable = prefs.getBoolean("touchwake_disable", false);
     }
 
     @Override
@@ -143,8 +143,8 @@ public class SAIService extends Service {
                     break;
                 case TelephonyManager.CALL_STATE_OFFHOOK:
                     stateString = "Off Hook";
-                    disableVibrationListener();
-                    
+                    enableVibrationListener();
+                                        
                     if (pickupPhone)
                         disableOrientationListener();
                     
@@ -201,6 +201,8 @@ public class SAIService extends Service {
         }
         setVibration(2);
         proximityNear = false;
+        if (touchwake_disable)
+            touchwake(1);
     }
 
     private void setVibration(int state) {
@@ -223,6 +225,13 @@ public class SAIService extends Service {
         }
     }
     
+    private void touchwake(int enabled) {
+        String path = "/sys/devices/virtual/misc/touchwake/enabled";
+        Commander cm = Commander.getInstance();
+        
+        cm.writeFile(path, String.valueOf(enabled));
+    }
+    
     private SensorEventListener mySensorEventListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
@@ -232,9 +241,13 @@ public class SAIService extends Service {
                 if (event.values[0] > 0) {  // far
                     setVibration(0);
                     proximityNear = false;
+                    if (touchwake_disable)
+                        touchwake(1);
                 } else {                    // near
                     setVibration(1);
                     proximityNear = true;
+                    if (touchwake_disable)
+                        touchwake(0);
                 }
             }
         }
@@ -300,6 +313,7 @@ public class SAIService extends Service {
             blinkLeds = bundle.getBoolean("blink_leds");
             blinkInterval = bundle.getInt("blink_interval");
             pickupPhone = bundle.getBoolean("pickup_phone");
+            touchwake_disable = bundle.getBoolean("touchwake_disable");
             Toast.makeText(getApplicationContext(), "SAI service notified with new values", Toast.LENGTH_SHORT).show();
             Log.d(TAG, "vibrator near: " + String.valueOf(vibratorNear));
             Log.d(TAG, "vibrator far: " + String.valueOf(vibratorFar));
@@ -307,6 +321,7 @@ public class SAIService extends Service {
             Log.d(TAG, "pickup phone: " + (pickupPhone ? "true":"false")); 
             Log.d(TAG, "blink leds: " + (blinkLeds ? "true":"false")); 
             Log.d(TAG, "blink interval: " + String.valueOf(blinkInterval));
+            Log.d(TAG, "touchwake disable: " + String.valueOf(touchwake_disable));
             super.handleMessage(msg);
         }
     }

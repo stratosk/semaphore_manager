@@ -37,5 +37,13 @@
             android:dependency="sai_enable" />
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="miscellaneous">
+    <SwitchPreference
+        android:key="touchwake_disable"
+        android:title="@string/str_touchwake_disable_title" 
+        android:summary="@string/str_touchwake_disable_summary"
+        android:dependency="sai_enable" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

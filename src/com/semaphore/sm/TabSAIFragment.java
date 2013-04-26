@@ -54,7 +54,7 @@ public class TabSAIFragment extends PreferenceListFragment implements SharedPref
     };
 
     public void sayHello(int near, int far, int vibrator, boolean pickupPhone,
-                         boolean blinkLeds, int blinkInterval) {
+                         boolean blinkLeds, int blinkInterval, boolean touchwakeDisable) {
         if (!mBound) {
             return;
         }
@@ -67,6 +67,7 @@ public class TabSAIFragment extends PreferenceListFragment implements SharedPref
         bundle.putBoolean("blink_leds", blinkLeds);
         bundle.putInt("blink_interval", blinkInterval);
         bundle.putBoolean("pickup_phone", pickupPhone);
+        bundle.putBoolean("touchwake_disable", touchwakeDisable);
 
         msg.setData(bundle);
         try {
@@ -115,13 +116,14 @@ public class TabSAIFragment extends PreferenceListFragment implements SharedPref
         }
 
         if ((key.equals("vibrator_near") || key.equals("vibrator_far") || key.equals("pickup_phone") ||
-                key.equals("blink_leds") || key.equals("blink_interval")) && isSAIServiceRunning()) {
+                key.equals("blink_leds") || key.equals("blink_interval") || key.equals("touchwake_disable")) && isSAIServiceRunning()) {
             sayHello(sharedPreferences.getInt("vibrator_near", 100),
                      sharedPreferences.getInt("vibrator_far", 25),
                      sharedPreferences.getInt("vibrator", 100),
                      sharedPreferences.getBoolean("pickup_phone", false),
                      sharedPreferences.getBoolean("blink_leds", false),
-                     sharedPreferences.getInt("blink_interval", 200));
+                     sharedPreferences.getInt("blink_interval", 200),
+                     sharedPreferences.getBoolean("touchwake_disable", false));
         }
     }
 
