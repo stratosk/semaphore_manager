@@ -17,6 +17,9 @@
     <SwitchPreference
         android:key="radio_si4709_i2c"
         android:title="@string/str_radio_si4709_i2c_title" />
+    <SwitchPreference
+        android:key="uhid"
+        android:title="@string/str_uhid_title" />
     <PreferenceCategory
         android:title="@string/str_usb_title">
         <SwitchPreference

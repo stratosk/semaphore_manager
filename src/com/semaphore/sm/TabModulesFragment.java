@@ -66,6 +66,9 @@ public class TabModulesFragment extends PreferenceListFragment implements Shared
         } else if (key.equals(sp.usbhid.getName())) {
             sp.usbhid.setValue(sharedPreferences.getBoolean(key, sp.usbhid.getDefValue()));
             sp.usbhid.writeValue();
+        } else if (key.equals(sp.uhid.getName())) {
+            sp.uhid.setValue(sharedPreferences.getBoolean(key, sp.uhid.getDefValue()));
+            sp.uhid.writeValue();
         }        
     }
 

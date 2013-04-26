@@ -37,6 +37,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
     public SMModuleProperty mousedev;
     public SMXboxProperty xbox;
     public SMModuleProperty usbhid;
+    public SMModuleProperty uhid;
     public SMSchedulerProperty scheduler;
     public SMAbProperty autobr;
     public SMIntProperty vibrator;
@@ -71,6 +72,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         mousedev = new SMModuleProperty("mousedev", "mousedev", false, false);
         xbox = new SMXboxProperty(false);
         usbhid = new SMModuleProperty("usbhid", "usbhid", false, false);
+        uhid = new SMModuleProperty("uhid", "uhid", false, false);
 
         scheduler = new SMSchedulerProperty("scheduler", "noop");
         scheduler.basepath = "/sys/block/mmcblk0/queue/scheduler";
@@ -109,7 +111,8 @@ public class SemaI9000Properties extends SemaCommonProperties {
         mousedev.readValue();
         xbox.readValue();
         usbhid.readValue();
-
+        uhid.readValue();
+        
         scheduler.readValue();
         autobr.readValue();
         vibrator.readValue();
@@ -169,7 +172,8 @@ public class SemaI9000Properties extends SemaCommonProperties {
         mousedev.writeBatch(cmds);
         xbox.writeBatch(cmds);
         usbhid.writeBatch(cmds);
-
+        uhid.writeBatch(cmds);
+        
         scheduler.writeBatch(cmds);
         autobr.writeBatch(cmds);
         vibrator.writeBatch(cmds);
@@ -229,6 +233,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         mousedev.writeValue();
         xbox.writeValue();
         usbhid.writeValue();
+        uhid.writeValue();
 
         scheduler.writeValue();
         autobr.writeValue();
@@ -305,6 +310,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         edit.putBoolean(mousedev.getName(), mousedev.getValue());
         edit.putBoolean(xbox.getName(), xbox.getValue());
         edit.putBoolean(usbhid.getName(), usbhid.getValue());
+        edit.putBoolean(uhid.getName(), uhid.getValue());
         
         edit.putString(scheduler.getName(), scheduler.getValue());
         edit.putBoolean(autobr.sema_autobr.getName(), autobr.sema_autobr.getValue());
@@ -392,6 +398,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         mousedev.setValue(prefs.getBoolean(mousedev.getName(), mousedev.getDefValue()));
         xbox.setValue(prefs.getBoolean(xbox.getName(), xbox.getValue()));
         usbhid.setValue(prefs.getBoolean(usbhid.getName(), usbhid.getDefValue()));
+        uhid.setValue(prefs.getBoolean(uhid.getName(), uhid.getDefValue()));
         
         scheduler.setValue(prefs.getString(scheduler.getName(), scheduler.getDefValue()));
         autobr.sema_autobr.setValue(prefs.getBoolean(autobr.sema_autobr.getName(), autobr.sema_autobr.getDefValue()));
@@ -478,6 +485,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         mousedev.setValue(mousedev.getDefValue());
         xbox.setValue(xbox.getValue());
         usbhid.setValue(usbhid.getDefValue());
+        uhid.setValue(uhid.getDefValue());
 
         scheduler.setValue(scheduler.getDefValue());
         autobr.sema_autobr.setValue(autobr.sema_autobr.getDefValue());
