@@ -265,14 +265,14 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
             if (epref.getText() != null) {
                 epref.setSummary(epref.getText());
             }
-        } else if (pref.getKey().equals(((SemaN4Properties) scp).taccuracy.accuracy_filter_enable.getName())) {
+        } 
+        
+        if (MainActivity.Device == MainActivity.SemaDevices.Mako) {
+            if (pref != null && scp != null && pref.getKey().equals(((SemaN4Properties) scp).taccuracy.accuracy_filter_enable.getName())) {
             PreferenceScreen scPref = (PreferenceScreen) findPreference("accuracy_screen");
             if (scPref != null)
                 scPref.setSummary(((SwitchPreference) pref).isChecked() ? "Enabled" : "Disabled");
-        }
-
-        
-        if (MainActivity.Device == MainActivity.SemaDevices.Mako) {
+            }
             writeMako(sharedPreferences, key);
         } else
             writeI9000(sharedPreferences, key);
