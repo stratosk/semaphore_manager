@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Semaphore Manager</string>
-    <string name="str_app_version_title">2.5.0</string>
+    <string name="str_app_version_title">2.6.0</string>
     
     <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
     
@@ -163,6 +163,32 @@
     <string name="str_i_target_loads_title">Target loads</string>
     <string name="str_i_target_loads_summary">Valid values 1-100</string>
 
+
+    <string name="str_accuracy_title">Touchscreen Filters</string>
+    <string name="str_accuracy_screen_title">Accuracy filter</string>
+    <string name="str_accuracy_summary"></string>
+    <string name="str_ac_enable_title">Enabled</string>
+    <string name="str_ac_enable_summary">Enable accuracy filter</string>
+    <string name="str_ac_ignore_pressure_gap_title">Ignore pressure gap</string>
+    <string name="str_ac_ignore_pressure_gap_summary">Valid values 1-255</string>
+    <string name="str_ac_delta_max_title">Delta max</string>
+    <string name="str_ac_delta_max_summary">Valid values 1-255</string>
+    <string name="str_ac_touch_max_count_title">Touch max count</string>
+    <string name="str_ac_touch_max_count_summary">Valid values 1-255</string>
+    <string name="str_ac_max_pressure_title">Max pressure</string>
+    <string name="str_ac_max_pressure_summary">Valid values 1-255</string>
+    <string name="str_ac_direction_count_title">Direction count</string>
+    <string name="str_ac_direction_count_summary">Valid values 1-255</string>
+    <string name="str_ac_time_to_max_pressure_title">Time to max pressure</string>
+    <string name="str_ac_time_to_max_pressure_summary">Valid values 1-255</string>
+
+    <string name="str_jit_enable_title">Jitter filter</string>
+    <string name="str_jit_enable_summary">Enable jitter filter</string>
+    <string name="str_jit_adjust_margin_title">Jitter adjust margin</string>
+    <string name="str_jit_adjust_margin_summary">Valid values 1-255</string>
+
+    <string name="str_touchwake_disable_title">Touchwake disable</string>
+    <string name="str_touchwake_disable_summary">Disable touchwake during calls</string>
     <string name="str_cat_deep_idle_title">Deep Idle</string>
     <string name="str_deep_idle_title">Enabled</string>
     <string name="str_deep_idle_stats_title">Statistics</string>
@@ -273,6 +299,9 @@
 
     <string name="str_usbhid_title">USB HID</string>
     <string name="str_usbhid_summary"></string>
+
+    <string name="str_uhid_title">UHID</string>
+    <string name="str_uhid_summary"></string>
 
     <string name="str_fastchg_title">Fast charge</string>
     <string name="str_fastchg_summary">Please use it at your own risk</string>

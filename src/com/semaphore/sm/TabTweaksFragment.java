@@ -16,6 +16,8 @@ import android.os.Vibrator;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import com.semaphore.smproperties.SemaCommonProperties;
 import com.semaphore.smproperties.SemaI9000Properties;
 import com.semaphore.smproperties.SemaN4Properties;
@@ -99,6 +101,26 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
 
         pref = findPreference(sp.touch.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+        
+        PreferenceScreen scPref = (PreferenceScreen) findPreference("accuracy_screen");
+        if (scPref != null)
+            scPref.setSummary(sp.taccuracy.accuracy_filter_enable.getValue() == 1 ? "Enabled" : "Disabled");
+                
+        pref = findPreference(sp.taccuracy.ignore_pressure_gap.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.taccuracy.delta_max.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.taccuracy.touch_max_count.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.taccuracy.max_pressure.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.taccuracy.direction_count.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.taccuracy.time_to_max_pressure.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+
+        pref = findPreference(sp.tjitter.adjust_margin.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
     }
 
     public void updateSummaries() {
@@ -125,6 +147,33 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         } else if (key.equals(sp.touch.getName())) {
             sp.touch.setValue(sharedPreferences.getInt(key, sp.touch.getDefault()));
             sp.touch.writeValue();
+        } else if (key.equals(sp.taccuracy.accuracy_filter_enable.getName())) {
+            sp.taccuracy.accuracy_filter_enable.setValue(sharedPreferences.getBoolean(key, sp.taccuracy.accuracy_filter_enable.getDefBoolean()) == true ? 1 : 0);
+            sp.taccuracy.writeValue();
+        } else if (key.equals(sp.taccuracy.ignore_pressure_gap.getName())) {
+            sp.taccuracy.ignore_pressure_gap.setValue(sharedPreferences.getString(key, sp.taccuracy.ignore_pressure_gap.getDefString()));
+            sp.taccuracy.writeValue();
+        } else if (key.equals(sp.taccuracy.delta_max.getName())) {
+            sp.taccuracy.delta_max.setValue(sharedPreferences.getString(key, sp.taccuracy.delta_max.getDefString()));
+            sp.taccuracy.writeValue();
+        } else if (key.equals(sp.taccuracy.touch_max_count.getName())) {
+            sp.taccuracy.touch_max_count.setValue(sharedPreferences.getString(key, sp.taccuracy.touch_max_count.getDefString()));
+            sp.taccuracy.writeValue();
+        } else if (key.equals(sp.taccuracy.max_pressure.getName())) {
+            sp.taccuracy.max_pressure.setValue(sharedPreferences.getString(key, sp.taccuracy.max_pressure.getDefString()));
+            sp.taccuracy.writeValue();
+        } else if (key.equals(sp.taccuracy.direction_count.getName())) {
+            sp.taccuracy.direction_count.setValue(sharedPreferences.getString(key, sp.taccuracy.direction_count.getDefString()));
+            sp.taccuracy.writeValue();
+        } else if (key.equals(sp.taccuracy.time_to_max_pressure.getName())) {
+            sp.taccuracy.time_to_max_pressure.setValue(sharedPreferences.getString(key, sp.taccuracy.time_to_max_pressure.getDefString()));
+            sp.taccuracy.writeValue();
+        } else if (key.equals(sp.tjitter.jitter_enable.getName())) {
+            sp.tjitter.jitter_enable.setValue(sharedPreferences.getBoolean(key, sp.tjitter.jitter_enable.getDefBoolean()) == true ? 1 : 0);
+            sp.tjitter.writeValue();
+        } else if (key.equals(sp.tjitter.adjust_margin.getName())) {
+            sp.tjitter.adjust_margin.setValue(sharedPreferences.getString(key, sp.tjitter.adjust_margin.getDefString()));
+            sp.tjitter.writeValue();
         }
     }
     
@@ -203,6 +252,8 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         if (MainActivity.readingValues) {
             return;
         }
+        scp = MainActivity.sp;
+
         Preference pref = findPreference(key);
         if (pref instanceof ListPreference) {
             ListPreference listPref = (ListPreference) pref;
@@ -214,14 +265,18 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
             if (epref.getText() != null) {
                 epref.setSummary(epref.getText());
             }
+        } else if (pref.getKey().equals(((SemaN4Properties) scp).taccuracy.accuracy_filter_enable.getName())) {
+            PreferenceScreen scPref = (PreferenceScreen) findPreference("accuracy_screen");
+            if (scPref != null)
+                scPref.setSummary(((SwitchPreference) pref).isChecked() ? "Enabled" : "Disabled");
         }
 
-        scp = MainActivity.sp;
         
-        if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+        if (MainActivity.Device == MainActivity.SemaDevices.Mako) {
             writeMako(sharedPreferences, key);
-        else
+        } else
             writeI9000(sharedPreferences, key);
+        
     }
 
     public boolean onPreferenceClick(Preference preference) {

@@ -42,5 +42,74 @@
                                             android:max="90000"
         />
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/str_accuracy_title">
+        <PreferenceScreen
+            android:key="accuracy_screen"
+            android:title="@string/str_accuracy_screen_title"
+            android:summary="@string/str_ac_enable_summary">
+
+            <SwitchPreference
+                android:key="ac_enable"
+                android:title="@string/str_ac_enable_title" />
+            <EditTextPreference
+                android:key="ac_ignore_pressure_gap"
+                android:title="@string/str_ac_ignore_pressure_gap_title"
+                android:summary="@string/str_ac_ignore_pressure_gap_summary"
+                android:numeric="integer"
+                android:inputType="number"
+                android:dependency="ac_enable"/>
+            <EditTextPreference
+                android:key="ac_delta_max"
+                android:title="@string/str_ac_delta_max_title"
+                android:summary="@string/str_ac_delta_max_summary"
+                android:numeric="integer"
+                android:inputType="number"
+                android:dependency="ac_enable"/>
+            <EditTextPreference
+                android:key="ac_touch_max_count"
+                android:title="@string/str_ac_touch_max_count_title"
+                android:summary="@string/str_ac_touch_max_count_summary"
+                android:numeric="integer"
+                android:inputType="number"
+                android:dependency="ac_enable"/>
+            <EditTextPreference
+                android:key="ac_max_pressure"
+                android:title="@string/str_ac_max_pressure_title"
+                android:summary="@string/str_ac_max_pressure_summary"
+                android:numeric="integer"
+                android:inputType="number"
+                android:dependency="ac_enable"/>
+            <EditTextPreference
+                android:key="ac_direction_count"
+                android:title="@string/str_ac_direction_count_title"
+                android:summary="@string/str_ac_direction_count_summary"
+                android:numeric="integer"
+                android:inputType="number" 
+                android:dependency="ac_enable"/>
+            <EditTextPreference
+                android:key="ac_time_to_max_pressure"
+                android:title="@string/str_ac_time_to_max_pressure_title"
+                android:summary="@string/str_ac_time_to_max_pressure_summary"
+                android:numeric="integer"
+                android:inputType="number" 
+                android:dependency="ac_enable"/>
+
+        </PreferenceScreen>
+        <SwitchPreference
+            android:key="jit_enable"
+            android:title="@string/str_jit_enable_title" />
     
+        <EditTextPreference
+            android:key="jit_adjust_margin"
+            android:title="@string/str_jit_adjust_margin_title"
+            android:summary="@string/str_jit_adjust_margin_summary"
+            android:numeric="integer"
+            android:inputType="number"
+            android:dependency="jit_enable"/>
+        />
+    </PreferenceCategory>
+
+
 </PreferenceScreen>

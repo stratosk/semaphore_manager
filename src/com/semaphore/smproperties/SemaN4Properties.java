@@ -27,6 +27,8 @@ public class SemaN4Properties extends SemaCommonProperties {
     public SMIntProperty vibrator;
     public SMIntProperty touch_enable;
     public SMIntProperty touch;
+    public SMTouchAccuracyProperty taccuracy;
+    public SMTouchJitterProperty tjitter;
 
     public SemaN4Properties() {
 
@@ -53,6 +55,9 @@ public class SemaN4Properties extends SemaCommonProperties {
         touch_enable = new SMIntProperty("touch_enable", "/sys/devices/virtual/misc/touchwake/enabled", false, 0, 1, 0);
         touch = new SMIntProperty("touch", "/sys/devices/virtual/misc/touchwake/delay", false, 0, 90000, 45000);
         //touchscreen = new SMTouchscreenProperty("touchscreen", "stock");
+        
+        taccuracy = new SMTouchAccuracyProperty();
+        tjitter = new SMTouchJitterProperty();
     }
 
     @Override
@@ -66,6 +71,9 @@ public class SemaN4Properties extends SemaCommonProperties {
         vibrator.readValue();
         touch_enable.readValue();
         touch.readValue();
+        
+        taccuracy.readValue();
+        tjitter.readValue();
     }
 
     @Override
@@ -94,6 +102,9 @@ public class SemaN4Properties extends SemaCommonProperties {
         touch_enable.writeBatch(cmds);
         touch.writeBatch(cmds);
 
+        taccuracy.writeBatch(cmds);
+        tjitter.writeBatch(cmds);
+        
         //Log.d("semaphore cmds: ", cmds.toString());
         Commander.getInstance().runSuBatch(cmds);
     }
@@ -121,6 +132,9 @@ public class SemaN4Properties extends SemaCommonProperties {
         vibrator.writeValue();
         touch_enable.writeValue();
         touch.writeValue();
+        
+        taccuracy.writeValue();
+        tjitter.writeValue();
     }
 
     @Override
@@ -159,6 +173,18 @@ public class SemaN4Properties extends SemaCommonProperties {
         edit.putInt(vibrator.getName(), vibrator.getValue());
         edit.putBoolean(touch_enable.getName(), touch_enable.getBoolean());
         edit.putInt(touch.getName(), touch.getValue());
+        
+        edit.putBoolean(taccuracy.accuracy_filter_enable.getName(), taccuracy.accuracy_filter_enable.getBoolean());
+        edit.putString(taccuracy.ignore_pressure_gap.getName(), taccuracy.ignore_pressure_gap.getValString());
+        edit.putString(taccuracy.delta_max.getName(), taccuracy.delta_max.getValString());
+        edit.putString(taccuracy.touch_max_count.getName(), taccuracy.touch_max_count.getValString());
+        edit.putString(taccuracy.max_pressure.getName(), taccuracy.max_pressure.getValString());
+        edit.putString(taccuracy.direction_count.getName(), taccuracy.direction_count.getValString());
+        edit.putString(taccuracy.time_to_max_pressure.getName(), taccuracy.time_to_max_pressure.getValString());
+
+        edit.putBoolean(tjitter.jitter_enable.getName(), tjitter.jitter_enable.getBoolean());
+        edit.putString(tjitter.adjust_margin.getName(), tjitter.adjust_margin.getValString());
+        
         edit.commit();
     }
 
@@ -196,6 +222,18 @@ public class SemaN4Properties extends SemaCommonProperties {
         vibrator.setValue(prefs.getInt(vibrator.getName(), vibrator.getDefault()));
         touch_enable.setValue(prefs.getBoolean(touch_enable.getName(), touch_enable.getDefBoolean()) == true ? 1 : 0);
         touch.setValue(prefs.getInt(touch.getName(), touch.getDefault()));
+
+        taccuracy.accuracy_filter_enable.setValue(prefs.getBoolean(taccuracy.accuracy_filter_enable.getName(), taccuracy.accuracy_filter_enable.getDefBoolean()) == true ? 1 : 0);
+        taccuracy.ignore_pressure_gap.setValue(prefs.getString(taccuracy.ignore_pressure_gap.getName(), taccuracy.ignore_pressure_gap.getDefString()));
+        taccuracy.delta_max.setValue(prefs.getString(taccuracy.delta_max.getName(), taccuracy.delta_max.getDefString()));
+        taccuracy.touch_max_count.setValue(prefs.getString(taccuracy.touch_max_count.getName(), taccuracy.touch_max_count.getDefString()));
+        taccuracy.max_pressure.setValue(prefs.getString(taccuracy.max_pressure.getName(), taccuracy.max_pressure.getDefString()));
+        taccuracy.direction_count.setValue(prefs.getString(taccuracy.direction_count.getName(), taccuracy.direction_count.getDefString()));
+        taccuracy.time_to_max_pressure.setValue(prefs.getString(taccuracy.time_to_max_pressure.getName(), taccuracy.time_to_max_pressure.getDefString()));
+
+        tjitter.jitter_enable.setValue(prefs.getBoolean(tjitter.jitter_enable.getName(), tjitter.jitter_enable.getDefBoolean()) == true ? 1 : 0);
+        tjitter.adjust_margin.setValue(prefs.getString(tjitter.adjust_margin.getName(), tjitter.adjust_margin.getDefString()));
+
     }
 
     @Override
@@ -230,5 +268,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         vibrator.setValue(vibrator.getDefault());
         touch_enable.setValue(touch_enable.getDefault());
         touch.setValue(touch.getDefault());
+        
+        taccuracy.setDefValues();
+        tjitter.setDefValues();
     }
 }
