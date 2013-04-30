@@ -125,7 +125,10 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
 
     public void updateSummaries() {
         scp = MainActivity.sp;
-        
+
+        if (scp == null)
+            return;
+
         if (MainActivity.Device == MainActivity.SemaDevices.Mako)
             updateSummariesN4();
         else
