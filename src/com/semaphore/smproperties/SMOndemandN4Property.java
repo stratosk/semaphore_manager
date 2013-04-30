@@ -17,7 +17,7 @@ public class SMOndemandN4Property extends SMOndemandProperty {
         super();
 
         io_is_busy.setDefault(1);
-        sampling_down_factor.setDefault(2);
+        sampling_down_factor.setDefault(4);
         sampling_down_factor.setDynamic(false);
     }
 
