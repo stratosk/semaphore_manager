@@ -69,8 +69,8 @@ public class SMCifsProperty extends SMBatchProperty {
         super("cifs");
 
         this.defValue = defValue;
-        cifs = new SMModuleProperty("cifs", "cifs", false, false);
-        md4 = new SMModuleProperty("md4", "md4", false, false);
-        nls_utf8 = new SMModuleProperty("nls_utf8", "nls_utf8", false, false);
+        cifs = new SMModuleProperty("cifs", "/system/lib/modules/cifs", false, false);
+        md4 = new SMModuleProperty("md4", "/system/lib/modules/md4", false, false);
+        nls_utf8 = new SMModuleProperty("nls_utf8", "/system/lib/modules/nls_utf8", false, false);
     }
 }

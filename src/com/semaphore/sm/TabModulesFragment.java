@@ -37,6 +37,10 @@ public class TabModulesFragment extends PreferenceListFragment implements Shared
 
     private void writeMako(SharedPreferences sharedPreferences, String key) {
         SemaN4Properties sp = (SemaN4Properties) scp;        
+        if (key.equals(sp.logger.getName())) {
+            sp.logger.setValue(sharedPreferences.getBoolean(key, sp.logger.getDefValue()));
+            sp.logger.writeValue();
+        }    
     }
     
     private void writeI9000(SharedPreferences sharedPreferences, String key) {

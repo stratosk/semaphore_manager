@@ -62,7 +62,7 @@ public class SMXboxProperty extends SMBatchProperty {
         super("xbox");
 
         this.defValue = defValue;
-        joydev = new SMModuleProperty("joydev", "joydev", false, false);
-        xpad = new SMModuleProperty("xpad", "xpad", false, false);
+        joydev = new SMModuleProperty("joydev", "/system/lib/modules/joydev", false, false);
+        xpad = new SMModuleProperty("xpad", "/system/lib/modules/xpad", false, false);
     }
 }

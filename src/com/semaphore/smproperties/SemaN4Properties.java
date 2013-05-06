@@ -29,7 +29,8 @@ public class SemaN4Properties extends SemaCommonProperties {
     public SMIntProperty touch;
     public SMTouchAccuracyProperty taccuracy;
     public SMTouchJitterProperty tjitter;
-
+    public SMLoggerProperty logger;
+    
     public SemaN4Properties() {
 
         gov = new SMStringProperty("gov", "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor", false, "ondemand");
@@ -58,6 +59,11 @@ public class SemaN4Properties extends SemaCommonProperties {
         
         taccuracy = new SMTouchAccuracyProperty();
         tjitter = new SMTouchJitterProperty();
+        
+        logger = new SMLoggerProperty("logger", "/system/lib/modules", false);
+//        tun = new SMModuleProperty("tun", "/lib/modules/tun", false, false);
+//        cifs = new SMModuleProperty("cifs", "/lib/modules/cifs", false, false);
+//        configs = new SMModuleProperty("configs", "/lib/modules/configs", false, false);
     }
 
     @Override

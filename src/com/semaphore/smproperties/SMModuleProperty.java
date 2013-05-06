@@ -16,7 +16,6 @@ public class SMModuleProperty extends SMProperty {
 
     private boolean Value;
     private boolean defValue;
-    private String modpath = "/system/lib/modules/";
 
     public boolean getDefValue() {
         return defValue;
@@ -48,7 +47,7 @@ public class SMModuleProperty extends SMProperty {
         Commander cm = Commander.getInstance();
         int res;
         if (Value == true) {
-            res = cm.run("insmod ".concat(modpath).concat(getPath()).concat(".ko"), true);
+            res = cm.run("insmod ".concat(getPath()).concat(".ko"), true);
         } else {
             if (!getName().equals("cpufreq_smartass2")) {
                 res = cm.run("rmmod ".concat(getName()), true);
@@ -58,7 +57,7 @@ public class SMModuleProperty extends SMProperty {
 
     public void writeBatch(List<String> cmds) {
         if (Value == true) {
-            cmds.add("insmod ".concat(modpath).concat(getPath()).concat(".ko"));
+            cmds.add("insmod ".concat(getPath()).concat(".ko"));
         } else {
             if (!getName().equals("cpufreq_smartass2")) {
                 cmds.add("rmmod ".concat(getName()));

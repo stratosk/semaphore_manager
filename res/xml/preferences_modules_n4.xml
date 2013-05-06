@@ -1,5 +1,8 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <SwitchPreference
+        android:key="logger"
+        android:title="@string/str_logger_title" />
 
 </PreferenceScreen>

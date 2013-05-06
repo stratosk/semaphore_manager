@@ -57,16 +57,14 @@ public class MainActivity extends FragmentActivity {
             fragments = new ArrayList<Fragment>();
             fragments.add(new TabCPUFragment());
             fragments.add(new TabTweaksFragment());
-            if (Device == SemaDevices.I9000)
-                fragments.add(new TabModulesFragment());
+            fragments.add(new TabModulesFragment());
             fragments.add(new TabSAIFragment());
             fragments.add(new TabInfoFragment());
 
             titles = new ArrayList<String>();
             titles.add("CPU");
             titles.add("TWEAKS");
-            if (Device == SemaDevices.I9000)
-                titles.add("MODULES");
+            titles.add("MODULES");
             titles.add("SAI");
             titles.add("INFO");
         }

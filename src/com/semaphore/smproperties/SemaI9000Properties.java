@@ -64,15 +64,15 @@ public class SemaI9000Properties extends SemaCommonProperties {
         lock_min = new SMIntProperty("lock_min", "/sys/devices/system/cpu/cpu0/cpufreq/lock_scaling_min", false, 0, 1, 0);
         bluetooth = new SMIntProperty("bluetooth", "/sys/devices/platform/bt_rfkill/rfkill/rfkill0/soft", false, 0, 1, 0);
 
-        logger = new SMLoggerProperty("logger", false);
-        tun = new SMModuleProperty("tun", "tun", false, false);
+        logger = new SMLoggerProperty("logger", "/system/lib/modules", false);
+        tun = new SMModuleProperty("tun", "/system/lib/modules/tun", false, false);
         cifs = new SMCifsProperty(false);
-        configs = new SMModuleProperty("configs", "configs", false, false);
-        radio_si4709_i2c = new SMModuleProperty("radio_si4709_i2c", "radio-si4709-i2c", false, false);
-        mousedev = new SMModuleProperty("mousedev", "mousedev", false, false);
+        configs = new SMModuleProperty("configs", "/system/lib/modules/configs", false, false);
+        radio_si4709_i2c = new SMModuleProperty("radio_si4709_i2c", "/system/lib/modules/radio-si4709-i2c", false, false);
+        mousedev = new SMModuleProperty("mousedev", "/system/lib/modules/mousedev", false, false);
         xbox = new SMXboxProperty(false);
-        usbhid = new SMModuleProperty("usbhid", "usbhid", false, false);
-        uhid = new SMModuleProperty("uhid", "uhid", false, false);
+        usbhid = new SMModuleProperty("usbhid", "/system/lib/modules/usbhid", false, false);
+        uhid = new SMModuleProperty("uhid", "/system/lib/modules/uhid", false, false);
 
         scheduler = new SMSchedulerProperty("scheduler", "noop");
         scheduler.basepath = "/sys/block/mmcblk0/queue/scheduler";
