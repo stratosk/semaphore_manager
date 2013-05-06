@@ -28,7 +28,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="Touch Wake (Experimental)">
+        android:title="Touch Wake">
         <SwitchPreference
             android:key="touch_enable"
             android:title="@string/str_touch_enable_title" />
