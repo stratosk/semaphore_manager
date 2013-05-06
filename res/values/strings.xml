@@ -230,6 +230,8 @@
     <string name="str_ab_instant_update_thres_summary"></string>
     <string name="str_ab_effect_delay_ms_title">Effect delay</string>
     <string name="str_ab_effect_delay_ms_summary"></string>
+    <string name="str_max_br_threshold_title">Max brightness threshold</string>
+    <string name="str_max_br_threshold_summary"></string>
 
     <string-array name="array_ab_profiles_entries">
         <item>Bright</item>

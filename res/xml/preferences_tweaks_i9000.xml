@@ -59,6 +59,12 @@
                 android:summary="@string/str_ab_effect_delay_ms_summary"
                 android:numeric="integer"
                 android:inputType="number" />
+            <EditTextPreference
+                android:key="ab_max_br_threshold"
+                android:title="@string/str_max_br_threshold_title"
+                android:summary="@string/str_max_br_threshold_summary"
+                android:numeric="integer"
+                android:inputType="number" />
 
         </PreferenceScreen>
     

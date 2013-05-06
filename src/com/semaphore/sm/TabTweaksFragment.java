@@ -83,6 +83,8 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.autobr.effect_delay_ms.getName());
         pref.setSummary(((EditTextPreference) pref).getText());        
+        pref = findPreference(sp.autobr.max_br_threshold.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());        
     }
     
     private void updateSummariesN4() {
@@ -204,6 +206,9 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         } else if (key.equals(sp.autobr.effect_delay_ms.getName())) {
             sp.autobr.effect_delay_ms.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.autobr.effect_delay_ms.getDefault()))));
             sp.autobr.effect_delay_ms.writeValue();
+        } else if (key.equals(sp.autobr.max_br_threshold.getName())) {
+            sp.autobr.max_br_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.autobr.max_br_threshold.getDefault()))));
+            sp.autobr.max_br_threshold.writeValue();
         } else if (key.equals("ab_profiles")) {
             if (sharedPreferences.getString("ab_profiles", "").equals("bright")) {
                 ((EditTextPreference) findPreference(sp.autobr.max_brightness.getName())).setText("255");
@@ -211,18 +216,21 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
                 ((EditTextPreference) findPreference(sp.autobr.max_lux.getName())).setText("2700");
                 ((EditTextPreference) findPreference(sp.autobr.instant_update_thres.getName())).setText("30");
                 ((EditTextPreference) findPreference(sp.autobr.effect_delay_ms.getName())).setText("0");
+                ((EditTextPreference) findPreference(sp.autobr.max_br_threshold.getName())).setText("0");
             } else if (sharedPreferences.getString("ab_profiles", "").equals("normal")) {
                 ((EditTextPreference) findPreference(sp.autobr.max_brightness.getName())).setText("255");
                 ((EditTextPreference) findPreference(sp.autobr.min_brightness.getName())).setText("15");
                 ((EditTextPreference) findPreference(sp.autobr.max_lux.getName())).setText("2900");
                 ((EditTextPreference) findPreference(sp.autobr.instant_update_thres.getName())).setText("30");
                 ((EditTextPreference) findPreference(sp.autobr.effect_delay_ms.getName())).setText("0");
+                ((EditTextPreference) findPreference(sp.autobr.max_br_threshold.getName())).setText("0");
             } else if (sharedPreferences.getString("ab_profiles", "").equals("dark")) {
                 ((EditTextPreference) findPreference(sp.autobr.max_brightness.getName())).setText("255");
                 ((EditTextPreference) findPreference(sp.autobr.min_brightness.getName())).setText("10");
                 ((EditTextPreference) findPreference(sp.autobr.max_lux.getName())).setText("3000");
                 ((EditTextPreference) findPreference(sp.autobr.instant_update_thres.getName())).setText("30");
                 ((EditTextPreference) findPreference(sp.autobr.effect_delay_ms.getName())).setText("0");
+                ((EditTextPreference) findPreference(sp.autobr.max_br_threshold.getName())).setText("0");
             }
         } else if (key.equals(sp.vibrator.getName())) {
             sp.vibrator.setValue(sharedPreferences.getInt(key, sp.vibrator.getDefault()));

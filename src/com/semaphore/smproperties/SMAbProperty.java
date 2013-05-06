@@ -19,7 +19,8 @@ public class SMAbProperty extends SMBatchProperty {
     public SMIntProperty max_lux;
     public SMIntProperty instant_update_thres;
     public SMIntProperty effect_delay_ms;
-
+    public SMIntProperty max_br_threshold;
+    
     public SMAbProperty() {
         super("sautobr");
 
@@ -32,6 +33,7 @@ public class SMAbProperty extends SMBatchProperty {
         max_lux = new SMIntProperty("ab_max_lux", basepath.concat("max_lux"), false, 1, 3000, 2900);
         instant_update_thres = new SMIntProperty("ab_instant_update_thres", basepath.concat("instant_update_thres"), false, 1, 100, 30);
         effect_delay_ms = new SMIntProperty("ab_effect_delay_ms", basepath.concat("effect_delay_ms"), false, 0, 10, 0);
+        max_br_threshold = new SMIntProperty("max_br_threshold", basepath.concat("max_br_threshold"), false, 0, 3000, 0);
     }
 
     public void readValue() {
@@ -41,6 +43,7 @@ public class SMAbProperty extends SMBatchProperty {
         max_lux.readValue();
         instant_update_thres.readValue();
         effect_delay_ms.readValue();
+        max_br_threshold.readValue();
     }
 
     public void writeValue() {
@@ -50,6 +53,7 @@ public class SMAbProperty extends SMBatchProperty {
         max_lux.writeValue();
         instant_update_thres.writeValue();
         effect_delay_ms.writeValue();
+        max_br_threshold.writeValue();
     }
 
     public void writeBatch(List<String> cmds) {
@@ -59,5 +63,6 @@ public class SMAbProperty extends SMBatchProperty {
         max_lux.writeBatch(cmds);
         instant_update_thres.writeBatch(cmds);
         effect_delay_ms.writeBatch(cmds);
+        max_br_threshold.writeBatch(cmds);
     }
 }
