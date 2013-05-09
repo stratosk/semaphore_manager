@@ -84,7 +84,7 @@
                                             android:dialogMessage=""
                                             android:defaultValue="0"
                                             android:text=" ms"
-                                            android:max="90000"
+                                            android:max="300000"
         />
     </PreferenceCategory>
     <PreferenceCategory
