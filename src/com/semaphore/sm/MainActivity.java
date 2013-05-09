@@ -19,6 +19,7 @@ import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.renderscript.Sampler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -142,8 +143,15 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void checkFirstRun() {
+        boolean needRead = false;
+                
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-        if (!prefs.contains("gov")) {
+        needRead = !prefs.contains("gov");
+        if (Device == SemaDevices.Mako)
+            needRead = needRead || !prefs.contains("led_red");
+        if (Device == SemaDevices.I9000)
+            needRead = needRead || !prefs.contains("ab_max_br_threshold");
+        if (needRead) {
             PropTask pt = new PropTask();
             pt.execute(sp);
         } else {
