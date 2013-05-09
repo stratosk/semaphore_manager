@@ -319,6 +319,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         edit.putString(autobr.max_lux.getName(), String.valueOf(autobr.max_lux.getValue()));
         edit.putString(autobr.instant_update_thres.getName(), String.valueOf(autobr.instant_update_thres.getValue()));
         edit.putString(autobr.effect_delay_ms.getName(), String.valueOf(autobr.effect_delay_ms.getValue()));
+        edit.putString(autobr.max_br_threshold.getName(), String.valueOf(autobr.max_br_threshold.getValue()));
 
         edit.putInt(vibrator.getName(), vibrator.getValue());
         edit.putBoolean(touch_enable.getName(), touch_enable.getBoolean());
@@ -407,6 +408,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         autobr.max_lux.setValue(prefs.getString(autobr.max_lux.getName(), autobr.max_lux.getDefString()));
         autobr.instant_update_thres.setValue(prefs.getString(autobr.instant_update_thres.getName(), autobr.instant_update_thres.getDefString()));
         autobr.effect_delay_ms.setValue(prefs.getString(autobr.effect_delay_ms.getName(), autobr.effect_delay_ms.getDefString()));
+        autobr.max_br_threshold.setValue(prefs.getString(autobr.max_br_threshold.getName(), autobr.max_br_threshold.getDefString()));
 
         vibrator.setValue(prefs.getInt(vibrator.getName(), vibrator.getDefault()));
         touch_enable.setValue(prefs.getBoolean(touch_enable.getName(), touch_enable.getDefBoolean()) == true ? 1 : 0);
@@ -494,6 +496,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         autobr.max_lux.setValue(autobr.max_lux.getDefString());
         autobr.instant_update_thres.setValue(autobr.instant_update_thres.getDefString());
         autobr.effect_delay_ms.setValue(autobr.effect_delay_ms.getDefString());
+        autobr.max_br_threshold.setValue(autobr.max_br_threshold.getDefString());
 
         vibrator.setValue(vibrator.getDefault());
         touch_enable.setValue(touch_enable.getDefault());

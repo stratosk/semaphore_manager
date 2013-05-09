@@ -33,7 +33,7 @@ public class SMAbProperty extends SMBatchProperty {
         max_lux = new SMIntProperty("ab_max_lux", basepath.concat("max_lux"), false, 1, 4000, 2900);
         instant_update_thres = new SMIntProperty("ab_instant_update_thres", basepath.concat("instant_update_thres"), false, 1, 100, 30);
         effect_delay_ms = new SMIntProperty("ab_effect_delay_ms", basepath.concat("effect_delay_ms"), false, 0, 10, 0);
-        max_br_threshold = new SMIntProperty("max_br_threshold", basepath.concat("max_br_threshold"), false, 0, 3000, 0);
+        max_br_threshold = new SMIntProperty("ab_max_br_threshold", basepath.concat("max_br_threshold"), false, 0, 3000, 0);
     }
 
     public void readValue() {
