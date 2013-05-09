@@ -28,7 +28,7 @@ public class SMInteractiveProperty extends SMBatchProperty {
 
         String basepath = "/sys/devices/system/cpu/cpufreq/interactive/";
 
-        inter = new SMModuleProperty("cpufreq_interactive", "cpufreq_interactive", false, false);
+        inter = new SMModuleProperty("cpufreq_interactive", "/system/lib/modules/cpufreq_interactive", false, false);
 
         hispeed_freq = new SMIntProperty("i_hispeed_freq", basepath.concat("hispeed_freq"), false, 100000, 1200000, 800000);
         go_hispeed_load = new SMIntProperty("i_go_hispeed_load", basepath.concat("go_hispeed_load"), false, 1, 100, 99);

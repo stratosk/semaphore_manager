@@ -31,7 +31,7 @@ public class SMSmartassProperty extends SMBatchProperty {
 
         String basepath = "/sys/devices/system/cpu/cpufreq/smartass/";
 
-        smart = new SMModuleProperty("cpufreq_smartass2", "cpufreq_smartass2", false, false);
+        smart = new SMModuleProperty("cpufreq_smartass2", "/system/lib/modules/cpufreq_smartass2", false, false);
 
         awake_ideal_freq = new SMIntProperty("s_awake_ideal_freq", basepath.concat("awake_ideal_freq"), false, 100000, 1200000, 800000);
         up_rate = new SMIntProperty("s_up_rate", basepath.concat("up_rate_us"), false, 0, 100000000, 10000);

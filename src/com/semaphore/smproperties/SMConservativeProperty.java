@@ -26,7 +26,7 @@ public class SMConservativeProperty extends SMBatchProperty {
 
         String basepath = "/sys/devices/system/cpu/cpufreq/conservative/";
 
-        cons = new SMModuleProperty("cpufreq_conservative", "cpufreq_conservative", false, false);
+        cons = new SMModuleProperty("cpufreq_conservative", "/system/lib/modules/cpufreq_conservative", false, false);
 
         freq_step = new SMIntProperty("c_freq_step", basepath.concat("freq_step"), false, 1, 100, 5);
         sampling_down_factor = new SMIntProperty("c_sampling_down_factor", basepath.concat("sampling_down_factor"), true, 1, 1000, 1);

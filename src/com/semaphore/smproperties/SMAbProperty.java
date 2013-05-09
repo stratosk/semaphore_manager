@@ -26,7 +26,7 @@ public class SMAbProperty extends SMBatchProperty {
 
         String basepath = "/sys/devices/virtual/misc/sema_autobr/";
 
-        sema_autobr = new SMModuleProperty("sema_autobr", "sema_autobr", false, false);
+        sema_autobr = new SMModuleProperty("sema_autobr", "/system/lib/modules/sema_autobr", false, false);
 
         min_brightness = new SMIntProperty("ab_min_brightness", basepath.concat("min_brightness"), false, 1, 255, 15);
         max_brightness = new SMIntProperty("ab_max_brightness", basepath.concat("max_brightness"), false, 1, 255, 255);
