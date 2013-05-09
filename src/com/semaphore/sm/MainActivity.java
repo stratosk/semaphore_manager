@@ -275,7 +275,6 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void updateSummaries() {
-        int pos = 2;
         
         TabCPUFragment cpu = (TabCPUFragment) mPagerAdapter.fragments.get(0);
         if (cpu != null) {
@@ -285,9 +284,7 @@ public class MainActivity extends FragmentActivity {
         if (tweaks != null) {
             tweaks.updateSummaries();
         }
-        if (Device == SemaDevices.I9000)
-            pos = 3;
-        TabSAIFragment sai = (TabSAIFragment) mPagerAdapter.fragments.get(pos);
+        TabSAIFragment sai = (TabSAIFragment) mPagerAdapter.fragments.get(3);
         if (sai != null) {
             sai.updateSummaries();
         }

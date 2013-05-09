@@ -30,6 +30,10 @@ public class SemaN4Properties extends SemaCommonProperties {
     public SMTouchAccuracyProperty taccuracy;
     public SMTouchJitterProperty tjitter;
     public SMLoggerProperty logger;
+    public SMStringProperty led_red;
+    public SMStringProperty led_green;
+    public SMStringProperty led_blue;
+    public SMLCDTempProperty lcdtemp;
     
     public SemaN4Properties() {
 
@@ -55,15 +59,17 @@ public class SemaN4Properties extends SemaCommonProperties {
         vibrator = new SMIntProperty("vibrator", "/sys/class/timed_output/vibrator/amp", false, 0, 100, 70);        
         touch_enable = new SMIntProperty("touch_enable", "/sys/devices/virtual/misc/touchwake/enabled", false, 0, 1, 0);
         touch = new SMIntProperty("touch", "/sys/devices/virtual/misc/touchwake/delay", false, 0, 90000, 45000);
-        //touchscreen = new SMTouchscreenProperty("touchscreen", "stock");
         
         taccuracy = new SMTouchAccuracyProperty();
         tjitter = new SMTouchJitterProperty();
         
-        logger = new SMLoggerProperty("logger", "/system/lib/modules", false);
-//        tun = new SMModuleProperty("tun", "/lib/modules/tun", false, false);
-//        cifs = new SMModuleProperty("cifs", "/lib/modules/cifs", false, false);
-//        configs = new SMModuleProperty("configs", "/lib/modules/configs", false, false);
+        led_red = new SMStringProperty("led_red", "/sys/class/leds/red/trigger", false, "thermal");
+        led_green = new SMStringProperty("led_green", "/sys/class/leds/green/trigger", false, "battery-full");
+        led_blue = new SMStringProperty("led_blue", "/sys/class/leds/blue/trigger", false, "touchwake");
+        
+        lcdtemp = new SMLCDTempProperty();
+        
+        logger = new SMLoggerProperty("logger", "/lib/modules", false);
     }
 
     @Override
@@ -80,6 +86,14 @@ public class SemaN4Properties extends SemaCommonProperties {
         
         taccuracy.readValue();
         tjitter.readValue();
+        
+        led_red.readValue();
+        led_green.readValue();
+        led_blue.readValue();
+        
+        lcdtemp.readValue();
+        
+        logger.readValue();
     }
 
     @Override
@@ -111,6 +125,13 @@ public class SemaN4Properties extends SemaCommonProperties {
         taccuracy.writeBatch(cmds);
         tjitter.writeBatch(cmds);
         
+        led_red.writeBatch(cmds);
+        led_green.writeBatch(cmds);
+        led_blue.writeBatch(cmds);
+        
+        lcdtemp.writeBatch(cmds);
+        
+        logger.writeBatch(cmds);
         //Log.d("semaphore cmds: ", cmds.toString());
         Commander.getInstance().runSuBatch(cmds);
     }
@@ -141,6 +162,14 @@ public class SemaN4Properties extends SemaCommonProperties {
         
         taccuracy.writeValue();
         tjitter.writeValue();
+        
+        led_red.writeValue();
+        led_green.writeValue();
+        led_blue.writeValue();
+        
+        lcdtemp.writeValue();
+        
+        logger.writeValue();
     }
 
     @Override
@@ -191,6 +220,16 @@ public class SemaN4Properties extends SemaCommonProperties {
         edit.putBoolean(tjitter.jitter_enable.getName(), tjitter.jitter_enable.getBoolean());
         edit.putString(tjitter.adjust_margin.getName(), tjitter.adjust_margin.getValString());
         
+        edit.putString(led_red.getName(), led_red.getValue());
+        edit.putString(led_green.getName(), led_green.getValue());
+        edit.putString(led_blue.getName(), led_blue.getValue());
+        
+        edit.putInt(lcdtemp.lcd_red.getName(), lcdtemp.lcd_red.getValue());
+        edit.putInt(lcdtemp.lcd_green.getName(), lcdtemp.lcd_green.getValue());
+        edit.putInt(lcdtemp.lcd_blue.getName(), lcdtemp.lcd_blue.getValue());
+
+        edit.putBoolean(logger.getName(), logger.getValue());
+        
         edit.commit();
     }
 
@@ -239,7 +278,16 @@ public class SemaN4Properties extends SemaCommonProperties {
 
         tjitter.jitter_enable.setValue(prefs.getBoolean(tjitter.jitter_enable.getName(), tjitter.jitter_enable.getDefBoolean()) == true ? 1 : 0);
         tjitter.adjust_margin.setValue(prefs.getString(tjitter.adjust_margin.getName(), tjitter.adjust_margin.getDefString()));
+        
+        led_red.setValue(prefs.getString(led_red.getName(), led_red.getDefValue()));
+        led_green.setValue(prefs.getString(led_green.getName(), led_green.getDefValue()));
+        led_blue.setValue(prefs.getString(led_blue.getName(), led_blue.getDefValue()));
 
+        lcdtemp.lcd_red.setValue(prefs.getInt(lcdtemp.lcd_red.getName(), lcdtemp.lcd_red.getDefault()));
+        lcdtemp.lcd_green.setValue(prefs.getInt(lcdtemp.lcd_green.getName(), lcdtemp.lcd_green.getDefault()));
+        lcdtemp.lcd_blue.setValue(prefs.getInt(lcdtemp.lcd_blue.getName(), lcdtemp.lcd_blue.getDefault()));
+        
+        logger.setValue(prefs.getBoolean(logger.getName(), logger.getDefValue()));
     }
 
     @Override
@@ -277,5 +325,13 @@ public class SemaN4Properties extends SemaCommonProperties {
         
         taccuracy.setDefValues();
         tjitter.setDefValues();
+        
+        led_red.setValue(led_red.getDefValue());
+        led_green.setValue(led_green.getDefValue());
+        led_blue.setValue(led_blue.getDefValue());
+        
+        lcdtemp.setDefValues();
+        
+        logger.setValue(logger.getDefValue());
     }
 }

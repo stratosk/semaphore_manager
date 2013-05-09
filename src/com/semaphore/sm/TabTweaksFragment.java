@@ -97,6 +97,27 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         if (((ListPreference) pref).getEntry() != null) {
             pref.setSummary(((ListPreference) pref).getEntry().toString());
         }
+        pref = findPreference("led_red");
+        if (pref == null) {
+            return;
+        }
+        if (((ListPreference) pref).getEntry() != null) {
+            pref.setSummary(((ListPreference) pref).getEntry().toString());
+        }
+        pref = findPreference("led_green");
+        if (pref == null) {
+            return;
+        }
+        if (((ListPreference) pref).getEntry() != null) {
+            pref.setSummary(((ListPreference) pref).getEntry().toString());
+        }
+        pref = findPreference("led_blue");
+        if (pref == null) {
+            return;
+        }
+        if (((ListPreference) pref).getEntry() != null) {
+            pref.setSummary(((ListPreference) pref).getEntry().toString());
+        }
 
         pref = findPreference(sp.vibrator.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
@@ -123,6 +144,14 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
 
         pref = findPreference(sp.tjitter.adjust_margin.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
+        
+        pref = findPreference(sp.lcdtemp.lcd_red.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+        pref = findPreference(sp.lcdtemp.lcd_green.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+        pref = findPreference(sp.lcdtemp.lcd_blue.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+        
     }
 
     public void updateSummaries() {
@@ -179,6 +208,24 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         } else if (key.equals(sp.tjitter.adjust_margin.getName())) {
             sp.tjitter.adjust_margin.setValue(sharedPreferences.getString(key, sp.tjitter.adjust_margin.getDefString()));
             sp.tjitter.writeValue();
+        } else if (key.equals(sp.led_red.getName())) {
+            sp.led_red.setValue(sharedPreferences.getString(key, sp.led_red.getDefValue()));
+            sp.led_red.writeValue();
+        } else if (key.equals(sp.led_green.getName())) {
+            sp.led_green.setValue(sharedPreferences.getString(key, sp.led_green.getDefValue()));
+            sp.led_green.writeValue();
+        } else if (key.equals(sp.led_blue.getName())) {
+            sp.led_blue.setValue(sharedPreferences.getString(key, sp.led_blue.getDefValue()));
+            sp.led_blue.writeValue();
+        } else if (key.equals(sp.lcdtemp.lcd_red.getName())) {
+            sp.lcdtemp.lcd_red.setValue(sharedPreferences.getInt(key, sp.lcdtemp.lcd_red.getDefault()));
+            sp.lcdtemp.writeValue();
+        } else if (key.equals(sp.lcdtemp.lcd_green.getName())) {
+            sp.lcdtemp.lcd_green.setValue(sharedPreferences.getInt(key, sp.lcdtemp.lcd_green.getDefault()));
+            sp.lcdtemp.writeValue();
+        } else if (key.equals(sp.lcdtemp.lcd_blue.getName())) {
+            sp.lcdtemp.lcd_blue.setValue(sharedPreferences.getInt(key, sp.lcdtemp.lcd_blue.getDefault()));
+            sp.lcdtemp.writeValue();
         }
     }
     

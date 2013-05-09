@@ -56,6 +56,35 @@
         <item>interactive</item>
     </string-array>
 
+    <string name="str_cat_leds_title">LED triggers</string>
+    <string name="str_led_red_title">Red</string>
+    <string name="str_led_green_title">Green</string>
+    <string name="str_led_blue_title">Blue</string>
+
+    <string-array name="array_led_entries">
+        <item>None</item>
+        <item>Touchwake</item>
+        <item>MMC</item>
+        <item>Thermal</item>
+        <item>USB online</item>
+        <item>DC online</item>
+        <item>Battery charging or full</item>
+        <item>Battery charging</item>
+        <item>Battery full</item>
+    </string-array>
+ 
+    <string-array name="array_led_values">
+        <item>none</item>
+        <item>touchwake</item>
+        <item>mmc0</item>
+        <item>thermal</item>
+        <item>usb-online</item>
+        <item>pm8921-dc-online</item>
+        <item>battery-charging-or-full</item>
+        <item>battery-charging</item>
+        <item>battery-full</item>
+    </string-array>
+
     <string-array name="scripts">
         <item>noop</item>
         <item>deadline</item>
@@ -284,6 +313,18 @@
         <item>Low</item>
         <item>Minimum</item>
     </string-array>
+    
+    <string name="str_lcd_calibration_title">LCD calibration</string>
+
+    <string name="str_lcd_temperature_title">Color temperature</string>
+    <string name="str_lcd_red_title">Red</string>
+    <string name="str_lcd_green_title">Green</string>
+    <string name="str_lcd_blue_title">Blue</string>
+
+    <string name="str_lcd_gamma_title">Gamma control</string>
+    <string name="str_lcd_gammar_title">Red</string>
+    <string name="str_lcd_gammag_title">Green</string>
+    <string name="str_lcd_gammab_title">Blue</string>
 
     <string name="str_configs_title">config.gz</string>
     <string name="str_configs_summary">/proc/config.gz</string>
