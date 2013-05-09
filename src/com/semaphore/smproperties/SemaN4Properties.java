@@ -30,10 +30,13 @@ public class SemaN4Properties extends SemaCommonProperties {
     public SMTouchAccuracyProperty taccuracy;
     public SMTouchJitterProperty tjitter;
     public SMLoggerProperty logger;
-    public SMStringProperty led_red;
-    public SMStringProperty led_green;
-    public SMStringProperty led_blue;
+    public SMLEDTrigProperty led_red;
+    public SMLEDTrigProperty led_green;
+    public SMLEDTrigProperty led_blue;
     public SMLCDTempProperty lcdtemp;
+    public SMStringProperty gamma_r;
+    public SMStringProperty gamma_g;
+    public SMStringProperty gamma_b;
     
     public SemaN4Properties() {
 
@@ -63,11 +66,14 @@ public class SemaN4Properties extends SemaCommonProperties {
         taccuracy = new SMTouchAccuracyProperty();
         tjitter = new SMTouchJitterProperty();
         
-        led_red = new SMStringProperty("led_red", "/sys/class/leds/red/trigger", false, "thermal");
-        led_green = new SMStringProperty("led_green", "/sys/class/leds/green/trigger", false, "battery-full");
-        led_blue = new SMStringProperty("led_blue", "/sys/class/leds/blue/trigger", false, "touchwake");
+        led_red = new SMLEDTrigProperty("led_red", "/sys/class/leds/red/trigger", false, "thermal");
+        led_green = new SMLEDTrigProperty("led_green", "/sys/class/leds/green/trigger", false, "battery-full");
+        led_blue = new SMLEDTrigProperty("led_blue", "/sys/class/leds/blue/trigger", false, "touchwake");
         
         lcdtemp = new SMLCDTempProperty();
+        gamma_r = new SMStringProperty("gamma_r", "/sys/devices/virtual/misc/gamma_control/gamma_r", false, "64 68 118 1 0 0 48 32 1");
+        gamma_g = new SMStringProperty("gamma_g", "/sys/devices/virtual/misc/gamma_control/gamma_g", false, "64 68 118 1 0 0 48 32 1");
+        gamma_b = new SMStringProperty("gamma_b", "/sys/devices/virtual/misc/gamma_control/gamma_b", false, "32 35 116 0 31 16 80 51 3");
         
         logger = new SMLoggerProperty("logger", "/lib/modules", false);
     }
@@ -92,6 +98,9 @@ public class SemaN4Properties extends SemaCommonProperties {
         led_blue.readValue();
         
         lcdtemp.readValue();
+        gamma_r.readValue();
+        gamma_g.readValue();
+        gamma_b.readValue();
         
         logger.readValue();
     }
@@ -130,6 +139,9 @@ public class SemaN4Properties extends SemaCommonProperties {
         led_blue.writeBatch(cmds);
         
         lcdtemp.writeBatch(cmds);
+        gamma_r.writeBatch(cmds);
+        gamma_g.writeBatch(cmds);
+        gamma_b.writeBatch(cmds);
         
         logger.writeBatch(cmds);
         //Log.d("semaphore cmds: ", cmds.toString());
@@ -168,6 +180,9 @@ public class SemaN4Properties extends SemaCommonProperties {
         led_blue.writeValue();
         
         lcdtemp.writeValue();
+        gamma_r.writeValue();
+        gamma_g.writeValue();
+        gamma_b.writeValue();
         
         logger.writeValue();
     }
@@ -227,6 +242,9 @@ public class SemaN4Properties extends SemaCommonProperties {
         edit.putInt(lcdtemp.lcd_red.getName(), lcdtemp.lcd_red.getValue());
         edit.putInt(lcdtemp.lcd_green.getName(), lcdtemp.lcd_green.getValue());
         edit.putInt(lcdtemp.lcd_blue.getName(), lcdtemp.lcd_blue.getValue());
+        edit.putString(gamma_r.getName(), gamma_r.getValue());
+        edit.putString(gamma_g.getName(), gamma_g.getValue());
+        edit.putString(gamma_b.getName(), gamma_b.getValue());
 
         edit.putBoolean(logger.getName(), logger.getValue());
         
@@ -286,6 +304,9 @@ public class SemaN4Properties extends SemaCommonProperties {
         lcdtemp.lcd_red.setValue(prefs.getInt(lcdtemp.lcd_red.getName(), lcdtemp.lcd_red.getDefault()));
         lcdtemp.lcd_green.setValue(prefs.getInt(lcdtemp.lcd_green.getName(), lcdtemp.lcd_green.getDefault()));
         lcdtemp.lcd_blue.setValue(prefs.getInt(lcdtemp.lcd_blue.getName(), lcdtemp.lcd_blue.getDefault()));
+        gamma_r.setValue(prefs.getString(gamma_r.getName(), gamma_r.getDefValue()));
+        gamma_g.setValue(prefs.getString(gamma_g.getName(), gamma_g.getDefValue()));
+        gamma_b.setValue(prefs.getString(gamma_b.getName(), gamma_b.getDefValue()));
         
         logger.setValue(prefs.getBoolean(logger.getName(), logger.getDefValue()));
     }
@@ -329,6 +350,9 @@ public class SemaN4Properties extends SemaCommonProperties {
         led_red.setValue(led_red.getDefValue());
         led_green.setValue(led_green.getDefValue());
         led_blue.setValue(led_blue.getDefValue());
+        gamma_r.setValue(gamma_r.getDefValue());
+        gamma_g.setValue(gamma_g.getDefValue());
+        gamma_b.setValue(gamma_b.getDefValue());
         
         lcdtemp.setDefValues();
         

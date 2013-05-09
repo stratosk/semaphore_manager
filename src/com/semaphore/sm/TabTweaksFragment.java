@@ -152,6 +152,12 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         pref = findPreference(sp.lcdtemp.lcd_blue.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
         
+        pref = findPreference(sp.gamma_r.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.gamma_g.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.gamma_b.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
     }
 
     public void updateSummaries() {
@@ -226,6 +232,15 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         } else if (key.equals(sp.lcdtemp.lcd_blue.getName())) {
             sp.lcdtemp.lcd_blue.setValue(sharedPreferences.getInt(key, sp.lcdtemp.lcd_blue.getDefault()));
             sp.lcdtemp.writeValue();
+        } else if (key.equals(sp.gamma_r.getName())) {
+            sp.gamma_r.setValue(sharedPreferences.getString(key, sp.gamma_r.getDefValue()));
+            sp.gamma_r.writeValue();
+        } else if (key.equals(sp.gamma_g.getName())) {
+            sp.gamma_g.setValue(sharedPreferences.getString(key, sp.gamma_g.getDefValue()));
+            sp.gamma_g.writeValue();
+        } else if (key.equals(sp.gamma_b.getName())) {
+            sp.gamma_b.setValue(sharedPreferences.getString(key, sp.gamma_b.getDefValue()));
+            sp.gamma_b.writeValue();
         }
     }
     

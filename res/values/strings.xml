@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Semaphore Manager</string>
-    <string name="str_app_version_title">2.6.0</string>
+    <string name="str_app_version_title">2.7.0</string>
     
     <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
     
@@ -259,8 +259,8 @@
     <string name="str_ab_instant_update_thres_summary"></string>
     <string name="str_ab_effect_delay_ms_title">Effect delay</string>
     <string name="str_ab_effect_delay_ms_summary"></string>
-    <string name="str_max_br_threshold_title">Max brightness threshold</string>
-    <string name="str_max_br_threshold_summary"></string>
+    <string name="str_ab_max_br_threshold_title">Max brightness threshold</string>
+    <string name="str_ab_max_br_threshold_summary"></string>
 
     <string-array name="array_ab_profiles_entries">
         <item>Bright</item>
@@ -322,9 +322,9 @@
     <string name="str_lcd_blue_title">Blue</string>
 
     <string name="str_lcd_gamma_title">Gamma control</string>
-    <string name="str_lcd_gammar_title">Red</string>
-    <string name="str_lcd_gammag_title">Green</string>
-    <string name="str_lcd_gammab_title">Blue</string>
+    <string name="str_gamma_r_title">Red</string>
+    <string name="str_gamma_g_title">Green</string>
+    <string name="str_gamma_b_title">Blue</string>
 
     <string name="str_configs_title">config.gz</string>
     <string name="str_configs_summary">/proc/config.gz</string>

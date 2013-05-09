@@ -103,18 +103,18 @@
         <PreferenceCategory
             android:title="@string/str_lcd_gamma_title">
             <EditTextPreference
-                android:key="lcd_gammar"
-                android:title="@string/str_lcd_gammar_title"
+                android:key="gamma_r"
+                android:title="@string/str_gamma_r_title"
                 android:numeric="integer"
                 android:inputType="textNoSuggestions"/>
             <EditTextPreference
-                android:key="lcd_gammag"
-                android:title="@string/str_lcd_gammag_title"
+                android:key="gamma_g"
+                android:title="@string/str_gamma_g_title"
                 android:numeric="integer"
                 android:inputType="textNoSuggestions"/>
             <EditTextPreference
-                android:key="lcd_gammab"
-                android:title="@string/str_lcd_gammab_title"
+                android:key="gamma_b"
+                android:title="@string/str_gamma_b_title"
                 android:numeric="integer"
                 android:inputType="textNoSuggestions"/>
         </PreferenceCategory>
