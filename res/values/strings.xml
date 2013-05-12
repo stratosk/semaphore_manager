@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Semaphore Manager</string>
-    <string name="str_app_version_title">2.7.1</string>
+    <string name="str_app_version_title">2.7.5</string>
     
     <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
     
@@ -103,7 +103,7 @@
         <item>256KB</item>
         <item>512KB</item>
         <item>1024KB</item>
-        <item>3072KB</item>
+        <item>2048KB</item>
     </string-array>
  
     <string-array name="array_read_ahead_values">
@@ -111,7 +111,24 @@
         <item>256KB</item>
         <item>512KB</item>
         <item>1024KB</item>
-        <item>3072KB</item>
+        <item>2048KB</item>
+    </string-array>
+
+    <string name="str_read_ahead_n4_title">SD read ahead</string>
+    <string-array name="array_read_ahead_n4_entries">
+        <item>128KB</item>
+        <item>256KB</item>
+        <item>512KB</item>
+        <item>1024KB</item>
+        <item>2048KB</item>
+    </string-array>
+ 
+    <string-array name="array_read_ahead_n4_values">
+        <item>128</item>
+        <item>256</item>
+        <item>512</item>
+        <item>1024</item>
+        <item>2048</item>
     </string-array>
 
     <string name="str_touchscreen_title">Touch sensitivity</string>
@@ -223,8 +240,8 @@
     <string name="str_deep_idle_stats_title">Statistics</string>
     <string name="str_deep_idle_stats_show_title">Show statistics</string>
 
-    <string name="str_cpu_misc_title">Misc</string>
-    <string name="str_tweaks_misc_title">Misc</string>
+    <string name="str_cpu_misc_title">Miscellaneous</string>
+    <string name="str_tweaks_misc_title">Miscellaneous</string>
 
     <string name="str_lock_min_title">Lock min freq to 100MHz</string>
     <string name="str_lock_min_summary">Lock min frequency to 100MHz when GPU inactive</string>

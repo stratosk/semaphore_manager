@@ -104,6 +104,10 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         if (((ListPreference) pref).getEntry() != null) {
             pref.setSummary(((ListPreference) pref).getEntry().toString());
         }
+        pref = findPreference(sp.read_ahead.getName());
+        if (((ListPreference) pref).getEntry() != null) {
+            pref.setSummary(((ListPreference) pref).getEntry().toString());
+        }
         pref = findPreference("led_green");
         if (pref == null) {
             return;
@@ -241,6 +245,9 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         } else if (key.equals(sp.gamma_b.getName())) {
             sp.gamma_b.setValue(sharedPreferences.getString(key, sp.gamma_b.getDefValue()));
             sp.gamma_b.writeValue();
+        } else if (key.equals(sp.read_ahead.getName())) {
+            sp.read_ahead.setValue(sharedPreferences.getString(key, sp.read_ahead.getDefValue()));
+            sp.read_ahead.writeValue();
         }
     }
     

@@ -188,5 +188,13 @@
         />
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/str_tweaks_misc_title">
+        <ListPreference
+            android:key="read_ahead"
+            android:entries="@array/array_read_ahead_n4_entries"
+            android:entryValues="@array/array_read_ahead_n4_values"
+            android:title="@string/str_read_ahead_n4_title" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

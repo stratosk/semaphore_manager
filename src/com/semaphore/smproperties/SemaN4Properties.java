@@ -37,6 +37,7 @@ public class SemaN4Properties extends SemaCommonProperties {
     public SMStringProperty gamma_r;
     public SMStringProperty gamma_g;
     public SMStringProperty gamma_b;
+    public SMStringProperty read_ahead;
     
     public SemaN4Properties() {
 
@@ -49,10 +50,6 @@ public class SemaN4Properties extends SemaCommonProperties {
         conservative.sampling_rate.setDefault(200000);
         
         interactive = new SMInteractiveProperty();
-        interactive.min_sampling_time.setDefault(80000);
-        interactive.timer_rate.setDefault(20000);
-        interactive.above_hispeed_delay.setDefault(20000);
-        interactive.go_hispeed_load.setDefault(85);
         interactive.hispeed_freq.setMaxValue(1512000);
         interactive.hispeed_freq.setDefault(1512000);
         
@@ -74,6 +71,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         gamma_r = new SMStringProperty("gamma_r", "/sys/devices/virtual/misc/gamma_control/gamma_r", false, "64 68 118 1 0 0 48 32 1");
         gamma_g = new SMStringProperty("gamma_g", "/sys/devices/virtual/misc/gamma_control/gamma_g", false, "64 68 118 1 0 0 48 32 1");
         gamma_b = new SMStringProperty("gamma_b", "/sys/devices/virtual/misc/gamma_control/gamma_b", false, "32 35 116 0 31 16 80 51 3");
+        read_ahead = new SMStringProperty("read_ahead", "sys/devices/platform/msm_sdcc.1/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/read_ahead_kb", false, "128");
         
         logger = new SMLoggerProperty("logger", "/lib/modules", false);
     }
@@ -101,6 +99,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         gamma_r.readValue();
         gamma_g.readValue();
         gamma_b.readValue();
+        
+        read_ahead.readValue();
         
         logger.readValue();
     }
@@ -143,6 +143,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         gamma_g.writeBatch(cmds);
         gamma_b.writeBatch(cmds);
         
+        read_ahead.writeBatch(cmds);
+
         logger.writeBatch(cmds);
         //Log.d("semaphore cmds: ", cmds.toString());
         Commander.getInstance().runSuBatch(cmds);
@@ -183,6 +185,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         gamma_r.writeValue();
         gamma_g.writeValue();
         gamma_b.writeValue();
+
+        read_ahead.writeValue();
         
         logger.writeValue();
     }
@@ -246,6 +250,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         edit.putString(gamma_g.getName(), gamma_g.getValue());
         edit.putString(gamma_b.getName(), gamma_b.getValue());
 
+        edit.putString(read_ahead.getName(), read_ahead.getValue());
+        
         edit.putBoolean(logger.getName(), logger.getValue());
         
         edit.commit();
@@ -308,6 +314,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         gamma_g.setValue(prefs.getString(gamma_g.getName(), gamma_g.getDefValue()));
         gamma_b.setValue(prefs.getString(gamma_b.getName(), gamma_b.getDefValue()));
         
+        read_ahead.setValue(prefs.getString(read_ahead.getName(), read_ahead.getDefValue()));
+        
         logger.setValue(prefs.getBoolean(logger.getName(), logger.getDefValue()));
     }
 
@@ -353,6 +361,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         gamma_r.setValue(gamma_r.getDefValue());
         gamma_g.setValue(gamma_g.getDefValue());
         gamma_b.setValue(gamma_b.getDefValue());
+        
+        read_ahead.setValue(read_ahead.getDefValue());
         
         lcdtemp.setDefValues();
         
