@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Semaphore Manager</string>
-    <string name="str_app_version_title">2.7.5</string>
+    <string name="str_app_version_title">2.7.6</string>
     
     <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
     
@@ -68,6 +68,7 @@
         <item>Thermal</item>
         <item>USB online</item>
         <item>DC online</item>
+        <item>Wireless online</item>
         <item>Battery charging or full</item>
         <item>Battery charging</item>
         <item>Battery full</item>
@@ -80,6 +81,7 @@
         <item>thermal</item>
         <item>usb-online</item>
         <item>pm8921-dc-online</item>
+        <item>wireless-online</item>
         <item>battery-charging-or-full</item>
         <item>battery-charging</item>
         <item>battery-full</item>
