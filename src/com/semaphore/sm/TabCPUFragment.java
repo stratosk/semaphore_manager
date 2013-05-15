@@ -713,22 +713,31 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             sp.uv.writeValue();
             Toast.makeText(getActivity(), "Undervolting applied", Toast.LENGTH_SHORT).show();
         } else if (preference.getKey().equals("uv_reset")) {
-            SemaN4Properties sp = (SemaN4Properties) scp;
-            sp.uv.uv_boost.setValue(sp.uv.uv_boost.getDefault());
-            sp.uv.uv_higher_khz_thres.setValue(sp.uv.uv_higher_khz_thres.getDefault());
-            sp.uv.uv_lower_uv.setValue(sp.uv.uv_lower_uv.getDefault());
-            sp.uv.uv_higher_uv.setValue(sp.uv.uv_higher_uv.getDefault());
-            sp.uv.writeValue();
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            SharedPreferences.Editor edit = prefs.edit();            
-            edit.putBoolean(sp.uv.uv_boost.getName(), sp.uv.uv_boost.getDefBoolean());
-            edit.putString(sp.uv.uv_higher_khz_thres.getName(), sp.uv.uv_higher_khz_thres.getDefString());
-            edit.putInt(sp.uv.uv_lower_uv.getName(), sp.uv.uv_lower_uv.getDefault());
-            edit.putInt(sp.uv.uv_higher_uv.getName(), sp.uv.uv_higher_uv.getDefault());
-            edit.commit();
-            updateSummariesN4();
-            Toast.makeText(getActivity(), "Undervolting values reset to default", Toast.LENGTH_SHORT).show();
-            getActivity().recreate();
+            AlertDialog.Builder ad = new AlertDialog.Builder(getActivity());
+            ad.setMessage("System settings maybe will override your personal settings.\nDo you want to continue?");
+            ad.setCancelable(false);
+            ad.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                SemaN4Properties sp = (SemaN4Properties) scp;
+                sp.uv.uv_boost.setValue(sp.uv.uv_boost.getDefault());
+                sp.uv.uv_higher_khz_thres.setValue(sp.uv.uv_higher_khz_thres.getDefault());
+                sp.uv.uv_lower_uv.setValue(sp.uv.uv_lower_uv.getDefault());
+                sp.uv.uv_higher_uv.setValue(sp.uv.uv_higher_uv.getDefault());
+                sp.uv.writeValue();
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                SharedPreferences.Editor edit = prefs.edit();            
+                edit.putBoolean(sp.uv.uv_boost.getName(), sp.uv.uv_boost.getDefBoolean());
+                edit.putString(sp.uv.uv_higher_khz_thres.getName(), sp.uv.uv_higher_khz_thres.getDefString());
+                edit.putInt(sp.uv.uv_lower_uv.getName(), sp.uv.uv_lower_uv.getDefault());
+                edit.putInt(sp.uv.uv_higher_uv.getName(), sp.uv.uv_higher_uv.getDefault());
+                edit.commit();
+                updateSummariesN4();
+                Toast.makeText(getActivity(), "Undervolting values reset to default", Toast.LENGTH_SHORT).show();
+                getActivity().recreate();
+            }
+            });
+            ad.setNegativeButton("Cancel", null);
+            ad.show();
         } else if (preference.getKey().equals("uv_cpu_table")) {
             showCPUTableDialog();
             ret = true;
