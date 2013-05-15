@@ -306,7 +306,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         uv.uv_lower_uv.setValue(prefs.getInt(uv.uv_lower_uv.getName(), uv.uv_lower_uv.getDefault()));
         uv.uv_higher_uv.setValue(prefs.getInt(uv.uv_higher_uv.getName(), uv.uv_higher_uv.getDefault()));
         uv.enabled = prefs.getBoolean("uv_enabled", false);
-            
+        uv.apply_boot = prefs.getBoolean("uv_apply_boot", false);
+        
         scheduler.setValue(prefs.getString(scheduler.getName(), scheduler.getDefValue()));
         vibrator.setValue(prefs.getInt(vibrator.getName(), vibrator.getDefault()));
         touch_enable.setValue(prefs.getBoolean(touch_enable.getName(), touch_enable.getDefBoolean()) == true ? 1 : 0);
