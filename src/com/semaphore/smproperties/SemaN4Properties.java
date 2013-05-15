@@ -23,6 +23,7 @@ public class SemaN4Properties extends SemaCommonProperties {
     public SMOndemandN4Property ondemand;
     public SMConservativeProperty conservative;
     public SMInteractiveProperty interactive;
+    public SMUVProperty uv;
     public SMSchedulerProperty scheduler;
     public SMIntProperty vibrator;
     public SMIntProperty touch_enable;
@@ -52,6 +53,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         interactive = new SMInteractiveProperty();
         interactive.hispeed_freq.setMaxValue(1512000);
         interactive.hispeed_freq.setDefault(1512000);
+        
+        uv = new SMUVProperty();
         
         scheduler = new SMSchedulerProperty("scheduler", "row");
         scheduler.basepath = "/sys/block/mmcblk0/queue/scheduler";
@@ -83,6 +86,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         conservative.readValue();
         interactive.readValue();
 
+        uv.readValue();
+        
         scheduler.readValue();
         vibrator.readValue();
         touch_enable.readValue();
@@ -126,6 +131,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         conservative.writebatch(cmds);
         interactive.writebatch(cmds);
 
+        uv.writeBatch(cmds);
+        
         scheduler.writeBatch(cmds);
         vibrator.writeBatch(cmds);
         touch_enable.writeBatch(cmds);
@@ -169,6 +176,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         conservative.writeValue();
         interactive.writeValue();
 
+        uv.writeValue();
+        
         scheduler.writeValue();
         vibrator.writeValue();
         touch_enable.writeValue();
@@ -222,6 +231,11 @@ public class SemaN4Properties extends SemaCommonProperties {
         edit.putString(interactive.timer_slack.getName(), interactive.timer_slack.getValString());
         edit.putString(interactive.boostpulse_duration.getName(), interactive.boostpulse_duration.getValString());
         edit.putString(interactive.target_loads.getName(), interactive.target_loads.getValue());
+        
+        edit.putString(uv.uv_higher_khz_thres.getName(), uv.uv_higher_khz_thres.getValString());
+        edit.putBoolean(uv.uv_boost.getName(), uv.uv_boost.getBoolean());
+        edit.putInt(uv.uv_lower_uv.getName(), uv.uv_lower_uv.getValue());
+        edit.putInt(uv.uv_higher_uv.getName(), uv.uv_higher_uv.getValue());
         
         edit.putString(scheduler.getName(), scheduler.getValue());
         edit.putInt(vibrator.getName(), vibrator.getValue());
@@ -287,6 +301,12 @@ public class SemaN4Properties extends SemaCommonProperties {
         interactive.boostpulse_duration.setValue(prefs.getString(interactive.boostpulse_duration.getName(), interactive.boostpulse_duration.getDefString()));
         interactive.target_loads.setValue(prefs.getString(interactive.target_loads.getName(), interactive.target_loads.getDefValue()));
 
+        uv.uv_higher_khz_thres.setValue(prefs.getString(uv.uv_higher_khz_thres.getName(),uv.uv_higher_khz_thres.getDefString()));
+        uv.uv_boost.setValue(prefs.getBoolean(uv.uv_boost.getName(), uv.uv_boost.getDefBoolean()) == true ? 1 : 0);
+        uv.uv_lower_uv.setValue(prefs.getInt(uv.uv_lower_uv.getName(), uv.uv_lower_uv.getDefault()));
+        uv.uv_higher_uv.setValue(prefs.getInt(uv.uv_higher_uv.getName(), uv.uv_higher_uv.getDefault()));
+        uv.enabled = prefs.getBoolean("uv_enabled", false);
+            
         scheduler.setValue(prefs.getString(scheduler.getName(), scheduler.getDefValue()));
         vibrator.setValue(prefs.getInt(vibrator.getName(), vibrator.getDefault()));
         touch_enable.setValue(prefs.getBoolean(touch_enable.getName(), touch_enable.getDefBoolean()) == true ? 1 : 0);
@@ -346,6 +366,11 @@ public class SemaN4Properties extends SemaCommonProperties {
         interactive.timer_slack.setValue(interactive.timer_slack.getDefString());
         interactive.boostpulse_duration.setValue(interactive.boostpulse_duration.getDefString());
         interactive.target_loads.setValue(interactive.target_loads.getDefValue());
+        
+        uv.uv_higher_khz_thres.setValue(uv.uv_higher_khz_thres.getDefString());
+        uv.uv_boost.setValue(uv.uv_boost.getDefault());
+        uv.uv_lower_uv.setValue(uv.uv_lower_uv.getDefault());
+        uv.uv_higher_uv.setValue(uv.uv_higher_uv.getDefault());
         
         scheduler.setValue(scheduler.getDefValue());
         vibrator.setValue(vibrator.getDefault());

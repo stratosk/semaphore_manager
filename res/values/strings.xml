@@ -30,6 +30,29 @@
     <string name="str_cv_l3_title">L3</string>
     <string name="str_cv_l4_title">L4</string>
     
+    <string name="str_cpu_table_dialog_title">CPU Table Information</string>
+    <string name="str_undervolt_title">Undervolting</string>
+    <string name="str_undervolt_screen_title">Undervolting parameters</string>
+    <string name="str_uv_enabled_title">Enabled</string>
+    <string name="str_uv_enabled_summary">Please use it at your own risk</string>
+    <string name="str_uv_apply_title">Apply</string>
+    <string name="str_uv_apply_summary">Apply undervolting</string>
+    <string name="str_uv_reset_title">Reset</string>
+    <string name="str_uv_reset_summary">Reset undervolting values to default</string>
+    <string name="str_uv_apply_boot_title">Apply on Boot</string>
+    <string name="str_uv_apply_boot_summary">Select to re-apply after boot</string>
+    <string name="str_uv_cpu_table_title">Show CPU table</string>
+    <string name="str_uv_cpu_table_summary">Select to show CPU table info</string>
+
+    <string name="str_uv_boost_title">Boost voltages</string>
+    <string name="str_uv_boost_summary">Enable boost voltages by 25000uV</string>
+    <string name="str_uv_lower_uv_title">Lower uV</string>
+    <string name="str_uv_lower_uv_summary">Undervolting for lower freqs</string>
+    <string name="str_uv_higher_uv_title">Higher uV</string>
+    <string name="str_uv_higher_uv_summary">Undervolting for higher freqs</string>
+    <string name="str_uv_higher_khz_thres_title">Higher freq threshold</string>
+    <string name="str_uv_higher_khz_thres_summary">Threshold for higher freqs</string>
+
     <string-array name="array_gov_entries">
         <item>Ondemand</item>
         <item>Conservative</item>

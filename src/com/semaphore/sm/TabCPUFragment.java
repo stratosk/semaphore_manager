@@ -14,6 +14,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
@@ -28,6 +29,7 @@ import android.widget.Toast;
 import com.semaphore.smproperties.SemaCommonProperties;
 import com.semaphore.smproperties.SemaI9000Properties;
 import com.semaphore.smproperties.SemaN4Properties;
+import java.util.Iterator;
 
 public class TabCPUFragment extends PreferenceListFragment implements OnSharedPreferenceChangeListener, OnPreferenceClickListener {
     private SemaCommonProperties scp;
@@ -55,6 +57,13 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             pref.setOnPreferenceClickListener(this);
             pref = findPreference("cv_reset");
             pref.setOnPreferenceClickListener(this);
+        } else if (MainActivity.Device == MainActivity.SemaDevices.Mako) {
+            Preference pref = findPreference("uv_apply");
+            pref.setOnPreferenceClickListener(this);
+            pref = findPreference("uv_reset");
+            pref.setOnPreferenceClickListener(this);            
+            pref = findPreference("uv_cpu_table");
+            pref.setOnPreferenceClickListener(this);            
         }
         updateSummaries();
     }
@@ -96,6 +105,31 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         ad.show();
     }
 
+    private void showCPUTableDialog() {
+        Commander cm = Commander.getInstance();
+        cm.readFile("/sys/kernel/debug/acpuclk/acpu_table");
+        
+        if (cm.getOutResult().isEmpty())
+            return;
+        View view = getActivity().getLayoutInflater().inflate(R.layout.cpu_table_dialog, null);
+        ((TextView) view.findViewById(R.id.text_cpu_table)).setTypeface(Typeface.MONOSPACE);
+        Iterator<String> i = cm.getOutResult().iterator();
+        while (i.hasNext()) {
+            ((TextView) view.findViewById(R.id.text_cpu_table)).append(i.next() + "\n");
+        }
+        
+        AlertDialog.Builder ad = new AlertDialog.Builder(getActivity());
+        ad.setTitle(R.string.str_cpu_table_dialog_title);
+        ad.setView(view);
+        ad.setPositiveButton("Close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        ad.show();
+    }    
+    
     public void onPreferenceChange(Preference preference, Object newValue) {
     }
 
@@ -211,6 +245,22 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
                 sp.conservative.cons.setValue(false);
                 sp.conservative.cons.writeValue();
             }
+        } else if (key.equals("uv_apply_boot")) {
+            sp.uv.apply_boot = sharedPreferences.getBoolean(key, false);
+        } else if (key.equals("uv_enabled")) {
+            sp.uv.enabled = sharedPreferences.getBoolean(key, false);
+            if (!sp.uv.enabled) {
+                pref = findPreference("uv_apply_boot");
+                ((CheckBoxPreference) pref).setChecked(false);
+            }
+        } else if (key.equals(sp.uv.uv_lower_uv.getName())) {
+            sp.uv.uv_lower_uv.setValue(sharedPreferences.getInt(key, sp.uv.uv_lower_uv.getDefault()));
+        } else if (key.equals(sp.uv.uv_higher_uv.getName())) {
+            sp.uv.uv_higher_uv.setValue(sharedPreferences.getInt(key, sp.uv.uv_higher_uv.getDefault()));
+        } else if (key.equals(sp.uv.uv_higher_khz_thres.getName())) {
+            sp.uv.uv_higher_khz_thres.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.uv.uv_higher_khz_thres.getDefault()))));
+        } else if (key.equals(sp.uv.uv_boost.getName())) {
+            sp.uv.uv_boost.setValue(sharedPreferences.getBoolean(key, sp.uv.uv_boost.getDefBoolean()) == true ? 1 : 0);
         }
     }
     
@@ -524,6 +574,13 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.interactive.target_loads.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
+
+        pref = findPreference(sp.uv.uv_lower_uv.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+        pref = findPreference(sp.uv.uv_higher_uv.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+        pref = findPreference(sp.uv.uv_higher_khz_thres.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
     }
     
     private void updateSummariesI9000() {
@@ -651,6 +708,30 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             updateSummariesI9000();
             Toast.makeText(getActivity(), "Custom voltages reset to default", Toast.LENGTH_SHORT).show();
             getActivity().recreate();
+        } else if (preference.getKey().equals("uv_apply")) {
+            SemaN4Properties sp = (SemaN4Properties) scp;
+            sp.uv.writeValue();
+            Toast.makeText(getActivity(), "Undervolting applied", Toast.LENGTH_SHORT).show();
+        } else if (preference.getKey().equals("uv_reset")) {
+            SemaN4Properties sp = (SemaN4Properties) scp;
+            sp.uv.uv_boost.setValue(sp.uv.uv_boost.getDefault());
+            sp.uv.uv_higher_khz_thres.setValue(sp.uv.uv_higher_khz_thres.getDefault());
+            sp.uv.uv_lower_uv.setValue(sp.uv.uv_lower_uv.getDefault());
+            sp.uv.uv_higher_uv.setValue(sp.uv.uv_higher_uv.getDefault());
+            sp.uv.writeValue();
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            SharedPreferences.Editor edit = prefs.edit();            
+            edit.putBoolean(sp.uv.uv_boost.getName(), sp.uv.uv_boost.getDefBoolean());
+            edit.putString(sp.uv.uv_higher_khz_thres.getName(), sp.uv.uv_higher_khz_thres.getDefString());
+            edit.putInt(sp.uv.uv_lower_uv.getName(), sp.uv.uv_lower_uv.getDefault());
+            edit.putInt(sp.uv.uv_higher_uv.getName(), sp.uv.uv_higher_uv.getDefault());
+            edit.commit();
+            updateSummariesN4();
+            Toast.makeText(getActivity(), "Undervolting values reset to default", Toast.LENGTH_SHORT).show();
+            getActivity().recreate();
+        } else if (preference.getKey().equals("uv_cpu_table")) {
+            showCPUTableDialog();
+            ret = true;
         }
         return ret;
     }

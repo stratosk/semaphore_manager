@@ -86,7 +86,12 @@ public class SMIntProperty extends SMProperty {
         int res = cm.readFile(getPath());
         if (res == 0) {
             String rt = cm.getOutResult().get(0);
-            setValue(Integer.parseInt(rt));
+            if (rt.equals("Y"))
+                setValue(1);
+            else if (rt.equals("N"))
+                setValue(0);
+            else
+                setValue(Integer.parseInt(rt));
         } else {
             setValue(defValue);
         }

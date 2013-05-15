@@ -140,5 +140,68 @@
         </PreferenceScreen>
     </PreferenceCategory>
          
+    <PreferenceCategory
+        android:title="@string/str_undervolt_title">  
+        <CheckBoxPreference
+            android:key="uv_enabled"
+            android:title="@string/str_uv_enabled_title" 
+            android:summary="@string/str_uv_enabled_summary"/> 
+        <PreferenceScreen
+            android:key="uv_uv"
+            android:title="@string/str_undervolt_screen_title"
+            android:dependency="uv_enabled">
+            <CheckBoxPreference
+                android:key="uv_boost"
+                android:title="@string/str_uv_boost_title"
+                android:summary="@string/str_uv_boost_summary"
+                android:dependency="uv_enabled" />
+            <com.semaphore.sm.SeekBarPreference android:key="uv_lower_uv"
+                                                android:title="@string/str_uv_lower_uv_title"
+                                                android:dialogMessage="Voltage (in uV)"
+                                                android:defaultValue="0"
+                                                android:text=" uV"
+                                                semaphore:min="0"
+                                                android:max="150000"
+                                                semaphore:step="12500"
+        />
+            <com.semaphore.sm.SeekBarPreference android:key="uv_higher_uv"
+                                                android:title="@string/str_uv_higher_uv_title"
+                                                android:dialogMessage="Voltage (in uV)"
+                                                android:defaultValue="0"
+                                                android:text=" uV"
+                                                semaphore:min="0"
+                                                android:max="150000"
+                                                semaphore:step="12500"
+        />
+            <EditTextPreference
+                android:key="uv_higher_khz_thres"
+                android:title="@string/str_uv_higher_khz_thres_title"
+                android:summary="@string/str_uv_higher_khz_thres_summary"
+                android:numeric="integer"
+                android:inputType="number" 
+                android:dependency="uv_enabled"/>
+            <Preference 
+                android:key="uv_apply"
+                android:title="@string/str_uv_apply_title"
+                android:summary="@string/str_uv_apply_summary"
+                android:dependency="uv_enabled"/>
+            <Preference 
+                android:key="uv_cpu_table"
+                android:title="@string/str_uv_cpu_table_title"
+                android:summary="@string/str_uv_cpu_table_summary"
+                android:dependency="uv_enabled"/>
+            <Preference 
+                android:key="uv_reset"
+                android:title="@string/str_uv_reset_title"
+                android:summary="@string/str_uv_reset_summary"
+                android:dependency="uv_enabled"/>
+        </PreferenceScreen>
+
+        <CheckBoxPreference
+            android:key="uv_apply_boot"
+            android:title="@string/str_uv_apply_boot_title"
+            android:summary="@string/str_uv_apply_boot_summary"
+            android:dependency="uv_enabled" />
+    </PreferenceCategory>
     
 </PreferenceScreen>
