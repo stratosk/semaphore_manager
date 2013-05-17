@@ -714,7 +714,7 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             Toast.makeText(getActivity(), "Undervolting applied", Toast.LENGTH_SHORT).show();
         } else if (preference.getKey().equals("uv_reset")) {
             AlertDialog.Builder ad = new AlertDialog.Builder(getActivity());
-            ad.setMessage("System settings maybe will override your personal settings.\nDo you want to continue?");
+            ad.setMessage("Undervolting settings will be reset to default.\nDo you want to continue?");
             ad.setCancelable(false);
             ad.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {

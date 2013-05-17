@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Semaphore Manager</string>
-    <string name="str_app_version_title">2.7.6</string>
+    <string name="str_app_version_title">2.8.0</string>
     
     <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
     
@@ -45,7 +45,7 @@
     <string name="str_uv_cpu_table_summary">Select to show CPU table info</string>
 
     <string name="str_uv_boost_title">Boost voltages</string>
-    <string name="str_uv_boost_summary">Enable boost voltages by 25000uV</string>
+    <string name="str_uv_boost_summary">Boost voltages by 25000uV</string>
     <string name="str_uv_lower_uv_title">Lower uV</string>
     <string name="str_uv_lower_uv_summary">Undervolting for lower freqs</string>
     <string name="str_uv_higher_uv_title">Higher uV</string>
