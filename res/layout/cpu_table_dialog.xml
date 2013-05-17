@@ -9,7 +9,7 @@
         <TextView
             android:gravity="left"
             android:id="@+id/text_cpu_table"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
 
 
