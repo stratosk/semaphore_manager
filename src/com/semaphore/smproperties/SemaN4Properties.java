@@ -56,7 +56,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         
         uv = new SMUVProperty();
         
-        scheduler = new SMSchedulerProperty("scheduler", "row");
+        scheduler = new SMSchedulerProperty("scheduler", "noop");
         scheduler.basepath = "/sys/block/mmcblk0/queue/scheduler";
 
         vibrator = new SMIntProperty("vibrator", "/sys/class/timed_output/vibrator/amp", false, 0, 100, 70);        
