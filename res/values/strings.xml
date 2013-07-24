@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Semaphore Manager</string>
-    <string name="str_app_version_title">2.8.0</string>
+    <string name="str_app_version_title">2.9.0</string>
     
     <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
     
@@ -52,7 +52,11 @@
     <string name="str_uv_higher_uv_summary">Undervolting for higher freqs</string>
     <string name="str_uv_higher_khz_thres_title">Higher freq threshold</string>
     <string name="str_uv_higher_khz_thres_summary">Threshold for higher freqs</string>
-
+    <string name="str_hp_min_online_title">Minimum online cores</string>
+    <string name="str_hp_enabled_title">Enabled</string>
+    <string name="str_hp_up_threshold_title">Up threshold</string>
+    <string name="str_hp_up_threshold_summary">Valid values 1-100</string>
+    
     <string-array name="array_gov_entries">
         <item>Ondemand</item>
         <item>Conservative</item>
@@ -179,9 +183,12 @@
     <string name="str_o_up_threshold_title">Up threshold</string>
     <string name="str_o_up_threshold_summary">Valid values 11-100</string>
     <string name="str_o_smooth_ui_title">Smooth UI</string>
-    <string name="str_o_early_demand_title">Early demand</string>
-    <string name="str_o_grad_up_threshold_title">Gradient up threshold</string>
-    <string name="str_o_grad_up_threshold_summary">Valid values 11-100</string>
+    <string name="str_o_touch_load_title">Touch load</string>
+    <string name="str_o_touch_load_summary">Valid values 1-100</string>
+    <string name="str_o_touch_load_threshold_title">Touch load threshold</string>
+    <string name="str_o_touch_load_threshold_summary">Valid values 1-100</string>
+    <string name="str_o_touch_load_duration_title">Touch load duration</string>
+    <string name="str_o_touch_load_duration_summary">Valid values 1-1000000</string>
 
     <string name="str_c_freq_step_title">Frequency step</string>
     <string name="str_c_freq_step_summary">Valid values 1-100</string>

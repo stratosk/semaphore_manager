@@ -147,7 +147,7 @@ public class MainActivity extends FragmentActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         needRead = !prefs.contains("gov");
         if (Device == SemaDevices.Mako)
-            needRead = needRead || !prefs.contains("led_red") || !prefs.contains("read_ahead") || !prefs.contains("uv_lower_uv");
+            needRead = needRead || !prefs.contains("led_red") || !prefs.contains("read_ahead") || !prefs.contains("uv_lower_uv") || !prefs.contains("hp_enabled");
         if (Device == SemaDevices.I9000)
             needRead = needRead || !prefs.contains("ab_max_br_threshold");
         if (needRead) {

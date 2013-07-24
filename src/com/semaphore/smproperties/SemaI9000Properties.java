@@ -263,8 +263,6 @@ public class SemaI9000Properties extends SemaCommonProperties {
         edit.putString(ondemand.sampling_rate.getName(), ondemand.sampling_rate.getValString());
         edit.putString(ondemand.up_threshold.getName(), ondemand.up_threshold.getValString());
         edit.putBoolean(ondemand.smooth_ui.getName(), ondemand.smooth_ui.getBoolean());
-        edit.putBoolean(ondemand.early_demand.getName(), ondemand.early_demand.getBoolean());
-        edit.putString(ondemand.grad_up_threshold.getName(), ondemand.grad_up_threshold.getValString());
         // conservative
         edit.putBoolean(conservative.cons.getName(), conservative.cons.getValue());
         edit.putString(conservative.freq_step.getName(), conservative.freq_step.getValString());
@@ -352,8 +350,6 @@ public class SemaI9000Properties extends SemaCommonProperties {
         ondemand.sampling_rate.setValue(prefs.getString(ondemand.sampling_rate.getName(), ondemand.sampling_rate.getDefString()));
         ondemand.up_threshold.setValue(prefs.getString(ondemand.up_threshold.getName(), ondemand.up_threshold.getDefString()));
         ondemand.smooth_ui.setValue(prefs.getBoolean(ondemand.smooth_ui.getName(), ondemand.smooth_ui.getDefBoolean()) == true ? 1 : 0);
-        ondemand.early_demand.setValue(prefs.getBoolean(ondemand.early_demand.getName(), ondemand.early_demand.getDefBoolean()) == true ? 1 : 0);
-        ondemand.grad_up_threshold.setValue(prefs.getString(ondemand.grad_up_threshold.getName(), ondemand.grad_up_threshold.getDefString()));
 
         conservative.cons.setValue(prefs.getBoolean(conservative.cons.getName(), conservative.cons.getDefValue()));
         conservative.freq_step.setValue(prefs.getString(conservative.freq_step.getName(), conservative.freq_step.getDefString()));
@@ -440,8 +436,6 @@ public class SemaI9000Properties extends SemaCommonProperties {
         ondemand.sampling_rate.setValue(ondemand.sampling_rate.getDefString());
         ondemand.up_threshold.setValue(ondemand.up_threshold.getDefString());
         ondemand.smooth_ui.setValue(ondemand.smooth_ui.getDefault());
-        ondemand.early_demand.setValue(ondemand.early_demand.getDefault());
-        ondemand.grad_up_threshold.setValue(ondemand.grad_up_threshold.getDefString());
 
         conservative.cons.setValue(conservative.cons.getDefValue());
         conservative.freq_step.setValue(conservative.freq_step.getDefString());

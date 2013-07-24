@@ -162,12 +162,15 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         } else if (key.equals(sp.ondemand.up_threshold.getName())) {
             sp.ondemand.up_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.up_threshold.getDefault()))));
             sp.ondemand.up_threshold.writeValue();
-        } else if (key.equals(sp.ondemand.early_demand.getName())) {
-            sp.ondemand.early_demand.setValue(sharedPreferences.getBoolean(key, sp.ondemand.early_demand.getDefBoolean()) == true ? 1 : 0);
-            sp.ondemand.early_demand.writeValue();
-        } else if (key.equals(sp.ondemand.grad_up_threshold.getName())) {
-            sp.ondemand.grad_up_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.grad_up_threshold.getDefault()))));
-            sp.ondemand.grad_up_threshold.writeValue();
+        } else if (key.equals(sp.ondemand.touch_load.getName())) {
+            sp.ondemand.touch_load.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.touch_load.getDefault()))));
+            sp.ondemand.touch_load.writeValue();
+        } else if (key.equals(sp.ondemand.touch_load_threshold.getName())) {
+            sp.ondemand.touch_load_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.touch_load_threshold.getDefault()))));
+            sp.ondemand.touch_load_threshold.writeValue();
+        } else if (key.equals(sp.ondemand.touch_load_duration.getName())) {
+            sp.ondemand.touch_load_duration.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.touch_load_duration.getDefault()))));
+            sp.ondemand.touch_load_duration.writeValue();
         } else if (key.equals(sp.conservative.freq_step.getName())) { // Conservative
             sp.conservative.freq_step.setValue(Integer.parseInt(sharedPreferences.getString(key, sp.conservative.freq_step.getDefString())));
             sp.conservative.freq_step.writeValue();
@@ -215,8 +218,6 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
                 ((EditTextPreference) findPreference(sp.ondemand.sampling_down_factor.getName())).setText(sp.ondemand.sampling_down_factor.getValString());
                 ((EditTextPreference) findPreference(sp.ondemand.sampling_rate.getName())).setText(sp.ondemand.sampling_rate.getValString());
                 ((EditTextPreference) findPreference(sp.ondemand.up_threshold.getName())).setText(sp.ondemand.up_threshold.getValString());
-                ((SwitchPreference) findPreference(sp.ondemand.early_demand.getName())).setChecked(sp.ondemand.early_demand.getBoolean());
-                ((EditTextPreference) findPreference(sp.ondemand.grad_up_threshold.getName())).setText(sp.ondemand.grad_up_threshold.getValString());
                 sp.conservative.cons.setValue(false);
                 sp.conservative.cons.writeValue();
             } else if (sharedPreferences.getString(sp.gov.getName(), sp.gov.getDefValue()).equals(sp.conservative.getName())) {
@@ -261,6 +262,19 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             sp.uv.uv_higher_khz_thres.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.uv.uv_higher_khz_thres.getDefault()))));
         } else if (key.equals(sp.uv.uv_boost.getName())) {
             sp.uv.uv_boost.setValue(sharedPreferences.getBoolean(key, sp.uv.uv_boost.getDefBoolean()) == true ? 1 : 0);
+        } else if (key.equals(sp.hp_enabled.getName())) {
+            sp.hp_enabled.setValue(sharedPreferences.getBoolean(key, sp.hp_enabled.getDefBoolean()) == true ? 1 : 0);
+            sp.hp_enabled.writeValue();
+        } else if (key.equals(sp.hp_min_online.getName())) {
+            sp.hp_min_online.setValue(sharedPreferences.getInt(key, sp.hp_min_online.getDefault()));
+            sp.hp_min_online.writeValue();
+        } else if (key.equals(sp.hp_up_threshold.getName())) {
+            sp.hp_up_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.hp_up_threshold.getDefault()))));
+            sp.hp_up_threshold.writeValue();
+
+//        } else if (key.equals(sp.active_cores.getName())) {
+//            sp.active_cores.setValue(sharedPreferences.getInt(key,sp.active_cores.getDefault()));
+//            sp.active_cores.writeValue();
         }
     }
     
@@ -304,12 +318,6 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         } else if (key.equals(sp.ondemand.smooth_ui.getName())) {
             sp.ondemand.smooth_ui.setValue(sharedPreferences.getBoolean(key, sp.ondemand.smooth_ui.getDefBoolean()) == true ? 1 : 0);
             sp.ondemand.smooth_ui.writeValue();
-        } else if (key.equals(sp.ondemand.early_demand.getName())) {
-            sp.ondemand.early_demand.setValue(sharedPreferences.getBoolean(key, sp.ondemand.early_demand.getDefBoolean()) == true ? 1 : 0);
-            sp.ondemand.early_demand.writeValue();
-        } else if (key.equals(sp.ondemand.grad_up_threshold.getName())) {
-            sp.ondemand.grad_up_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.grad_up_threshold.getDefault()))));
-            sp.ondemand.grad_up_threshold.writeValue();
         } else if (key.equals(sp.conservative.freq_step.getName())) { // Conservative
             sp.conservative.freq_step.setValue(Integer.parseInt(sharedPreferences.getString(key, sp.conservative.freq_step.getDefString())));
             sp.conservative.freq_step.writeValue();
@@ -395,8 +403,6 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
                 ((EditTextPreference) findPreference(sp.ondemand.sampling_rate.getName())).setText(sp.ondemand.sampling_rate.getValString());
                 ((EditTextPreference) findPreference(sp.ondemand.up_threshold.getName())).setText(sp.ondemand.up_threshold.getValString());
                 ((SwitchPreference) findPreference(sp.ondemand.smooth_ui.getName())).setChecked(sp.ondemand.smooth_ui.getBoolean());
-                ((SwitchPreference) findPreference(sp.ondemand.early_demand.getName())).setChecked(sp.ondemand.early_demand.getBoolean());
-                ((EditTextPreference) findPreference(sp.ondemand.grad_up_threshold.getName())).setText(sp.ondemand.grad_up_threshold.getValString());
                 sp.conservative.cons.setValue(false);
                 sp.conservative.cons.writeValue();
             } else if (sharedPreferences.getString(sp.gov.getName(), sp.gov.getDefValue()).equals(sp.conservative.getName())) {
@@ -544,7 +550,11 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.ondemand.up_threshold.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
-        pref = findPreference(sp.ondemand.grad_up_threshold.getName());
+        pref = findPreference(sp.ondemand.touch_load.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.ondemand.touch_load_threshold.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.ondemand.touch_load_duration.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
 
         pref = findPreference(sp.conservative.freq_step.getName());
@@ -581,6 +591,13 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
         pref = findPreference(sp.uv.uv_higher_khz_thres.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
+
+        pref = findPreference(sp.hp_up_threshold.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.hp_min_online.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+        //pref = findPreference(sp.active_cores.getName());
+        //pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
     }
     
     private void updateSummariesI9000() {
@@ -603,10 +620,6 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         pref = findPreference(sp.ondemand.sampling_down_max_momentum.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.ondemand.sampling_rate.getName());
-        pref.setSummary(((EditTextPreference) pref).getText());
-        pref = findPreference(sp.ondemand.up_threshold.getName());
-        pref.setSummary(((EditTextPreference) pref).getText());
-        pref = findPreference(sp.ondemand.grad_up_threshold.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
 
         pref = findPreference(sp.conservative.freq_step.getName());

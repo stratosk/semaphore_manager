@@ -8,7 +8,7 @@
             android:entries="@array/array_gov_entries_n4"
             android:entryValues="@array/array_gov_values_n4"
             android:title="@string/str_gov_title"
-    />
+        />
         <!--android:summary="@string/str_gov_summary"-->
     
         <PreferenceScreen
@@ -36,16 +36,24 @@
                 android:summary="@string/str_o_up_threshold_summary"
                 android:numeric="integer"
                 android:inputType="number" />
-            <SwitchPreference
-                android:key="o_early_demand"
-                android:title="@string/str_o_early_demand_title" />
             <EditTextPreference
-                android:key="o_grad_up_threshold"
-                android:title="@string/str_o_grad_up_threshold_title"
-                android:summary="@string/str_o_grad_up_threshold_summary"
+                android:key="o_touch_load"
+                android:title="@string/str_o_touch_load_title"
+                android:summary="@string/str_o_touch_load_summary"
                 android:numeric="integer"
-                android:inputType="number" 
-                android:dependency="o_early_demand"/>
+                android:inputType="number" />
+            <EditTextPreference
+                android:key="o_touch_load_threshold"
+                android:title="@string/str_o_touch_load_threshold_title"
+                android:summary="@string/str_o_touch_load_threshold_summary"
+                android:numeric="integer"
+                android:inputType="number" />
+            <EditTextPreference
+                android:key="o_touch_load_duration"
+                android:title="@string/str_o_touch_load_duration_title"
+                android:summary="@string/str_o_touch_load_duration_summary"
+                android:numeric="integer"
+                android:inputType="number" />
 
         </PreferenceScreen>
         <PreferenceScreen
@@ -139,10 +147,33 @@
 
         </PreferenceScreen>
     </PreferenceCategory>
-         
+    
+    <PreferenceCategory
+        android:title="Dynamic Hotplug">
+        <SwitchPreference
+            android:key="hp_enabled"
+            android:title="@string/str_hp_enabled_title" />
+        <com.semaphore.sm.SeekBarPreference android:key="hp_min_online"
+                                            android:title="@string/str_hp_min_online_title"
+                                            android:dialogMessage="Minimum number of online cores (1-4)"
+                                            android:defaultValue="4"
+                                            android:max="4"
+                                            semaphore:min="1"
+                                            semaphore:step="1"
+                                            android:dependency="hp_enabled"
+        />
+        <EditTextPreference
+            android:key="hp_up_threshold"
+            android:title="@string/str_hp_up_threshold_title"
+            android:summary="@string/str_hp_up_threshold_summary"
+            android:numeric="integer"
+            android:inputType="number"
+            android:dependency="hp_enabled"/>
+    </PreferenceCategory>
+     
     <PreferenceCategory
         android:title="@string/str_undervolt_title">  
-        <CheckBoxPreference
+        <SwitchPreference
             android:key="uv_enabled"
             android:title="@string/str_uv_enabled_title" 
             android:summary="@string/str_uv_enabled_summary"/> 
@@ -163,7 +194,7 @@
                                                 semaphore:min="0"
                                                 android:max="150000"
                                                 semaphore:step="12500"
-        />
+            />
             <com.semaphore.sm.SeekBarPreference android:key="uv_higher_uv"
                                                 android:title="@string/str_uv_higher_uv_title"
                                                 android:dialogMessage="Voltage (in uV)"
@@ -172,7 +203,7 @@
                                                 semaphore:min="0"
                                                 android:max="150000"
                                                 semaphore:step="12500"
-        />
+            />
             <EditTextPreference
                 android:key="uv_higher_khz_thres"
                 android:title="@string/str_uv_higher_khz_thres_title"
@@ -203,5 +234,4 @@
             android:summary="@string/str_uv_apply_boot_summary"
             android:dependency="uv_enabled" />
     </PreferenceCategory>
-    
 </PreferenceScreen>
