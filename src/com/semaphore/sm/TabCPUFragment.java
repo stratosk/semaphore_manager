@@ -268,6 +268,9 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         } else if (key.equals(sp.hp_min_online.getName())) {
             sp.hp_min_online.setValue(sharedPreferences.getInt(key, sp.hp_min_online.getDefault()));
             sp.hp_min_online.writeValue();
+        } else if (key.equals(sp.hp_max_online.getName())) {
+            sp.hp_max_online.setValue(sharedPreferences.getInt(key, sp.hp_max_online.getDefault()));
+            sp.hp_max_online.writeValue();
         } else if (key.equals(sp.hp_up_threshold.getName())) {
             sp.hp_up_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.hp_up_threshold.getDefault()))));
             sp.hp_up_threshold.writeValue();
@@ -596,6 +599,8 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.hp_min_online.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+        pref = findPreference(sp.hp_max_online.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
         //pref = findPreference(sp.active_cores.getName());
         //pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
     }
@@ -620,6 +625,8 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         pref = findPreference(sp.ondemand.sampling_down_max_momentum.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.ondemand.sampling_rate.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.ondemand.up_threshold.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
 
         pref = findPreference(sp.conservative.freq_step.getName());

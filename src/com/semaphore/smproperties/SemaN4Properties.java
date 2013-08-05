@@ -43,6 +43,7 @@ public class SemaN4Properties extends SemaCommonProperties {
     public SMIntProperty hp_enabled;
     public SMIntProperty hp_up_threshold;
     public SMIntProperty hp_min_online;
+    public SMIntProperty hp_max_online;
     
     public SemaN4Properties() {
 
@@ -64,6 +65,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         hp_enabled = new SMIntProperty("hp_enabled", "/sys/module/dyn_hotplug/parameters/enabled", false, 0, 1, 1);
         hp_up_threshold = new SMIntProperty("hp_up_threshold", "/sys/module/dyn_hotplug/parameters/up_threshold", false, 1, 100, 25);
         hp_min_online = new SMIntProperty("hp_min_online", "/sys/module/dyn_hotplug/parameters/min_online", false, 1, 4, 2);
+        hp_max_online = new SMIntProperty("hp_max_online", "/sys/module/dyn_hotplug/parameters/max_online", false, 1, 4, 4);
         
         scheduler = new SMSchedulerProperty("scheduler", "noop");
         scheduler.basepath = "/sys/block/mmcblk0/queue/scheduler";
@@ -101,6 +103,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         hp_enabled.readValue();
         hp_up_threshold.readValue();
         hp_min_online.readValue();
+        hp_max_online.readValue();
             
         scheduler.readValue();
         vibrator.readValue();
@@ -150,6 +153,7 @@ public class SemaN4Properties extends SemaCommonProperties {
 //        active_cores.writeBatch(cmds);
         hp_enabled.writeBatch(cmds);
         hp_min_online.writeBatch(cmds);
+        hp_max_online.writeBatch(cmds);
         hp_up_threshold.writeBatch(cmds);
         
         scheduler.writeBatch(cmds);
@@ -201,6 +205,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         hp_enabled.writeValue();
         hp_up_threshold.writeValue();
         hp_min_online.writeValue();
+        hp_max_online.writeValue();
         
         scheduler.writeValue();
         vibrator.writeValue();
@@ -265,6 +270,7 @@ public class SemaN4Properties extends SemaCommonProperties {
 //        edit.putInt(active_cores.getName(), active_cores.getValue());
         edit.putBoolean(hp_enabled.getName(), hp_enabled.getBoolean());
         edit.putInt(hp_min_online.getName(), hp_min_online.getValue());
+        edit.putInt(hp_max_online.getName(), hp_max_online.getValue());
         edit.putString(hp_up_threshold.getName(), hp_up_threshold.getValString());
 
         edit.putString(scheduler.getName(), scheduler.getValue());
@@ -342,6 +348,7 @@ public class SemaN4Properties extends SemaCommonProperties {
 //        active_cores.setValue(prefs.getInt(active_cores.getName(), active_cores.getDefault()));
         hp_enabled.setValue(prefs.getBoolean(hp_enabled.getName(), touch_enable.getDefBoolean()) == true ? 1 : 0);
         hp_min_online.setValue(prefs.getInt(hp_min_online.getName(), hp_min_online.getDefault()));
+        hp_max_online.setValue(prefs.getInt(hp_max_online.getName(), hp_max_online.getDefault()));
         hp_up_threshold.setValue(prefs.getString(hp_up_threshold.getName(), hp_up_threshold.getDefString()));
         
         scheduler.setValue(prefs.getString(scheduler.getName(), scheduler.getDefValue()));
@@ -414,6 +421,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         hp_enabled.setValue(hp_enabled.getDefault());
         hp_up_threshold.setValue(hp_up_threshold.getDefString());
         hp_min_online.setValue(hp_min_online.getDefString());
+        hp_max_online.setValue(hp_max_online.getDefString());
         
         scheduler.setValue(scheduler.getDefValue());
         vibrator.setValue(vibrator.getDefault());

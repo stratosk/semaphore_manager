@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Semaphore Manager</string>
-    <string name="str_app_version_title">2.9.0</string>
+    <string name="str_app_version_title">2.9.5</string>
     
     <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
     
@@ -53,6 +53,7 @@
     <string name="str_uv_higher_khz_thres_title">Higher freq threshold</string>
     <string name="str_uv_higher_khz_thres_summary">Threshold for higher freqs</string>
     <string name="str_hp_min_online_title">Minimum online cores</string>
+    <string name="str_hp_max_online_title">Maximum online cores</string>
     <string name="str_hp_enabled_title">Enabled</string>
     <string name="str_hp_up_threshold_title">Up threshold</string>
     <string name="str_hp_up_threshold_summary">Valid values 1-100</string>
