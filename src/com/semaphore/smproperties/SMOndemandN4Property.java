@@ -25,7 +25,9 @@ public class SMOndemandN4Property extends SMOndemandProperty {
         sampling_down_factor.setDynamic(false);
         sampling_rate.setDefault(20000);
         sampling_rate.setValue(20000);
-        
+        up_threshold.setDefault(95);
+        up_threshold.setValue(95);
+     
         touch_load = new SMIntProperty("o_touch_load", basepath.concat("touch_load"), false, 0, 100, 65);
         touch_load_threshold = new SMIntProperty("o_touch_load_threshold", basepath.concat("touch_load_threshold"), false, 0, 100, 12);
         touch_load_duration = new SMIntProperty("o_touch_load_duration", basepath.concat("touch_load_duration"), false, 1, 10000, 1300);
