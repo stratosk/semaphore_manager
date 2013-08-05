@@ -147,7 +147,8 @@ public class MainActivity extends FragmentActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         needRead = !prefs.contains("gov");
         if (Device == SemaDevices.Mako)
-            needRead = needRead || !prefs.contains("led_red") || !prefs.contains("read_ahead") || !prefs.contains("uv_lower_uv") || !prefs.contains("hp_enabled");
+            needRead = needRead || !prefs.contains("led_red") || !prefs.contains("read_ahead") || 
+                    !prefs.contains("uv_lower_uv") || !prefs.contains("hp_enabled") || !prefs.contains("hp_max_online");
         if (Device == SemaDevices.I9000)
             needRead = needRead || !prefs.contains("ab_max_br_threshold");
         if (needRead) {
@@ -158,12 +159,24 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-    private void checkSU() {
+    private void checkSU_BB() {
         Commander cm = Commander.getInstance();
         int ret = cm.run("uname -r", true);
         if (ret == 1) {
             AlertDialog.Builder ad = new AlertDialog.Builder(this);
             ad.setMessage("No root access!\nSemaphore Manager needs root access to run.");
+            ad.setCancelable(false);
+            ad.setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    MainActivity.this.finish();
+                }
+            });
+            ad.show();
+        } 
+        ret = cm.run("uname -r", false);
+        if (ret == 1) {
+            AlertDialog.Builder ad = new AlertDialog.Builder(this);
+            ad.setMessage("No busybox found!\nSemaphore Manager needs busybox to run properly.");
             ad.setCancelable(false);
             ad.setPositiveButton("Close", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
@@ -256,7 +269,7 @@ public class MainActivity extends FragmentActivity {
         else 
             sp = new SemaI9000Properties();
         
-        checkSU();
+        checkSU_BB();
         unpackScripts();
 
         checkFirstRun();
