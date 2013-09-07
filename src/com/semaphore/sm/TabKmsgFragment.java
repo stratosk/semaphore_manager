@@ -10,6 +10,7 @@
 package com.semaphore.sm;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -41,21 +42,12 @@ public class TabKmsgFragment extends Fragment {
             updateResultsInUi();
         }
     };
-    private DataOutputStream DataOutputStream;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*        setContentView(R.layout.kmsg);
-         TextView view = (TextView) findViewById(R.id.kmsgview);
-         String s = "";
-         for (int i = 0; i < 100; i++) {
-         s += "vogella.de ";
-         }
-         view.setText(s);*/
 
         setHasOptionsMenu(true);
-
 
         Commander cm = Commander.getInstance();
         cm.readKmsg();
@@ -63,20 +55,17 @@ public class TabKmsgFragment extends Fragment {
 
         outt = new streamReader();
         outt.start();
-
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menuitem6: {
+            case R.id.menuitem6:
                 clearKmsg();
-            }
-            break;
-            case R.id.menuitem7: {
+                break;
+            case R.id.menuitem7:
                 saveKmsg();
-            }
-            break;
+                break;
             default:
                 break;
         }
@@ -96,7 +85,6 @@ public class TabKmsgFragment extends Fragment {
         tv = (TextView) view.findViewById(R.id.kmsgview);
         sv = (ScrollView) view.findViewById(R.id.scrollview);
         tv.setTextSize(10);
-//        tv.setText("");
 
         line = 0;
 
@@ -106,8 +94,6 @@ public class TabKmsgFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-
-        //outt.interrupt();
     }
 
     private void clearKmsg() {
@@ -118,9 +104,10 @@ public class TabKmsgFragment extends Fragment {
     }
 
     private void saveKmsg() {
+        String kmsg_file = Environment.getExternalStorageDirectory().getPath().concat("/kmsg.txt");
         FileWriter fstream;
         try {
-            fstream = new FileWriter("/sdcard/kmsg.txt", false);
+            fstream = new FileWriter(kmsg_file, false);
             BufferedWriter out = new BufferedWriter(fstream);
 
             for (int i = 0; i < kmsg.size(); i++) {
@@ -130,12 +117,10 @@ public class TabKmsgFragment extends Fragment {
             out.flush();
             out.close();
 
-            Toast.makeText(this.getActivity().getApplicationContext(), "kmsg saved successfully in \n/sdcard/kmsg.txt", Toast.LENGTH_LONG).show();
+            Toast.makeText(this.getActivity().getApplicationContext(), "kmsg saved successfully in \n" + kmsg_file, Toast.LENGTH_LONG).show();
         } catch (IOException ex) {
 //            Logger.getLogger(TabKmsgFragment.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
     }
 
     private class streamReader extends Thread {
