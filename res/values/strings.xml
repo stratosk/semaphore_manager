@@ -327,6 +327,20 @@
     <string name="str_cat_scheduler_title">Schedulers</string>
     <string name="str_scheduler_title">Active scheduler</string>
  
+    <string-array name="array_scheduler_N4_entries">
+        <item>No-op</item>
+        <item>CFQ</item>
+        <item>Deadline</item>
+        <item>Simple I/O</item>
+    </string-array>
+ 
+    <string-array name="array_scheduler_N4_values">
+        <item>noop</item>
+        <item>cfq</item>
+        <item>deadline</item>
+        <item>sio</item>
+    </string-array>
+
     <string-array name="array_scheduler_entries">
         <item>No-op</item>
         <item>CFQ</item>

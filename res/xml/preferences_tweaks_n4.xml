@@ -5,8 +5,8 @@
         android:title="@string/str_cat_scheduler_title">
         <ListPreference
             android:key="scheduler"
-            android:entries="@array/array_scheduler_entries"
-            android:entryValues="@array/array_scheduler_values"
+            android:entries="@array/array_scheduler_N4_entries"
+            android:entryValues="@array/array_scheduler_N4_values"
             android:title="@string/str_scheduler_title"
     />
     </PreferenceCategory>
