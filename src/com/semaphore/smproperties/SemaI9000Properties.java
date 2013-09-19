@@ -21,6 +21,8 @@ public class SemaI9000Properties extends SemaCommonProperties {
 
     public SMIntProperty oc;
     public SMStringProperty gov;
+    public SMIntProperty scaling_min_freq;
+    public SMIntProperty scaling_max_freq;
     public SMOndemandI9000Property ondemand;
     public SMConservativeProperty conservative;
     public SMSmartassProperty smartass;
@@ -55,6 +57,9 @@ public class SemaI9000Properties extends SemaCommonProperties {
 
         oc = new SMIntProperty("oc", "/sys/devices/virtual/misc/liveoc/oc_value", false, 100, 120, 100);
         gov = new SMStringProperty("gov", "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor", false, "ondemand");
+        scaling_min_freq = new SMIntProperty("scaling_min_freq", "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq", false, 100000, 1200000, 100000);
+        scaling_max_freq = new SMIntProperty("scaling_max_freq", "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq", false, 100000, 1200000, 1000000);
+
         ondemand = new SMOndemandI9000Property();
         conservative = new SMConservativeProperty();
         smartass = new SMSmartassProperty();
@@ -94,6 +99,8 @@ public class SemaI9000Properties extends SemaCommonProperties {
     public void readValues() {
         oc.readValue();
         gov.readValue();
+        scaling_min_freq.readValue();
+        scaling_max_freq.readValue();
         ondemand.readValue();
         conservative.readValue();
         smartass.readValue();
@@ -153,6 +160,8 @@ public class SemaI9000Properties extends SemaCommonProperties {
             interactive.inter.setValue(false);            
         }
         gov.writeBatch(cmds);
+        scaling_min_freq.writeBatch(cmds);
+        scaling_max_freq.writeBatch(cmds);
         ondemand.writeBatch(cmds);
         conservative.writebatch(cmds);
         smartass.writebatch(cmds);
@@ -215,6 +224,8 @@ public class SemaI9000Properties extends SemaCommonProperties {
             interactive.inter.setValue(false);            
         }
         gov.writeValue();
+        scaling_min_freq.writeValue();
+        scaling_max_freq.writeValue();
         ondemand.writeValue();
         conservative.writeValue();
         smartass.writeValue();
@@ -256,6 +267,8 @@ public class SemaI9000Properties extends SemaCommonProperties {
 
         edit.putInt(oc.getName(), oc.getValue());
         edit.putString(gov.getName(), gov.getValue());
+        edit.putString(scaling_min_freq.getName(), scaling_min_freq.getValString());
+        edit.putString(scaling_max_freq.getName(), scaling_max_freq.getValString());
         // ondemand tunables
         edit.putBoolean(ondemand.io_is_busy.getName(), ondemand.io_is_busy.getBoolean());
         edit.putString(ondemand.sampling_down_factor.getName(), ondemand.sampling_down_factor.getValString());
@@ -344,6 +357,8 @@ public class SemaI9000Properties extends SemaCommonProperties {
 
         oc.setValue(prefs.getInt(oc.getName(), oc.getDefault()));
         gov.setValue(prefs.getString(gov.getName(), gov.getDefValue()));
+        scaling_min_freq.setValue(prefs.getString(scaling_min_freq.getName(), scaling_min_freq.getDefString()));
+        scaling_max_freq.setValue(prefs.getString(scaling_max_freq.getName(), scaling_max_freq.getDefString()));
         ondemand.io_is_busy.setValue(prefs.getBoolean(ondemand.io_is_busy.getName(), ondemand.io_is_busy.getDefault() == 1 ? true : false) == true ? 1 : 0);
         ondemand.sampling_down_factor.setValue(prefs.getString(ondemand.sampling_down_factor.getName(), ondemand.sampling_down_factor.getDefString()));
         ondemand.sampling_down_max_momentum.setValue(prefs.getString(ondemand.sampling_down_max_momentum.getName(), ondemand.sampling_down_max_momentum.getDefString()));
@@ -430,6 +445,8 @@ public class SemaI9000Properties extends SemaCommonProperties {
     public void resetDefaults() {
         oc.setValue(oc.getDefault());
         gov.setValue(gov.getDefValue());
+        scaling_min_freq.setValue(scaling_min_freq.getDefString());
+        scaling_max_freq.setValue(scaling_max_freq.getDefString());
         ondemand.io_is_busy.setValue(ondemand.io_is_busy.getDefault());
         ondemand.sampling_down_factor.setValue(ondemand.sampling_down_factor.getDefString());
         ondemand.sampling_down_max_momentum.setValue(ondemand.sampling_down_max_momentum.getDefString());

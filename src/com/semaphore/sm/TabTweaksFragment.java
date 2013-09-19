@@ -97,6 +97,13 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         if (((ListPreference) pref).getEntry() != null) {
             pref.setSummary(((ListPreference) pref).getEntry().toString());
         }
+        pref = findPreference("tcp_congestion");
+        if (pref == null) {
+            return;
+        }
+        if (((ListPreference) pref).getEntry() != null) {
+            pref.setSummary(((ListPreference) pref).getEntry().toString());
+        }
         pref = findPreference("led_red");
         if (pref == null) {
             return;
@@ -191,6 +198,9 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         } else if (key.equals(sp.touch.getName())) {
             sp.touch.setValue(sharedPreferences.getInt(key, sp.touch.getDefault()));
             sp.touch.writeValue();
+        } else if (key.equals(sp.tcp_congestion.getName())) {
+            sp.tcp_congestion.setValue(sharedPreferences.getString(key, sp.tcp_congestion.getDefValue()));
+            sp.tcp_congestion.writeValue();
         } else if (key.equals(sp.taccuracy.accuracy_filter_enable.getName())) {
             sp.taccuracy.accuracy_filter_enable.setValue(sharedPreferences.getBoolean(key, sp.taccuracy.accuracy_filter_enable.getDefBoolean()) == true ? 1 : 0);
             sp.taccuracy.writeValue();

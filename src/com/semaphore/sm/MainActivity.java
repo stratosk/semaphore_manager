@@ -131,6 +131,7 @@ public class MainActivity extends FragmentActivity {
             break;
             case R.id.menuitem4: {
                 mPagerAdapter.addKmsg();
+                mPagerAdapter.notifyDataSetChanged();
                 mViewPager.setCurrentItem(mPagerAdapter.getFragment(TabKmsgFragment.class), true);
             }
             break;
@@ -148,9 +149,10 @@ public class MainActivity extends FragmentActivity {
         needRead = !prefs.contains("gov");
         if (Device == SemaDevices.Mako)
             needRead = needRead || !prefs.contains("led_red") || !prefs.contains("read_ahead") || 
-                    !prefs.contains("uv_lower_uv") || !prefs.contains("hp_enabled") || !prefs.contains("hp_max_online");
+                    !prefs.contains("uv_lower_uv") || !prefs.contains("hp_enabled") ||
+                    !prefs.contains("hp_max_online") || !prefs.contains("scaling_min_freq");
         if (Device == SemaDevices.I9000)
-            needRead = needRead || !prefs.contains("ab_max_br_threshold");
+            needRead = needRead || !prefs.contains("ab_max_br_threshold") || !prefs.contains("scaling_min_freq");
         if (needRead) {
             PropTask pt = new PropTask();
             pt.execute(sp);

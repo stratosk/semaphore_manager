@@ -44,15 +44,23 @@ public class SMStringProperty extends SMProperty {
         }
     }
 
-    public void writeValue() {
+    public void writeValue(String path) {
         Commander cm = Commander.getInstance();
-        String cmd = "echo \"".concat(getValue()).concat("\" > ").concat(getPath());
+        String cmd = "echo \"".concat(getValue()).concat("\" > ").concat(path);
         
-        int res= cm.run(cmd, cm.needSU(getPath()));
+        int res = cm.run(cmd, cm.needSU(path));        
+    }
+    
+    public void writeValue() {
+        writeValue(getPath());
     }
 
-    public void writeBatch(List<String> cmds) {
-        cmds.add("echo \"".concat(getValue()).concat("\" > ").concat(getPath()));
+    public void writeBatch(List<String> cmds, String path) {    
+        cmds.add("echo \"".concat(getValue()).concat("\" > ").concat(path));
+    }
+
+    public void writeBatch(List<String> cmds) {    
+        writeBatch(cmds, getPath());
     }
 
     public SMStringProperty(String name, String path, boolean dynamic, String defvalue) {

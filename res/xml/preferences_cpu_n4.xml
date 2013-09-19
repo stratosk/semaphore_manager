@@ -1,16 +1,23 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:semaphore="http://semaphore.gr">
+    <ListPreference
+        android:key="gov"
+        android:entries="@array/array_gov_entries_n4"
+        android:entryValues="@array/array_gov_values_n4"
+        android:title="@string/str_gov_title"
+    />
+    <ListPreference
+        android:key="scaling_min_freq"
+        android:title="@string/str_scaling_min_freq_title"
+    />
+    <ListPreference
+        android:key="scaling_max_freq"
+        android:title="@string/str_scaling_max_freq_title"
+    />
+    
     <PreferenceCategory
         android:title="@string/str_cat_gov_title">
-        <ListPreference
-            android:key="gov"
-            android:entries="@array/array_gov_entries_n4"
-            android:entryValues="@array/array_gov_values_n4"
-            android:title="@string/str_gov_title"
-        />
-        <!--android:summary="@string/str_gov_summary"-->
-    
         <PreferenceScreen
             android:title="Ondemand">
             <!--android:summary="tunables"-->

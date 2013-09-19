@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Semaphore Manager</string>
-    <string name="str_app_version_title">2.9.5</string>
+    <string name="str_app_version_title">3.0.0</string>
     
     <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
     
@@ -12,7 +12,9 @@
     <string name="str_gov_title">Active governor</string>
     <string name="str_gov_summary">Change CPU governor</string>
     <string name="str_cat_gov_title">Governors</string>
-    
+    <string name="str_scaling_min_freq_title">Min frequency</string>
+    <string name="str_scaling_max_freq_title">Max frequency</string>
+
     <string name="str_custom_volt_title">Voltages</string>
     <string name="str_cv_enable_title">Enabled</string>
     <string name="str_cv_enable_summary">Please use it at your own risk</string>
@@ -378,6 +380,19 @@
         <item>Minimum</item>
     </string-array>
     
+    <string-array name="array_tcp_congestion_entries">
+        <item>CuBIC</item>
+        <item>Reno</item>
+        <item>Westwood</item>
+    </string-array>
+ 
+    <string-array name="array_tcp_congestion_values">
+        <item>cubic</item>
+        <item>reno</item>
+        <item>westwood</item>
+    </string-array>
+
+    <string name="str_tcp_congestion_title">Algorithm</string>
     <string name="str_lcd_calibration_title">LCD calibration</string>
 
     <string name="str_lcd_temperature_title">Color temperature</string>

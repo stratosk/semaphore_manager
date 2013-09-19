@@ -8,7 +8,7 @@
             android:entries="@array/array_scheduler_N4_entries"
             android:entryValues="@array/array_scheduler_N4_values"
             android:title="@string/str_scheduler_title"
-    />
+        />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/str_vibrator_title">
@@ -44,25 +44,35 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="TCP congestion control">
+        <ListPreference
+            android:key="tcp_congestion"
+            android:title="@string/str_tcp_congestion_title"
+            android:entries="@array/array_tcp_congestion_entries"
+            android:entryValues="@array/array_tcp_congestion_values"
+        />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/str_cat_leds_title">
         <ListPreference
             android:key="led_red"
             android:entries="@array/array_led_entries"
             android:entryValues="@array/array_led_values"
             android:title="@string/str_led_red_title"
-    />
+        />
         <ListPreference
             android:key="led_green"
             android:entries="@array/array_led_entries"
             android:entryValues="@array/array_led_values"
             android:title="@string/str_led_green_title"
-    />
+        />
         <ListPreference
             android:key="led_blue"
             android:entries="@array/array_led_entries"
             android:entryValues="@array/array_led_values"
             android:title="@string/str_led_blue_title"
-    />
+        />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="LCD">
@@ -79,7 +89,7 @@
                                                 semaphore:min="0"
                                                 android:max="255"
                                                 semaphore:step="1"
-        />
+            />
             <com.semaphore.sm.SeekBarPreference android:key="lcd_green"
                                                 android:title="@string/str_lcd_green_title"
                                                 android:dialogMessage=""
@@ -88,7 +98,7 @@
                                                 semaphore:min="0"
                                                 android:max="255"
                                                 semaphore:step="1"
-        />
+            />
             <com.semaphore.sm.SeekBarPreference android:key="lcd_blue"
                                                 android:title="@string/str_lcd_blue_title"
                                                 android:dialogMessage=""
@@ -97,7 +107,7 @@
                                                 semaphore:min="0"
                                                 android:max="255"
                                                 semaphore:step="1"
-        />
+            />
         </PreferenceCategory>
 
         <PreferenceCategory
@@ -174,7 +184,7 @@
                 android:dependency="ac_enable"/>
 
         </PreferenceScreen>
-        <SwitchPreference
+        <CheckBoxPreference
             android:key="jit_enable"
             android:title="@string/str_jit_enable_title" />
     

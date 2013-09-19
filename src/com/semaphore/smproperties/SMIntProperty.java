@@ -97,11 +97,11 @@ public class SMIntProperty extends SMProperty {
         }
     }
 
-    public void writeValue() {
+    public void writeValue(String path) {
         Commander cm = Commander.getInstance();
-        String cmd = "echo \"".concat(String.valueOf(getValue())).concat("\" > ").concat(getPath());
+        String cmd = "echo \"".concat(String.valueOf(getValue())).concat("\" > ").concat(path);
         
-        int res = cm.run(cmd, cm.needSU(getPath()));
+        int res = cm.run(cmd, cm.needSU(path));
         
         if (getName().equals("oc")) {
                 res = cm.run("echo \"".concat(String.valueOf(getValue() * 10000)).concat("\" > ").concat("/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"),
@@ -109,11 +109,19 @@ public class SMIntProperty extends SMProperty {
         }
     }
 
-    public void writeBatch(List<String> cmds) {
-        cmds.add("echo \"".concat(String.valueOf(getValue())).concat("\" > ").concat(getPath()));
+    public void writeValue() {
+        writeValue(getPath());
+    }
+
+    public void writeBatch(List<String> cmds, String path) {
+        cmds.add("echo \"".concat(String.valueOf(getValue())).concat("\" > ").concat(path));
         if (getName().equals("oc")) {
             cmds.add("echo \"".concat(String.valueOf(getValue() * 10000)).concat("\" > ").concat("/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"));
         }
+    }
+
+    public void writeBatch(List<String> cmds) {
+        writeBatch(cmds, getPath());
     }
 
     public SMIntProperty(String name, String path, boolean dynamic, int min, int max, int defvalue) {
