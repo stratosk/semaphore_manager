@@ -30,7 +30,7 @@
     <PreferenceCategory
         android:title="@string/str_pickup_phone_cat_title"
         android:dependency="sai_enable">
-        <SwitchPreference
+        <CheckBoxPreference
             android:key="pickup_phone"
             android:title="@string/str_pickup_phone_title" 
             android:summary="@string/str_pickup_phone_summary"
@@ -39,7 +39,7 @@
     <PreferenceCategory
         android:title="@string/str_blink_leds_cat_title"
         android:dependency="sai_enable">
-        <SwitchPreference
+        <CheckBoxPreference
             android:key="blink_leds"
             android:dependency="sai_enable"
             android:title="@string/str_blink_leds_title" />
