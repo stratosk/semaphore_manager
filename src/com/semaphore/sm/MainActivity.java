@@ -15,6 +15,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -135,6 +136,10 @@ public class MainActivity extends FragmentActivity {
                 mViewPager.setCurrentItem(mPagerAdapter.getFragment(TabKmsgFragment.class), true);
             }
             break;
+            case R.id.menuitem5: {
+                changeTheme();
+            }
+            break;
             default:
                 break;
         }
@@ -194,6 +199,23 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
+    private void changeTheme() {
+        AlertDialog.Builder ad = new AlertDialog.Builder(this);
+        ad.setMessage("Toggle dark/light theme.\nDo you want to continue?");
+        ad.setCancelable(false);
+        ad.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                boolean darktheme = prefs.getBoolean("darktheme", false);
+                Editor edit = prefs.edit();
+                edit.putBoolean("darktheme", !darktheme);
+                edit.commit();
+                MainActivity.this.recreate();
+            }
+        });
+        ad.setNegativeButton("Cancel", null);
+        ad.show();
+    }
     private void readProperties() {
         AlertDialog.Builder ad = new AlertDialog.Builder(this);
         ad.setMessage("System settings maybe will override your personal settings.\nDo you want to continue?");
@@ -246,6 +268,11 @@ public class MainActivity extends FragmentActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean darktheme = prefs.getBoolean("darktheme", false);
+        if (darktheme)
+            setTheme(android.R.style.Theme_Holo);
+        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         // setup action bar for tabs
