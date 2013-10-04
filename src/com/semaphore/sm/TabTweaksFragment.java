@@ -136,6 +136,11 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         pref = findPreference(sp.touch.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
         
+        pref = findPreference(sp.min_br.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+        pref = findPreference(sp.max_br.getName());
+        pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+        
         PreferenceScreen scPref = (PreferenceScreen) findPreference("accuracy_screen");
         if (scPref != null)
             scPref.setSummary(sp.taccuracy.accuracy_filter_enable.getValue() == 1 ? "Enabled" : "Disabled");
@@ -255,6 +260,15 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         } else if (key.equals(sp.gamma_b.getName())) {
             sp.gamma_b.setValue(sharedPreferences.getString(key, sp.gamma_b.getDefValue()));
             sp.gamma_b.writeValue();
+        } else if (key.equals(sp.min_br.getName())) {
+            sp.min_br.setValue(sharedPreferences.getInt(key, sp.min_br.getDefault()));
+            sp.min_br.writeValue();
+        } else if (key.equals(sp.max_br.getName())) {
+            sp.max_br.setValue(sharedPreferences.getInt(key, sp.max_br.getDefault()));
+            sp.max_br.writeValue();
+        } else if (key.equals(sp.br_mode.getName())) {
+            sp.br_mode.setValue(sharedPreferences.getBoolean(key, sp.br_mode.getDefBoolean()) == true ? 1 : 0);
+            sp.br_mode.writeValue();
         } else if (key.equals(sp.read_ahead.getName())) {
             sp.read_ahead.setValue(sharedPreferences.getString(key, sp.read_ahead.getDefValue()));
             sp.read_ahead.writeValue();

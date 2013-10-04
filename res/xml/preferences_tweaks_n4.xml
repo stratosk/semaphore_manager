@@ -80,6 +80,31 @@
     <PreferenceScreen
         android:title="@string/str_lcd_calibration_title">
         <PreferenceCategory
+            android:title="@string/str_lcd_backlight_title">
+            <com.semaphore.sm.SeekBarPreference android:key="min_br"
+                                                android:title="@string/str_min_br_title"
+                                                android:dialogMessage=""
+                                                android:defaultValue="2"
+                                                android:text=""
+                                                semaphore:min="2"
+                                                android:max="114"
+                                                semaphore:step="1"
+            />
+            <com.semaphore.sm.SeekBarPreference android:key="max_br"
+                                                android:title="@string/str_max_br_title"
+                                                android:dialogMessage=""
+                                                android:defaultValue="114"
+                                                android:text=""
+                                                semaphore:min="2"
+                                                android:max="114"
+                                                semaphore:step="1"
+            />
+            <CheckBoxPreference
+                android:key="br_mode"
+                android:title="@string/str_br_mode_title" 
+                android:summary="@string/str_br_mode_summary" />
+        </PreferenceCategory>
+        <PreferenceCategory
             android:title="@string/str_lcd_temperature_title">
             <com.semaphore.sm.SeekBarPreference android:key="lcd_red"
                                                 android:title="@string/str_lcd_red_title"

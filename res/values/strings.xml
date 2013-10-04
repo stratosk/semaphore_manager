@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Semaphore Manager</string>
-    <string name="str_app_version_title">3.0.1</string>
+    <string name="str_app_version_title">3.1.0</string>
     
     <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
     
@@ -404,6 +404,12 @@
     <string name="str_gamma_r_title">Red</string>
     <string name="str_gamma_g_title">Green</string>
     <string name="str_gamma_b_title">Blue</string>
+
+    <string name="str_lcd_backlight_title">Backlight brightness</string>
+    <string name="str_min_br_title">Minimum</string>
+    <string name="str_max_br_title">Maximum</string>
+    <string name="str_br_mode_title">Linear mapping mode</string>
+    <string name="str_br_mode_summary">Uncheck to use exponential</string>
 
     <string name="str_configs_title">config.gz</string>
     <string name="str_configs_summary">/proc/config.gz</string>

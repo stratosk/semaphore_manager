@@ -155,7 +155,8 @@ public class MainActivity extends FragmentActivity {
         if (Device == SemaDevices.Mako)
             needRead = needRead || !prefs.contains("led_red") || !prefs.contains("read_ahead") || 
                     !prefs.contains("uv_lower_uv") || !prefs.contains("hp_enabled") ||
-                    !prefs.contains("hp_max_online") || !prefs.contains("scaling_min_freq");
+                    !prefs.contains("hp_max_online") || !prefs.contains("scaling_min_freq") ||
+                    !prefs.contains("min_br");
         if (Device == SemaDevices.I9000)
             needRead = needRead || !prefs.contains("ab_max_br_threshold") || !prefs.contains("scaling_min_freq");
         if (needRead) {

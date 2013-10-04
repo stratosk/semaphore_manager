@@ -45,6 +45,9 @@ public class SemaN4Properties extends SemaCommonProperties {
     public SMIntProperty hp_up_threshold;
     public SMIntProperty hp_min_online;
     public SMIntProperty hp_max_online;
+    public SMIntProperty min_br;
+    public SMIntProperty max_br;
+    public SMIntProperty br_mode;
 
     public SemaN4Properties() {
 
@@ -73,10 +76,10 @@ public class SemaN4Properties extends SemaCommonProperties {
 
         vibrator = new SMIntProperty("vibrator", "/sys/class/timed_output/vibrator/amp", false, 0, 100, 70);
         touch_enable = new SMIntProperty("touch_enable", "/sys/devices/virtual/misc/touchwake/enabled", false, 0, 1, 0);
-        touch = new SMIntProperty("touch", "/sys/devices/virtual/misc/touchwake/delay", false, 0, 90000, 45000);
+        touch = new SMIntProperty("touch", "/sys/devices/virtual/misc/touchwake/delay", false, 0, 300000, 30000);
 
         tcp_congestion = new SMStringProperty("tcp_congestion", "/proc/sys/net/ipv4/tcp_congestion_control", false, "cubic");
-        
+
         taccuracy = new SMTouchAccuracyProperty();
         tjitter = new SMTouchJitterProperty();
 
@@ -89,6 +92,10 @@ public class SemaN4Properties extends SemaCommonProperties {
         gamma_g = new SMStringProperty("gamma_g", "/sys/devices/virtual/misc/gamma_control/gamma_g", false, "64 68 118 1 0 0 48 32 1");
         gamma_b = new SMStringProperty("gamma_b", "/sys/devices/virtual/misc/gamma_control/gamma_b", false, "32 35 116 0 31 16 80 51 3");
         read_ahead = new SMStringProperty("read_ahead", "sys/devices/platform/msm_sdcc.1/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/read_ahead_kb", false, "128");
+
+        min_br = new SMIntProperty("min_br", "/sys/devices/i2c-0/0-0038/lm3530_min_br", false, 2, 114, 2);
+        max_br = new SMIntProperty("max_br", "/sys/devices/i2c-0/0-0038/lm3530_max_br", false, 2, 114, 114);
+        br_mode = new SMIntProperty("br_mode", "/sys/devices/i2c-0/0-0038/lm3530_br_mode", false, 0, 1, 1);
 
         logger = new SMLoggerProperty("logger", "/lib/modules", false);
     }
@@ -127,6 +134,10 @@ public class SemaN4Properties extends SemaCommonProperties {
         gamma_b.readValue();
 
         read_ahead.readValue();
+
+        min_br.readValue();
+        max_br.readValue();
+        br_mode.readValue();
 
         logger.readValue();
     }
@@ -180,6 +191,10 @@ public class SemaN4Properties extends SemaCommonProperties {
 
         read_ahead.writeBatch(cmds);
 
+        min_br.writeBatch(cmds);
+        max_br.writeBatch(cmds);
+        br_mode.writeBatch(cmds);
+
         logger.writeBatch(cmds);
         //Log.d("semaphore cmds: ", cmds.toString());
         Commander.getInstance().runSuBatch(cmds);
@@ -231,6 +246,10 @@ public class SemaN4Properties extends SemaCommonProperties {
         gamma_b.writeValue();
 
         read_ahead.writeValue();
+
+        min_br.writeValue();
+        max_br.writeValue();
+        br_mode.writeValue();
 
         logger.writeValue();
     }
@@ -310,6 +329,10 @@ public class SemaN4Properties extends SemaCommonProperties {
         edit.putString(gamma_b.getName(), gamma_b.getValue());
 
         edit.putString(read_ahead.getName(), read_ahead.getValue());
+
+        edit.putInt(min_br.getName(), min_br.getValue());
+        edit.putInt(max_br.getName(), max_br.getValue());
+        edit.putBoolean(br_mode.getName(), br_mode.getBoolean());
 
         edit.putBoolean(logger.getName(), logger.getValue());
 
@@ -393,6 +416,10 @@ public class SemaN4Properties extends SemaCommonProperties {
 
         read_ahead.setValue(prefs.getString(read_ahead.getName(), read_ahead.getDefValue()));
 
+        min_br.setValue(prefs.getInt(min_br.getName(), min_br.getDefault()));
+        max_br.setValue(prefs.getInt(max_br.getName(), max_br.getDefault()));
+        br_mode.setValue(prefs.getBoolean(br_mode.getName(), br_mode.getDefBoolean()) == true ? 1 : 0);
+
         logger.setValue(prefs.getBoolean(logger.getName(), logger.getDefValue()));
     }
 
@@ -458,6 +485,10 @@ public class SemaN4Properties extends SemaCommonProperties {
         read_ahead.setValue(read_ahead.getDefValue());
 
         lcdtemp.setDefValues();
+
+        min_br.setValue(min_br.getDefault());
+        max_br.setValue(max_br.getDefault());
+        br_mode.setValue(br_mode.getDefault());
 
         logger.setValue(logger.getDefValue());
     }
