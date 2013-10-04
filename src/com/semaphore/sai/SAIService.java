@@ -132,6 +132,10 @@ public class SAIService extends Service {
             switch (state) {
                 case TelephonyManager.CALL_STATE_IDLE:
                     stateString = "Idle";
+
+                    if (touchwake_disable)
+                        touchwake(1);
+
                     disableVibrationListener();
                     
                     if (pickupPhone)
@@ -154,10 +158,14 @@ public class SAIService extends Service {
                     break;
                 case TelephonyManager.CALL_STATE_RINGING:
                     stateString = "Ringing";
+                    if (touchwake_disable)
+                        touchwake(0);
+
                     enableVibrationListener();
                     
-                    if (pickupPhone)
+                    if (pickupPhone) {
                         enableOrientationListener();
+                    }
                     
                     if (blinkLeds)
                         startBlink();
@@ -201,8 +209,6 @@ public class SAIService extends Service {
         }
         setVibration(2);
         proximityNear = false;
-        if (touchwake_disable)
-            touchwake(1);
     }
 
     private void setVibration(int state) {
@@ -241,13 +247,9 @@ public class SAIService extends Service {
                 if (event.values[0] > 0) {  // far
                     setVibration(0);
                     proximityNear = false;
-                    if (touchwake_disable)
-                        touchwake(1);
                 } else {                    // near
                     setVibration(1);
                     proximityNear = true;
-                    if (touchwake_disable)
-                        touchwake(0);
                 }
             }
         }
