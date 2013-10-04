@@ -84,7 +84,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         autobr = new SMAbProperty();
         vibrator = new SMIntProperty("vibrator", "/sys/devices/virtual/misc/pwm_duty/pwm_duty", false, 0, 100, 100);
         touch_enable = new SMIntProperty("touch_enable", "/sys/devices/virtual/misc/touchwake/enabled", false, 0, 1, 0);
-        touch = new SMIntProperty("touch", "/sys/devices/virtual/misc/touchwake/delay", false, 0, 90000, 0);
+        touch = new SMIntProperty("touch", "/sys/devices/virtual/misc/touchwake/delay", false, 0, 300000, 30000);
         bigmem = new SMIntProperty("bigmem", "sys/kernel/bigmem/enable", false, 0, 1, 0);
         wififast = new SMIntProperty("wififast", "/sys/module/bcmdhd/parameters/wifi_pm", false, 0, 1, 0);
         forcefastchg = new SMIntProperty("forcefastchg", "/sys/kernel/fast_charge/force_fast_charge", false, 0, 1, 0);
