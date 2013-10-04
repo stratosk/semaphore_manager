@@ -51,7 +51,7 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         Commander cm = Commander.getInstance();
         int ret = cm.run("cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies", true);
 
-        if (ret == 0) {
+        if (ret == 0 && !cm.getOutResult().isEmpty()) {
             s = cm.getOutResult().get(0).split("\\s+");
         }
 
