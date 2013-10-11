@@ -37,7 +37,6 @@ public class SAIService extends Service {
     private Sensor sensor;
     private Sensor mAccSensor;
     private Sensor mMagSensor;
-
     private TelephonyManager telephonyManager;
     private int vibratorNear;
     private int vibratorFar;
@@ -48,7 +47,6 @@ public class SAIService extends Service {
     private boolean touchwake_disable;
     public static final int MSG_RELOAD = 1;
     private SAIBlinkLED blink;
-    
     private float mAzimuth;
     private float mPitch;
     private float mRoll;
@@ -59,7 +57,7 @@ public class SAIService extends Service {
     private float[] mAccelerometerValues = new float[3];
     private boolean proximityNear = false;
     private boolean almostFlat = false;
-    
+
     @Override
     public void onCreate() {
         Log.d(TAG, "onCreate");
@@ -125,6 +123,26 @@ public class SAIService extends Service {
             blink.interrupt();
         }
     }
+    
+    private void touchwake(int enabled) {
+        String path = "/sys/devices/virtual/misc/touchwake/enabled";
+        Commander cm = Commander.getInstance();
+
+        cm.writeFile(path, String.valueOf(enabled));
+    }
+
+    private void disableTouchwake() {
+        if (touchwake_disable) {
+            touchwake(0);
+        }
+    }
+    
+    private void enableTouchwake() {
+        if (touchwake_disable) {
+            touchwake(1);
+        }        
+    }
+
     private PhoneStateListener phoneListener = new PhoneStateListener() {
         @Override
         public void onCallStateChanged(int state, String incomingNumber) {
@@ -133,42 +151,49 @@ public class SAIService extends Service {
                 case TelephonyManager.CALL_STATE_IDLE:
                     stateString = "Idle";
 
-                    if (touchwake_disable)
-                        touchwake(1);
+                    enableTouchwake();
 
                     disableVibrationListener();
-                    
-                    if (pickupPhone)
+
+                    if (pickupPhone) {
                         disableOrientationListener();
-                    
-                    if (blinkLeds)
+                    }
+
+                    if (blinkLeds) {
                         stopBlink();
-                    
+                    }
+
                     break;
                 case TelephonyManager.CALL_STATE_OFFHOOK:
                     stateString = "Off Hook";
+                    
+                    disableTouchwake();
+                    
                     enableVibrationListener();
-                                        
-                    if (pickupPhone)
+
+                    if (pickupPhone) {
                         disableOrientationListener();
-                    
-                    if (blinkLeds)
+                    }
+
+                    if (blinkLeds) {
                         stopBlink();
-                    
+                    }
+
                     break;
                 case TelephonyManager.CALL_STATE_RINGING:
                     stateString = "Ringing";
-                    if (touchwake_disable)
-                        touchwake(0);
+                    
+                    disableTouchwake();
 
                     enableVibrationListener();
-                    
+
                     if (pickupPhone) {
                         enableOrientationListener();
                     }
-                    
-                    if (blinkLeds)
+
+                    if (blinkLeds) {
                         startBlink();
+                    }
                     break;
             }
             Log.d(TAG, "onCallStateChanged: " + stateString);
@@ -181,7 +206,7 @@ public class SAIService extends Service {
         sensorService.registerListener(orSensorEventListener, mMagSensor, SensorManager.SENSOR_DELAY_NORMAL);
         Log.d(TAG, "Registerered for Magnetic Field Sensor");
     }
-    
+
     private void disableOrientationListener() {
         if (mAccSensor != null) {
             sensorService.unregisterListener(orSensorEventListener);
@@ -193,7 +218,7 @@ public class SAIService extends Service {
         }
         almostFlat = false;
     }
-    
+
     private void enableVibrationListener() {
         if (sensor != null) {
             sensorService.registerListener(mySensorEventListener, sensor,
@@ -214,10 +239,11 @@ public class SAIService extends Service {
     private void setVibration(int state) {
         String path;
         Commander cm = Commander.getInstance();
-        if ("mako".equals(android.os.Build.DEVICE))
+        if ("mako".equals(android.os.Build.DEVICE)) {
             path = "/sys/class/timed_output/vibrator/amp";
-        else
+        } else {
             path = "/sys/devices/virtual/misc/pwm_duty/pwm_duty";
+        }
         switch (state) {
             case 0: // Far
                 cm.writeFile(path, String.valueOf(vibratorFar));
@@ -230,14 +256,7 @@ public class SAIService extends Service {
                 break;
         }
     }
-    
-    private void touchwake(int enabled) {
-        String path = "/sys/devices/virtual/misc/touchwake/enabled";
-        Commander cm = Commander.getInstance();
-        
-        cm.writeFile(path, String.valueOf(enabled));
-    }
-    
+
     private SensorEventListener mySensorEventListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
@@ -258,7 +277,6 @@ public class SAIService extends Service {
             //throw new UnsupportedOperationException("Not supported yet.");
         }
     };
-    
     private SensorEventListener orSensorEventListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
@@ -283,7 +301,7 @@ public class SAIService extends Service {
                     //Log.d("SAIOrientation: Azimuth: ", String.valueOf(mAzimuth));
                     //Log.d("SAIOrientation: Pitch: ", String.valueOf(mPitch));
                     //Log.d("SAIOrientation: Roll: ", String.valueOf(mRoll));
-                    
+
                     if (!proximityNear && Math.abs(mRoll) < 30 && Math.abs(mPitch) < 30) {
                         almostFlat = true;
                     }
@@ -320,8 +338,8 @@ public class SAIService extends Service {
             Log.d(TAG, "vibrator near: " + String.valueOf(vibratorNear));
             Log.d(TAG, "vibrator far: " + String.valueOf(vibratorFar));
             Log.d(TAG, "vibrator default: " + String.valueOf(vibratorDef));
-            Log.d(TAG, "pickup phone: " + (pickupPhone ? "true":"false")); 
-            Log.d(TAG, "blink leds: " + (blinkLeds ? "true":"false")); 
+            Log.d(TAG, "pickup phone: " + (pickupPhone ? "true" : "false"));
+            Log.d(TAG, "blink leds: " + (blinkLeds ? "true" : "false"));
             Log.d(TAG, "blink interval: " + String.valueOf(blinkInterval));
             Log.d(TAG, "touchwake disable: " + String.valueOf(touchwake_disable));
             super.handleMessage(msg);
