@@ -14,14 +14,17 @@ import java.util.List;
 
 public class SMCpufreqProperty extends SMBatchProperty {
 
+    private String dyn_path;
+    private String dyn_prev_status;
     public SMStringProperty gov;
     public SMIntProperty scaling_min_freq;
     public SMIntProperty scaling_max_freq;
     public String basepath;
-    
+
     public SMCpufreqProperty() {
         super("cpufreq");
 
+        dyn_path = "/sys/module/dyn_hotplug/parameters/enabled";
         basepath = "/sys/devices/system/cpu/cpu0/cpufreq/";
 
         gov = new SMStringProperty("gov", basepath.concat("scaling_governor"), false, "ondemand");
@@ -38,16 +41,24 @@ public class SMCpufreqProperty extends SMBatchProperty {
 
     private void stopHotplug() {
         Commander cm = Commander.getInstance();
-        String cmd = "echo N > /sys/module/dyn_hotplug/parameters/enabled";
-        int res = cm.run(cmd, true);        
+        int ret = cm.readFile(dyn_path);
+        if (ret == 0) {
+            dyn_prev_status = cm.getOutResult().get(0);
+        }
+        if (dyn_prev_status.equals("Y")) {
+            String cmd = "echo N > ".concat(dyn_path);
+            int res = cm.run(cmd, true);
+        }
     }
-    
+
     private void startHotplug() {
-        Commander cm = Commander.getInstance();
-        String cmd = "echo Y > /sys/module/dyn_hotplug/parameters/enabled";
-        int res = cm.run(cmd, true);        
+        if (dyn_prev_status.equals("Y")) {
+            Commander cm = Commander.getInstance();
+            String cmd = "echo Y > ".concat(dyn_path);
+            int res = cm.run(cmd, true);
+        }
     }
-    
+
     @Override
     public void writeValue() {
         stopHotplug();
