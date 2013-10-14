@@ -9,6 +9,7 @@
  */
 package com.semaphore.smproperties;
 
+import android.util.Log;
 import com.semaphore.sm.Commander;
 import java.util.List;
 
@@ -82,7 +83,6 @@ public class SMIntProperty extends SMProperty {
             return;
         }
         Commander cm = Commander.getInstance();
-//        int res = cm.runSu("cat ".concat(getPath()));
         int res = cm.readFile(getPath());
         if (res == 0) {
             String rt = cm.getOutResult().get(0);
@@ -90,8 +90,14 @@ public class SMIntProperty extends SMProperty {
                 setValue(1);
             else if (rt.equals("N"))
                 setValue(0);
-            else
-                setValue(Integer.parseInt(rt));
+            else {
+                try {
+                    setValue(Integer.parseInt(rt));
+                } catch (NumberFormatException numberFormatException) {
+                    Log.e("SM: ", numberFormatException.getMessage());
+                    setValue(getDefault());
+                }
+            }
         } else {
             setValue(defValue);
         }
