@@ -49,7 +49,9 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         SemaI9000Properties sp = (SemaI9000Properties) scp;
 
         Preference pref = findPreference("scheduler");
-        if (pref != null && ((ListPreference) pref).getEntry() != null)
+        if (pref == null)
+            return;
+        if (((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
 
         pref = findPreference("ab_profiles");
@@ -83,22 +85,32 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         SemaN4Properties sp = (SemaN4Properties) scp;
 
         Preference pref = findPreference("scheduler");
-        if (pref != null && ((ListPreference) pref).getEntry() != null)
+        if (pref == null)
+            return;
+        if (((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
         pref = findPreference("tcp_congestion");
-        if (pref != null && ((ListPreference) pref).getEntry() != null)
+        if (pref == null)
+            return;
+        if (((ListPreference) pref).getEntry() != null)
+            pref.setSummary(((ListPreference) pref).getEntry().toString());
+        pref = findPreference("led_red");
+        if (pref == null)
+            return;
+        if (((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
         pref = findPreference(sp.read_ahead.getName());
         if (((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
-        pref = findPreference("led_red");
-        if (pref != null && ((ListPreference) pref).getEntry() != null)
-            pref.setSummary(((ListPreference) pref).getEntry().toString());
         pref = findPreference("led_green");
-        if (pref != null && ((ListPreference) pref).getEntry() != null)
+        if (pref == null)
+            return;
+        if (((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
         pref = findPreference("led_blue");
-        if (pref != null && ((ListPreference) pref).getEntry() != null)
+        if (pref == null)
+            return;
+        if (((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
 
         pref = findPreference(sp.vibrator.getName());

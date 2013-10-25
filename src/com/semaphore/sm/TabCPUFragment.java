@@ -567,19 +567,27 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         SemaN4Properties sp = (SemaN4Properties) scp;
 
         Preference pref = findPreference(sp.cpufreq.gov.getName());
-        if (pref != null && ((ListPreference) pref).getEntry() != null)
+        if (pref == null)
+            return;
+
+        if (((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
 
         pref = findPreference(sp.cpufreq.scaling_min_freq.getName());
-        if (pref != null && ((ListPreference) pref).getEntry() != null)
+        if (pref == null)
+            return;
+
+        if (((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
 
         pref = findPreference(sp.cpufreq.scaling_max_freq.getName());
-        if (pref != null && ((ListPreference) pref).getEntry() != null)
+        if (pref == null)
+            return;
+
+        if (((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
 
         pref = findPreference(sp.ondemand.sampling_down_factor.getName());
-        pref.setSummary(((EditTextPreference) pref).getText());
         pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.ondemand.sampling_rate.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
@@ -639,15 +647,24 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         SemaI9000Properties sp = (SemaI9000Properties) scp;
 
         Preference pref = findPreference(sp.gov.getName());
-        if (pref != null && ((ListPreference) pref).getEntry() != null)
+        if (pref == null)
+            return;
+
+        if (((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
 
         pref = findPreference(sp.scaling_min_freq.getName());
-        if (pref != null && ((ListPreference) pref).getEntry() != null)
+        if (pref == null)
+            return;
+
+        if (((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
 
         pref = findPreference(sp.scaling_max_freq.getName());
-        if (pref != null && ((ListPreference) pref).getEntry() != null)
+        if (pref == null)
+            return;
+
+        if (((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
 
         pref = findPreference(sp.oc.getName());
