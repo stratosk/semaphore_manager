@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Semaphore Manager</string>
-    <string name="str_app_version_title">3.1.1</string>
+    <string name="str_app_version_title">3.1.2</string>
     
     <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
     
