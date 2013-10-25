@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -111,6 +111,8 @@ public class SAIService extends Service {
         Intent buttonUp = new Intent(Intent.ACTION_MEDIA_BUTTON);
         buttonUp.putExtra(Intent.EXTRA_KEY_EVENT, new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_HEADSETHOOK));
         this.sendOrderedBroadcast(buttonUp, "android.permission.CALL_PRIVILEGED");
+        
+        disableOrientationListener();
     }
 
     private void startBlink() {
