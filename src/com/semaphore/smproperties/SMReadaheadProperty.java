@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -37,7 +37,6 @@ public class SMReadaheadProperty extends SMBaseProperty {
 
     @Override
     public void readValue() {
-//        setValue(defValue);
         Commander cm = Commander.getInstance();
         int res = cm.readFile("/sys/devices/virtual/bdi/179:0/read_ahead_kb");
         if (res == 0) {

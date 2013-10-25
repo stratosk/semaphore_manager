@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -28,15 +28,13 @@ import java.util.logging.Logger;
 public class Commander {
 
     private static Commander instance = null;
-    private List<String> errResult;
-    private List<String> outResult;
-    private List<String> kmsg;
+    private final List<String> errResult;
+    private final List<String> outResult;
+    private final List<String> kmsg;
     private Process p;
     OutputStreamWriter osw;
     OutputStreamWriter oswk;
     OutputStreamWriter oswl;
-//        BufferedReader err;
-//        BufferedReader out;
 
     protected Commander() {
         errResult = new ArrayList<String>();
@@ -45,13 +43,11 @@ public class Commander {
     }
 
     public static Commander getInstance() {
-        if (instance == null) {
+        if (instance == null)
             synchronized (Commander.class) {
-                if (instance == null) {
+                if (instance == null)
                     instance = new Commander();
-                }
             }
-        }
         return instance;
     }
 
@@ -73,13 +69,6 @@ public class Commander {
             p = pb.start();
             OutputStream os = p.getOutputStream();
             osw = new OutputStreamWriter(os);
-
-//            err = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-//            out = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            // Preform su to get root privledges
-            //p = Runtime.getRuntime().exec("su");
-
-            // Attempt to write a file to a root-only
         } catch (IOException ex) {
         }
     }
@@ -95,10 +84,7 @@ public class Commander {
 
     public boolean needSU(String path) {
         File f = new File(path);
-        if (f.exists() && f.isFile() && f.canWrite()) {
-            return false;
-        }
-        return true;
+        return !f.exists() || !f.isFile() || !f.canWrite();
     }
 
     public int readFile(String path) {
@@ -106,18 +92,16 @@ public class Commander {
 
         outResult.clear();
         File f = new File(path);
-        if (f.exists() && f.isFile() && f.canRead()) {
+        if (f.exists() && f.isFile() && f.canRead())
             try {
                 BufferedReader br = new BufferedReader(new FileReader(f), 512);
                 String line;
                 try {
-                    while ((line = br.readLine()) != null) {
+                    while ((line = br.readLine()) != null)
                         outResult.add(line);
-                    }
 
-                    if (!outResult.isEmpty()) {
+                    if (!outResult.isEmpty())
                         result = 0;
-                    }
                     br.close();
                 } catch (IOException ex) {
                     Logger.getLogger(Commander.class.getName()).log(Level.SEVERE, null, ex);
@@ -126,7 +110,6 @@ public class Commander {
             } catch (FileNotFoundException ex) {
                 Log.e(Commander.class.getName(), "Error reading file: ".concat(path));
             }
-        }
 
         return result;
     }
@@ -135,16 +118,13 @@ public class Commander {
         try {
             File file = new File(path);
 
-            if (!file.exists() || !file.canWrite()) {
+            if (!file.exists() || !file.canWrite())
                 return 1;
-            }
-            
+
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             fw.write(value);
-//            BufferedWriter bw = new BufferedWriter(fw);
-//            bw.write(value);
             fw.close();
-            
+
             return 0;
         } catch (IOException e) {
             Log.e(Commander.class.getName(), "Error writing file: ".concat(path));
@@ -153,7 +133,7 @@ public class Commander {
     }
 
     public int runSuBatch(List<String> cmds) {
-        int result = 0;
+        int result;
         int exitValue = -99;
 
         ProcessBuilder pb = new ProcessBuilder("su", "-c", "/system/bin/sh");
@@ -162,9 +142,8 @@ public class Commander {
             OutputStream os = p.getOutputStream();
             osw = new OutputStreamWriter(os);
 
-            for (String s : cmds) {
+            for (String s : cmds)
                 osw.write(s + "\n");
-            }
             osw.write("\nexit\n");
             osw.flush();
             osw.close();
@@ -185,16 +164,13 @@ public class Commander {
                 } catch (InterruptedException ex) {
                 }
 
-                if (exitValue == 0) {
-                    if (errResult.isEmpty()) {
+                if (exitValue == 0)
+                    if (errResult.isEmpty())
                         result = 0;
-                    } else {
+                    else
                         result = 1;
-                    }
-
-                } else {
+                else
                     result = 1;
-                }
             } catch (InterruptedException e) {
                 result = 1;
             }
@@ -205,14 +181,13 @@ public class Commander {
     }
 
     public int run(String cmd, boolean su) {
-        int result = 0;
+        int result;
 
         ProcessBuilder pb;
-        if (su) {
+        if (su)
             pb = new ProcessBuilder("su", "-c", "/system/bin/sh");
-        } else {
+        else
             pb = new ProcessBuilder("/system/bin/sh");
-        }
         try {
             p = pb.start();
             OutputStream os = p.getOutputStream();
@@ -239,16 +214,13 @@ public class Commander {
                 } catch (InterruptedException ex) {
                 }
 
-                if (exitVal == 0) {
-                    if (errResult.isEmpty()) {
+                if (exitVal == 0)
+                    if (errResult.isEmpty())
                         result = 0;
-                    } else {
+                    else
                         result = 1;
-                    }
-
-                } else {
+                else
                     result = 1;
-                }
             } catch (InterruptedException e) {
                 result = 1;
             }
@@ -300,9 +272,8 @@ public class Commander {
             try {
                 BufferedReader out = new BufferedReader(new InputStreamReader(inputStream));
                 String line;
-                while ((line = out.readLine()) != null) {
+                while ((line = out.readLine()) != null)
                     result.add(line);
-                }
             } catch (java.io.IOException e) {
             }
         }

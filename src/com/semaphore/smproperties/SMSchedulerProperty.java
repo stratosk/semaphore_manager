@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,7 @@ public class SMSchedulerProperty extends SMBaseProperty {
     private String Value;
     private String defValue;
     public String basepath;
-    
+
     public String getDefValue() {
         return defValue;
     }
@@ -46,23 +46,20 @@ public class SMSchedulerProperty extends SMBaseProperty {
             int end = s.indexOf(']');
             s = s.substring(start + 1, end);
             setValue(s);
-        } else {
+        } else
             setValue("");
-        }
     }
 
     @Override
     public void writeValue() {
         Commander cm = Commander.getInstance();
         int res;
-        if (!Value.isEmpty()) {
+        if (!Value.isEmpty())
             res = cm.run("/data/data/com.semaphore.sm/scripts/" + getValue(), true);
-        }
     }
 
     public void writeBatch(List<String> cmds) {
-        if (!Value.isEmpty()) {
+        if (!Value.isEmpty())
             cmds.add("/data/data/com.semaphore.sm/scripts/" + getValue());
-        }
     }
 }

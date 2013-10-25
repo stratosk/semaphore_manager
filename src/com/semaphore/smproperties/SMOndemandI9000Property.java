@@ -37,7 +37,7 @@ public class SMOndemandI9000Property extends SMOndemandProperty {
     @Override
     public void writeValue() {
         super.writeValue();
-        
+
         sampling_down_max_momentum.writeValue();
         smooth_ui.writeValue();
     }

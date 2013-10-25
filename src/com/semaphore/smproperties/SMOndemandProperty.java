@@ -18,7 +18,7 @@ public class SMOndemandProperty extends SMBatchProperty {
     public SMIntProperty sampling_rate;
     public SMIntProperty up_threshold;
     public String basepath;
-    
+
     public SMOndemandProperty() {
         super("ondemand");
 

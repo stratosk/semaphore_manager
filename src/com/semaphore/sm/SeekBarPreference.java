@@ -40,10 +40,9 @@ public class SeekBarPreference extends DialogPreference implements SeekBar.OnSee
     public int getValue() {
         return mValue;
     }
-    
+
     public void setValue(int value) {
-        mValue = value; 
-        //mSeekBar.setProgress(mValue - mMin);
+        mValue = value;
     }
 
     public SeekBarPreference(Context context, AttributeSet attrs) {
@@ -66,9 +65,8 @@ public class SeekBarPreference extends DialogPreference implements SeekBar.OnSee
         layout.setPadding(6, 20, 6, 50);
 
         mSplashText = new TextView(mContext);
-        if (mDialogMessage != null) {
+        if (mDialogMessage != null)
             mSplashText.setText(mDialogMessage);
-        }
         layout.addView(mSplashText);
 
         mValueText = new TextView(mContext);
@@ -84,9 +82,8 @@ public class SeekBarPreference extends DialogPreference implements SeekBar.OnSee
         mSeekBar.setOnSeekBarChangeListener(this);
         layout.addView(mSeekBar, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        if (shouldPersist()) {
+        if (shouldPersist())
             mValue = getPersistedInt(mDefault - mMin);
-        }
 
         mSeekBar.setMax(mMax - mMin);
         mSeekBar.setProgress(mValue - mMin);
@@ -103,22 +100,17 @@ public class SeekBarPreference extends DialogPreference implements SeekBar.OnSee
     @Override
     protected void onSetInitialValue(boolean restore, Object defaultValue) {
         super.onSetInitialValue(restore, defaultValue);
-        if (restore) {
+        if (restore)
             mValue = shouldPersist() ? getPersistedInt(mDefault - mMin) : 0;
-        } else {
+        else
             mValue = (Integer) defaultValue - mMin;
-        }
     }
 
     public void onProgressChanged(SeekBar seek, int value, boolean fromTouch) {
 
-        value = ((int)Math.round(value / mStep)) * mStep;
+        value = ((int) Math.round(value / mStep)) * mStep;
         String t = String.valueOf(value + mMin);
         mValueText.setText(mSuffix == null ? t : t.concat(mSuffix));
-//        mValue = value + mMin;
-//        if (shouldPersist()) {
-//            persistInt(value + mMin);
-//        }
         callChangeListener(Integer.valueOf(value + mMin));
     }
 
@@ -126,11 +118,10 @@ public class SeekBarPreference extends DialogPreference implements SeekBar.OnSee
     protected void onDialogClosed(boolean positiveResult) {
         super.onDialogClosed(positiveResult);
 
-        if (!positiveResult) {
+        if (!positiveResult)
             return;
-        }
         if (shouldPersist()) {
-            mValue = ((int)Math.round(mSeekBar.getProgress() / mStep)) * mStep + mMin;
+            mValue = ((int) Math.round(mSeekBar.getProgress() / mStep)) * mStep + mMin;
             int p = getProgress();
             persistInt(p);
             setSummary(String.valueOf(p));
@@ -163,9 +154,8 @@ public class SeekBarPreference extends DialogPreference implements SeekBar.OnSee
 
     public void setProgress(int progress) {
         mValue = progress - mMin;
-        if (mSeekBar != null) {
+        if (mSeekBar != null)
             mSeekBar.setProgress(progress - mMin);
-        }
     }
 
     public int getProgress() {

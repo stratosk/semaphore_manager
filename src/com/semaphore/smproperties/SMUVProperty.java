@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -25,10 +25,10 @@ public class SMUVProperty extends SMBatchProperty {
 
         String basepath = "/";
 
-        uv_lower_uv = new SMIntProperty("uv_lower_uv", "/sys/module/acpuclock_krait/parameters/lower_uV", false, 0 , 150000, 0);
-        uv_higher_uv = new SMIntProperty("uv_higher_uv", "/sys/module/acpuclock_krait/parameters/higher_uV", false, 0 , 150000, 0);
+        uv_lower_uv = new SMIntProperty("uv_lower_uv", "/sys/module/acpuclock_krait/parameters/lower_uV", false, 0, 150000, 0);
+        uv_higher_uv = new SMIntProperty("uv_higher_uv", "/sys/module/acpuclock_krait/parameters/higher_uV", false, 0, 150000, 0);
         uv_higher_khz_thres = new SMIntProperty("uv_higher_khz_thres", "/sys/module/acpuclock_krait/parameters/higher_khz_thres", false, 384000, 1512000, 1350000);
-        uv_boost = new SMIntProperty("uv_boost", "/sys/module/acpuclock_krait/parameters/boost", false, 0 , 1, 1);
+        uv_boost = new SMIntProperty("uv_boost", "/sys/module/acpuclock_krait/parameters/boost", false, 0, 1, 1);
 
         apply_boot = false;
         enabled = false;

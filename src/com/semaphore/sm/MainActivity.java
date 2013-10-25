@@ -43,9 +43,12 @@ import java.util.List;
 
 public class MainActivity extends FragmentActivity {
 
-    public enum SemaDevices {I9000, Mako};
+    public enum SemaDevices {
+
+        I9000, Mako
+    };
     public static SemaDevices Device;
-    
+
     public class PagerAdapter extends FragmentPagerAdapter {
 
         List<Fragment> fragments;
@@ -94,11 +97,9 @@ public class MainActivity extends FragmentActivity {
         }
 
         public int getFragment(Class<?> ftype) {
-            for (int i = 0; i < fragments.size(); i++) {
-                if (fragments.get(i).getClass() == ftype) {
+            for (int i = 0; i < fragments.size(); i++)
+                if (fragments.get(i).getClass() == ftype)
                     return i;
-                }
-            }
             return -1;
         }
     }
@@ -106,7 +107,7 @@ public class MainActivity extends FragmentActivity {
     PagerAdapter mPagerAdapter;
     public static SemaCommonProperties sp;
     private String SemaphoreVer = "";
-    public static boolean readingValues = false; 
+    public static boolean readingValues = false;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -149,22 +150,21 @@ public class MainActivity extends FragmentActivity {
 
     private void checkFirstRun() {
         boolean needRead = false;
-                
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         needRead = !prefs.contains("gov");
         if (Device == SemaDevices.Mako)
-            needRead = needRead || !prefs.contains("led_red") || !prefs.contains("read_ahead") || 
-                    !prefs.contains("uv_lower_uv") || !prefs.contains("hp_enabled") ||
-                    !prefs.contains("hp_max_online") || !prefs.contains("scaling_min_freq") ||
-                    !prefs.contains("min_br");
+            needRead = needRead || !prefs.contains("led_red") || !prefs.contains("read_ahead")
+                    || !prefs.contains("uv_lower_uv") || !prefs.contains("hp_enabled")
+                    || !prefs.contains("hp_max_online") || !prefs.contains("scaling_min_freq")
+                    || !prefs.contains("min_br");
         if (Device == SemaDevices.I9000)
             needRead = needRead || !prefs.contains("ab_max_br_threshold") || !prefs.contains("scaling_min_freq");
         if (needRead) {
             PropTask pt = new PropTask();
             pt.execute(sp);
-        } else {
+        } else
             sp.getPreferences(this);
-        }
     }
 
     private void checkSU_BB() {
@@ -180,7 +180,7 @@ public class MainActivity extends FragmentActivity {
                 }
             });
             ad.show();
-        } 
+        }
         ret = cm.run("uname -r", false);
         if (ret == 1) {
             AlertDialog.Builder ad = new AlertDialog.Builder(this);
@@ -192,12 +192,11 @@ public class MainActivity extends FragmentActivity {
                 }
             });
             ad.show();
-        } else {
+        } else
             if (cm.getOutResult().size() > 0)
                 SemaphoreVer = cm.getOutResult().get(0);
             else
                 SemaphoreVer = "";
-        }
     }
 
     private void changeTheme() {
@@ -217,6 +216,7 @@ public class MainActivity extends FragmentActivity {
         ad.setNegativeButton("Cancel", null);
         ad.show();
     }
+
     private void readProperties() {
         AlertDialog.Builder ad = new AlertDialog.Builder(this);
         ad.setMessage("System settings maybe will override your personal settings.\nDo you want to continue?");
@@ -273,7 +273,7 @@ public class MainActivity extends FragmentActivity {
         boolean darktheme = prefs.getBoolean("darktheme", false);
         if (darktheme)
             setTheme(android.R.style.Theme_Holo);
-        
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         // setup action bar for tabs
@@ -296,9 +296,9 @@ public class MainActivity extends FragmentActivity {
 
         if (Device == SemaDevices.Mako)
             sp = new SemaN4Properties();
-        else 
+        else
             sp = new SemaI9000Properties();
-        
+
         checkSU_BB();
         unpackScripts();
 
@@ -317,27 +317,22 @@ public class MainActivity extends FragmentActivity {
         actionBar.setDisplayShowTitleEnabled(true);
 
         actionBar.setTitle("Semaphore Manager");
-
         actionBar.setSubtitle(SemaphoreVer);
 
         updateSummaries();
-
     }
 
     private void updateSummaries() {
-        
+
         TabCPUFragment cpu = (TabCPUFragment) mPagerAdapter.fragments.get(0);
-        if (cpu != null) {
+        if (cpu != null)
             cpu.updateSummaries();
-        }
         TabTweaksFragment tweaks = (TabTweaksFragment) mPagerAdapter.fragments.get(1);
-        if (tweaks != null) {
+        if (tweaks != null)
             tweaks.updateSummaries();
-        }
         TabSAIFragment sai = (TabSAIFragment) mPagerAdapter.fragments.get(3);
-        if (sai != null) {
+        if (sai != null)
             sai.updateSummaries();
-        }
     }
 
     private class PropTask extends AsyncTask<SemaCommonProperties, Void, String> {
@@ -356,16 +351,14 @@ public class MainActivity extends FragmentActivity {
         @Override
         protected void onPreExecute() {
             pd = ProgressDialog.show(MainActivity.this, "", "Reading system settings, Please wait", true);
-
         }
 
         @Override
         protected void onPostExecute(String result) {
             MainActivity.this.recreate();
             updateSummaries();
-            if (this.pd != null) {
+            if (this.pd != null)
                 this.pd.dismiss();
-            }
             readingValues = false;
         }
     }
@@ -387,16 +380,13 @@ public class MainActivity extends FragmentActivity {
         @Override
         protected void onPreExecute() {
             pd = ProgressDialog.show(MainActivity.this, "", "Resetting system settings, Please wait", true);
-
         }
 
         @Override
         protected void onPostExecute(String result) {
             MainActivity.this.recreate();
-            if (this.pd != null) {
+            if (this.pd != null)
                 this.pd.dismiss();
-            }
-
         }
     }
 
@@ -406,12 +396,11 @@ public class MainActivity extends FragmentActivity {
         FileOutputStream fos = new FileOutputStream(dstPath, false);
 
         byte[] buffer = new byte[256];
-        int n = -1;
+        int n;
         do {
             n = is.read(buffer);
-            if (n != -1) {
+            if (n != -1)
                 fos.write(buffer, 0, n);
-            }
         } while (n != -1);
         fos.flush();
         fos.close();

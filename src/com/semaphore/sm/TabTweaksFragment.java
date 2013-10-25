@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -23,11 +23,12 @@ import com.semaphore.smproperties.SemaI9000Properties;
 import com.semaphore.smproperties.SemaN4Properties;
 
 public class TabTweaksFragment extends PreferenceListFragment implements SharedPreferences.OnSharedPreferenceChangeListener, Preference.OnPreferenceClickListener {
+
     private SemaCommonProperties scp;
 
     public TabTweaksFragment() {
         super();
-        
+
         if (MainActivity.Device == MainActivity.SemaDevices.Mako)
             super.setxmlId(R.xml.preferences_tweaks_n4);
         else
@@ -38,34 +39,25 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //addPreferencesFromResource(R.xml.preferences_tweaks);
-        //getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-
         updateSummaries();
         Preference pref = findPreference("vibrator_test");
         if (pref != null)
-                pref.setOnPreferenceClickListener(this);
+            pref.setOnPreferenceClickListener(this);
     }
 
     private void updateSummariesI9000() {
         SemaI9000Properties sp = (SemaI9000Properties) scp;
 
         Preference pref = findPreference("scheduler");
-        if (pref == null) {
-            return;
-        }
-        if (((ListPreference) pref).getEntry() != null) {
+        if (pref != null && ((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
-        }
 
         pref = findPreference("ab_profiles");
-        if (((ListPreference) pref).getEntry() != null) {
+        if (((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
-        }
         pref = findPreference(sp.read_ahead.getName());
-        if (((ListPreference) pref).getEntry() != null) {
+        if (((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
-        }
 
         pref = findPreference(sp.vibrator.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
@@ -82,69 +74,48 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         pref = findPreference(sp.autobr.instant_update_thres.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.autobr.effect_delay_ms.getName());
-        pref.setSummary(((EditTextPreference) pref).getText());        
+        pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.autobr.max_br_threshold.getName());
-        pref.setSummary(((EditTextPreference) pref).getText());        
+        pref.setSummary(((EditTextPreference) pref).getText());
     }
-    
+
     private void updateSummariesN4() {
         SemaN4Properties sp = (SemaN4Properties) scp;
 
         Preference pref = findPreference("scheduler");
-        if (pref == null) {
-            return;
-        }
-        if (((ListPreference) pref).getEntry() != null) {
+        if (pref != null && ((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
-        }
         pref = findPreference("tcp_congestion");
-        if (pref == null) {
-            return;
-        }
-        if (((ListPreference) pref).getEntry() != null) {
+        if (pref != null && ((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
-        }
-        pref = findPreference("led_red");
-        if (pref == null) {
-            return;
-        }
-        if (((ListPreference) pref).getEntry() != null) {
-            pref.setSummary(((ListPreference) pref).getEntry().toString());
-        }
         pref = findPreference(sp.read_ahead.getName());
-        if (((ListPreference) pref).getEntry() != null) {
+        if (((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
-        }
+        pref = findPreference("led_red");
+        if (pref != null && ((ListPreference) pref).getEntry() != null)
+            pref.setSummary(((ListPreference) pref).getEntry().toString());
         pref = findPreference("led_green");
-        if (pref == null) {
-            return;
-        }
-        if (((ListPreference) pref).getEntry() != null) {
+        if (pref != null && ((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
-        }
         pref = findPreference("led_blue");
-        if (pref == null) {
-            return;
-        }
-        if (((ListPreference) pref).getEntry() != null) {
+        if (pref != null && ((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
-        }
 
         pref = findPreference(sp.vibrator.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
 
         pref = findPreference(sp.touch.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
-        
+
         pref = findPreference(sp.min_br.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
         pref = findPreference(sp.max_br.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
-        
+
         PreferenceScreen scPref = (PreferenceScreen) findPreference("accuracy_screen");
         if (scPref != null)
             scPref.setSummary(sp.taccuracy.accuracy_filter_enable.getValue() == 1 ? "Enabled" : "Disabled");
-                
+
         pref = findPreference(sp.taccuracy.ignore_pressure_gap.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.taccuracy.delta_max.getName());
@@ -160,14 +131,14 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
 
         pref = findPreference(sp.tjitter.adjust_margin.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
-        
+
         pref = findPreference(sp.lcdtemp.lcd_red.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
         pref = findPreference(sp.lcdtemp.lcd_green.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
         pref = findPreference(sp.lcdtemp.lcd_blue.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
-        
+
         pref = findPreference(sp.gamma_r.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.gamma_g.getName());
@@ -189,7 +160,7 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
     }
 
     private void writeMako(SharedPreferences sharedPreferences, String key) {
-        SemaN4Properties sp = (SemaN4Properties) scp;        
+        SemaN4Properties sp = (SemaN4Properties) scp;
 
         if (key.equals(sp.scheduler.getName())) {
             sp.scheduler.setValue(sharedPreferences.getString(key, sp.scheduler.getDefValue()));
@@ -274,9 +245,9 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
             sp.read_ahead.writeValue();
         }
     }
-    
+
     private void writeI9000(SharedPreferences sharedPreferences, String key) {
-        SemaI9000Properties sp = (SemaI9000Properties) scp;        
+        SemaI9000Properties sp = (SemaI9000Properties) scp;
 
         if (key.equals(sp.scheduler.getName())) {
             sp.scheduler.setValue(sharedPreferences.getString(key, sp.scheduler.getDefValue()));
@@ -351,36 +322,32 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
             sp.bln.writeValue();
         }
     }
-    
+
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (MainActivity.readingValues) {
+        if (MainActivity.readingValues)
             return;
-        }
         scp = MainActivity.sp;
 
         Preference pref = findPreference(key);
         if (pref instanceof ListPreference) {
             ListPreference listPref = (ListPreference) pref;
-            if (listPref.getEntry() != null) {
+            if (listPref.getEntry() != null)
                 pref.setSummary(listPref.getEntry().toString());
-            }
         } else if (pref instanceof EditTextPreference) {
             EditTextPreference epref = (EditTextPreference) pref;
-            if (epref.getText() != null) {
+            if (epref.getText() != null)
                 epref.setSummary(epref.getText());
-            }
-        } 
-        
+        }
+
         if (MainActivity.Device == MainActivity.SemaDevices.Mako) {
             if (pref != null && scp != null && pref.getKey().equals(((SemaN4Properties) scp).taccuracy.accuracy_filter_enable.getName())) {
-            PreferenceScreen scPref = (PreferenceScreen) findPreference("accuracy_screen");
-            if (scPref != null)
-                scPref.setSummary(((SwitchPreference) pref).isChecked() ? "Enabled" : "Disabled");
+                PreferenceScreen scPref = (PreferenceScreen) findPreference("accuracy_screen");
+                if (scPref != null)
+                    scPref.setSummary(((SwitchPreference) pref).isChecked() ? "Enabled" : "Disabled");
             }
             writeMako(sharedPreferences, key);
         } else
             writeI9000(sharedPreferences, key);
-        
     }
 
     public boolean onPreferenceClick(Preference preference) {

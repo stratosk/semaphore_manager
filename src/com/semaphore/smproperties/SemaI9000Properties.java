@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012-2013 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -48,7 +48,6 @@ public class SemaI9000Properties extends SemaCommonProperties {
     public SMIntProperty bigmem;
     public SMIntProperty wififast;
     public SMIntProperty forcefastchg;
-    //public SMTouchscreenProperty touchscreen;
     public SMReadaheadProperty read_ahead;
     public SMBLNProperty bln;
     public SMCVProperty cv;
@@ -88,7 +87,6 @@ public class SemaI9000Properties extends SemaCommonProperties {
         bigmem = new SMIntProperty("bigmem", "sys/kernel/bigmem/enable", false, 0, 1, 0);
         wififast = new SMIntProperty("wififast", "/sys/module/bcmdhd/parameters/wifi_pm", false, 0, 1, 0);
         forcefastchg = new SMIntProperty("forcefastchg", "/sys/kernel/fast_charge/force_fast_charge", false, 0, 1, 0);
-        //touchscreen = new SMTouchscreenProperty("touchscreen", "stock");
         read_ahead = new SMReadaheadProperty("read_ahead", "128KB");
         bln = new SMBLNProperty("bln", false);
 
@@ -119,7 +117,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         xbox.readValue();
         usbhid.readValue();
         uhid.readValue();
-        
+
         scheduler.readValue();
         autobr.readValue();
         vibrator.readValue();
@@ -128,7 +126,6 @@ public class SemaI9000Properties extends SemaCommonProperties {
         bigmem.readValue();
         wififast.readValue();
         forcefastchg.readValue();
-        //touchscreen.readValue();
         read_ahead.readValue();
         bln.readValue();
         cv.readValue();
@@ -157,7 +154,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         } else {
             conservative.cons.setValue(false);
             smartass.smart.setValue(false);
-            interactive.inter.setValue(false);            
+            interactive.inter.setValue(false);
         }
         gov.writeBatch(cmds);
         scaling_min_freq.writeBatch(cmds);
@@ -182,7 +179,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         xbox.writeBatch(cmds);
         usbhid.writeBatch(cmds);
         uhid.writeBatch(cmds);
-        
+
         scheduler.writeBatch(cmds);
         autobr.writeBatch(cmds);
         vibrator.writeBatch(cmds);
@@ -191,12 +188,10 @@ public class SemaI9000Properties extends SemaCommonProperties {
         bigmem.writeBatch(cmds);
         wififast.writeBatch(cmds);
         forcefastchg.writeBatch(cmds);
-        //touchscreen.writeValue();
         read_ahead.writeBatch(cmds);
         bln.writeBatch(cmds);
         cv.writeBatch(cmds);
 
-        //Log.d("semaphore cmds: ", cmds.toString());
         Commander.getInstance().runSuBatch(cmds);
     }
 
@@ -221,7 +216,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         } else {
             conservative.cons.setValue(false);
             smartass.smart.setValue(false);
-            interactive.inter.setValue(false);            
+            interactive.inter.setValue(false);
         }
         gov.writeValue();
         scaling_min_freq.writeValue();
@@ -254,7 +249,6 @@ public class SemaI9000Properties extends SemaCommonProperties {
         bigmem.writeValue();
         wififast.writeValue();
         forcefastchg.writeValue();
-        //touchscreen.writeValue();
         read_ahead.writeValue();
         bln.writeValue();
         cv.writeValue();
@@ -307,7 +301,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         edit.putString(interactive.timer_slack.getName(), interactive.timer_slack.getValString());
         edit.putString(interactive.boostpulse_duration.getName(), interactive.boostpulse_duration.getValString());
         edit.putString(interactive.target_loads.getName(), interactive.target_loads.getValue());
-        
+
         edit.putBoolean(deep_idle.getName(), deep_idle.getBoolean());
         edit.putBoolean(deep_idle_stats.getName(), deep_idle_stats.getBoolean());
         edit.putBoolean(lock_min.getName(), lock_min.getBoolean());
@@ -322,7 +316,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         edit.putBoolean(xbox.getName(), xbox.getValue());
         edit.putBoolean(usbhid.getName(), usbhid.getValue());
         edit.putBoolean(uhid.getName(), uhid.getValue());
-        
+
         edit.putString(scheduler.getName(), scheduler.getValue());
         edit.putBoolean(autobr.sema_autobr.getName(), autobr.sema_autobr.getValue());
         edit.putString(autobr.min_brightness.getName(), String.valueOf(autobr.min_brightness.getValue()));
@@ -338,7 +332,6 @@ public class SemaI9000Properties extends SemaCommonProperties {
         edit.putBoolean(bigmem.getName(), bigmem.getBoolean());
         edit.putBoolean(wififast.getName(), wififast.getBoolean());
         edit.putBoolean(forcefastchg.getName(), forcefastchg.getBoolean());
-        //edit.putString(touchscreen.getName(), touchscreen.getValue());
         edit.putString(read_ahead.getName(), read_ahead.getValue());
         edit.putBoolean(bln.getName(), bln.getValue());
 
@@ -359,7 +352,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         gov.setValue(prefs.getString(gov.getName(), gov.getDefValue()));
         scaling_min_freq.setValue(prefs.getString(scaling_min_freq.getName(), scaling_min_freq.getDefString()));
         scaling_max_freq.setValue(prefs.getString(scaling_max_freq.getName(), scaling_max_freq.getDefString()));
-        ondemand.io_is_busy.setValue(prefs.getBoolean(ondemand.io_is_busy.getName(), ondemand.io_is_busy.getDefault() == 1 ? true : false) == true ? 1 : 0);
+        ondemand.io_is_busy.setValue(prefs.getBoolean(ondemand.io_is_busy.getName(), ondemand.io_is_busy.getDefBoolean()) == true ? 1 : 0);
         ondemand.sampling_down_factor.setValue(prefs.getString(ondemand.sampling_down_factor.getName(), ondemand.sampling_down_factor.getDefString()));
         ondemand.sampling_down_max_momentum.setValue(prefs.getString(ondemand.sampling_down_max_momentum.getName(), ondemand.sampling_down_max_momentum.getDefString()));
         ondemand.sampling_rate.setValue(prefs.getString(ondemand.sampling_rate.getName(), ondemand.sampling_rate.getDefString()));
@@ -411,7 +404,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         xbox.setValue(prefs.getBoolean(xbox.getName(), xbox.getValue()));
         usbhid.setValue(prefs.getBoolean(usbhid.getName(), usbhid.getDefValue()));
         uhid.setValue(prefs.getBoolean(uhid.getName(), uhid.getDefValue()));
-        
+
         scheduler.setValue(prefs.getString(scheduler.getName(), scheduler.getDefValue()));
         autobr.sema_autobr.setValue(prefs.getBoolean(autobr.sema_autobr.getName(), autobr.sema_autobr.getDefValue()));
         autobr.min_brightness.setValue(prefs.getString(autobr.min_brightness.getName(), autobr.min_brightness.getDefString()));
@@ -427,7 +420,6 @@ public class SemaI9000Properties extends SemaCommonProperties {
         bigmem.setValue(prefs.getBoolean(bigmem.getName(), bigmem.getDefBoolean()) == true ? 1 : 0);
         wififast.setValue(prefs.getBoolean(wififast.getName(), wififast.getDefBoolean()) == true ? 1 : 0);
         forcefastchg.setValue(prefs.getBoolean(forcefastchg.getName(), forcefastchg.getDefBoolean()) == true ? 1 : 0);
-        //touchscreen.setValue(prefs.getString(touchscreen.getName(), touchscreen.getDefValue()));
         read_ahead.setValue(prefs.getString(read_ahead.getName(), read_ahead.getDefValue()));
         bln.setValue(prefs.getBoolean(bln.getName(), bln.getDefValue()));
 
@@ -484,7 +476,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         interactive.timer_slack.setValue(interactive.timer_slack.getDefString());
         interactive.boostpulse_duration.setValue(interactive.boostpulse_duration.getDefString());
         interactive.target_loads.setValue(interactive.target_loads.getDefValue());
-        
+
         deep_idle.setValue(deep_idle.getDefault());
         deep_idle_stats.setValue(deep_idle_stats.getDefault());
         lock_min.setValue(lock_min.getDefault());
@@ -515,7 +507,6 @@ public class SemaI9000Properties extends SemaCommonProperties {
         bigmem.setValue(bigmem.getDefault());
         wififast.setValue(wififast.getDefault());
         forcefastchg.setValue(forcefastchg.getValue());
-        //touchscreen.setValue(touchscreen.getDefValue());
         read_ahead.setValue(read_ahead.getDefValue());
         bln.setValue(bln.getDefValue());
 

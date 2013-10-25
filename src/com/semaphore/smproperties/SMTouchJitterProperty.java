@@ -17,7 +17,7 @@ public class SMTouchJitterProperty extends SMBatchProperty {
     public SMIntProperty jitter_enable;
     public SMIntProperty adjust_margin;
     public String basepath;
-    
+
     public SMTouchJitterProperty() {
         super("tjitter");
 
@@ -30,21 +30,25 @@ public class SMTouchJitterProperty extends SMBatchProperty {
     private void setValues(String jitter) {
         int i = 0;
         String[] tokens = jitter.split("\\s+");
-        
-        for (String s: tokens) {
+
+        for (String s : tokens) {
             switch (i) {
-                    case 0: jitter_enable.setValue(s); break;
-                    case 1: adjust_margin.setValue(s); break;
+                case 0:
+                    jitter_enable.setValue(s);
+                    break;
+                case 1:
+                    adjust_margin.setValue(s);
+                    break;
             }
             i++;
         }
     }
-    
+
     private String getValues() {
         String s;
-        
-        s = jitter_enable.getValString() + " " +
-                adjust_margin.getValString();
+
+        s = jitter_enable.getValString() + " "
+                + adjust_margin.getValString();
         return s;
     }
 
@@ -52,7 +56,7 @@ public class SMTouchJitterProperty extends SMBatchProperty {
         jitter_enable.setValue(jitter_enable.getDefault());
         adjust_margin.setValue(adjust_margin.getDefault());
     }
-    
+
     @Override
     public void readValue() {
         Commander cm = Commander.getInstance();
@@ -61,16 +65,15 @@ public class SMTouchJitterProperty extends SMBatchProperty {
         if (res == 0) {
             String rt = cm.getOutResult().get(0);
             setValues(rt);
-        } else {
+        } else
             setDefValues();
-        }
     }
 
     @Override
     public void writeValue() {
         Commander cm = Commander.getInstance();
         String cmd = "echo \"".concat(getValues()).concat("\" > ").concat(basepath);
-        
+
         int res = cm.run(cmd, cm.needSU(basepath));
     }
 

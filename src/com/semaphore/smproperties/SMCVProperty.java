@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -40,30 +40,29 @@ public class SMCVProperty extends SMBatchProperty {
     }
 
     public String getVolts() {
-        return cv_l0.getValString() + " " + cv_l1.getValString() + " " + cv_l2.getValString() + " " +
-               cv_l3.getValString() + " " + cv_l4.getValString();
+        return cv_l0.getValString() + " " + cv_l1.getValString() + " " + cv_l2.getValString() + " "
+                + cv_l3.getValString() + " " + cv_l4.getValString();
     }
-    
+
     public void readValue() {
         Commander cm = Commander.getInstance();
-        
+
         int res = cm.readFile("/sys/devices/virtual/misc/customvoltage/max_arm_volt");
         if (res == 0) {
             String rt = cm.getOutResult().get(0);
             cv_max_arm.setValue(Integer.parseInt(rt.substring(0, rt.length() - 3)));
-        } else {
+        } else
             cv_max_arm.setValue(cv_max_arm.getDefault());
-        }
-        
+
         res = cm.readFile("/sys/devices/virtual/misc/customvoltage/arm_volt");
-        if (res == 0) {
+        if (res == 0)
             for (int i = 0; i < cm.getOutResult().size(); i++) {
                 String line = cm.getOutResult().get(i);
                 String[] volts = line.split(":");
-                
-                int volt = Integer.parseInt(volts[1].substring(1, volts[1].length()-3));
-                
-                if (i == 0) 
+
+                int volt = Integer.parseInt(volts[1].substring(1, volts[1].length() - 3));
+
+                if (i == 0)
                     cv_l0.setValue(volt);
                 else if (i == 1)
                     cv_l1.setValue(volt);
@@ -73,8 +72,7 @@ public class SMCVProperty extends SMBatchProperty {
                     cv_l3.setValue(volt);
                 else if (i == 4)
                     cv_l4.setValue(volt);
-            }   
-        } 
+            }
     }
 
     public void writeValue() {
@@ -84,7 +82,7 @@ public class SMCVProperty extends SMBatchProperty {
             Commander cm = Commander.getInstance();
             String cmd = "echo \"" + getVolts() + "\" > /sys/devices/virtual/misc/customvoltage/arm_volt";
 
-            int res= cm.run(cmd, cm.needSU("/sys/devices/virtual/misc/customvoltage/arm_volt"));
+            int res = cm.run(cmd, cm.needSU("/sys/devices/virtual/misc/customvoltage/arm_volt"));
         }
     }
 

@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@ public class TabInfoFragment extends PreferenceListFragment {
 
     public TabInfoFragment() {
         super();
-        
+
         super.setxmlId(R.xml.preferences_info);
     }
 
@@ -30,7 +30,7 @@ public class TabInfoFragment extends PreferenceListFragment {
         cm.readFile("/proc/version");
         Preference pref = findPreference("kernel_version");
         pref.setSummary(cm.getOutResult().get(0));
-        
+
         ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
         ActivityManager activityManager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
         activityManager.getMemoryInfo(mi);
@@ -38,6 +38,5 @@ public class TabInfoFragment extends PreferenceListFragment {
 
         pref = findPreference("system_memory");
         pref.setSummary(String.valueOf(totalMegs) + " MB");
-        
     }
 }

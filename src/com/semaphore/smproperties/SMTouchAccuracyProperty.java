@@ -22,7 +22,7 @@ public class SMTouchAccuracyProperty extends SMBatchProperty {
     public SMIntProperty direction_count;
     public SMIntProperty time_to_max_pressure;
     public String basepath;
-    
+
     public SMTouchAccuracyProperty() {
         super("taccuracy");
 
@@ -40,31 +40,45 @@ public class SMTouchAccuracyProperty extends SMBatchProperty {
     private void setValues(String accuracy) {
         int i = 0;
         String[] tokens = accuracy.split("\\s+");
-        
-        for (String s: tokens) {
+
+        for (String s : tokens) {
             switch (i) {
-                    case 0: accuracy_filter_enable.setValue(s); break;
-                    case 1: ignore_pressure_gap.setValue(s); break;
-                    case 2: delta_max.setValue(s); break;
-                    case 3: touch_max_count.setValue(s); break;
-                    case 4: max_pressure.setValue(s); break;
-                    case 5: direction_count.setValue(s); break;
-                    case 6: time_to_max_pressure.setValue(s); break;
+                case 0:
+                    accuracy_filter_enable.setValue(s);
+                    break;
+                case 1:
+                    ignore_pressure_gap.setValue(s);
+                    break;
+                case 2:
+                    delta_max.setValue(s);
+                    break;
+                case 3:
+                    touch_max_count.setValue(s);
+                    break;
+                case 4:
+                    max_pressure.setValue(s);
+                    break;
+                case 5:
+                    direction_count.setValue(s);
+                    break;
+                case 6:
+                    time_to_max_pressure.setValue(s);
+                    break;
             }
             i++;
         }
     }
-    
+
     private String getValues() {
         String s;
-        
-        s = accuracy_filter_enable.getValString() + " " +
-                ignore_pressure_gap.getValString() + " " +
-                delta_max.getValString() + " " +
-                touch_max_count.getValString() + " " +
-                max_pressure.getValString() + " " +
-                direction_count.getValString() + " " +
-                time_to_max_pressure.getValString();
+
+        s = accuracy_filter_enable.getValString() + " "
+                + ignore_pressure_gap.getValString() + " "
+                + delta_max.getValString() + " "
+                + touch_max_count.getValString() + " "
+                + max_pressure.getValString() + " "
+                + direction_count.getValString() + " "
+                + time_to_max_pressure.getValString();
         return s;
     }
 
@@ -77,7 +91,7 @@ public class SMTouchAccuracyProperty extends SMBatchProperty {
         direction_count.setValue(direction_count.getDefault());
         time_to_max_pressure.setValue(time_to_max_pressure.getDefault());
     }
-    
+
     @Override
     public void readValue() {
         Commander cm = Commander.getInstance();
@@ -86,16 +100,15 @@ public class SMTouchAccuracyProperty extends SMBatchProperty {
         if (res == 0) {
             String rt = cm.getOutResult().get(0);
             setValues(rt);
-        } else {
+        } else
             setDefValues();
-        }
     }
 
     @Override
     public void writeValue() {
         Commander cm = Commander.getInstance();
         String cmd = "echo \"".concat(getValues()).concat("\" > ").concat(basepath);
-        
+
         int res = cm.run(cmd, cm.needSU(basepath));
     }
 

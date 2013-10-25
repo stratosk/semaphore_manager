@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -30,39 +30,32 @@ public class SMModuleProperty extends SMProperty {
     }
 
     public void readValue() {
-        if (isDynamic()) {
+        if (isDynamic())
             return;
-        }
         Commander cm = Commander.getInstance();
         int res = cm.run("lsmod | grep ".concat(getName()), false);
-//        int res = cm.readFile(getPath());
-        if (cm.getOutResult().isEmpty()) {
+        if (cm.getOutResult().isEmpty())
             setValue(false);
-        } else {
+        else
             setValue(true);
-        }
     }
 
     public void writeValue() {
         Commander cm = Commander.getInstance();
         int res;
-        if (Value == true) {
+        if (Value == true)
             res = cm.run("insmod ".concat(getPath()).concat(".ko"), true);
-        } else {
-            if (!getName().equals("cpufreq_smartass2")) {
+        else
+            if (!getName().equals("cpufreq_smartass2"))
                 res = cm.run("rmmod ".concat(getName()), true);
-            }
-        }
     }
 
     public void writeBatch(List<String> cmds) {
-        if (Value == true) {
+        if (Value == true)
             cmds.add("insmod ".concat(getPath()).concat(".ko"));
-        } else {
-            if (!getName().equals("cpufreq_smartass2")) {
+        else
+            if (!getName().equals("cpufreq_smartass2"))
                 cmds.add("rmmod ".concat(getName()));
-            }
-        }
     }
 
     public SMModuleProperty(String name, String path, boolean dynamic, boolean defValue) {

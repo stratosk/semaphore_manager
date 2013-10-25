@@ -23,7 +23,7 @@ public class SMIntProperty extends SMProperty {
     public int getDefault() {
         return defValue;
     }
-    
+
     public void setDefault(int defValue) {
         this.defValue = defValue;
     }
@@ -57,17 +57,16 @@ public class SMIntProperty extends SMProperty {
     }
 
     public boolean getBoolean() {
-        return Value > 0 ? true : false;
+        return Value > 0;
     }
 
     public boolean getDefBoolean() {
-        return defValue > 0 ? true : false;
+        return defValue > 0;
     }
 
     public void setValue(int Value) {
-        if (Value <= maxValue && Value >= minValue) {
+        if (Value <= maxValue && Value >= minValue)
             this.Value = Value;
-        }
     }
 
     public void setValue(String Value) {
@@ -90,29 +89,26 @@ public class SMIntProperty extends SMProperty {
                 setValue(1);
             else if (rt.equals("N"))
                 setValue(0);
-            else {
+            else
                 try {
                     setValue(Integer.parseInt(rt));
                 } catch (NumberFormatException numberFormatException) {
                     Log.e("SM: ", numberFormatException.getMessage());
                     setValue(getDefault());
                 }
-            }
-        } else {
+        } else
             setValue(defValue);
-        }
     }
 
     public void writeValue(String path) {
         Commander cm = Commander.getInstance();
         String cmd = "echo \"".concat(String.valueOf(getValue())).concat("\" > ").concat(path);
-        
+
         int res = cm.run(cmd, cm.needSU(path));
-        
-        if (getName().equals("oc")) {
-                res = cm.run("echo \"".concat(String.valueOf(getValue() * 10000)).concat("\" > ").concat("/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"),
-                            cm.needSU("/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"));
-        }
+
+        if (getName().equals("oc"))
+            res = cm.run("echo \"".concat(String.valueOf(getValue() * 10000)).concat("\" > ").concat("/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"),
+                    cm.needSU("/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"));
     }
 
     public void writeValue() {
@@ -121,9 +117,8 @@ public class SMIntProperty extends SMProperty {
 
     public void writeBatch(List<String> cmds, String path) {
         cmds.add("echo \"".concat(String.valueOf(getValue())).concat("\" > ").concat(path));
-        if (getName().equals("oc")) {
+        if (getName().equals("oc"))
             cmds.add("echo \"".concat(String.valueOf(getValue() * 10000)).concat("\" > ").concat("/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"));
-        }
     }
 
     public void writeBatch(List<String> cmds) {

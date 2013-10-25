@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -28,10 +28,10 @@ public class SemaphoreService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         Log.d(LOG_TAG, "Applying settings");
 
-        SemaCommonProperties sp;// = MainActivity.sp;
+        SemaCommonProperties sp;
         if ("mako".equals(android.os.Build.DEVICE))
             sp = new SemaN4Properties();
-        else 
+        else
             sp = new SemaI9000Properties();
         sp.getPreferences(this);
         sp.writeBatch();

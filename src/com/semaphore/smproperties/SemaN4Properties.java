@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012-2013 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -40,7 +40,6 @@ public class SemaN4Properties extends SemaCommonProperties {
     public SMStringProperty gamma_g;
     public SMStringProperty gamma_b;
     public SMStringProperty read_ahead;
-    //public SMActCoresProperty active_cores;
     public SMIntProperty hp_enabled;
     public SMIntProperty hp_up_threshold;
     public SMIntProperty hp_min_online;
@@ -65,7 +64,6 @@ public class SemaN4Properties extends SemaCommonProperties {
 
         uv = new SMUVProperty();
 
-        //active_cores = new SMActCoresProperty("active_cores", "/sys/devices/system/cpu/cpu", false, 1, 4, 4);
         hp_enabled = new SMIntProperty("hp_enabled", "/sys/module/dyn_hotplug/parameters/enabled", false, 0, 1, 1);
         hp_up_threshold = new SMIntProperty("hp_up_threshold", "/sys/module/dyn_hotplug/parameters/up_threshold", false, 1, 100, 25);
         hp_min_online = new SMIntProperty("hp_min_online", "/sys/module/dyn_hotplug/parameters/min_online", false, 1, 4, 2);
@@ -109,7 +107,6 @@ public class SemaN4Properties extends SemaCommonProperties {
 
         uv.readValue();
 
-//        active_cores.readValue();
         hp_enabled.readValue();
         hp_up_threshold.readValue();
         hp_min_online.readValue();
@@ -165,7 +162,6 @@ public class SemaN4Properties extends SemaCommonProperties {
 
         uv.writeBatch(cmds);
 
-//        active_cores.writeBatch(cmds);
         hp_enabled.writeBatch(cmds);
         hp_min_online.writeBatch(cmds);
         hp_max_online.writeBatch(cmds);
@@ -196,7 +192,6 @@ public class SemaN4Properties extends SemaCommonProperties {
         br_mode.writeBatch(cmds);
 
         logger.writeBatch(cmds);
-        //Log.d("semaphore cmds: ", cmds.toString());
         Commander.getInstance().runSuBatch(cmds);
     }
 
@@ -221,7 +216,6 @@ public class SemaN4Properties extends SemaCommonProperties {
 
         uv.writeValue();
 
-//        active_cores.writeValue();
         hp_enabled.writeValue();
         hp_up_threshold.writeValue();
         hp_min_online.writeValue();
@@ -294,7 +288,6 @@ public class SemaN4Properties extends SemaCommonProperties {
         edit.putInt(uv.uv_lower_uv.getName(), uv.uv_lower_uv.getValue());
         edit.putInt(uv.uv_higher_uv.getName(), uv.uv_higher_uv.getValue());
 
-//        edit.putInt(active_cores.getName(), active_cores.getValue());
         edit.putBoolean(hp_enabled.getName(), hp_enabled.getBoolean());
         edit.putInt(hp_min_online.getName(), hp_min_online.getValue());
         edit.putInt(hp_max_online.getName(), hp_max_online.getValue());
@@ -347,7 +340,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         cpufreq.scaling_min_freq.setValue(prefs.getString(cpufreq.scaling_min_freq.getName(), cpufreq.scaling_min_freq.getDefString()));
         cpufreq.scaling_max_freq.setValue(prefs.getString(cpufreq.scaling_max_freq.getName(), cpufreq.scaling_max_freq.getDefString()));
 
-        ondemand.io_is_busy.setValue(prefs.getBoolean(ondemand.io_is_busy.getName(), ondemand.io_is_busy.getDefault() == 1 ? true : false) == true ? 1 : 0);
+        ondemand.io_is_busy.setValue(prefs.getBoolean(ondemand.io_is_busy.getName(), ondemand.io_is_busy.getDefBoolean()) == true ? 1 : 0);
         ondemand.sampling_down_factor.setValue(prefs.getString(ondemand.sampling_down_factor.getName(), ondemand.sampling_down_factor.getDefString()));
         ondemand.sampling_rate.setValue(prefs.getString(ondemand.sampling_rate.getName(), ondemand.sampling_rate.getDefString()));
         ondemand.up_threshold.setValue(prefs.getString(ondemand.up_threshold.getName(), ondemand.up_threshold.getDefString()));
@@ -380,7 +373,6 @@ public class SemaN4Properties extends SemaCommonProperties {
         uv.enabled = prefs.getBoolean("uv_enabled", false);
         uv.apply_boot = prefs.getBoolean("uv_apply_boot", false);
 
-//        active_cores.setValue(prefs.getInt(active_cores.getName(), active_cores.getDefault()));
         hp_enabled.setValue(prefs.getBoolean(hp_enabled.getName(), hp_enabled.getDefBoolean()) == true ? 1 : 0);
         hp_min_online.setValue(prefs.getInt(hp_min_online.getName(), hp_min_online.getDefault()));
         hp_max_online.setValue(prefs.getInt(hp_max_online.getName(), hp_max_online.getDefault()));
@@ -460,7 +452,6 @@ public class SemaN4Properties extends SemaCommonProperties {
         uv.uv_lower_uv.setValue(uv.uv_lower_uv.getDefault());
         uv.uv_higher_uv.setValue(uv.uv_higher_uv.getDefault());
 
-//        active_cores.setValue(active_cores.getDefault());
         hp_enabled.setValue(hp_enabled.getDefault());
         hp_up_threshold.setValue(hp_up_threshold.getDefault());
         hp_min_online.setValue(hp_min_online.getDefault());

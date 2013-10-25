@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -39,29 +39,26 @@ public class SMBLNProperty extends SMBaseProperty {
     public void readValue() {
         Commander cm = Commander.getInstance();
         int res = cm.run("ls /data/local/.bln | grep .bln", true);
-        if (cm.getOutResult().isEmpty()) {
+        if (cm.getOutResult().isEmpty())
             setValue(false);
-        } else {
+        else
             setValue(true);
-        }
     }
 
     @Override
     public void writeValue() {
         Commander cm = Commander.getInstance();
         int res;
-        if (Value == true) {
+        if (Value == true)
             res = cm.run("touch /data/local/.bln", true);
-        } else {
+        else
             res = cm.run("rm /data/local/.bln", true);
-        }
     }
 
     public void writeBatch(List<String> cmds) {
-        if (Value == true) {
+        if (Value == true)
             cmds.add("touch /data/local/.bln");
-        } else {
+        else
             cmds.add("rm /data/local/.bln");
-        }
     }
 }

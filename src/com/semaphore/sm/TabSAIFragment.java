@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -54,10 +54,9 @@ public class TabSAIFragment extends PreferenceListFragment implements SharedPref
     };
 
     public void sayHello(int near, int far, int vibrator, boolean pickupPhone,
-                         boolean blinkLeds, int blinkInterval, boolean touchwakeDisable) {
-        if (!mBound) {
+            boolean blinkLeds, int blinkInterval, boolean touchwakeDisable) {
+        if (!mBound)
             return;
-        }
         Message msg;
         msg = new Message();
         Bundle bundle = new Bundle();
@@ -79,7 +78,7 @@ public class TabSAIFragment extends PreferenceListFragment implements SharedPref
 
     public TabSAIFragment() {
         super();
-        
+
         if (MainActivity.Device == MainActivity.SemaDevices.Mako)
             super.setxmlId(R.xml.preferences_sai_n4);
         else
@@ -94,11 +93,10 @@ public class TabSAIFragment extends PreferenceListFragment implements SharedPref
     }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (MainActivity.readingValues) {
+        if (MainActivity.readingValues)
             return;
-        }
 
-        if (key.equals("sai_enable")) {
+        if (key.equals("sai_enable"))
             if (sharedPreferences.getBoolean(key, false)) {
                 if (!isSAIServiceRunning()) {
                     TabSAIFragment.this.getActivity().startService(new Intent(TabSAIFragment.this.getActivity(), SAIService.class));
@@ -110,55 +108,47 @@ public class TabSAIFragment extends PreferenceListFragment implements SharedPref
                     TabSAIFragment.this.getActivity().unbindService(mConnection);
                     mBound = false;
                 }
-                if (!isSAIServiceRunning()) 
+                if (!isSAIServiceRunning())
                     TabSAIFragment.this.getActivity().stopService(new Intent(TabSAIFragment.this.getActivity(), SAIService.class));
             }
-        }
 
-        if ((key.equals("vibrator_near") || key.equals("vibrator_far") || key.equals("pickup_phone") ||
-                key.equals("blink_leds") || key.equals("blink_interval") || key.equals("touchwake_disable")) && isSAIServiceRunning()) {
+        if ((key.equals("vibrator_near") || key.equals("vibrator_far") || key.equals("pickup_phone")
+                || key.equals("blink_leds") || key.equals("blink_interval") || key.equals("touchwake_disable")) && isSAIServiceRunning())
             sayHello(sharedPreferences.getInt("vibrator_near", 100),
-                     sharedPreferences.getInt("vibrator_far", 25),
-                     sharedPreferences.getInt("vibrator", 100),
-                     sharedPreferences.getBoolean("pickup_phone", false),
-                     sharedPreferences.getBoolean("blink_leds", false),
-                     sharedPreferences.getInt("blink_interval", 200),
-                     sharedPreferences.getBoolean("touchwake_disable", false));
-        }
+                    sharedPreferences.getInt("vibrator_far", 25),
+                    sharedPreferences.getInt("vibrator", 100),
+                    sharedPreferences.getBoolean("pickup_phone", false),
+                    sharedPreferences.getBoolean("blink_leds", false),
+                    sharedPreferences.getInt("blink_interval", 200),
+                    sharedPreferences.getBoolean("touchwake_disable", false));
     }
 
     private boolean isSAIServiceRunning() {
         ActivityManager manager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
-        for (RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if (SAIService.class.getName().equals(service.service.getClassName())) {
+        for (RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE))
+            if (SAIService.class.getName().equals(service.service.getClassName()))
                 return true;
-            }
-        }
         return false;
     }
 
     public boolean onPreferenceClick(Preference preference) {
         boolean ret = false;
-        if (preference.getKey().equals("sai_enable")) {
+        if (preference.getKey().equals("sai_enable"))
             ret = true;
-        }
         return ret;
     }
 
     public void updateSummaries() {
         Preference pref = findPreference("vibrator_near");
-        if (pref != null) {
+        if (pref != null)
             pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
-        }
 
         pref = findPreference("vibrator_far");
-        if (pref != null) {
+        if (pref != null)
             pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
-        }
         pref = findPreference("blink_interval");
-        if (pref != null) {
+        if (pref != null)
             pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
-        }
 
     }
 
@@ -178,6 +168,6 @@ public class TabSAIFragment extends PreferenceListFragment implements SharedPref
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
         if (isSAIServiceRunning())
             TabSAIFragment.this.getActivity().bindService(new Intent(TabSAIFragment.this.getActivity(), SAIService.class), mConnection,
-                Context.BIND_AUTO_CREATE);
+                    Context.BIND_AUTO_CREATE);
     }
 }

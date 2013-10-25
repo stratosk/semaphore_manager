@@ -18,7 +18,7 @@ public class SMLCDTempProperty extends SMBatchProperty {
     public SMIntProperty lcd_green;
     public SMIntProperty lcd_blue;
     public String basepath;
-    
+
     public SMLCDTempProperty() {
         super("lcd_temp");
 
@@ -32,23 +32,29 @@ public class SMLCDTempProperty extends SMBatchProperty {
     private void setValues(String jitter) {
         int i = 0;
         String[] tokens = jitter.split("\\s+");
-        
-        for (String s: tokens) {
+
+        for (String s : tokens) {
             switch (i) {
-                    case 0: lcd_red.setValue(s); break;
-                    case 1: lcd_green.setValue(s); break;
-                    case 2: lcd_blue.setValue(s); break;
+                case 0:
+                    lcd_red.setValue(s);
+                    break;
+                case 1:
+                    lcd_green.setValue(s);
+                    break;
+                case 2:
+                    lcd_blue.setValue(s);
+                    break;
             }
             i++;
         }
     }
-    
+
     private String getValues() {
         String s;
-        
-        s = lcd_red.getValString() + " " +
-                lcd_green.getValString() + " " +
-                lcd_blue.getValString();
+
+        s = lcd_red.getValString() + " "
+                + lcd_green.getValString() + " "
+                + lcd_blue.getValString();
         return s;
     }
 
@@ -57,7 +63,7 @@ public class SMLCDTempProperty extends SMBatchProperty {
         lcd_green.setValue(lcd_green.getDefault());
         lcd_blue.setValue(lcd_blue.getDefault());
     }
-    
+
     @Override
     public void readValue() {
         Commander cm = Commander.getInstance();
@@ -66,16 +72,15 @@ public class SMLCDTempProperty extends SMBatchProperty {
         if (res == 0) {
             String rt = cm.getOutResult().get(0);
             setValues(rt);
-        } else {
+        } else
             setDefValues();
-        }
     }
 
     @Override
     public void writeValue() {
         Commander cm = Commander.getInstance();
         String cmd = "echo \"".concat(getValues()).concat("\" > ").concat(basepath);
-        
+
         int res = cm.run(cmd, cm.needSU(basepath));
         cmd = "echo 1 > \"/sys/devices/platform/kcal_ctrl.0/kcal_ctrl\"";
         res = cm.run(cmd, cm.needSU("/sys/devices/platform/kcal_ctrl.0/kcal_ctrl"));

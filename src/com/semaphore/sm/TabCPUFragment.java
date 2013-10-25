@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012-2013 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -38,11 +38,10 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
     public TabCPUFragment() {
         super();
 
-        if (MainActivity.Device == MainActivity.SemaDevices.Mako) {
+        if (MainActivity.Device == MainActivity.SemaDevices.Mako)
             super.setxmlId(R.xml.preferences_cpu_n4);
-        } else {
+        else
             super.setxmlId(R.xml.preferences_cpu_i9000);
-        }
     }
 
     private CharSequence[] getAvailFreq() {
@@ -51,9 +50,8 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         Commander cm = Commander.getInstance();
         int ret = cm.run("cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies", true);
 
-        if (ret == 0 && !cm.getOutResult().isEmpty()) {
+        if (ret == 0 && !cm.getOutResult().isEmpty())
             s = cm.getOutResult().get(0).split("\\s+");
-        }
 
         return s;
     }
@@ -68,15 +66,14 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         lpref = (ListPreference) findPreference("scaling_max_freq");
         if (lpref != null) {
             lpref.setEntries(cs);
-            lpref.setEntryValues(cs);        
+            lpref.setEntryValues(cs);
         }
     }
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        addPreferencesFromResource(R.xml.preferences_cpu);
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
 
         if (MainActivity.Device == MainActivity.SemaDevices.I9000) {
@@ -102,9 +99,8 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         Commander cm = Commander.getInstance();
         cm.readFile("/sys/class/misc/deepidle/idle_stats");
 
-        if (cm.getOutResult().isEmpty()) {
+        if (cm.getOutResult().isEmpty())
             return;
-        }
         String idle = cm.getOutResult().get(2);
         idle = idle.substring(23, idle.indexOf("ms") + 2).trim();
         String topon = cm.getOutResult().get(3);
@@ -140,15 +136,13 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         Commander cm = Commander.getInstance();
         cm.readFile("/sys/kernel/debug/acpuclk/acpu_table");
 
-        if (cm.getOutResult().isEmpty()) {
+        if (cm.getOutResult().isEmpty())
             return;
-        }
         View view = getActivity().getLayoutInflater().inflate(R.layout.cpu_table_dialog, null);
         ((TextView) view.findViewById(R.id.text_cpu_table)).setTypeface(Typeface.MONOSPACE);
         Iterator<String> i = cm.getOutResult().iterator();
-        while (i.hasNext()) {
+        while (i.hasNext())
             ((TextView) view.findViewById(R.id.text_cpu_table)).append(i.next() + "\n");
-        }
 
         AlertDialog.Builder ad = new AlertDialog.Builder(getActivity());
         ad.setTitle(R.string.str_cpu_table_dialog_title);
@@ -172,14 +166,12 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
 
         if (pref instanceof ListPreference) {
             ListPreference listPref = (ListPreference) pref;
-            if (listPref.getEntry() != null) {
+            if (listPref.getEntry() != null)
                 pref.setSummary(listPref.getEntry().toString());
-            }
         } else if (pref instanceof EditTextPreference) {
             EditTextPreference epref = (EditTextPreference) pref;
-            if (epref.getText() != null) {
+            if (epref.getText() != null)
                 epref.setSummary(epref.getText());
-            }
         }
 
         if (key.equals(sp.ondemand.io_is_busy.getName())) {
@@ -284,23 +276,23 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         } else if (key.equals(sp.cpufreq.scaling_max_freq.getName())) {
             sp.cpufreq.scaling_max_freq.setValue(sharedPreferences.getString(key, sp.cpufreq.scaling_max_freq.getDefString()));
             sp.cpufreq.writeValue();
-        } else if (key.equals("uv_apply_boot")) {
+        } else if (key.equals("uv_apply_boot"))
             sp.uv.apply_boot = sharedPreferences.getBoolean(key, false);
-        } else if (key.equals("uv_enabled")) {
+        else if (key.equals("uv_enabled")) {
             sp.uv.enabled = sharedPreferences.getBoolean(key, false);
             if (!sp.uv.enabled) {
                 pref = findPreference("uv_apply_boot");
                 ((CheckBoxPreference) pref).setChecked(false);
             }
-        } else if (key.equals(sp.uv.uv_lower_uv.getName())) {
+        } else if (key.equals(sp.uv.uv_lower_uv.getName()))
             sp.uv.uv_lower_uv.setValue(sharedPreferences.getInt(key, sp.uv.uv_lower_uv.getDefault()));
-        } else if (key.equals(sp.uv.uv_higher_uv.getName())) {
+        else if (key.equals(sp.uv.uv_higher_uv.getName()))
             sp.uv.uv_higher_uv.setValue(sharedPreferences.getInt(key, sp.uv.uv_higher_uv.getDefault()));
-        } else if (key.equals(sp.uv.uv_higher_khz_thres.getName())) {
+        else if (key.equals(sp.uv.uv_higher_khz_thres.getName()))
             sp.uv.uv_higher_khz_thres.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.uv.uv_higher_khz_thres.getDefault()))));
-        } else if (key.equals(sp.uv.uv_boost.getName())) {
+        else if (key.equals(sp.uv.uv_boost.getName()))
             sp.uv.uv_boost.setValue(sharedPreferences.getBoolean(key, sp.uv.uv_boost.getDefBoolean()) == true ? 1 : 0);
-        } else if (key.equals(sp.hp_enabled.getName())) {
+        else if (key.equals(sp.hp_enabled.getName())) {
             sp.hp_enabled.setValue(sharedPreferences.getBoolean(key, sp.hp_enabled.getDefBoolean()) == true ? 1 : 0);
             sp.hp_enabled.writeValue();
         } else if (key.equals(sp.hp_min_online.getName())) {
@@ -312,10 +304,6 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         } else if (key.equals(sp.hp_up_threshold.getName())) {
             sp.hp_up_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.hp_up_threshold.getDefault()))));
             sp.hp_up_threshold.writeValue();
-
-//        } else if (key.equals(sp.active_cores.getName())) {
-//            sp.active_cores.setValue(sharedPreferences.getInt(key,sp.active_cores.getDefault()));
-//            sp.active_cores.writeValue();
         }
     }
 
@@ -326,20 +314,18 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
 
         if (pref instanceof ListPreference) {
             ListPreference listPref = (ListPreference) pref;
-            if (listPref.getEntry() != null) {
+            if (listPref.getEntry() != null)
                 pref.setSummary(listPref.getEntry().toString());
-            }
         } else if (pref instanceof EditTextPreference) {
             EditTextPreference epref = (EditTextPreference) pref;
-            if (epref.getText() != null) {
+            if (epref.getText() != null)
                 epref.setSummary(epref.getText());
-            }
         }
 
         if (key.equals(sp.oc.getName())) {
             sp.oc.setValue(sharedPreferences.getInt(key, sp.oc.getDefault()));
             sp.oc.writeValue();
-            
+
             updateCVTitles();
             updateScalingFreq();
         } else if (key.equals(sp.scaling_min_freq.getName())) {
@@ -509,31 +495,28 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             sp.lock_min.writeValue();
         } else if (key.equals(sp.bluetooth.getName())) {
             sp.bluetooth.setValue(sharedPreferences.getBoolean(key, sp.bluetooth.getDefBoolean()) == true ? 1 : 0);
-            if (sp.bluetooth.getBoolean()) {
+            if (sp.bluetooth.getBoolean())
                 sp.bluetooth.writeValue();
-            }
-        } else if (key.equals("cv_apply_boot")) {
+        } else if (key.equals("cv_apply_boot"))
             sp.cv.apply_boot = sharedPreferences.getBoolean(key, false);
-        } else if (key.equals("cv_enable")) {
+        else if (key.equals("cv_enable")) {
             sp.cv.enabled = sharedPreferences.getBoolean(key, false);
             if (!sp.cv.enabled) {
                 pref = findPreference("cv_apply_boot");
                 ((CheckBoxPreference) pref).setChecked(false);
             }
-        } else if (key.equals("cv_max_arm")) {
+        } else if (key.equals("cv_max_arm"))
             sp.cv.cv_max_arm.setValue(sharedPreferences.getInt(key, sp.cv.cv_max_arm.getDefault()));
-            //((SeekBarPreference) findPreference(sp.cv.cv_max_arm.getName())).setProgress(sp.cv.cv_max_arm.getDefault());
-        } else if (key.equals("cv_l0")) {
+        else if (key.equals("cv_l0"))
             sp.cv.cv_l0.setValue(sharedPreferences.getInt(key, sp.cv.cv_l0.getDefault()));
-        } else if (key.equals("cv_l1")) {
+        else if (key.equals("cv_l1"))
             sp.cv.cv_l1.setValue(sharedPreferences.getInt(key, sp.cv.cv_l1.getDefault()));
-        } else if (key.equals("cv_l2")) {
+        else if (key.equals("cv_l2"))
             sp.cv.cv_l2.setValue(sharedPreferences.getInt(key, sp.cv.cv_l2.getDefault()));
-        } else if (key.equals("cv_l3")) {
+        else if (key.equals("cv_l3"))
             sp.cv.cv_l3.setValue(sharedPreferences.getInt(key, sp.cv.cv_l3.getDefault()));
-        } else if (key.equals("cv_l4")) {
+        else if (key.equals("cv_l4"))
             sp.cv.cv_l4.setValue(sharedPreferences.getInt(key, sp.cv.cv_l4.getDefault()));
-        }
         pref = findPreference("cv_cv");
         pref.setSummary(sp.cv.getVolts());
     }
@@ -557,62 +540,43 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
     }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (MainActivity.readingValues) {
+        if (MainActivity.readingValues)
             return;
-        }
 
         scp = MainActivity.sp;
 
-        if (MainActivity.Device == MainActivity.SemaDevices.Mako) {
+        if (MainActivity.Device == MainActivity.SemaDevices.Mako)
             writeMako(sharedPreferences, key);
-        } else {
+        else
             writeI9000(sharedPreferences, key);
-        }
     }
 
     public void updateSummaries() {
         scp = MainActivity.sp;
 
-        if (scp == null) {
+        if (scp == null)
             return;
-        }
 
-        if (MainActivity.Device == MainActivity.SemaDevices.Mako) {
+        if (MainActivity.Device == MainActivity.SemaDevices.Mako)
             updateSummariesN4();
-        } else {
+        else
             updateSummariesI9000();
-        }
     }
 
     private void updateSummariesN4() {
         SemaN4Properties sp = (SemaN4Properties) scp;
 
         Preference pref = findPreference(sp.cpufreq.gov.getName());
-        if (pref == null) {
-            return;
-        }
-
-        if (((ListPreference) pref).getEntry() != null) {
+        if (pref != null && ((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
-        }
 
         pref = findPreference(sp.cpufreq.scaling_min_freq.getName());
-        if (pref == null) {
-            return;
-        }
-
-        if (((ListPreference) pref).getEntry() != null) {
+        if (pref != null && ((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
-        }
 
         pref = findPreference(sp.cpufreq.scaling_max_freq.getName());
-        if (pref == null) {
-            return;
-        }
-
-        if (((ListPreference) pref).getEntry() != null) {
+        if (pref != null && ((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
-        }
 
         pref = findPreference(sp.ondemand.sampling_down_factor.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
@@ -675,31 +639,16 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         SemaI9000Properties sp = (SemaI9000Properties) scp;
 
         Preference pref = findPreference(sp.gov.getName());
-        if (pref == null) {
-            return;
-        }
-
-        if (((ListPreference) pref).getEntry() != null) {
+        if (pref != null && ((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
-        }
 
         pref = findPreference(sp.scaling_min_freq.getName());
-        if (pref == null) {
-            return;
-        }
-
-        if (((ListPreference) pref).getEntry() != null) {
+        if (pref != null && ((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
-        }
 
         pref = findPreference(sp.scaling_max_freq.getName());
-        if (pref == null) {
-            return;
-        }
-
-        if (((ListPreference) pref).getEntry() != null) {
+        if (pref != null && ((ListPreference) pref).getEntry() != null)
             pref.setSummary(((ListPreference) pref).getEntry().toString());
-        }
 
         pref = findPreference(sp.oc.getName());
         pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));

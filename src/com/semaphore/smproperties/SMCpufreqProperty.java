@@ -42,9 +42,8 @@ public class SMCpufreqProperty extends SMBatchProperty {
     private void stopHotplug() {
         Commander cm = Commander.getInstance();
         int ret = cm.readFile(dyn_path);
-        if (ret == 0) {
+        if (ret == 0)
             dyn_prev_status = cm.getOutResult().get(0);
-        }
         if (dyn_prev_status.equals("Y")) {
             String cmd = "echo N > ".concat(dyn_path);
             int res = cm.run(cmd, true);

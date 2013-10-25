@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -16,11 +16,12 @@ import com.semaphore.smproperties.SemaI9000Properties;
 import com.semaphore.smproperties.SemaN4Properties;
 
 public class TabModulesFragment extends PreferenceListFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
+
     private SemaCommonProperties scp;
-            
+
     public TabModulesFragment() {
         super();
-        
+
         if (MainActivity.Device == MainActivity.SemaDevices.Mako)
             super.setxmlId(R.xml.preferences_modules_n4);
         else
@@ -30,22 +31,19 @@ public class TabModulesFragment extends PreferenceListFragment implements Shared
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //addPreferencesFromResource(R.xml.preferences_modules);
-        //getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
     }
 
     private void writeMako(SharedPreferences sharedPreferences, String key) {
-        SemaN4Properties sp = (SemaN4Properties) scp;        
+        SemaN4Properties sp = (SemaN4Properties) scp;
         if (key.equals(sp.logger.getName())) {
             sp.logger.setValue(sharedPreferences.getBoolean(key, sp.logger.getDefValue()));
             sp.logger.writeValue();
-        }    
+        }
     }
-    
+
     private void writeI9000(SharedPreferences sharedPreferences, String key) {
         SemaI9000Properties sp = (SemaI9000Properties) scp;
-        
+
         if (key.equals(sp.logger.getName())) {
             sp.logger.setValue(sharedPreferences.getBoolean(key, sp.logger.getDefValue()));
             sp.logger.writeValue();
@@ -73,15 +71,14 @@ public class TabModulesFragment extends PreferenceListFragment implements Shared
         } else if (key.equals(sp.uhid.getName())) {
             sp.uhid.setValue(sharedPreferences.getBoolean(key, sp.uhid.getDefValue()));
             sp.uhid.writeValue();
-        }        
+        }
     }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (MainActivity.readingValues) {
+        if (MainActivity.readingValues)
             return;
-        }
         scp = MainActivity.sp;
-        
+
         if (MainActivity.Device == MainActivity.SemaDevices.Mako)
             writeMako(sharedPreferences, key);
         else

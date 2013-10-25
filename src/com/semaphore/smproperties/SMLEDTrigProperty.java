@@ -10,20 +10,19 @@
 package com.semaphore.smproperties;
 
 import com.semaphore.sm.Commander;
-import java.util.List;
 
 public class SMLEDTrigProperty extends SMStringProperty {
 
+    @Override
     public void readValue() {
         String s;
         int i, j;
-        
+
         if (isDynamic()) {
             setValue(getDefValue());
             return;
         }
         Commander cm = Commander.getInstance();
-//        int res = cm.runSu("cat ".concat(getPath()));
         int res = cm.readFile(getPath());
         if (res == 0) {
             s = cm.getOutResult().get(0);
@@ -34,14 +33,11 @@ public class SMLEDTrigProperty extends SMStringProperty {
             else
                 s = "";
             setValue(s);
-        } else {
+        } else
             setValue(getDefValue());
-        }
     }
-    
+
     public SMLEDTrigProperty(String name, String path, boolean dynamic, String defvalue) {
         super(name, path, dynamic, defvalue);
     }
-
-
 }

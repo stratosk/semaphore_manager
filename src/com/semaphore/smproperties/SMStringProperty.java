@@ -35,31 +35,29 @@ public class SMStringProperty extends SMProperty {
             return;
         }
         Commander cm = Commander.getInstance();
-//        int res = cm.runSu("cat ".concat(getPath()));
         int res = cm.readFile(getPath());
-        if (res == 0) {
+        if (res == 0)
             setValue(cm.getOutResult().get(0));
-        } else {
+        else
             setValue(defValue);
-        }
     }
 
     public void writeValue(String path) {
         Commander cm = Commander.getInstance();
         String cmd = "echo \"".concat(getValue()).concat("\" > ").concat(path);
-        
-        int res = cm.run(cmd, cm.needSU(path));        
+
+        int res = cm.run(cmd, cm.needSU(path));
     }
-    
+
     public void writeValue() {
         writeValue(getPath());
     }
 
-    public void writeBatch(List<String> cmds, String path) {    
+    public void writeBatch(List<String> cmds, String path) {
         cmds.add("echo \"".concat(getValue()).concat("\" > ").concat(path));
     }
 
-    public void writeBatch(List<String> cmds) {    
+    public void writeBatch(List<String> cmds) {
         writeBatch(cmds, getPath());
     }
 

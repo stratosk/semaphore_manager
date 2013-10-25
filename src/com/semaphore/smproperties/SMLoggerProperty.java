@@ -17,7 +17,7 @@ public class SMLoggerProperty extends SMBaseProperty {
     private boolean Value;
     private boolean defValue;
     private String modPath;
-    
+
     public boolean getDefValue() {
         return defValue;
     }
@@ -41,29 +41,26 @@ public class SMLoggerProperty extends SMBaseProperty {
     public void readValue() {
         Commander cm = Commander.getInstance();
         int res = cm.run("ls /data/local/logger.ko | grep logger.ko", true);
-        if (cm.getOutResult().isEmpty()) {
+        if (cm.getOutResult().isEmpty())
             setValue(false);
-        } else {
+        else
             setValue(true);
-        }
     }
 
     @Override
     public void writeValue() {
         Commander cm = Commander.getInstance();
         int res;
-        if (Value == true) {
+        if (Value == true)
             res = cm.run("cp " + modPath + "/logger.ko /data/local/logger.ko", true);
-        } else {
+        else
             res = cm.run("rm /data/local/logger.ko", true);
-        }
     }
 
     public void writeBatch(List<String> cmds) {
-        if (Value == true) {
+        if (Value == true)
             cmds.add("cp " + modPath + "logger.ko /data/local/logger.ko");
-        } else {
+        else
             cmds.add("rm /data/local/logger.ko");
-        }
     }
 }

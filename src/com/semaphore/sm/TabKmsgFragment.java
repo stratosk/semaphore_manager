@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -23,7 +23,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.io.BufferedWriter;
-import java.io.DataOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -110,16 +109,14 @@ public class TabKmsgFragment extends Fragment {
             fstream = new FileWriter(kmsg_file, false);
             BufferedWriter out = new BufferedWriter(fstream);
 
-            for (int i = 0; i < kmsg.size(); i++) {
+            for (int i = 0; i < kmsg.size(); i++)
                 out.write(kmsg.get(i) + "\n");
-            }
 
             out.flush();
             out.close();
 
             Toast.makeText(this.getActivity().getApplicationContext(), "kmsg saved successfully in \n" + kmsg_file, Toast.LENGTH_LONG).show();
         } catch (IOException ex) {
-//            Logger.getLogger(TabKmsgFragment.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -129,9 +126,8 @@ public class TabKmsgFragment extends Fragment {
         public void run() {
 
             while (!isInterrupted()) {
-                if (tv != null && sv != null) {
+                if (tv != null && sv != null)
                     mHandler.post(mUpdateResults);
-                }
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
