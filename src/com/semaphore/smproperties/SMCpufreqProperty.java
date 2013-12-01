@@ -44,14 +44,14 @@ public class SMCpufreqProperty extends SMBatchProperty {
         int ret = cm.readFile(dyn_path);
         if (ret == 0)
             dyn_prev_status = cm.getOutResult().get(0);
-        if (dyn_prev_status.equals("Y")) {
+        if (dyn_prev_status != null && dyn_prev_status.equals("Y")) {
             String cmd = "echo N > ".concat(dyn_path);
             int res = cm.run(cmd, true);
         }
     }
 
     private void startHotplug() {
-        if (dyn_prev_status.equals("Y")) {
+        if (dyn_prev_status != null && dyn_prev_status.equals("Y")) {
             Commander cm = Commander.getInstance();
             String cmd = "echo Y > ".concat(dyn_path);
             int res = cm.run(cmd, true);
