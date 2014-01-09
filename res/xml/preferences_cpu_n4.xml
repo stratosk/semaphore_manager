@@ -44,6 +44,12 @@
                 android:numeric="integer"
                 android:inputType="number" />
             <EditTextPreference
+                android:key="o_powersave_bias"
+                android:title="@string/str_o_powersave_bias_title"
+                android:summary="@string/str_o_powersave_bias_summary"
+                android:numeric="integer"
+                android:inputType="number" />
+            <EditTextPreference
                 android:key="o_touch_load"
                 android:title="@string/str_o_touch_load_title"
                 android:summary="@string/str_o_touch_load_summary"

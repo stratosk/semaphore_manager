@@ -62,6 +62,12 @@
                 android:summary="@string/str_o_up_threshold_summary"
                 android:numeric="integer"
                 android:inputType="number" />
+            <EditTextPreference
+                android:key="o_powersave_bias"
+                android:title="@string/str_o_powersave_bias_title"
+                android:summary="@string/str_o_powersave_bias_summary"
+                android:numeric="integer"
+                android:inputType="number" />
             <SwitchPreference
                 android:key="o_smooth_ui"
                 android:title="@string/str_o_smooth_ui_title" />

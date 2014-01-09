@@ -186,6 +186,9 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         } else if (key.equals(sp.ondemand.up_threshold.getName())) {
             sp.ondemand.up_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.up_threshold.getDefault()))));
             sp.ondemand.up_threshold.writeValue();
+        } else if (key.equals(sp.ondemand.powersave_bias.getName())) {
+            sp.ondemand.powersave_bias.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.powersave_bias.getDefault()))));
+            sp.ondemand.powersave_bias.writeValue();
         } else if (key.equals(sp.ondemand.touch_load.getName())) {
             sp.ondemand.touch_load.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.touch_load.getDefault()))));
             sp.ondemand.touch_load.writeValue();
@@ -248,6 +251,7 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
                 ((EditTextPreference) findPreference(sp.ondemand.sampling_down_factor.getName())).setText(sp.ondemand.sampling_down_factor.getValString());
                 ((EditTextPreference) findPreference(sp.ondemand.sampling_rate.getName())).setText(sp.ondemand.sampling_rate.getValString());
                 ((EditTextPreference) findPreference(sp.ondemand.up_threshold.getName())).setText(sp.ondemand.up_threshold.getValString());
+                ((EditTextPreference) findPreference(sp.ondemand.powersave_bias.getName())).setText(sp.ondemand.powersave_bias.getValString());
                 sp.conservative.cons.setValue(false);
                 sp.conservative.cons.writeValue();
             } else if (sharedPreferences.getString(sp.cpufreq.gov.getName(), sp.cpufreq.gov.getDefValue()).equals(sp.conservative.getName())) {
@@ -357,6 +361,9 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         } else if (key.equals(sp.ondemand.up_threshold.getName())) {
             sp.ondemand.up_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.up_threshold.getDefault()))));
             sp.ondemand.up_threshold.writeValue();
+        } else if (key.equals(sp.ondemand.powersave_bias.getName())) {
+            sp.ondemand.powersave_bias.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.powersave_bias.getDefault()))));
+            sp.ondemand.powersave_bias.writeValue();
         } else if (key.equals(sp.ondemand.smooth_ui.getName())) {
             sp.ondemand.smooth_ui.setValue(sharedPreferences.getBoolean(key, sp.ondemand.smooth_ui.getDefBoolean()) == true ? 1 : 0);
             sp.ondemand.smooth_ui.writeValue();
@@ -444,6 +451,7 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
                 ((EditTextPreference) findPreference(sp.ondemand.sampling_down_max_momentum.getName())).setText(sp.ondemand.sampling_down_max_momentum.getValString());
                 ((EditTextPreference) findPreference(sp.ondemand.sampling_rate.getName())).setText(sp.ondemand.sampling_rate.getValString());
                 ((EditTextPreference) findPreference(sp.ondemand.up_threshold.getName())).setText(sp.ondemand.up_threshold.getValString());
+                ((EditTextPreference) findPreference(sp.ondemand.powersave_bias.getName())).setText(sp.ondemand.powersave_bias.getValString());
                 ((SwitchPreference) findPreference(sp.ondemand.smooth_ui.getName())).setChecked(sp.ondemand.smooth_ui.getBoolean());
                 sp.conservative.cons.setValue(false);
                 sp.conservative.cons.writeValue();
@@ -601,6 +609,8 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.ondemand.up_threshold.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.ondemand.powersave_bias.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.ondemand.touch_load.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.ondemand.touch_load_threshold.getName());
@@ -685,6 +695,8 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         pref = findPreference(sp.ondemand.sampling_rate.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
         pref = findPreference(sp.ondemand.up_threshold.getName());
+        pref.setSummary(((EditTextPreference) pref).getText());
+        pref = findPreference(sp.ondemand.powersave_bias.getName());
         pref.setSummary(((EditTextPreference) pref).getText());
 
         pref = findPreference(sp.conservative.freq_step.getName());

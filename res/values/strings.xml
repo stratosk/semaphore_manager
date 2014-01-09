@@ -185,6 +185,8 @@
     <string name="str_o_sampling_rate_summary">Valid values 10000-100000</string>
     <string name="str_o_up_threshold_title">Up threshold</string>
     <string name="str_o_up_threshold_summary">Valid values 11-100</string>
+    <string name="str_o_powersave_bias_title">Powersave bias</string>
+    <string name="str_o_powersave_bias_summary">Valid values 0-1000</string>
     <string name="str_o_smooth_ui_title">Smooth UI</string>
     <string name="str_o_touch_load_title">Touch load</string>
     <string name="str_o_touch_load_summary">Valid values 1-100</string>
