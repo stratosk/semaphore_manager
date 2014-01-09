@@ -44,6 +44,14 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="Double Tap to Wake">
+        <CheckBoxPreference
+            android:key="dt_wake_enabled"
+            android:title="@string/str_dt_wake_enabled_title"
+            android:summary="@string/str_dt_wake_enabled_summary" />    
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="TCP congestion control">
         <ListPreference
             android:key="tcp_congestion"

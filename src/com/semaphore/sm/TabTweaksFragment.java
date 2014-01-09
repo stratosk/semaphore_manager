@@ -186,6 +186,9 @@ public class TabTweaksFragment extends PreferenceListFragment implements SharedP
         } else if (key.equals(sp.touch.getName())) {
             sp.touch.setValue(sharedPreferences.getInt(key, sp.touch.getDefault()));
             sp.touch.writeValue();
+        } else if (key.equals(sp.dt_wake_enabled.getName())) {
+            sp.dt_wake_enabled.setValue(sharedPreferences.getBoolean(key, sp.dt_wake_enabled.getDefBoolean()) == true ? 1 : 0);
+            sp.dt_wake_enabled.writeValue();
         } else if (key.equals(sp.tcp_congestion.getName())) {
             sp.tcp_congestion.setValue(sharedPreferences.getString(key, sp.tcp_congestion.getDefValue()));
             sp.tcp_congestion.writeValue();

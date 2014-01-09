@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2014 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -157,7 +157,7 @@ public class MainActivity extends FragmentActivity {
             needRead = needRead || !prefs.contains("led_red") || !prefs.contains("read_ahead")
                     || !prefs.contains("uv_lower_uv") || !prefs.contains("hp_enabled")
                     || !prefs.contains("hp_max_online") || !prefs.contains("scaling_min_freq")
-                    || !prefs.contains("min_br");
+                    || !prefs.contains("min_br") || !prefs.contains("dt_wake_enabled");
         if (Device == SemaDevices.I9000)
             needRead = needRead || !prefs.contains("ab_max_br_threshold") || !prefs.contains("scaling_min_freq");
         if (needRead) {

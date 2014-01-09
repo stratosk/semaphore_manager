@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2014 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -28,6 +28,7 @@ public class SemaN4Properties extends SemaCommonProperties {
     public SMIntProperty vibrator;
     public SMIntProperty touch_enable;
     public SMIntProperty touch;
+    public SMIntProperty dt_wake_enabled;
     public SMStringProperty tcp_congestion;
     public SMTouchAccuracyProperty taccuracy;
     public SMTouchJitterProperty tjitter;
@@ -75,6 +76,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         vibrator = new SMIntProperty("vibrator", "/sys/class/timed_output/vibrator/amp", false, 0, 100, 70);
         touch_enable = new SMIntProperty("touch_enable", "/sys/devices/virtual/misc/touchwake/enabled", false, 0, 1, 0);
         touch = new SMIntProperty("touch", "/sys/devices/virtual/misc/touchwake/delay", false, 0, 300000, 30000);
+        dt_wake_enabled = new SMIntProperty("dt_wake_enabled", "/sys/devices/virtual/input/lge_touch/dt_wake_enabled", false, 0, 1, 0);
 
         tcp_congestion = new SMStringProperty("tcp_congestion", "/proc/sys/net/ipv4/tcp_congestion_control", false, "cubic");
 
@@ -116,6 +118,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         vibrator.readValue();
         touch_enable.readValue();
         touch.readValue();
+        dt_wake_enabled.readValue();
 
         tcp_congestion.readValue();
         taccuracy.readValue();
@@ -171,6 +174,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         vibrator.writeBatch(cmds);
         touch_enable.writeBatch(cmds);
         touch.writeBatch(cmds);
+        dt_wake_enabled.writeBatch(cmds);
 
         tcp_congestion.writeBatch(cmds);
         taccuracy.writeBatch(cmds);
@@ -225,6 +229,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         vibrator.writeValue();
         touch_enable.writeValue();
         touch.writeValue();
+        dt_wake_enabled.writeValue();
 
         tcp_congestion.writeValue();
         taccuracy.writeValue();
@@ -297,6 +302,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         edit.putInt(vibrator.getName(), vibrator.getValue());
         edit.putBoolean(touch_enable.getName(), touch_enable.getBoolean());
         edit.putInt(touch.getName(), touch.getValue());
+        edit.putBoolean(dt_wake_enabled.getName(), dt_wake_enabled.getBoolean());
 
         edit.putString(tcp_congestion.getName(), tcp_congestion.getValue());
         edit.putBoolean(taccuracy.accuracy_filter_enable.getName(), taccuracy.accuracy_filter_enable.getBoolean());
@@ -382,6 +388,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         vibrator.setValue(prefs.getInt(vibrator.getName(), vibrator.getDefault()));
         touch_enable.setValue(prefs.getBoolean(touch_enable.getName(), touch_enable.getDefBoolean()) == true ? 1 : 0);
         touch.setValue(prefs.getInt(touch.getName(), touch.getDefault()));
+        dt_wake_enabled.setValue(prefs.getBoolean(dt_wake_enabled.getName(), dt_wake_enabled.getDefBoolean()) == true ? 1 : 0);
 
         tcp_congestion.setValue(prefs.getString(tcp_congestion.getName(), tcp_congestion.getDefValue()));
         taccuracy.accuracy_filter_enable.setValue(prefs.getBoolean(taccuracy.accuracy_filter_enable.getName(), taccuracy.accuracy_filter_enable.getDefBoolean()) == true ? 1 : 0);
@@ -461,6 +468,7 @@ public class SemaN4Properties extends SemaCommonProperties {
         vibrator.setValue(vibrator.getDefault());
         touch_enable.setValue(touch_enable.getDefault());
         touch.setValue(touch.getDefault());
+        dt_wake_enabled.setValue(dt_wake_enabled.getDefault());
 
         tcp_congestion.setValue(tcp_congestion.getDefValue());
         taccuracy.setDefValues();

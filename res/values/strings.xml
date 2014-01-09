@@ -446,6 +446,9 @@
     <string name="str_touch_title">Delay</string>
     <string name="str_touch_summary">Delay in seconds</string>
 
+    <string name="str_dt_wake_enabled_title">Enabled</string>
+    <string name="str_dt_wake_enabled_summary">Keeps the touchscreen always powered</string>
+
     <string name="str_about_title">About</string>
 
     <string name="str_didle_dialog_title">Deep Idle Statistics"</string>
