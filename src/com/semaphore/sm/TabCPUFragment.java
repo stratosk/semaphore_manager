@@ -247,7 +247,7 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             if (sharedPreferences.getString(sp.cpufreq.gov.getName(), sp.cpufreq.gov.getDefValue()).equals(sp.ondemand.getName())) {
                 sp.cpufreq.gov.setValue(sharedPreferences.getString(key, sp.cpufreq.gov.getDefValue()));
                 sp.cpufreq.writeValue();
-                ((SwitchPreference) findPreference(sp.ondemand.io_is_busy.getName())).setChecked(sp.ondemand.io_is_busy.getBoolean());
+                ((CheckBoxPreference) findPreference(sp.ondemand.io_is_busy.getName())).setChecked(sp.ondemand.io_is_busy.getBoolean());
                 ((EditTextPreference) findPreference(sp.ondemand.sampling_down_factor.getName())).setText(sp.ondemand.sampling_down_factor.getValString());
                 ((EditTextPreference) findPreference(sp.ondemand.sampling_rate.getName())).setText(sp.ondemand.sampling_rate.getValString());
                 ((EditTextPreference) findPreference(sp.ondemand.up_threshold.getName())).setText(sp.ondemand.up_threshold.getValString());

@@ -176,7 +176,7 @@
         <item>sensitiver</item>
     </string-array>
     
-    <string name="str_o_io_is_busy_title">io_is_busy</string>
+    <string name="str_o_io_is_busy_title">IO is busy</string>
     <string name="str_o_sampling_down_factor_title">Sampling down factor</string>
     <string name="str_o_sampling_down_factor_summary">Valid values 1-100000</string>
     <string name="str_o_sampling_down_max_momentum_title">Sampling down max momentum</string>
