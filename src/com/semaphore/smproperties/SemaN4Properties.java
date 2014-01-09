@@ -287,6 +287,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         edit.putString(interactive.timer_slack.getName(), interactive.timer_slack.getValString());
         edit.putString(interactive.boostpulse_duration.getName(), interactive.boostpulse_duration.getValString());
         edit.putString(interactive.target_loads.getName(), interactive.target_loads.getValue());
+        edit.putBoolean(interactive.io_is_busy.getName(), interactive.io_is_busy.getBoolean());
+        edit.putBoolean(interactive.input_boost.getName(), interactive.input_boost.getBoolean());
 
         edit.putString(uv.uv_higher_khz_thres.getName(), uv.uv_higher_khz_thres.getValString());
         edit.putBoolean(uv.uv_boost.getName(), uv.uv_boost.getBoolean());
@@ -371,6 +373,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         interactive.timer_slack.setValue(prefs.getString(interactive.timer_slack.getName(), interactive.timer_slack.getDefString()));
         interactive.boostpulse_duration.setValue(prefs.getString(interactive.boostpulse_duration.getName(), interactive.boostpulse_duration.getDefString()));
         interactive.target_loads.setValue(prefs.getString(interactive.target_loads.getName(), interactive.target_loads.getDefValue()));
+        interactive.io_is_busy.setValue(prefs.getBoolean(interactive.io_is_busy.getName(), interactive.io_is_busy.getDefBoolean()) == true ? 1 : 0);
+        interactive.input_boost.setValue(prefs.getBoolean(interactive.input_boost.getName(), interactive.input_boost.getDefBoolean()) == true ? 1 : 0);
 
         uv.uv_higher_khz_thres.setValue(prefs.getString(uv.uv_higher_khz_thres.getName(), uv.uv_higher_khz_thres.getDefString()));
         uv.uv_boost.setValue(prefs.getBoolean(uv.uv_boost.getName(), uv.uv_boost.getDefBoolean()) == true ? 1 : 0);
@@ -453,6 +457,8 @@ public class SemaN4Properties extends SemaCommonProperties {
         interactive.timer_slack.setValue(interactive.timer_slack.getDefault());
         interactive.boostpulse_duration.setValue(interactive.boostpulse_duration.getDefault());
         interactive.target_loads.setValue(interactive.target_loads.getDefValue());
+        interactive.io_is_busy.setValue(interactive.io_is_busy.getDefault());
+        interactive.input_boost.setValue(interactive.input_boost.getDefault());
 
         uv.uv_higher_khz_thres.setValue(uv.uv_higher_khz_thres.getDefault());
         uv.uv_boost.setValue(uv.uv_boost.getDefault());

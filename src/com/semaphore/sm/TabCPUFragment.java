@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2014 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -234,6 +234,12 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         } else if (key.equals(sp.interactive.target_loads.getName())) {
             sp.interactive.target_loads.setValue(sharedPreferences.getString(key, String.valueOf(sp.interactive.target_loads.getDefValue())));
             sp.interactive.target_loads.writeValue();
+        } else if (key.equals(sp.interactive.io_is_busy.getName())) {
+            sp.interactive.io_is_busy.setValue(sharedPreferences.getBoolean(key, sp.interactive.io_is_busy.getDefBoolean()) == true ? 1 : 0);
+            sp.interactive.io_is_busy.writeValue();
+        } else if (key.equals(sp.interactive.input_boost.getName())) {
+            sp.interactive.input_boost.setValue(sharedPreferences.getBoolean(key, sp.interactive.input_boost.getDefBoolean()) == true ? 1 : 0);
+            sp.interactive.input_boost.writeValue();
         } else if (key.equals(sp.cpufreq.gov.getName())) {
             if (sharedPreferences.getString(sp.cpufreq.gov.getName(), sp.cpufreq.gov.getDefValue()).equals(sp.ondemand.getName())) {
                 sp.cpufreq.gov.setValue(sharedPreferences.getString(key, sp.cpufreq.gov.getDefValue()));
@@ -267,6 +273,8 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
                 ((EditTextPreference) findPreference(sp.interactive.timer_slack.getName())).setText(sp.interactive.timer_slack.getValString());
                 ((EditTextPreference) findPreference(sp.interactive.boostpulse_duration.getName())).setText(sp.interactive.boostpulse_duration.getValString());
                 ((EditTextPreference) findPreference(sp.interactive.target_loads.getName())).setText(sp.interactive.target_loads.getValue());
+                ((CheckBoxPreference) findPreference(sp.interactive.io_is_busy.getName())).setChecked(sp.interactive.io_is_busy.getBoolean());
+                ((CheckBoxPreference) findPreference(sp.interactive.input_boost.getName())).setChecked(sp.interactive.input_boost.getBoolean());
                 sp.conservative.cons.setValue(false);
                 sp.conservative.cons.writeValue();
             }

@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 - 2013 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2014 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -22,6 +22,8 @@ public class SMInteractiveProperty extends SMBatchProperty {
     public SMIntProperty timer_slack;
     public SMIntProperty boostpulse_duration;
     public SMStringProperty target_loads;
+    public SMIntProperty input_boost;
+    public SMIntProperty io_is_busy;
 
     public SMInteractiveProperty() {
         super("interactive");
@@ -38,6 +40,8 @@ public class SMInteractiveProperty extends SMBatchProperty {
         timer_slack = new SMIntProperty("i_timer_slack", basepath.concat("timer_slack"), false, 10000, 200000, 80000);
         boostpulse_duration = new SMIntProperty("i_boostpulse_duration", basepath.concat("timer_slack"), false, 10000, 200000, 80000);
         target_loads = new SMStringProperty("i_target_loads", basepath.concat("target_loads"), false, "90");
+        input_boost = new SMIntProperty("i_input_boost", basepath.concat("input_boost"), true, 0, 1, 1);
+        io_is_busy = new SMIntProperty("i_io_is_busy", basepath.concat("io_is_busy"), true, 0, 1, 0);
     }
 
     public void readValue() {
@@ -49,6 +53,8 @@ public class SMInteractiveProperty extends SMBatchProperty {
         timer_slack.readValue();
         boostpulse_duration.readValue();
         target_loads.readValue();
+        input_boost.readValue();
+        io_is_busy.readValue();
     }
 
     public void writeValue() {
@@ -60,6 +66,8 @@ public class SMInteractiveProperty extends SMBatchProperty {
         timer_slack.writeValue();
         boostpulse_duration.writeValue();
         target_loads.writeValue();
+        input_boost.readValue();
+        io_is_busy.readValue();
     }
 
     public void writebatch(List<String> cmds) {
@@ -71,5 +79,7 @@ public class SMInteractiveProperty extends SMBatchProperty {
         timer_slack.writeBatch(cmds);
         boostpulse_duration.writeBatch(cmds);
         target_loads.writeBatch(cmds);
+        input_boost.writeBatch(cmds);
+        io_is_busy.writeBatch(cmds);
     }
 }
