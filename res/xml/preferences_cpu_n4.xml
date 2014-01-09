@@ -157,6 +157,12 @@
                 android:summary="@string/str_i_target_loads_summary"
                 android:numeric="integer"
                 android:inputType="textNoSuggestions" />
+            <CheckBoxPreference
+                android:key="i_io_is_busy"
+                android:title="@string/str_i_io_is_busy_title" />
+            <CheckBoxPreference
+                android:key="i_input_boost"
+                android:title="@string/str_i_input_boost_title" />
 
         </PreferenceScreen>
     </PreferenceCategory>

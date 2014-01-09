@@ -245,7 +245,8 @@
     <string name="str_i_boostpulse_duration_summary">Valid values 10000-200000</string>
     <string name="str_i_target_loads_title">Target loads</string>
     <string name="str_i_target_loads_summary">Valid values 1-100</string>
-
+    <string name="str_i_io_is_busy_title">IO is busy</string>
+    <string name="str_i_input_boost_title">Input boost</string>
 
     <string name="str_accuracy_title">Touchscreen Filters</string>
     <string name="str_accuracy_screen_title">Accuracy filter</string>
