@@ -159,7 +159,8 @@ public class MainActivity extends FragmentActivity {
                     || !prefs.contains("hp_max_online") || !prefs.contains("scaling_min_freq")
                     || !prefs.contains("min_br") || !prefs.contains("dt_wake_enabled");
         if (Device == SemaDevices.I9000)
-            needRead = needRead || !prefs.contains("ab_max_br_threshold") || !prefs.contains("scaling_min_freq");
+            needRead = needRead || !prefs.contains("ab_max_br_threshold") || !prefs.contains("scaling_min_freq") ||
+                                   !prefs.contains("o_powersave_bias");
         if (needRead) {
             PropTask pt = new PropTask();
             pt.execute(sp);

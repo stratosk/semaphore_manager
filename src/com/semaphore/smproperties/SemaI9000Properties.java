@@ -269,6 +269,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         edit.putString(ondemand.sampling_down_max_momentum.getName(), ondemand.sampling_down_max_momentum.getValString());
         edit.putString(ondemand.sampling_rate.getName(), ondemand.sampling_rate.getValString());
         edit.putString(ondemand.up_threshold.getName(), ondemand.up_threshold.getValString());
+        edit.putString(ondemand.powersave_bias.getName(), ondemand.powersave_bias.getValString());
         edit.putBoolean(ondemand.smooth_ui.getName(), ondemand.smooth_ui.getBoolean());
         // conservative
         edit.putBoolean(conservative.cons.getName(), conservative.cons.getValue());
@@ -357,6 +358,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         ondemand.sampling_down_max_momentum.setValue(prefs.getString(ondemand.sampling_down_max_momentum.getName(), ondemand.sampling_down_max_momentum.getDefString()));
         ondemand.sampling_rate.setValue(prefs.getString(ondemand.sampling_rate.getName(), ondemand.sampling_rate.getDefString()));
         ondemand.up_threshold.setValue(prefs.getString(ondemand.up_threshold.getName(), ondemand.up_threshold.getDefString()));
+        ondemand.powersave_bias.setValue(prefs.getString(ondemand.powersave_bias.getName(), ondemand.powersave_bias.getDefString()));
         ondemand.smooth_ui.setValue(prefs.getBoolean(ondemand.smooth_ui.getName(), ondemand.smooth_ui.getDefBoolean()) == true ? 1 : 0);
 
         conservative.cons.setValue(prefs.getBoolean(conservative.cons.getName(), conservative.cons.getDefValue()));
@@ -444,6 +446,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
         ondemand.sampling_down_max_momentum.setValue(ondemand.sampling_down_max_momentum.getDefString());
         ondemand.sampling_rate.setValue(ondemand.sampling_rate.getDefString());
         ondemand.up_threshold.setValue(ondemand.up_threshold.getDefString());
+        ondemand.powersave_bias.setValue(ondemand.powersave_bias.getDefString());
         ondemand.smooth_ui.setValue(ondemand.smooth_ui.getDefault());
 
         conservative.cons.setValue(conservative.cons.getDefValue());
