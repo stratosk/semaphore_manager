@@ -45,6 +45,7 @@ public class SAIService extends Service {
     private int blinkInterval;
     private boolean pickupPhone;
     private boolean touchwake_disable;
+    private int touchwake_initial;
     public static final int MSG_RELOAD = 1;
     private SAIBlinkLED blink;
     private float mAzimuth;
@@ -83,6 +84,7 @@ public class SAIService extends Service {
         blinkInterval = prefs.getInt("blink_interval", 200);
         pickupPhone = prefs.getBoolean("pickup_phone", false);
         touchwake_disable = prefs.getBoolean("touchwake_disable", false);
+        getTouchwake();
     }
 
     @Override
@@ -111,7 +113,7 @@ public class SAIService extends Service {
         Intent buttonUp = new Intent(Intent.ACTION_MEDIA_BUTTON);
         buttonUp.putExtra(Intent.EXTRA_KEY_EVENT, new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_HEADSETHOOK));
         this.sendOrderedBroadcast(buttonUp, "android.permission.CALL_PRIVILEGED");
-        
+
         disableOrientationListener();
     }
 
@@ -125,6 +127,13 @@ public class SAIService extends Service {
             blink.interrupt();
     }
 
+    private void getTouchwake() {
+        String path = "/sys/devices/virtual/misc/touchwake/enabled";
+
+        Commander cm = Commander.getInstance();
+        touchwake_initial = cm.readFile(path);
+    }
+
     private void touchwake(int enabled) {
         String path = "/sys/devices/virtual/misc/touchwake/enabled";
         Commander cm = Commander.getInstance();
@@ -133,12 +142,14 @@ public class SAIService extends Service {
     }
 
     private void disableTouchwake() {
-        if (touchwake_disable)
+        if (touchwake_disable) {
+            getTouchwake();
             touchwake(0);
+        }
     }
 
     private void enableTouchwake() {
-        if (touchwake_disable)
+        if (touchwake_disable && touchwake_initial == 1)
             touchwake(1);
     }
 
@@ -269,7 +280,7 @@ public class SAIService extends Service {
             //throw new UnsupportedOperationException("Not supported yet.");
         }
     };
-    
+
     private SensorEventListener orSensorEventListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
@@ -344,7 +355,8 @@ public class SAIService extends Service {
     /**
      * When binding to the service, we return an interface to our messenger for
      * sending messages to the service.
-     * @return 
+     *
+     * @return
      */
     @Override
     public IBinder onBind(Intent intent) {
