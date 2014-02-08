@@ -40,8 +40,8 @@ public class SMInteractiveProperty extends SMBatchProperty {
         timer_slack = new SMIntProperty("i_timer_slack", basepath.concat("timer_slack"), false, 10000, 200000, 80000);
         boostpulse_duration = new SMIntProperty("i_boostpulse_duration", basepath.concat("timer_slack"), false, 10000, 200000, 80000);
         target_loads = new SMStringProperty("i_target_loads", basepath.concat("target_loads"), false, "90");
-        input_boost = new SMIntProperty("i_input_boost", basepath.concat("input_boost"), true, 0, 1, 1);
-        io_is_busy = new SMIntProperty("i_io_is_busy", basepath.concat("io_is_busy"), true, 0, 1, 0);
+        input_boost = new SMIntProperty("i_input_boost", basepath.concat("input_boost"), false, 0, 1, 1);
+        io_is_busy = new SMIntProperty("i_io_is_busy", basepath.concat("io_is_busy"), false, 0, 1, 0);
     }
 
     public void readValue() {
@@ -66,8 +66,8 @@ public class SMInteractiveProperty extends SMBatchProperty {
         timer_slack.writeValue();
         boostpulse_duration.writeValue();
         target_loads.writeValue();
-        input_boost.readValue();
-        io_is_busy.readValue();
+        input_boost.writeValue();
+        io_is_busy.writeValue();
     }
 
     public void writebatch(List<String> cmds) {
