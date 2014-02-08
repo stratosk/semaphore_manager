@@ -178,61 +178,61 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             sp.ondemand.io_is_busy.setValue(sharedPreferences.getBoolean(key, sp.ondemand.io_is_busy.getDefBoolean()) == true ? 1 : 0);
             sp.ondemand.io_is_busy.writeValue();
         } else if (key.equals(sp.ondemand.sampling_down_factor.getName())) {
-            sp.ondemand.sampling_down_factor.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.sampling_down_factor.getDefault()))));
+            sp.ondemand.sampling_down_factor.setValue(sharedPreferences.getString(key, String.valueOf(sp.ondemand.sampling_down_factor.getDefault())));
             sp.ondemand.sampling_down_factor.writeValue();
         } else if (key.equals(sp.ondemand.sampling_rate.getName())) {
-            sp.ondemand.sampling_rate.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.sampling_rate.getDefault()))));
+            sp.ondemand.sampling_rate.setValue(sharedPreferences.getString(key, String.valueOf(sp.ondemand.sampling_rate.getDefault())));
             sp.ondemand.sampling_rate.writeValue();
         } else if (key.equals(sp.ondemand.up_threshold.getName())) {
-            sp.ondemand.up_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.up_threshold.getDefault()))));
+            sp.ondemand.up_threshold.setValue(sharedPreferences.getString(key, String.valueOf(sp.ondemand.up_threshold.getDefault())));
             sp.ondemand.up_threshold.writeValue();
         } else if (key.equals(sp.ondemand.powersave_bias.getName())) {
-            sp.ondemand.powersave_bias.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.powersave_bias.getDefault()))));
+            sp.ondemand.powersave_bias.setValue(sharedPreferences.getString(key, String.valueOf(sp.ondemand.powersave_bias.getDefault())));
             sp.ondemand.powersave_bias.writeValue();
         } else if (key.equals(sp.ondemand.touch_load.getName())) {
-            sp.ondemand.touch_load.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.touch_load.getDefault()))));
+            sp.ondemand.touch_load.setValue(sharedPreferences.getString(key, String.valueOf(sp.ondemand.touch_load.getDefault())));
             sp.ondemand.touch_load.writeValue();
         } else if (key.equals(sp.ondemand.touch_load_threshold.getName())) {
-            sp.ondemand.touch_load_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.touch_load_threshold.getDefault()))));
+            sp.ondemand.touch_load_threshold.setValue(sharedPreferences.getString(key, String.valueOf(sp.ondemand.touch_load_threshold.getDefault())));
             sp.ondemand.touch_load_threshold.writeValue();
         } else if (key.equals(sp.ondemand.touch_load_duration.getName())) {
-            sp.ondemand.touch_load_duration.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.touch_load_duration.getDefault()))));
+            sp.ondemand.touch_load_duration.setValue(sharedPreferences.getString(key, String.valueOf(sp.ondemand.touch_load_duration.getDefault())));
             sp.ondemand.touch_load_duration.writeValue();
         } else if (key.equals(sp.conservative.freq_step.getName())) { // Conservative
-            sp.conservative.freq_step.setValue(Integer.parseInt(sharedPreferences.getString(key, sp.conservative.freq_step.getDefString())));
+            sp.conservative.freq_step.setValue(sharedPreferences.getString(key, sp.conservative.freq_step.getDefString()));
             sp.conservative.freq_step.writeValue();
         } else if (key.equals(sp.conservative.sampling_down_factor.getName())) {
-            sp.conservative.sampling_down_factor.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.conservative.sampling_down_factor.getDefault()))));
+            sp.conservative.sampling_down_factor.setValue(sharedPreferences.getString(key, String.valueOf(sp.conservative.sampling_down_factor.getDefault())));
             sp.conservative.sampling_down_factor.writeValue();
         } else if (key.equals(sp.conservative.sampling_rate.getName())) {
-            sp.conservative.sampling_rate.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.conservative.sampling_rate.getDefault()))));
+            sp.conservative.sampling_rate.setValue(sharedPreferences.getString(key, String.valueOf(sp.conservative.sampling_rate.getDefault())));
             sp.conservative.sampling_rate.writeValue();
         } else if (key.equals(sp.conservative.up_threshold.getName())) {
-            sp.conservative.up_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.conservative.up_threshold.getDefault()))));
+            sp.conservative.up_threshold.setValue(sharedPreferences.getString(key, String.valueOf(sp.conservative.up_threshold.getDefault())));
             sp.conservative.up_threshold.writeValue();
         } else if (key.equals(sp.conservative.down_threshold.getName())) {
-            sp.conservative.down_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.conservative.down_threshold.getDefault()))));
+            sp.conservative.down_threshold.setValue(sharedPreferences.getString(key, String.valueOf(sp.conservative.down_threshold.getDefault())));
             sp.conservative.down_threshold.writeValue();
         } else if (key.equals(sp.interactive.hispeed_freq.getName())) { // Interactive
-            sp.interactive.hispeed_freq.setValue(Integer.parseInt(sharedPreferences.getString(key, sp.interactive.hispeed_freq.getDefString())));
+            sp.interactive.hispeed_freq.setValue(sharedPreferences.getString(key, sp.interactive.hispeed_freq.getDefString()));
             sp.interactive.hispeed_freq.writeValue();
         } else if (key.equals(sp.interactive.go_hispeed_load.getName())) {
-            sp.interactive.go_hispeed_load.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.go_hispeed_load.getDefault()))));
+            sp.interactive.go_hispeed_load.setValue(sharedPreferences.getString(key, String.valueOf(sp.interactive.go_hispeed_load.getDefault())));
             sp.interactive.go_hispeed_load.writeValue();
         } else if (key.equals(sp.interactive.min_sampling_time.getName())) {
-            sp.interactive.min_sampling_time.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.min_sampling_time.getDefault()))));
+            sp.interactive.min_sampling_time.setValue(sharedPreferences.getString(key, String.valueOf(sp.interactive.min_sampling_time.getDefault())));
             sp.interactive.min_sampling_time.writeValue();
         } else if (key.equals(sp.interactive.above_hispeed_delay.getName())) {
-            sp.interactive.above_hispeed_delay.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.above_hispeed_delay.getDefault()))));
+            sp.interactive.above_hispeed_delay.setValue(sharedPreferences.getString(key, String.valueOf(sp.interactive.above_hispeed_delay.getDefault())));
             sp.interactive.above_hispeed_delay.writeValue();
         } else if (key.equals(sp.interactive.timer_rate.getName())) {
-            sp.interactive.timer_rate.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.timer_rate.getDefault()))));
+            sp.interactive.timer_rate.setValue(sharedPreferences.getString(key, String.valueOf(sp.interactive.timer_rate.getDefault())));
             sp.interactive.timer_rate.writeValue();
         } else if (key.equals(sp.interactive.timer_slack.getName())) {
-            sp.interactive.timer_slack.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.timer_slack.getDefault()))));
+            sp.interactive.timer_slack.setValue(sharedPreferences.getString(key, String.valueOf(sp.interactive.timer_slack.getDefault())));
             sp.interactive.timer_slack.writeValue();
         } else if (key.equals(sp.interactive.boostpulse_duration.getName())) {
-            sp.interactive.boostpulse_duration.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.boostpulse_duration.getDefault()))));
+            sp.interactive.boostpulse_duration.setValue(sharedPreferences.getString(key, String.valueOf(sp.interactive.boostpulse_duration.getDefault())));
             sp.interactive.boostpulse_duration.writeValue();
         } else if (key.equals(sp.interactive.target_loads.getName())) {
             sp.interactive.target_loads.setValue(sharedPreferences.getString(key, String.valueOf(sp.interactive.target_loads.getDefValue())));
@@ -301,7 +301,7 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
         else if (key.equals(sp.uv.uv_higher_uv.getName()))
             sp.uv.uv_higher_uv.setValue(sharedPreferences.getInt(key, sp.uv.uv_higher_uv.getDefault()));
         else if (key.equals(sp.uv.uv_higher_khz_thres.getName()))
-            sp.uv.uv_higher_khz_thres.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.uv.uv_higher_khz_thres.getDefault()))));
+            sp.uv.uv_higher_khz_thres.setValue(sharedPreferences.getString(key, String.valueOf(sp.uv.uv_higher_khz_thres.getDefault())));
         else if (key.equals(sp.uv.uv_boost.getName()))
             sp.uv.uv_boost.setValue(sharedPreferences.getBoolean(key, sp.uv.uv_boost.getDefBoolean()) == true ? 1 : 0);
         else if (key.equals(sp.hp_enabled.getName())) {
@@ -314,7 +314,7 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             sp.hp_max_online.setValue(sharedPreferences.getInt(key, sp.hp_max_online.getDefault()));
             sp.hp_max_online.writeValue();
         } else if (key.equals(sp.hp_up_threshold.getName())) {
-            sp.hp_up_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.hp_up_threshold.getDefault()))));
+            sp.hp_up_threshold.setValue(sharedPreferences.getString(key, String.valueOf(sp.hp_up_threshold.getDefault())));
             sp.hp_up_threshold.writeValue();
         }
     }
@@ -350,94 +350,94 @@ public class TabCPUFragment extends PreferenceListFragment implements OnSharedPr
             sp.ondemand.io_is_busy.setValue(sharedPreferences.getBoolean(key, sp.ondemand.io_is_busy.getDefBoolean()) == true ? 1 : 0);
             sp.ondemand.io_is_busy.writeValue();
         } else if (key.equals(sp.ondemand.sampling_down_factor.getName())) {
-            sp.ondemand.sampling_down_factor.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.sampling_down_factor.getDefault()))));
+            sp.ondemand.sampling_down_factor.setValue(sharedPreferences.getString(key, String.valueOf(sp.ondemand.sampling_down_factor.getDefault())));
             sp.ondemand.sampling_down_factor.writeValue();
         } else if (key.equals(sp.ondemand.sampling_down_max_momentum.getName())) {
-            sp.ondemand.sampling_down_max_momentum.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.sampling_down_max_momentum.getDefault()))));
+            sp.ondemand.sampling_down_max_momentum.setValue(sharedPreferences.getString(key, String.valueOf(sp.ondemand.sampling_down_max_momentum.getDefault())));
             sp.ondemand.sampling_down_max_momentum.writeValue();
         } else if (key.equals(sp.ondemand.sampling_rate.getName())) {
-            sp.ondemand.sampling_rate.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.sampling_rate.getDefault()))));
+            sp.ondemand.sampling_rate.setValue(sharedPreferences.getString(key, String.valueOf(sp.ondemand.sampling_rate.getDefault())));
             sp.ondemand.sampling_rate.writeValue();
         } else if (key.equals(sp.ondemand.up_threshold.getName())) {
-            sp.ondemand.up_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.up_threshold.getDefault()))));
+            sp.ondemand.up_threshold.setValue(sharedPreferences.getString(key, String.valueOf(sp.ondemand.up_threshold.getDefault())));
             sp.ondemand.up_threshold.writeValue();
         } else if (key.equals(sp.ondemand.powersave_bias.getName())) {
-            sp.ondemand.powersave_bias.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.ondemand.powersave_bias.getDefault()))));
+            sp.ondemand.powersave_bias.setValue(sharedPreferences.getString(key, String.valueOf(sp.ondemand.powersave_bias.getDefault())));
             sp.ondemand.powersave_bias.writeValue();
         } else if (key.equals(sp.ondemand.smooth_ui.getName())) {
             sp.ondemand.smooth_ui.setValue(sharedPreferences.getBoolean(key, sp.ondemand.smooth_ui.getDefBoolean()) == true ? 1 : 0);
             sp.ondemand.smooth_ui.writeValue();
         } else if (key.equals(sp.conservative.freq_step.getName())) { // Conservative
-            sp.conservative.freq_step.setValue(Integer.parseInt(sharedPreferences.getString(key, sp.conservative.freq_step.getDefString())));
+            sp.conservative.freq_step.setValue(sharedPreferences.getString(key, sp.conservative.freq_step.getDefString()));
             sp.conservative.freq_step.writeValue();
         } else if (key.equals(sp.conservative.sampling_down_factor.getName())) {
-            sp.conservative.sampling_down_factor.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.conservative.sampling_down_factor.getDefault()))));
+            sp.conservative.sampling_down_factor.setValue(sharedPreferences.getString(key, String.valueOf(sp.conservative.sampling_down_factor.getDefault())));
             sp.conservative.sampling_down_factor.writeValue();
         } else if (key.equals(sp.conservative.sampling_rate.getName())) {
-            sp.conservative.sampling_rate.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.conservative.sampling_rate.getDefault()))));
+            sp.conservative.sampling_rate.setValue(sharedPreferences.getString(key, String.valueOf(sp.conservative.sampling_rate.getDefault())));
             sp.conservative.sampling_rate.writeValue();
         } else if (key.equals(sp.conservative.up_threshold.getName())) {
-            sp.conservative.up_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.conservative.up_threshold.getDefault()))));
+            sp.conservative.up_threshold.setValue(sharedPreferences.getString(key, String.valueOf(sp.conservative.up_threshold.getDefault())));
             sp.conservative.up_threshold.writeValue();
         } else if (key.equals(sp.conservative.down_threshold.getName())) {
-            sp.conservative.down_threshold.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.conservative.down_threshold.getDefault()))));
+            sp.conservative.down_threshold.setValue(sharedPreferences.getString(key, String.valueOf(sp.conservative.down_threshold.getDefault())));
             sp.conservative.down_threshold.writeValue();
         } else if (key.equals(sp.conservative.smooth_ui.getName())) {
             sp.conservative.smooth_ui.setValue(sharedPreferences.getBoolean(key, sp.conservative.smooth_ui.getDefBoolean()) == true ? 1 : 0);
             sp.conservative.smooth_ui.writeValue();
         } else if (key.equals(sp.smartass.awake_ideal_freq.getName())) { // Smartass
-            sp.smartass.awake_ideal_freq.setValue(Integer.parseInt(sharedPreferences.getString(key, sp.smartass.awake_ideal_freq.getDefString())));
+            sp.smartass.awake_ideal_freq.setValue(sharedPreferences.getString(key, sp.smartass.awake_ideal_freq.getDefString()));
             sp.smartass.awake_ideal_freq.writeValue();
         } else if (key.equals(sp.smartass.up_rate.getName())) {
-            sp.smartass.up_rate.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.smartass.up_rate.getDefault()))));
+            sp.smartass.up_rate.setValue(sharedPreferences.getString(key, String.valueOf(sp.smartass.up_rate.getDefault())));
             sp.smartass.up_rate.writeValue();
         } else if (key.equals(sp.smartass.down_rate.getName())) {
-            sp.smartass.down_rate.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.smartass.down_rate.getDefault()))));
+            sp.smartass.down_rate.setValue(sharedPreferences.getString(key, String.valueOf(sp.smartass.down_rate.getDefault())));
             sp.smartass.down_rate.writeValue();
         } else if (key.equals(sp.smartass.max_cpu_load.getName())) {
-            sp.smartass.max_cpu_load.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.smartass.max_cpu_load.getDefault()))));
+            sp.smartass.max_cpu_load.setValue(sharedPreferences.getString(key, String.valueOf(sp.smartass.max_cpu_load.getDefault())));
             sp.smartass.max_cpu_load.writeValue();
         } else if (key.equals(sp.smartass.min_cpu_load.getName())) {
-            sp.smartass.min_cpu_load.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.smartass.min_cpu_load.getDefault()))));
+            sp.smartass.min_cpu_load.setValue(sharedPreferences.getString(key, String.valueOf(sp.smartass.min_cpu_load.getDefault())));
             sp.smartass.min_cpu_load.writeValue();
         } else if (key.equals(sp.smartass.ramp_up_step.getName())) {
-            sp.smartass.ramp_up_step.setValue(Integer.parseInt(sharedPreferences.getString(key, sp.smartass.ramp_up_step.getDefString())));
+            sp.smartass.ramp_up_step.setValue(sharedPreferences.getString(key, sp.smartass.ramp_up_step.getDefString()));
             sp.smartass.ramp_up_step.writeValue();
         } else if (key.equals(sp.smartass.ramp_down_step.getName())) {
-            sp.smartass.ramp_down_step.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.smartass.ramp_down_step.getDefault()))));
+            sp.smartass.ramp_down_step.setValue(sharedPreferences.getString(key, String.valueOf(sp.smartass.ramp_down_step.getDefault())));
             sp.smartass.ramp_down_step.writeValue();
         } else if (key.equals(sp.smartass.sleep_wakeup_freq.getName())) {
-            sp.smartass.sleep_wakeup_freq.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.smartass.sleep_wakeup_freq.getDefault()))));
+            sp.smartass.sleep_wakeup_freq.setValue(sharedPreferences.getString(key, String.valueOf(sp.smartass.sleep_wakeup_freq.getDefault())));
             sp.smartass.sleep_wakeup_freq.writeValue();
         } else if (key.equals(sp.smartass.sleep_ideal_freq.getName())) {
-            sp.smartass.sleep_ideal_freq.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.smartass.sleep_ideal_freq.getDefault()))));
+            sp.smartass.sleep_ideal_freq.setValue(sharedPreferences.getString(key, String.valueOf(sp.smartass.sleep_ideal_freq.getDefault())));
             sp.smartass.sleep_ideal_freq.writeValue();
         } else if (key.equals(sp.smartass.sample_rate_jiffies.getName())) {
-            sp.smartass.sample_rate_jiffies.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.smartass.sample_rate_jiffies.getDefault()))));
+            sp.smartass.sample_rate_jiffies.setValue(sharedPreferences.getString(key, String.valueOf(sp.smartass.sample_rate_jiffies.getDefault())));
             sp.smartass.sample_rate_jiffies.writeValue();
         } else if (key.equals(sp.smartass.smooth_ui.getName())) {
             sp.smartass.smooth_ui.setValue(sharedPreferences.getBoolean(key, sp.smartass.smooth_ui.getDefBoolean()) == true ? 1 : 0);
             sp.smartass.smooth_ui.writeValue();
         } else if (key.equals(sp.interactive.hispeed_freq.getName())) { // Interactive
-            sp.interactive.hispeed_freq.setValue(Integer.parseInt(sharedPreferences.getString(key, sp.interactive.hispeed_freq.getDefString())));
+            sp.interactive.hispeed_freq.setValue(sharedPreferences.getString(key, sp.interactive.hispeed_freq.getDefString()));
             sp.interactive.hispeed_freq.writeValue();
         } else if (key.equals(sp.interactive.go_hispeed_load.getName())) {
-            sp.interactive.go_hispeed_load.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.go_hispeed_load.getDefault()))));
+            sp.interactive.go_hispeed_load.setValue(sharedPreferences.getString(key, String.valueOf(sp.interactive.go_hispeed_load.getDefault())));
             sp.interactive.go_hispeed_load.writeValue();
         } else if (key.equals(sp.interactive.min_sampling_time.getName())) {
-            sp.interactive.min_sampling_time.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.min_sampling_time.getDefault()))));
+            sp.interactive.min_sampling_time.setValue(sharedPreferences.getString(key, String.valueOf(sp.interactive.min_sampling_time.getDefault())));
             sp.interactive.min_sampling_time.writeValue();
         } else if (key.equals(sp.interactive.above_hispeed_delay.getName())) {
-            sp.interactive.above_hispeed_delay.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.above_hispeed_delay.getDefault()))));
+            sp.interactive.above_hispeed_delay.setValue(sharedPreferences.getString(key, String.valueOf(sp.interactive.above_hispeed_delay.getDefault())));
             sp.interactive.above_hispeed_delay.writeValue();
         } else if (key.equals(sp.interactive.timer_rate.getName())) {
-            sp.interactive.timer_rate.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.timer_rate.getDefault()))));
+            sp.interactive.timer_rate.setValue(sharedPreferences.getString(key, String.valueOf(sp.interactive.timer_rate.getDefault())));
             sp.interactive.timer_rate.writeValue();
         } else if (key.equals(sp.interactive.timer_slack.getName())) {
-            sp.interactive.timer_slack.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.timer_slack.getDefault()))));
+            sp.interactive.timer_slack.setValue(sharedPreferences.getString(key, String.valueOf(sp.interactive.timer_slack.getDefault())));
             sp.interactive.timer_slack.writeValue();
         } else if (key.equals(sp.interactive.boostpulse_duration.getName())) {
-            sp.interactive.boostpulse_duration.setValue(Integer.parseInt(sharedPreferences.getString(key, String.valueOf(sp.interactive.boostpulse_duration.getDefault()))));
+            sp.interactive.boostpulse_duration.setValue(sharedPreferences.getString(key, String.valueOf(sp.interactive.boostpulse_duration.getDefault())));
             sp.interactive.boostpulse_duration.writeValue();
         } else if (key.equals(sp.interactive.target_loads.getName())) {
             sp.interactive.target_loads.setValue(sharedPreferences.getString(key, String.valueOf(sp.interactive.target_loads.getDefValue())));

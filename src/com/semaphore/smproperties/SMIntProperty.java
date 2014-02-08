@@ -73,7 +73,11 @@ public class SMIntProperty extends SMProperty {
         if (Value == null || Value.isEmpty())
             setValue(getDefault());
         else
-            setValue(Integer.parseInt(Value));
+            try {
+                setValue(Integer.parseInt(Value));
+            } catch (NumberFormatException e) {
+                setValue(getDefault());
+            }
     }
 
     public void readValue() {
