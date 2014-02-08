@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Semaphore Manager</string>
+    <string name="title_section_cpu">Επεξεργαστής</string>
+    <string name="title_section_tweaks">Ρυθμίσεις</string>
+    <string name="title_section_modules">Modules</string>
+    <string name="title_section_sai">SAI</string>
+    <string name="title_section_info">Πληροφορίες</string>
+    <string name="title_section_kmsg">kmsg</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
+
+    <string name="str_cat_oc_title">Υπερχρονισμός</string>
+    <string name="str_oc_title">LiveOC</string>
+    <string name="str_oc_summary">Αλλαγή τιμής LiveOC</string>
+
+    <string name="str_gov_title">Τρέχων governor</string>
+    <string name="str_gov_summary">Αλλαγή CPU governor</string>
+    <string name="str_cat_gov_title">Governors</string>
+    <string name="str_scaling_min_freq_title">Ελαχ. Συχνότητα (MHz)</string>
+    <string name="str_scaling_max_freq_title">Μεγ. Συχνότητα (MHz)</string>
+
+    <string name="str_custom_volt_title">Τάσεις</string>
+    <string name="str_cv_enable_title">Ενεργοποιημένο</string>
+    <string name="str_cv_enable_summary">Παρακαλώ χρησιμοποιήστε με δική σας ευθύνη</string>
+    <string name="str_cv_apply_title">Εφαρμογή</string>
+    <string name="str_cv_apply_summary">Εφαρμογή τάσεων</string>
+    <string name="str_cv_reset_title">Επαναφορά</string>
+    <string name="str_cv_reset_summary">Επαναφορά στις αρχικές τιμές</string>
+    <string name="str_cv_apply_boot_title">Εφαρμογή κατά την εκκίνηση</string>
+    <string name="str_cv_apply_boot_summary">Επιλέξετε για την εφαρμογή κατά την εκκίνηση</string>
+
+    <string name="str_max_arm_title">Μέγιστη Τάση</string>
+    <string name="str_cv_l0_title">L0</string>
+    <string name="str_cv_l1_title">L1</string>
+    <string name="str_cv_l2_title">L2</string>
+    <string name="str_cv_l3_title">L3</string>
+    <string name="str_cv_l4_title">L4</string>
+
+    <string name="str_cpu_table_dialog_title">Πίνακας Πληροφοριών CPU</string>
+    <string name="str_undervolt_title">Undervolting</string>
+    <string name="str_undervolt_screen_title">Παράμετροι Undervolting</string>
+    <string name="str_uv_enabled_title">Ενεργό</string>
+    <string name="str_uv_enabled_summary">Παρακαλώ χρησιμοποιήστε με δική σας ευθύνη</string>
+    <string name="str_uv_apply_title">Εφαρμογή</string>
+    <string name="str_uv_apply_summary">Εφαρμογή undervolting</string>
+    <string name="str_uv_reset_title">Επαναφορά</string>
+    <string name="str_uv_reset_summary">Επαναφορά στις αρχικές τιμές</string>
+    <string name="str_uv_apply_boot_title">Εφαρμογή κατά την εκκίνηση</string>
+    <string name="str_uv_apply_boot_summary">Επιλέξετε για την εφαρμογή κατά την εκκίνηση</string>
+    <string name="str_uv_cpu_table_title">Εμφάνιση πίνακα CPU</string>
+    <string name="str_uv_cpu_table_summary">Επιλέξτε για την εμφάνιση του πίνακα πληροφοριών της CPU</string>
+
+    <string name="str_uv_boost_title">Ανύψωση Τάσεων</string>
+    <string name="str_uv_boost_summary">Ανύψωση τάσεων κατά 25000uV</string>
+    <string name="str_uv_lower_uv_title">Lower uV</string>
+    <string name="str_uv_lower_uv_summary">Undervolting χαμηλών συχνοτήτων</string>
+    <string name="str_uv_higher_uv_title">Higher uV</string>
+    <string name="str_uv_higher_uv_summary">Undervolting υψηλών συχνοτήτων</string>
+    <string name="str_uv_higher_khz_thres_title">Κατώφλι υψηλών συχνοτήτων</string>
+    <string name="str_uv_higher_khz_thres_summary">Κατώφλι υψηλών συχνοτήτων</string>
+    <string name="str_hp_min_online_title">Ελάχιστος αριθμός πυρήνων</string>
+    <string name="str_hp_max_online_title">Μέγιστος αριθμός πυρήνων</string>
+    <string name="str_hp_enabled_title">Ενεργό</string>
+    <string name="str_hp_up_threshold_title">Up threshold</string>
+    <string name="str_hp_up_threshold_summary">Valid values 1-100</string>
+
+    <string-array name="array_gov_entries">
+        <item>Ondemand</item>
+        <item>Conservative</item>
+        <item>SmartassV2</item>
+        <item>Interactive</item>
+    </string-array>
+
+    <string-array name="array_gov_values">
+        <item>ondemand</item>
+        <item>conservative</item>
+        <item>smartassV2</item>
+        <item>interactive</item>
+    </string-array>
+
+    <string-array name="array_gov_entries_n4">
+        <item>Ondemand</item>
+        <item>Conservative</item>
+        <item>Interactive</item>
+    </string-array>
+
+    <string-array name="array_gov_values_n4">
+        <item>ondemand</item>
+        <item>conservative</item>
+        <item>interactive</item>
+    </string-array>
+
+    <string name="str_cat_leds_title">LED triggers</string>
+    <string name="str_led_red_title">Κόκκινο</string>
+    <string name="str_led_green_title">Πράσινο</string>
+    <string name="str_led_blue_title">Μπλέ</string>
+
+    <string-array name="array_led_entries">
+        <item>Κανένα</item>
+        <item>Touchwake</item>
+        <item>MMC</item>
+        <item>Thermal</item>
+        <item>USB online</item>
+        <item>DC online</item>
+        <item>Wireless online</item>
+        <item>Μπαταρία φορτίζει ή πλήρης</item>
+        <item>Μπαταρία φορτίζει</item>
+        <item>Μπαταρία πλήρης</item>
+    </string-array>
+
+    <string-array name="array_led_values">
+        <item>none</item>
+        <item>touchwake</item>
+        <item>mmc0</item>
+        <item>thermal</item>
+        <item>usb-online</item>
+        <item>pm8921-dc-online</item>
+        <item>wireless-online</item>
+        <item>battery-charging-or-full</item>
+        <item>battery-charging</item>
+        <item>battery-full</item>
+    </string-array>
+
+    <string-array name="scripts">
+        <item>noop</item>
+        <item>deadline</item>
+        <item>cfq</item>
+        <item>sio</item>
+        <item>row</item>
+        <item>read_ahead</item>
+        <item>touchscreen_0</item>
+        <item>touchscreen_1</item>
+        <item>touchscreen_2</item>
+    </string-array>
+
+    <string name="str_read_ahead_title">SD Card read ahead</string>
+    <string-array name="array_read_ahead_entries">
+        <item>128KB</item>
+        <item>256KB</item>
+        <item>512KB</item>
+        <item>1024KB</item>
+        <item>2048KB</item>
+    </string-array>
+
+    <string-array name="array_read_ahead_values">
+        <item>128KB</item>
+        <item>256KB</item>
+        <item>512KB</item>
+        <item>1024KB</item>
+        <item>2048KB</item>
+    </string-array>
+
+    <string name="str_read_ahead_n4_title">SD read ahead</string>
+    <string-array name="array_read_ahead_n4_entries">
+        <item>128KB</item>
+        <item>256KB</item>
+        <item>512KB</item>
+        <item>1024KB</item>
+        <item>2048KB</item>
+    </string-array>
+
+    <string-array name="array_read_ahead_n4_values">
+        <item>128</item>
+        <item>256</item>
+        <item>512</item>
+        <item>1024</item>
+        <item>2048</item>
+    </string-array>
+
+    <string name="str_touchscreen_title">Ευαισθησία Οθόνης Αφής</string>
+    <string-array name="array_touchscreen_entries">
+        <item>Stock</item>
+        <item>Ευαίσθητο</item>
+        <item>Υπερευαίσθητοr</item>
+    </string-array>
+
+    <string-array name="array_touchscreen_values">
+        <item>stock</item>
+        <item>sensitive</item>
+        <item>sensitiver</item>
+    </string-array>
+
+    <string name="str_o_io_is_busy_title">IO is busy</string>
+    <string name="str_o_sampling_down_factor_title">Sampling down factor</string>
+    <string name="str_o_sampling_down_factor_summary">Valid values 1–100000</string>
+    <string name="str_o_sampling_down_max_momentum_title">Sampling down max momentum</string>
+    <string name="str_o_sampling_down_max_momentum_summary">Valid values 1-1000</string>
+    <string name="str_o_sampling_rate_title">Sampling rate</string>
+    <string name="str_o_sampling_rate_summary">Valid values 10000-100000</string>
+    <string name="str_o_up_threshold_title">Up threshold</string>
+    <string name="str_o_up_threshold_summary">Valid values 11-100</string>
+    <string name="str_o_powersave_bias_title">Powersave bias</string>
+    <string name="str_o_powersave_bias_summary">Valid values 0-1000</string>
+    <string name="str_o_smooth_ui_title">Smooth UI</string>
+    <string name="str_o_touch_load_title">Touch load</string>
+    <string name="str_o_touch_load_summary">Valid values 1-100</string>
+    <string name="str_o_touch_load_threshold_title">Touch load threshold</string>
+    <string name="str_o_touch_load_threshold_summary">Valid values 1-100</string>
+    <string name="str_o_touch_load_duration_title">Touch load duration</string>
+    <string name="str_o_touch_load_duration_summary">Valid values 1-1000000</string>
+
+    <string name="str_c_freq_step_title">Frequency step</string>
+    <string name="str_c_freq_step_summary">Valid values 1-100</string>
+    <string name="str_c_sampling_down_factor_title">Sampling down factor</string>
+    <string name="str_c_sampling_down_factor_summary">Valid values 1-100000</string>
+    <string name="str_c_sampling_rate_title">Sampling rate</string>
+    <string name="str_c_sampling_rate_summary">Valid values 10000-100000</string>
+    <string name="str_c_up_threshold_title">Up threshold</string>
+    <string name="str_c_up_threshold_summary">Valid values 1-100</string>
+    <string name="str_c_down_threshold_title">Down threshold</string>
+    <string name="str_c_down_threshold_summary">Valid values 1-100</string>
+    <string name="str_c_smooth_ui_title">Smooth UI</string>
+
+    <string name="str_s_awake_ideal_freq_title">Awake ideal frequency</string>
+    <string name="str_s_awake_ideal_freq_summary">Valid values 1-100</string>
+    <string name="str_s_up_rate_title">Up rate</string>
+    <string name="str_s_up_rate_summary">Valid values 1-100</string>
+    <string name="str_s_down_rate_title">Down rate</string>
+    <string name="str_s_down_rate_summary">Valid values 1-100</string>
+    <string name="str_s_max_cpu_load_title">Max CPU load</string>
+    <string name="str_s_max_cpu_load_summary">Valid values 1-100</string>
+    <string name="str_s_min_cpu_load_title">Min CPU load</string>
+    <string name="str_s_min_cpu_load_summary">Valid values 1-100</string>
+    <string name="str_s_ramp_up_step_title">Ramp up step</string>
+    <string name="str_s_ramp_up_step_summary">Valid values 1-100</string>
+    <string name="str_s_ramp_down_step_title">Ramp down step</string>
+    <string name="str_s_ramp_down_step_summary">Valid values 1-100</string>
+    <string name="str_s_sleep_wakeup_freq_title">Sleep wakeup frequency</string>
+    <string name="str_s_sleep_wakeup_freq_summary">Valid values 1-100</string>
+    <string name="str_s_sleep_ideal_freq_title">Sleep ideal frequency</string>
+    <string name="str_s_sleep_ideal_freq_summary">Valid values 1-100</string>
+    <string name="str_s_sample_rate_jiffies_title">Sample rate jiffies</string>
+    <string name="str_s_sample_rate_jiffies_summary">Valid values 1-100</string>
+    <string name="str_s_smooth_ui_title">Smooth UI</string>
+
+    <string name="str_i_hispeed_freq_title">Hi speed frequency</string>
+    <string name="str_i_hispeed_freq_summary">Valid values 1-100</string>
+    <string name="str_i_go_hispeed_load_title">Go hi speed load</string>
+    <string name="str_i_go_hispeed_load_summary">Valid values 1-100000</string>
+    <string name="str_i_min_sampling_time_title">Min sampling time</string>
+    <string name="str_i_min_sampling_time_summary">Valid values 10000-100000</string>
+    <string name="str_i_above_hispeed_delay_title">Above hi speed delay</string>
+    <string name="str_i_above_hispeed_delay_summary">Valid values 1-100</string>
+    <string name="str_i_timer_rate_title">Timer rate</string>
+    <string name="str_i_timer_rate_summary">Valid values 10000-100000</string>
+    <string name="str_i_timer_slack_title">Timer slack</string>
+    <string name="str_i_timer_slack_summary">Valid values 10000-200000</string>
+    <string name="str_i_boostpulse_duration_title">Boostpulse duration</string>
+    <string name="str_i_boostpulse_duration_summary">Valid values 10000-200000</string>
+    <string name="str_i_target_loads_title">Target loads</string>
+    <string name="str_i_target_loads_summary">Valid values 1-100</string>
+    <string name="str_i_io_is_busy_title">IO is busy</string>
+    <string name="str_i_input_boost_title">Input boost</string>
+
+    <string name="str_accuracy_title">Φίλτρα Οθόνης Αφής</string>
+    <string name="str_accuracy_screen_title">Φίλτρο Ακρίβειας</string>
+    <string name="str_accuracy_summary"></string>
+    <string name="str_ac_enable_title">Ενεργό</string>
+    <string name="str_ac_enable_summary">Ενεργοποίηση φίλτρου ακρίβειας</string>
+    <string name="str_ac_ignore_pressure_gap_title">Ignore pressure gap</string>
+    <string name="str_ac_ignore_pressure_gap_summary">Valid values 1-255</string>
+    <string name="str_ac_delta_max_title">Delta max</string>
+    <string name="str_ac_delta_max_summary">Valid values 1-255</string>
+    <string name="str_ac_touch_max_count_title">Touch max count</string>
+    <string name="str_ac_touch_max_count_summary">Valid values 1-255</string>
+    <string name="str_ac_max_pressure_title">Max pressure</string>
+    <string name="str_ac_max_pressure_summary">Valid values 1-255</string>
+    <string name="str_ac_direction_count_title">Direction count</string>
+    <string name="str_ac_direction_count_summary">Valid values 1-255</string>
+    <string name="str_ac_time_to_max_pressure_title">Time to max pressure</string>
+    <string name="str_ac_time_to_max_pressure_summary">Valid values 1-255</string>
+
+    <string name="str_jit_enable_title">Φίλτρο Jitter</string>
+    <string name="str_jit_enable_summary">Ενεργοποίηση φίλτρου jitter</string>
+    <string name="str_jit_adjust_margin_title">Jitter adjust margin</string>
+    <string name="str_jit_adjust_margin_summary">Valid values 1-255</string>
+
+    <string name="str_touchwake_disable_title">Απενεργοποίηση Touchwake</string>
+    <string name="str_touchwake_disable_summary">Απενεργοποίηση touchwake κατά τη διάρκεια κλήσεων</string>
+    <string name="str_cat_deep_idle_title">Deep Idle</string>
+    <string name="str_deep_idle_title">Ενεργό</string>
+    <string name="str_deep_idle_stats_title">Στατιστικά</string>
+    <string name="str_deep_idle_stats_show_title">Εμφάνιση στατιστικών</string>
+
+    <string name="str_cpu_misc_title">Διάφορα</string>
+    <string name="str_tweaks_misc_title">Διάφορα</string>
+
+    <string name="str_lock_min_title">Κλείδωμα ελ. συχνότητας στα 100MHz</string>
+    <string name="str_lock_min_summary">Κλείδωμα ελ. συχνότητας στα 100MHz όταν η GPU είναι ενεργή</string>
+
+    <string name="str_bluetooth_title">Απενεργοποίηση bluetooth</string>
+    <string name="str_bluetooth_summary">Επανενεργοποίηση απαιτεί reboot</string>
+
+    <string name="str_logger_title">Logger</string>
+    <string name="str_logger_summary">απαιτεί reboot</string>
+
+    <string name="str_tun_title">TUN</string>
+    <string name="str_tun_summary">για VPN</string>
+
+    <string name="str_cifs_title">CIFS</string>
+    <string name="str_cifs_summary">mount Windows shares</string>
+
+    <string name="str_bigmem_title">Bigmem</string>
+    <string name="str_bigmem_summary">απαιτεί reboot</string>
+
+    <string name="str_autobr_title">Αυτόματη Φωτεινότητα Semaphore</string>
+    <string name="str_sema_autobr_title">Ενεργό</string>
+    <string name="str_ab_profiles_title">Προφίλ</string>
+    <string name="str_sema_autobr_tunables_title">Ρυθμίσεις</string>
+
+    <string name="str_ab_min_brightness_title">Ελ. φωτεινότητα</string>
+    <string name="str_ab_min_brightness_summary"></string>
+    <string name="str_ab_max_brightness_title">Μεγ. φωτεινοτητα</string>
+    <string name="str_ab_max_brightness_summary"></string>
+    <string name="str_ab_max_lux_title">Μεγ. lux</string>
+    <string name="str_ab_max_lux_summary"></string>
+    <string name="str_ab_instant_update_thres_title">Κατώφλι Instant update</string>
+    <string name="str_ab_instant_update_thres_summary"></string>
+    <string name="str_ab_effect_delay_ms_title">Καθυστέρηση Effect</string>
+    <string name="str_ab_effect_delay_ms_summary"></string>
+    <string name="str_ab_max_br_threshold_title">Κατώφλι Μεγ. φωτεινότητας</string>
+    <string name="str_ab_max_br_threshold_summary"></string>
+
+    <string-array name="array_ab_profiles_entries">
+        <item>Φωτεινό</item>
+        <item>Κανονικό</item>
+        <item>Σκοτεινό</item>
+    </string-array>
+
+    <string-array name="array_ab_profiles_values">
+        <item>bright</item>
+        <item>normal</item>
+        <item>dark</item>
+    </string-array>
+
+    <string name="str_cat_scheduler_title">Δρομολογητές</string>
+    <string name="str_scheduler_title">Ενεργός δρομολογητής</string>
+
+    <string-array name="array_scheduler_N4_entries">
+        <item>No-op</item>
+        <item>CFQ</item>
+        <item>Deadline</item>
+        <item>Simple I/O</item>
+    </string-array>
+
+    <string-array name="array_scheduler_N4_values">
+        <item>noop</item>
+        <item>cfq</item>
+        <item>deadline</item>
+        <item>sio</item>
+    </string-array>
+
+    <string-array name="array_scheduler_entries">
+        <item>No-op</item>
+        <item>CFQ</item>
+        <item>Deadline</item>
+        <item>Simple I/O</item>
+        <item>ROW</item>
+    </string-array>
+
+    <string-array name="array_scheduler_values">
+        <item>noop</item>
+        <item>cfq</item>
+        <item>deadline</item>
+        <item>sio</item>
+        <item>row</item>
+    </string-array>
+
+    <string name="str_vibrator_title">Δόνηση</string>
+    <string name="str_vibrator_dc_title">Στάθμη</string>
+    <string name="str_vibrator_test_title">Δοκιμή</string>
+    <string name="str_vibrator_test_summary">Αγγίξτε για δοκιμή</string>
+
+    <string-array name="array_vibrator_entries">
+        <item>Default (Max)</item>
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
+        <item>Minimum</item>
+    </string-array>
+
+    <string-array name="array_vibrator_values">
+        <item>Default (Max)</item>
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
+        <item>Minimum</item>
+    </string-array>
+
+    <string-array name="array_tcp_congestion_entries">
+        <item>CuBIC</item>
+        <item>Reno</item>
+        <item>Westwood</item>
+    </string-array>
+
+    <string-array name="array_tcp_congestion_values">
+        <item>cubic</item>
+        <item>reno</item>
+        <item>westwood</item>
+    </string-array>
+
+    <string name="str_tcp_congestion_title">Αλγόριθμος</string>
+    <string name="str_lcd_calibration_title">Ρυθμίσεις LCD</string>
+
+    <string name="str_lcd_temperature_title">Θερμοκρασία Χρώματος</string>
+    <string name="str_lcd_red_title">Κόκκινο</string>
+    <string name="str_lcd_green_title">Πράσινο</string>
+    <string name="str_lcd_blue_title">Μπλέ</string>
+
+    <string name="str_lcd_gamma_title">Έλεγχος Γάμμα</string>
+    <string name="str_gamma_r_title">Κόκκινο</string>
+    <string name="str_gamma_g_title">Πράσινο</string>
+    <string name="str_gamma_b_title">Μπλέ</string>
+
+    <string name="str_lcd_backlight_title">Φωτεινότητα Backlight</string>
+    <string name="str_min_br_title">Ελάχιστο</string>
+    <string name="str_max_br_title">Μέγιστο</string>
+    <string name="str_br_mode_title">Γραμμική αντιστοίχηση</string>
+    <string name="str_br_mode_summary">Απενεργοποιήστε για χρήση εκθετικής</string>
+
+    <string name="str_configs_title">config.gz</string>
+    <string name="str_configs_summary">/proc/config.gz</string>
+
+    <string name="str_radio_si4709_i2c_title">Radio FM</string>
+    <string name="str_radio_si4709_i2c_summary">si4709</string>
+
+    <string name="str_usb_title">USB Host</string>
+
+    <string name="str_mousedev_title">Mouse</string>
+    <string name="str_mousedev_summary"></string>
+
+    <string name="str_xbox_title">X-Box pad</string>
+    <string name="str_xbox_summary"></string>
+
+    <string name="str_usbhid_title">USB HID</string>
+    <string name="str_usbhid_summary"></string>
+
+    <string name="str_uhid_title">UHID</string>
+    <string name="str_uhid_summary"></string>
+
+    <string name="str_fastchg_title">Fast charge</string>
+    <string name="str_fastchg_summary">Παρακαλώ χρησιμοποιήστε με δική σας ευθύνη</string>
+
+    <string name="str_wififast_title">WiFi PM FAST</string>
+    <string name="str_wififast_summary">PM FAST όταν είναι ανενεργό</string>
+
+    <string name="str_bln_title">BLN</string>
+    <string name="str_bln_summary">Χρήση BLN αντί CM Led (απαιτεί reboot)</string>
+
+    <string name="str_touch_enable_title">Ενεργό</string>
+    <string name="str_touch_enable_summary"></string>
+
+    <string name="str_touch_title">Καθυστέρηση</string>
+    <string name="str_touch_summary">Καθυστέρηση σε δευτερόλεπτα</string>
+
+    <string name="str_dt_wake_enabled_title">Ενεργό</string>
+    <string name="str_dt_wake_enabled_summary">Κρατάει την οθόνη αφής πάντα ενεργή</string>
+
+    <string name="str_about_title">Σχετικά</string>
+
+    <string name="str_didle_dialog_title">Στατιστικά Deep Idle"</string>
+    <string name="str_idle_state">Idle"</string>
+    <string name="str_top_on">TOP=ON"</string>
+    <string name="str_top_off">TOP=OFF"</string>
+
+
+    <string-array name="array_touch_entries">
+        <item>Ανενεργό</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>90</item>
+    </string-array>
+
+    <string-array name="array_touch_values">
+        <item>Disabled</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>90</item>
+    </string-array>
+
+
+    <string-array name="array_spinner_entries">
+        <item>Disabled</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>90</item>
+    </string-array>
+
+    <string name="str_sai_enable_title">Ενεργό</string>
+    <string name="str_vibrator_call_title">Δόνηση κατά τη διάρκεια κουδουνίσματος</string>
+    <string name="str_vibrator_near_title">Εγγύτητα Κοντά</string>
+    <string name="str_vibrator_far_title">Εγγύτητα Μακριά</string>
+
+    <string name="str_pickup_phone_cat_title">Αυτόματη Απάντηση</string>
+    <string name="str_pickup_phone_title">Ενεργό</string>
+    <string name="str_pickup_phone_summary">Αυτόματη απάντηση χωρίς αφή</string>
+
+    <string name="str_blink_leds_cat_title">Χρήση LEDs κατά τη διάρκεια κουδουνίσματος</string>
+    <string name="str_blink_leds_title">Ενεργό</string>
+    <string name="str_blink_leds_summary">Χρήση LEDs κατά τη διάρκεια κουδουνίσματος</string>
+    <string name="str_blink_interval_title">Διάστημα Blinking</string>
+    <string name="strConfInitd">Όλα τα αρχεία στον κατάλογο init.d θα διαγραφούν.
+Θέλετε να συνεχίσετε;</string>
+    <string name="strMsgInitd">init.d διαγράφηκε επιτυχώς</string>
+    <string name="strMsgReading">Ανάκτηση ρυθμισεων συστήματος, Παρακαλώ περιμένετε</string>
+    <string name="strMsgReset">Επαναφορά ρυθμισεων συστήματος, Παρακαλώ περιμένετε</string>
+    <string name="strErrorRoot">Δεν υπάρχει πρόσβαση root!
+Η εφαρμογή Semaphore Manager απαιτεί πρόσβαση root για την εκτέλεση.</string>
+    <string name="strErrorBusybox">Δεν βρέθηκε busybox!
+Η εφαρμογή Semaphore Manager απαιτεί busybox για την κατάλληλη εκτέλεση.</string>
+    <string name="strConfTheme">Επιλογή σκοτεινού/φωτεινού θέματος.
+Θέλετε να συνεχίσετε;</string>
+    <string name="strConfOverride">Η ρυθμίσεις συστήματος θα υπερκαλύψουν τις προσωπικές σας ρυθμίσεις.
+Θέλετε να συνεχίσετε;</string>
+    <string name="strConfReset">Επαναφορά στις αρχικές ρυθμίσεις.
+Θέλετε να συνεχίσετε;</string>
+    <string name="strBtnClose">Κλείσιμο</string>
+    <string name="strBtnOK">OK</string>
+    <string name="strBtnCancel">Ακύρωση</string>
+    <string name="strMsgCVapplied">Εφαρμόστηκαν οι επιλεγμένες τάσεις</string>
+    <string name="strMsgCVReset">Επαναφορά τάσεων στις αρχικές τιμές</string>
+    <string name="strMsgUVApplied">Εφορμόστηκε Undervolting</string>
+    <string name="strConfUVReset">Επαναφορά ρυθμίσεων Undervolting στις αρχικές τιμές.\nΘέλετε να συνεχίσετε;</string>
+    <string name="strMsgUVReset">Επαναφορά ρυθμίσεων Undervolting στις αρχικές τιμές</string>
+    <string name="strMsgKmsgSaved">Το kmsg αποθηκεύτηκε επιτυχώς στο
+</string>
+    <string name="strMsgMinCores">Ελάχ. αριθμός ενεργών πυρήνων (1-4)</string>
+    <string name="strMsgMaxCores">Μέγ. αριθμός ενεργών πυρήνων (1-4)</string>
+    <string name="strMsgVoltage">Τάση (σε uV)</string>
+    <string name="strMsgVoltage2">Τάση</string>
+    <string name="strInfoMemory">Μνήμη</string>
+    <string name="strInfoKernel">Πυρήνας</string>
+    <string name="strInfoAuthor">Προγραμματιστής</string>
+    <string name="strInfoDonate">Δωρεά</string>
+    <string name="strInfoDonateSummary">Παρακαλώ κάντε δωρεά για να βοηθήσετε στην ανάπτυξη</string>
+    <string name="strMsgVibrator">Στάθμη Δόνησης</string>
+    <string name="strMsgBlinking">Blinking interval</string>
+    <string name="strTCPCongestion">Αλγόριθμος TCP congestion</string>
+    <string name="strActionRefresh">Ανανέωση</string>
+    <string name="strActionSave">Αποθήκευση kmsg</string>
+    <string name="strActionRead">Ανάκτηση Ρυμίσεων Συστήματος</string>
+    <string name="strActionReset">Επαναφορά Αρχικών Ρυθμίσεων</string>
+    <string name="strActionClear">Εκκαθάριση init.d</string>
+    <string name="strActionToggle">Αλλαγή θέματος</string>
+    <string name="str_misc_title">Διάφορα</string>
+    <string name="strEmpty"> </string>
+    <string name="strMsgOverclock">Overclock %</string>
+
+</resources>

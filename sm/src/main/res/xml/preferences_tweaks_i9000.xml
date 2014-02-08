@@ -1,0 +1,133 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:semaphore="http://semaphore.gr">
+    <PreferenceCategory
+        android:title="@string/str_cat_scheduler_title">
+        <ListPreference
+            android:key="scheduler"
+            android:entries="@array/array_scheduler_entries"
+            android:entryValues="@array/array_scheduler_values"
+            android:title="@string/str_scheduler_title"
+    />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/str_autobr_title">
+
+        <SwitchPreference
+            android:key="sema_autobr"
+            android:title="@string/str_sema_autobr_title" />
+        <ListPreference
+            android:key="ab_profiles"
+            android:entries="@array/array_ab_profiles_entries"
+            android:dependency="sema_autobr"
+            android:entryValues="@array/array_ab_profiles_values"
+            android:title="@string/str_ab_profiles_title"
+    />
+    
+        <PreferenceScreen
+            android:title="@string/str_sema_autobr_tunables_title"
+            android:dependency="sema_autobr">
+            <!--android:summary="tunables"-->
+
+            <EditTextPreference
+                android:key="ab_min_brightness"
+                android:title="@string/str_ab_min_brightness_title"
+                android:summary="@string/str_ab_min_brightness_summary"
+                android:numeric="integer"
+                android:inputType="number" />
+            <EditTextPreference
+                android:key="ab_max_brightness"
+                android:title="@string/str_ab_max_brightness_title"
+                android:summary="@string/str_ab_max_brightness_summary"
+                android:numeric="integer"
+                android:inputType="number" />
+            <EditTextPreference
+                android:key="ab_max_lux"
+                android:title="@string/str_ab_max_lux_title"
+                android:summary="@string/str_ab_max_lux_summary"
+                android:numeric="integer"
+                android:inputType="number" />
+            <EditTextPreference
+                android:key="ab_instant_update_thres"
+                android:title="@string/str_ab_instant_update_thres_title"
+                android:summary="@string/str_ab_instant_update_thres_summary"
+                android:numeric="integer"
+                android:inputType="number" />
+            <EditTextPreference
+                android:key="ab_effect_delay_ms"
+                android:title="@string/str_ab_effect_delay_ms_title"
+                android:summary="@string/str_ab_effect_delay_ms_summary"
+                android:numeric="integer"
+                android:inputType="number" />
+            <EditTextPreference
+                android:key="ab_max_br_threshold"
+                android:title="@string/str_ab_max_br_threshold_title"
+                android:summary="@string/str_ab_max_br_threshold_summary"
+                android:numeric="integer"
+                android:inputType="number" />
+
+        </PreferenceScreen>
+    
+    </PreferenceCategory>    
+    
+    
+
+    <PreferenceCategory
+        android:title="Touch Wake">
+        <SwitchPreference
+            android:key="touch_enable"
+            android:title="@string/str_touch_enable_title" />
+    
+        <com.semaphore.sm.SeekBarPreference android:key="touch"
+                                            android:title="@string/str_touch_title"
+                                            android:dependency="touch_enable"
+                                            android:dialogMessage="@string/strEmpty"
+                                            android:defaultValue="0"
+                                            android:text=" ms"
+                                            android:max="300000"
+        />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/str_vibrator_title">
+        <com.semaphore.sm.SeekBarPreference android:key="vibrator"
+                                            android:title="@string/str_vibrator_dc_title"
+                                            android:dialogMessage="@string/strMsgVibrator"
+                                            android:defaultValue="100"
+                                            android:text=""
+                                            semaphore:min="0"
+                                            android:max="100"
+        />
+        <Preference
+            android:key="vibrator_test"
+            android:title="@string/str_vibrator_test_title"
+            android:summary="@string/str_vibrator_test_summary">
+        </Preference>
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:title="@string/str_tweaks_misc_title">
+        <CheckBoxPreference
+            android:key="bigmem"
+            android:title="@string/str_bigmem_title"
+            android:summary="@string/str_bigmem_summary" />
+        <CheckBoxPreference
+            android:key="wififast"
+            android:title="@string/str_wififast_title"
+            android:summary="@string/str_wififast_summary" />
+        <CheckBoxPreference
+            android:key="forcefastchg"
+            android:title="@string/str_fastchg_title"
+            android:summary="@string/str_fastchg_summary" />
+
+        <ListPreference
+            android:key="read_ahead"
+            android:entries="@array/array_read_ahead_entries"
+            android:entryValues="@array/array_read_ahead_values"
+            android:title="@string/str_read_ahead_title" />
+        <CheckBoxPreference
+            android:key="bln"
+            android:title="@string/str_bln_title"
+            android:summary="@string/str_bln_summary" />
+    </PreferenceCategory>
+    
+</PreferenceScreen>
