@@ -85,8 +85,11 @@ public class TabKmsgFragment extends Fragment {
 			}
 		};
 
-		for (int i = 0; i < view.getChildCount(); i++)
-			view.getChildAt(i).setOnTouchListener(tl);
+		for (int i = 0; i < view.getChildCount(); i++) {
+			View child = view.getChildAt(i);
+			if (child != null)
+				child.setOnTouchListener(tl);
+		}
 
 		view.setOnTouchListener(new View.OnTouchListener() {
 			@Override
@@ -125,9 +128,11 @@ public class TabKmsgFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.kmsg, container, false);
-		tv = (TextView) view.findViewById(R.id.kmsgview);
-		sv = (ScrollView) view.findViewById(R.id.scrollview);
-		tv.setTextSize(10);
+		if (view != null) {
+			tv = (TextView) view.findViewById(R.id.kmsgview);
+			sv = (ScrollView) view.findViewById(R.id.scrollview);
+			tv.setTextSize(10);
+		}
 
 		return view;
 	}
@@ -144,7 +149,7 @@ public class TabKmsgFragment extends Fragment {
 			out.flush();
 			out.close();
 
-			Toast.makeText(this.getActivity().getApplicationContext(), getString(R.string.strMsgKmsgSaved) + kmsg_file, Toast.LENGTH_LONG).show();
+			Toast.makeText(getActivity().getApplicationContext(), getString(R.string.strMsgKmsgSaved) + kmsg_file, Toast.LENGTH_LONG).show();
 		} catch (IOException ignored) {
 		}
 	}

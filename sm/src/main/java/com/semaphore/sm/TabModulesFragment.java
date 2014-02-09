@@ -64,8 +64,11 @@ public class TabModulesFragment extends PreferenceFragment implements SharedPref
             }
         };
 
-        for (int i = 0; i < view.getChildCount(); i++)
-            view.getChildAt(i).setOnTouchListener(tl);
+        for (int i = 0; i < view.getChildCount(); i++) {
+         	View child = view.getChildAt(i);
+			if (child != null)
+				child.setOnTouchListener(tl);
+		}
 
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -136,12 +139,16 @@ public class TabModulesFragment extends PreferenceFragment implements SharedPref
     @Override
     public void onPause() {
         super.onPause();
-        getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+		SharedPreferences sp = getPreferenceScreen().getSharedPreferences();
+		if (sp != null)
+			sp.unregisterOnSharedPreferenceChangeListener(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+		SharedPreferences sp = getPreferenceScreen().getSharedPreferences();
+		if (sp != null)
+			sp.registerOnSharedPreferenceChangeListener(this);
     }
 }

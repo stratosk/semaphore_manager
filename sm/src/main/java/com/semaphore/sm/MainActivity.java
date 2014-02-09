@@ -16,6 +16,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
@@ -78,10 +79,7 @@ public class MainActivity extends Activity
 
 		super.onCreate(savedInstanceState);
 
-		if (savedInstanceState == null)
-			createFragments = true;
-		else
-			createFragments = false;
+		createFragments = savedInstanceState == null;
 
 		setContentView(R.layout.activity_main);
 
@@ -104,16 +102,18 @@ public class MainActivity extends Activity
 				menuKeyField.setAccessible(true);
 				menuKeyField.setBoolean(config, false);
 			}
-		} catch (Exception ex) {
+		} catch (Exception ignored) {
 		}
 
 		ActionBar actionBar = getActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-		actionBar.setDisplayShowTitleEnabled(true);
+		if (actionBar != null) {
+			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+			actionBar.setDisplayShowTitleEnabled(true);
 
-		if (savedInstanceState == null)
-			actionBar.setTitle(getString(R.string.app_name));
-		actionBar.setSubtitle(SemaphoreVer);
+			if (savedInstanceState == null)
+				actionBar.setTitle(getString(R.string.app_name));
+			actionBar.setSubtitle(SemaphoreVer);
+		}
 
 		updateSummaries();
 	}
@@ -202,9 +202,11 @@ public class MainActivity extends Activity
 
 	public void restoreActionBar() {
 		ActionBar actionBar = getActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-		actionBar.setDisplayShowTitleEnabled(true);
-		actionBar.setTitle(mTitle);
+		if (actionBar != null) {
+			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+			actionBar.setDisplayShowTitleEnabled(true);
+			actionBar.setTitle(mTitle);
+		}
 	}
 
 	@Override
@@ -364,8 +366,11 @@ public class MainActivity extends Activity
 			public void onClick(DialogInterface dialog, int which) {
 				int ret = Commander.getInstance().run("rm -r /system/etc/init.d/*", true);
 				if (ret == 0) {
-					Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.strMsgInitd), Toast.LENGTH_LONG);
-					toast.show();
+					Context appCon = getApplicationContext();
+					if (appCon != null) {
+						Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.strMsgInitd), Toast.LENGTH_LONG);
+						toast.show();
+					}
 				}
 			}
 		});
@@ -449,6 +454,9 @@ public class MainActivity extends Activity
 	}
 
 	private void copyAsset(String srcPath, String dstPath) throws IOException {
+		Context appCon = getApplicationContext();
+		if (appCon == null)
+			return;
 		AssetManager assetManager = getApplicationContext().getAssets();
 		InputStream is = assetManager.open(srcPath);
 		FileOutputStream fos = new FileOutputStream(dstPath, false);

@@ -21,6 +21,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import static android.content.pm.PackageManager.NameNotFoundException;
+
 public class TabInfoFragment extends PreferenceFragment {
 	private GestureDetectorCompat gestureDetector;
 	private static final String ARG_SECTION_NUMBER = "section_number";
@@ -51,7 +53,7 @@ public class TabInfoFragment extends PreferenceFragment {
 			String app_ver = "";
 			try {
 				app_ver = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0).versionName;
-			} catch (PackageManager.NameNotFoundException e) {
+			} catch (NameNotFoundException ignored) {
 			}
 			pref.setSummary(app_ver);
 		}
@@ -84,8 +86,11 @@ public class TabInfoFragment extends PreferenceFragment {
 			}
 		};
 
-		for (int i = 0; i < view.getChildCount(); i++)
-			view.getChildAt(i).setOnTouchListener(tl);
+		for (int i = 0; i < view.getChildCount(); i++) {
+			View child = view.getChildAt(i);
+			if (child != null)
+				child.setOnTouchListener(tl);
+		}
 
 		view.setOnTouchListener(new View.OnTouchListener() {
 			@Override

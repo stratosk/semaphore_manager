@@ -431,12 +431,16 @@ public class TabTweaksFragment extends PreferenceFragment implements SharedPrefe
 	@Override
 	public void onPause() {
 		super.onPause();
-		getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+		SharedPreferences sp = getPreferenceScreen().getSharedPreferences();
+		if (sp != null)
+			sp.unregisterOnSharedPreferenceChangeListener(this);
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+		SharedPreferences sp = getPreferenceScreen().getSharedPreferences();
+		if (sp != null)
+			sp.registerOnSharedPreferenceChangeListener(this);
 	}
 }
