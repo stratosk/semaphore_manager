@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:padding="5dip"
-             android:stretchColumns="1,2"
->
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dip"
+    android:stretchColumns="1,2">
 
-    <TableRow >
+    <TableRow>
 
         <TextView
             android:layout_column="1"
@@ -22,34 +21,34 @@
     </TableRow>
 
 
-    <TableRow >
+    <TableRow>
 
         <TextView
             android:layout_column="1"
-            android:text="@string/str_top_on" 
-            android:textSize="16sp"/>
+            android:text="@string/str_top_on"
+            android:textSize="16sp" />
 
         <TextView
             android:layout_column="2"
             android:gravity="right"
             android:id="@+id/value2"
-            android:text="@+id/value2" 
-            android:textSize="16sp"/>
+            android:text="@+id/value2"
+            android:textSize="16sp" />
     </TableRow>
 
-    <TableRow >
+    <TableRow>
 
         <TextView
             android:layout_column="1"
-            android:text="@string/str_top_off" 
-            android:textSize="16sp"/>
+            android:text="@string/str_top_off"
+            android:textSize="16sp" />
 
         <TextView
             android:layout_column="2"
             android:gravity="right"
             android:id="@+id/value3"
-            android:text="@+id/value3" 
-            android:textSize="16sp"/>
+            android:text="@+id/value3"
+            android:textSize="16sp" />
     </TableRow>
 
 </TableLayout>

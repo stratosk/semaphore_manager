@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/menuitem6"
         android:showAsAction="always"
-        android:title="@string/strActionRefresh">
-    </item>
+        android:title="@string/strActionRefresh" />
     <item
         android:id="@+id/menuitem7"
         android:showAsAction="never"
-        android:title="@string/strActionSave">
-    </item>
+        android:title="@string/strActionSave" />
 </menu> 

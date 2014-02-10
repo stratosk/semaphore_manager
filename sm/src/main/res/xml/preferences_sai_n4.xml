@@ -1,5 +1,4 @@
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:semaphore="http://semaphore.gr">
     <SwitchPreference
         android:key="sai_enable"
@@ -7,24 +6,24 @@
     <PreferenceCategory
         android:title="@string/str_vibrator_call_title"
         android:dependency="sai_enable">
-        <com.semaphore.sm.SeekBarPreference android:key="vibrator_near"
-                                            android:title="@string/str_vibrator_near_title"
-                                            android:dependency="sai_enable"
-                                            android:dialogMessage="@string/strMsgVibrator"
-                                            android:defaultValue="100"
-                                            android:text=" %"
-                                            semaphore:min="0"
-                                            android:max="100"
-        />
-        <com.semaphore.sm.SeekBarPreference android:key="vibrator_far"
-                                            android:title="@string/str_vibrator_far_title"
-                                            android:dependency="sai_enable"
-                                            android:dialogMessage="@string/strMsgVibrator"
-                                            android:defaultValue="35"
-                                            android:text=" %"
-                                            semaphore:min="0"
-                                            android:max="100"
-        />
+        <com.semaphore.sm.SeekBarPreference
+            android:key="vibrator_near"
+            android:title="@string/str_vibrator_near_title"
+            android:dependency="sai_enable"
+            android:dialogMessage="@string/strMsgVibrator"
+            android:defaultValue="100"
+            android:text=" %"
+            semaphore:min="0"
+            android:max="100" />
+        <com.semaphore.sm.SeekBarPreference
+            android:key="vibrator_far"
+            android:title="@string/str_vibrator_far_title"
+            android:dependency="sai_enable"
+            android:dialogMessage="@string/strMsgVibrator"
+            android:defaultValue="35"
+            android:text=" %"
+            semaphore:min="0"
+            android:max="100" />
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -32,16 +31,15 @@
         android:dependency="sai_enable">
         <CheckBoxPreference
             android:key="pickup_phone"
-            android:title="@string/str_pickup_phone_title" 
+            android:title="@string/str_pickup_phone_title"
             android:summary="@string/str_pickup_phone_summary"
             android:dependency="sai_enable" />
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="@string/str_misc_title">
+    <PreferenceCategory android:title="@string/str_misc_title">
         <CheckBoxPreference
             android:key="touchwake_disable"
-            android:title="@string/str_touchwake_disable_title" 
+            android:title="@string/str_touchwake_disable_title"
             android:summary="@string/str_touchwake_disable_summary"
             android:dependency="sai_enable" />
     </PreferenceCategory>

@@ -4,21 +4,17 @@
     <item
         android:id="@+id/menuitem1"
         android:showAsAction="never"
-        android:title="@string/strActionRead">
-    </item>
+        android:title="@string/strActionRead" />
     <item
         android:id="@+id/menuitem2"
         android:showAsAction="never"
-        android:title="@string/strActionReset">
-    </item>
+        android:title="@string/strActionReset" />
     <item
         android:id="@+id/menuitem3"
         android:showAsAction="never"
-        android:title="@string/strActionClear">
-    </item>
+        android:title="@string/strActionClear" />
     <item
         android:id="@+id/menuitem5"
         android:showAsAction="never"
-        android:title="@string/strActionToggle">
-    </item>
+        android:title="@string/strActionToggle" />
 </menu> 

@@ -28,7 +28,7 @@
 
         <service android:name="com.semaphore.sm.SemaphoreService">
             <intent-filter>
-                <action android:name="com.semaphore.sm.SemaphoreService"></action>
+                <action android:name="com.semaphore.sm.SemaphoreService" />
             </intent-filter>
         </service>
         <service

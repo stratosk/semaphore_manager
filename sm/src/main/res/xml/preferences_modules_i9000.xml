@@ -1,5 +1,4 @@
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <CheckBoxPreference
         android:key="logger"
@@ -20,8 +19,7 @@
     <CheckBoxPreference
         android:key="uhid"
         android:title="@string/str_uhid_title" />
-    <PreferenceCategory
-        android:title="@string/str_usb_title">
+    <PreferenceCategory android:title="@string/str_usb_title">
         <CheckBoxPreference
             android:key="mousedev"
             android:title="@string/str_mousedev_title" />

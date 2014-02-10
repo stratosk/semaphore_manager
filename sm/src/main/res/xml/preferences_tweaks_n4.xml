@@ -1,170 +1,150 @@
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:semaphore="http://semaphore.gr">
-    <PreferenceCategory
-        android:title="@string/str_cat_scheduler_title">
+    <PreferenceCategory android:title="@string/str_cat_scheduler_title">
         <ListPreference
             android:key="scheduler"
             android:entries="@array/array_scheduler_N4_entries"
             android:entryValues="@array/array_scheduler_N4_values"
-            android:title="@string/str_scheduler_title"
-        />
+            android:title="@string/str_scheduler_title" />
     </PreferenceCategory>
-    <PreferenceCategory
-        android:title="@string/str_vibrator_title">
-        <com.semaphore.sm.SeekBarPreference android:key="vibrator"
-                                            android:title="@string/str_vibrator_dc_title"
-                                            android:dialogMessage="@string/strMsgVibrator"
-                                            android:defaultValue="100"
-                                            android:text=""
-                                            semaphore:min="0"
-                                            android:max="100"
-        />
+    <PreferenceCategory android:title="@string/str_vibrator_title">
+        <com.semaphore.sm.SeekBarPreference
+            android:key="vibrator"
+            android:title="@string/str_vibrator_dc_title"
+            android:dialogMessage="@string/strMsgVibrator"
+            android:defaultValue="100"
+            android:text=""
+            semaphore:min="0"
+            android:max="100" />
         <Preference
             android:key="vibrator_test"
             android:title="@string/str_vibrator_test_title"
-            android:summary="@string/str_vibrator_test_summary">
-        </Preference>
+            android:summary="@string/str_vibrator_test_summary"/>
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="Touch Wake">
+    <PreferenceCategory android:title="Touch Wake">
         <SwitchPreference
             android:key="touch_enable"
             android:title="@string/str_touch_enable_title" />
-    
-        <com.semaphore.sm.SeekBarPreference android:key="touch"
-                                            android:title="@string/str_touch_title"
-                                            android:dependency="touch_enable"
-                                            android:dialogMessage="@string/strEmpty"
-                                            android:defaultValue="0"
-                                            android:text=" ms"
-                                            android:max="300000"
-        />
+
+        <com.semaphore.sm.SeekBarPreference
+            android:key="touch"
+            android:title="@string/str_touch_title"
+            android:dependency="touch_enable"
+            android:dialogMessage="@string/strEmpty"
+            android:defaultValue="0"
+            android:text=" ms"
+            android:max="300000" />
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="Double Tap to Wake">
+    <PreferenceCategory android:title="Double Tap to Wake">
         <CheckBoxPreference
             android:key="dt_wake_enabled"
             android:title="@string/str_dt_wake_enabled_title"
-            android:summary="@string/str_dt_wake_enabled_summary" />    
+            android:summary="@string/str_dt_wake_enabled_summary" />
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="@string/strTCPCongestion">
+    <PreferenceCategory android:title="@string/strTCPCongestion">
         <ListPreference
             android:key="tcp_congestion"
             android:title="@string/str_tcp_congestion_title"
             android:entries="@array/array_tcp_congestion_entries"
-            android:entryValues="@array/array_tcp_congestion_values"
-        />
+            android:entryValues="@array/array_tcp_congestion_values" />
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="@string/str_cat_leds_title">
+    <PreferenceCategory android:title="@string/str_cat_leds_title">
         <ListPreference
             android:key="led_red"
             android:entries="@array/array_led_entries"
             android:entryValues="@array/array_led_values"
-            android:title="@string/str_led_red_title"
-        />
+            android:title="@string/str_led_red_title" />
         <ListPreference
             android:key="led_green"
             android:entries="@array/array_led_entries"
             android:entryValues="@array/array_led_values"
-            android:title="@string/str_led_green_title"
-        />
+            android:title="@string/str_led_green_title" />
         <ListPreference
             android:key="led_blue"
             android:entries="@array/array_led_entries"
             android:entryValues="@array/array_led_values"
-            android:title="@string/str_led_blue_title"
-        />
+            android:title="@string/str_led_blue_title" />
     </PreferenceCategory>
-    <PreferenceCategory
-        android:title="LCD">
-    </PreferenceCategory>    
-    <PreferenceScreen
-        android:title="@string/str_lcd_calibration_title">
-        <PreferenceCategory
-            android:title="@string/str_lcd_backlight_title">
-            <com.semaphore.sm.SeekBarPreference android:key="min_br"
-                                                android:title="@string/str_min_br_title"
-                                                android:dialogMessage="@string/strEmpty"
-                                                android:defaultValue="2"
-                                                android:text=""
-                                                semaphore:min="2"
-                                                android:max="114"
-                                                semaphore:step="1"
-            />
-            <com.semaphore.sm.SeekBarPreference android:key="max_br"
-                                                android:title="@string/str_max_br_title"
-                                                android:dialogMessage="@string/strEmpty"
-                                                android:defaultValue="114"
-                                                android:text=""
-                                                semaphore:min="2"
-                                                android:max="114"
-                                                semaphore:step="1"
-            />
+    <PreferenceCategory android:title="LCD"/>
+    <PreferenceScreen android:title="@string/str_lcd_calibration_title">
+        <PreferenceCategory android:title="@string/str_lcd_backlight_title">
+            <com.semaphore.sm.SeekBarPreference
+                android:key="min_br"
+                android:title="@string/str_min_br_title"
+                android:dialogMessage="@string/strEmpty"
+                android:defaultValue="2"
+                android:text=""
+                semaphore:min="2"
+                android:max="114"
+                semaphore:step="1" />
+            <com.semaphore.sm.SeekBarPreference
+                android:key="max_br"
+                android:title="@string/str_max_br_title"
+                android:dialogMessage="@string/strEmpty"
+                android:defaultValue="114"
+                android:text=""
+                semaphore:min="2"
+                android:max="114"
+                semaphore:step="1" />
             <CheckBoxPreference
                 android:key="br_mode"
-                android:title="@string/str_br_mode_title" 
+                android:title="@string/str_br_mode_title"
                 android:summary="@string/str_br_mode_summary" />
         </PreferenceCategory>
-        <PreferenceCategory
-            android:title="@string/str_lcd_temperature_title">
-            <com.semaphore.sm.SeekBarPreference android:key="lcd_red"
-                                                android:title="@string/str_lcd_red_title"
-                                                android:dialogMessage="@string/strEmpty"
-                                                android:defaultValue="255"
-                                                android:text=""
-                                                semaphore:min="0"
-                                                android:max="255"
-                                                semaphore:step="1"
-            />
-            <com.semaphore.sm.SeekBarPreference android:key="lcd_green"
-                                                android:title="@string/str_lcd_green_title"
-                                                android:dialogMessage="@string/strEmpty"
-                                                android:defaultValue="255"
-                                                android:text=""
-                                                semaphore:min="0"
-                                                android:max="255"
-                                                semaphore:step="1"
-            />
-            <com.semaphore.sm.SeekBarPreference android:key="lcd_blue"
-                                                android:title="@string/str_lcd_blue_title"
-                                                android:dialogMessage="@string/strEmpty"
-                                                android:defaultValue="255"
-                                                android:text=""
-                                                semaphore:min="0"
-                                                android:max="255"
-                                                semaphore:step="1"
-            />
+        <PreferenceCategory android:title="@string/str_lcd_temperature_title">
+            <com.semaphore.sm.SeekBarPreference
+                android:key="lcd_red"
+                android:title="@string/str_lcd_red_title"
+                android:dialogMessage="@string/strEmpty"
+                android:defaultValue="255"
+                android:text=""
+                semaphore:min="0"
+                android:max="255"
+                semaphore:step="1" />
+            <com.semaphore.sm.SeekBarPreference
+                android:key="lcd_green"
+                android:title="@string/str_lcd_green_title"
+                android:dialogMessage="@string/strEmpty"
+                android:defaultValue="255"
+                android:text=""
+                semaphore:min="0"
+                android:max="255"
+                semaphore:step="1" />
+            <com.semaphore.sm.SeekBarPreference
+                android:key="lcd_blue"
+                android:title="@string/str_lcd_blue_title"
+                android:dialogMessage="@string/strEmpty"
+                android:defaultValue="255"
+                android:text=""
+                semaphore:min="0"
+                android:max="255"
+                semaphore:step="1" />
         </PreferenceCategory>
 
-        <PreferenceCategory
-            android:title="@string/str_lcd_gamma_title">
+        <PreferenceCategory android:title="@string/str_lcd_gamma_title">
             <EditTextPreference
                 android:key="gamma_r"
                 android:title="@string/str_gamma_r_title"
                 android:numeric="integer"
-                android:inputType="textNoSuggestions"/>
+                android:inputType="textNoSuggestions" />
             <EditTextPreference
                 android:key="gamma_g"
                 android:title="@string/str_gamma_g_title"
                 android:numeric="integer"
-                android:inputType="textNoSuggestions"/>
+                android:inputType="textNoSuggestions" />
             <EditTextPreference
                 android:key="gamma_b"
                 android:title="@string/str_gamma_b_title"
                 android:numeric="integer"
-                android:inputType="textNoSuggestions"/>
+                android:inputType="textNoSuggestions" />
         </PreferenceCategory>
     </PreferenceScreen>
-    
-    <PreferenceCategory
-        android:title="@string/str_accuracy_title">
+
+    <PreferenceCategory android:title="@string/str_accuracy_title">
         <PreferenceScreen
             android:key="accuracy_screen"
             android:title="@string/str_accuracy_screen_title"
@@ -179,60 +159,59 @@
                 android:summary="@string/str_ac_ignore_pressure_gap_summary"
                 android:numeric="integer"
                 android:inputType="number"
-                android:dependency="ac_enable"/>
+                android:dependency="ac_enable" />
             <EditTextPreference
                 android:key="ac_delta_max"
                 android:title="@string/str_ac_delta_max_title"
                 android:summary="@string/str_ac_delta_max_summary"
                 android:numeric="integer"
                 android:inputType="number"
-                android:dependency="ac_enable"/>
+                android:dependency="ac_enable" />
             <EditTextPreference
                 android:key="ac_touch_max_count"
                 android:title="@string/str_ac_touch_max_count_title"
                 android:summary="@string/str_ac_touch_max_count_summary"
                 android:numeric="integer"
                 android:inputType="number"
-                android:dependency="ac_enable"/>
+                android:dependency="ac_enable" />
             <EditTextPreference
                 android:key="ac_max_pressure"
                 android:title="@string/str_ac_max_pressure_title"
                 android:summary="@string/str_ac_max_pressure_summary"
                 android:numeric="integer"
                 android:inputType="number"
-                android:dependency="ac_enable"/>
+                android:dependency="ac_enable" />
             <EditTextPreference
                 android:key="ac_direction_count"
                 android:title="@string/str_ac_direction_count_title"
                 android:summary="@string/str_ac_direction_count_summary"
                 android:numeric="integer"
-                android:inputType="number" 
-                android:dependency="ac_enable"/>
+                android:inputType="number"
+                android:dependency="ac_enable" />
             <EditTextPreference
                 android:key="ac_time_to_max_pressure"
                 android:title="@string/str_ac_time_to_max_pressure_title"
                 android:summary="@string/str_ac_time_to_max_pressure_summary"
                 android:numeric="integer"
-                android:inputType="number" 
-                android:dependency="ac_enable"/>
+                android:inputType="number"
+                android:dependency="ac_enable" />
 
         </PreferenceScreen>
         <CheckBoxPreference
             android:key="jit_enable"
             android:title="@string/str_jit_enable_title" />
-    
+
         <EditTextPreference
             android:key="jit_adjust_margin"
             android:title="@string/str_jit_adjust_margin_title"
             android:summary="@string/str_jit_adjust_margin_summary"
             android:numeric="integer"
             android:inputType="number"
-            android:dependency="jit_enable"/>
+            android:dependency="jit_enable" />
         />
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="@string/str_tweaks_misc_title">
+    <PreferenceCategory android:title="@string/str_tweaks_misc_title">
         <ListPreference
             android:key="read_ahead"
             android:entries="@array/array_read_ahead_n4_entries"

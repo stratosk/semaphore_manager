@@ -6,4 +6,4 @@
     android:dividerHeight="1dp"
     android:background="#cccccc"
     tools:context="com.semaphore.sm.NavigationDrawerFragment"
-    android:alpha="1"/>
+    android:alpha="1" />

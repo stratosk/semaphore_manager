@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:padding="5dip"
-             android:stretchColumns="1,2"
->
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dip"
+    android:stretchColumns="1,2">
 
-        <TextView
-            android:gravity="left"
-            android:id="@+id/text_cpu_table"
-            android:textSize="12sp" />
-
-
-
+    <TextView
+        android:gravity="left"
+        android:id="@+id/text_cpu_table"
+        android:textSize="12sp" />
 </TableLayout>

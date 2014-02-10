@@ -11,7 +11,7 @@
         android:id="@+id/LinearLayout01"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/kmsgview"
@@ -20,8 +20,7 @@
             android:paddingLeft="2dip"
             android:paddingRight="2dip"
             android:paddingTop="2dip"
-            android:scrollbars="vertical">
-        </TextView>
+            android:scrollbars="vertical"/>
 
     </LinearLayout>
 

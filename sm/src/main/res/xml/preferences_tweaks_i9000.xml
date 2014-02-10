@@ -1,17 +1,13 @@
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:semaphore="http://semaphore.gr">
-    <PreferenceCategory
-        android:title="@string/str_cat_scheduler_title">
+    <PreferenceCategory android:title="@string/str_cat_scheduler_title">
         <ListPreference
             android:key="scheduler"
             android:entries="@array/array_scheduler_entries"
             android:entryValues="@array/array_scheduler_values"
-            android:title="@string/str_scheduler_title"
-    />
+            android:title="@string/str_scheduler_title" />
     </PreferenceCategory>
-    <PreferenceCategory
-        android:title="@string/str_autobr_title">
+    <PreferenceCategory android:title="@string/str_autobr_title">
 
         <SwitchPreference
             android:key="sema_autobr"
@@ -21,9 +17,8 @@
             android:entries="@array/array_ab_profiles_entries"
             android:dependency="sema_autobr"
             android:entryValues="@array/array_ab_profiles_values"
-            android:title="@string/str_ab_profiles_title"
-    />
-    
+            android:title="@string/str_ab_profiles_title" />
+
         <PreferenceScreen
             android:title="@string/str_sema_autobr_tunables_title"
             android:dependency="sema_autobr">
@@ -67,45 +62,40 @@
                 android:inputType="number" />
 
         </PreferenceScreen>
-    
-    </PreferenceCategory>    
-    
-    
 
-    <PreferenceCategory
-        android:title="Touch Wake">
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="Touch Wake">
         <SwitchPreference
             android:key="touch_enable"
             android:title="@string/str_touch_enable_title" />
-    
-        <com.semaphore.sm.SeekBarPreference android:key="touch"
-                                            android:title="@string/str_touch_title"
-                                            android:dependency="touch_enable"
-                                            android:dialogMessage="@string/strEmpty"
-                                            android:defaultValue="0"
-                                            android:text=" ms"
-                                            android:max="300000"
-        />
+
+        <com.semaphore.sm.SeekBarPreference
+            android:key="touch"
+            android:title="@string/str_touch_title"
+            android:dependency="touch_enable"
+            android:dialogMessage="@string/strEmpty"
+            android:defaultValue="0"
+            android:text=" ms"
+            android:max="300000" />
     </PreferenceCategory>
-    <PreferenceCategory
-        android:title="@string/str_vibrator_title">
-        <com.semaphore.sm.SeekBarPreference android:key="vibrator"
-                                            android:title="@string/str_vibrator_dc_title"
-                                            android:dialogMessage="@string/strMsgVibrator"
-                                            android:defaultValue="100"
-                                            android:text=""
-                                            semaphore:min="0"
-                                            android:max="100"
-        />
+    <PreferenceCategory android:title="@string/str_vibrator_title">
+        <com.semaphore.sm.SeekBarPreference
+            android:key="vibrator"
+            android:title="@string/str_vibrator_dc_title"
+            android:dialogMessage="@string/strMsgVibrator"
+            android:defaultValue="100"
+            android:text=""
+            semaphore:min="0"
+            android:max="100" />
         <Preference
             android:key="vibrator_test"
             android:title="@string/str_vibrator_test_title"
-            android:summary="@string/str_vibrator_test_summary">
-        </Preference>
+            android:summary="@string/str_vibrator_test_summary" />
     </PreferenceCategory>
-    
-    <PreferenceCategory
-        android:title="@string/str_tweaks_misc_title">
+
+    <PreferenceCategory android:title="@string/str_tweaks_misc_title">
         <CheckBoxPreference
             android:key="bigmem"
             android:title="@string/str_bigmem_title"
@@ -129,5 +119,5 @@
             android:title="@string/str_bln_title"
             android:summary="@string/str_bln_summary" />
     </PreferenceCategory>
-    
+
 </PreferenceScreen>
