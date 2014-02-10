@@ -48,7 +48,6 @@ public class SAIService extends Service {
 	private boolean touchwake_disable;
 	private int touchwake_initial;
 	private SAIBlinkLED blink;
-	//    private float mAzimuth;
 	float[] I = new float[16];
 	float[] R = new float[16];
 	private float[] mMagneticValues = new float[3];

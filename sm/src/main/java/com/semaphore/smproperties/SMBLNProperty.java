@@ -15,50 +15,50 @@ import java.util.List;
 
 public class SMBLNProperty extends SMBaseProperty {
 
-    private boolean Value;
-    private boolean defValue;
+	private boolean Value;
+	private boolean defValue;
 
-    public boolean getDefValue() {
-        return defValue;
-    }
+	public boolean getDefValue() {
+		return defValue;
+	}
 
-    public boolean getValue() {
-        return Value;
-    }
+	public boolean getValue() {
+		return Value;
+	}
 
-    public void setValue(boolean Value) {
-        this.Value = Value;
-    }
+	public void setValue(boolean Value) {
+		this.Value = Value;
+	}
 
-    public SMBLNProperty(String name, boolean defValue) {
-        super(name);
+	public SMBLNProperty(String name, boolean defValue) {
+		super(name);
 
-        this.defValue = defValue;
-    }
+		this.defValue = defValue;
+	}
 
-    @Override
-    public void readValue() {
-        Commander cm = Commander.getInstance();
-        cm.run("ls /data/local/.bln | grep .bln", true);
-        if (cm.getOutResult().isEmpty())
-            setValue(false);
-        else
-            setValue(true);
-    }
+	@Override
+	public void readValue() {
+		Commander cm = Commander.getInstance();
+		cm.run("ls /data/local/.bln | grep .bln", true);
+		if (cm.getOutResult().isEmpty())
+			setValue(false);
+		else
+			setValue(true);
+	}
 
-    @Override
-    public void writeValue() {
-        Commander cm = Commander.getInstance();
-        if (Value)
-            cm.run("touch /data/local/.bln", true);
-        else
-            cm.run("rm /data/local/.bln", true);
-    }
+	@Override
+	public void writeValue() {
+		Commander cm = Commander.getInstance();
+		if (Value)
+			cm.run("touch /data/local/.bln", true);
+		else
+			cm.run("rm /data/local/.bln", true);
+	}
 
-    public void writeBatch(List<String> cmds) {
-        if (Value)
-            cmds.add("touch /data/local/.bln");
-        else
-            cmds.add("rm /data/local/.bln");
-    }
+	public void writeBatch(List<String> cmds) {
+		if (Value)
+			cmds.add("touch /data/local/.bln");
+		else
+			cmds.add("rm /data/local/.bln");
+	}
 }

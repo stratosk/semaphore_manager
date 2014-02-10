@@ -20,17 +20,17 @@ import com.semaphore.sai.SAIService;
 
 public class SMBroadcastReceiver extends BroadcastReceiver {
 
-    private final static String LOG_TAG = "Semaphore.BroadcastReceiver";
+	private final static String LOG_TAG = "Semaphore.BroadcastReceiver";
 
-    @Override
-    public void onReceive(Context context, Intent intent) {
+	@Override
+	public void onReceive(Context context, Intent intent) {
 
-        Log.d(LOG_TAG, "onReceive");
-        context.startService(new Intent(context, SemaphoreService.class));
+		Log.d(LOG_TAG, "onReceive");
+		context.startService(new Intent(context, SemaphoreService.class));
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean sai_enable = prefs.getBoolean("sai_enable", false);
-        if (sai_enable)
-            context.startService(new Intent(context, SAIService.class));
-    }
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+		boolean sai_enable = prefs.getBoolean("sai_enable", false);
+		if (sai_enable)
+			context.startService(new Intent(context, SAIService.class));
+	}
 }

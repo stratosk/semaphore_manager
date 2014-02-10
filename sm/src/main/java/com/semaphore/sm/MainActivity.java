@@ -37,6 +37,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 public class MainActivity extends Activity
 		implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -47,12 +48,8 @@ public class MainActivity extends Activity
 	private NavigationDrawerFragment mNavigationDrawerFragment;
 	private boolean createFragments = true;
 
-	/**
-	 * Used to store the last screen title. For use in {@link #restoreActionBar()}.
-	 */
-
 	int fragmentPos = 0;
-	//	List<Fragment> fragments;
+	ArrayList<String> fragmentTitles;
 	private CharSequence mTitle;
 
 	@Override
@@ -76,6 +73,14 @@ public class MainActivity extends Activity
 		unpackScripts();
 
 		checkFirstRun();
+
+		fragmentTitles = new ArrayList<>();
+		fragmentTitles.add(getString(R.string.title_section_cpu));
+		fragmentTitles.add(getString(R.string.title_section_tweaks));
+		fragmentTitles.add(getString(R.string.title_section_modules));
+		fragmentTitles.add(getString(R.string.title_section_sai));
+		fragmentTitles.add(getString(R.string.title_section_info));
+		fragmentTitles.add(getString(R.string.title_section_kmsg));
 
 		super.onCreate(savedInstanceState);
 
@@ -174,26 +179,7 @@ public class MainActivity extends Activity
 	}
 
 	public void onSectionAttached(int number) {
-		switch (number) {
-			case 1:
-				mTitle = getString(R.string.title_section_cpu);
-				break;
-			case 2:
-				mTitle = getString(R.string.title_section_tweaks);
-				break;
-			case 3:
-				mTitle = getString(R.string.title_section_modules);
-				break;
-			case 4:
-				mTitle = getString(R.string.title_section_sai);
-				break;
-			case 5:
-				mTitle = getString(R.string.title_section_info);
-				break;
-			case 6:
-				mTitle = getString(R.string.title_section_kmsg);
-				break;
-		}
+		mTitle = fragmentTitles.get(number - 1);
 		ActionBar actionBar = getActionBar();
 		if (actionBar != null) {
 			actionBar.setTitle(mTitle);

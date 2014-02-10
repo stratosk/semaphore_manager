@@ -13,73 +13,73 @@ import java.util.List;
 
 public class SMInteractiveProperty extends SMBatchProperty {
 
-    public SMModuleProperty inter;
-    public SMIntProperty hispeed_freq;
-    public SMIntProperty go_hispeed_load;
-    public SMIntProperty min_sampling_time;
-    public SMIntProperty above_hispeed_delay;
-    public SMIntProperty timer_rate;
-    public SMIntProperty timer_slack;
-    public SMIntProperty boostpulse_duration;
-    public SMStringProperty target_loads;
-    public SMIntProperty input_boost;
-    public SMIntProperty io_is_busy;
+	public SMModuleProperty inter;
+	public SMIntProperty hispeed_freq;
+	public SMIntProperty go_hispeed_load;
+	public SMIntProperty min_sampling_time;
+	public SMIntProperty above_hispeed_delay;
+	public SMIntProperty timer_rate;
+	public SMIntProperty timer_slack;
+	public SMIntProperty boostpulse_duration;
+	public SMStringProperty target_loads;
+	public SMIntProperty input_boost;
+	public SMIntProperty io_is_busy;
 
-    public SMInteractiveProperty() {
-        super("interactive");
+	public SMInteractiveProperty() {
+		super("interactive");
 
-        String basepath = "/sys/devices/system/cpu/cpufreq/interactive/";
+		String basepath = "/sys/devices/system/cpu/cpufreq/interactive/";
 
-        inter = new SMModuleProperty("cpufreq_interactive", "/system/lib/modules/cpufreq_interactive", false, false);
+		inter = new SMModuleProperty("cpufreq_interactive", "/system/lib/modules/cpufreq_interactive", false);
 
-        hispeed_freq = new SMIntProperty("i_hispeed_freq", basepath.concat("hispeed_freq"), false, 100000, 1200000, 800000);
-        go_hispeed_load = new SMIntProperty("i_go_hispeed_load", basepath.concat("go_hispeed_load"), false, 1, 100, 99);
-        min_sampling_time = new SMIntProperty("i_min_sampling_time", basepath.concat("min_sampling_time"), false, 10000, 100000, 80000);
-        above_hispeed_delay = new SMIntProperty("i_above_hispeed_delay", basepath.concat("above_hispeed_delay"), false, 10000, 100000, 20000);
-        timer_rate = new SMIntProperty("i_timer_rate", basepath.concat("timer_rate"), false, 10000, 100000, 20000);
-        timer_slack = new SMIntProperty("i_timer_slack", basepath.concat("timer_slack"), false, 10000, 200000, 80000);
-        boostpulse_duration = new SMIntProperty("i_boostpulse_duration", basepath.concat("timer_slack"), false, 10000, 200000, 80000);
-        target_loads = new SMStringProperty("i_target_loads", basepath.concat("target_loads"), false, "90");
-        input_boost = new SMIntProperty("i_input_boost", basepath.concat("input_boost"), false, 0, 1, 1);
-        io_is_busy = new SMIntProperty("i_io_is_busy", basepath.concat("io_is_busy"), false, 0, 1, 0);
-    }
+		hispeed_freq = new SMIntProperty("i_hispeed_freq", basepath.concat("hispeed_freq"), false, 100000, 1200000, 800000);
+		go_hispeed_load = new SMIntProperty("i_go_hispeed_load", basepath.concat("go_hispeed_load"), false, 1, 100, 99);
+		min_sampling_time = new SMIntProperty("i_min_sampling_time", basepath.concat("min_sampling_time"), false, 10000, 100000, 80000);
+		above_hispeed_delay = new SMIntProperty("i_above_hispeed_delay", basepath.concat("above_hispeed_delay"), false, 10000, 100000, 20000);
+		timer_rate = new SMIntProperty("i_timer_rate", basepath.concat("timer_rate"), false, 10000, 100000, 20000);
+		timer_slack = new SMIntProperty("i_timer_slack", basepath.concat("timer_slack"), false, 10000, 200000, 80000);
+		boostpulse_duration = new SMIntProperty("i_boostpulse_duration", basepath.concat("timer_slack"), false, 10000, 200000, 80000);
+		target_loads = new SMStringProperty("i_target_loads", basepath.concat("target_loads"), false, "90");
+		input_boost = new SMIntProperty("i_input_boost", basepath.concat("input_boost"), false, 0, 1, 1);
+		io_is_busy = new SMIntProperty("i_io_is_busy", basepath.concat("io_is_busy"), false, 0, 1, 0);
+	}
 
-    public void readValue() {
-        hispeed_freq.readValue();
-        go_hispeed_load.readValue();
-        min_sampling_time.readValue();
-        above_hispeed_delay.readValue();
-        timer_rate.readValue();
-        timer_slack.readValue();
-        boostpulse_duration.readValue();
-        target_loads.readValue();
-        input_boost.readValue();
-        io_is_busy.readValue();
-    }
+	public void readValue() {
+		hispeed_freq.readValue();
+		go_hispeed_load.readValue();
+		min_sampling_time.readValue();
+		above_hispeed_delay.readValue();
+		timer_rate.readValue();
+		timer_slack.readValue();
+		boostpulse_duration.readValue();
+		target_loads.readValue();
+		input_boost.readValue();
+		io_is_busy.readValue();
+	}
 
-    public void writeValue() {
-        hispeed_freq.writeValue();
-        go_hispeed_load.writeValue();
-        min_sampling_time.writeValue();
-        above_hispeed_delay.writeValue();
-        timer_rate.writeValue();
-        timer_slack.writeValue();
-        boostpulse_duration.writeValue();
-        target_loads.writeValue();
-        input_boost.writeValue();
-        io_is_busy.writeValue();
-    }
+	public void writeValue() {
+		hispeed_freq.writeValue();
+		go_hispeed_load.writeValue();
+		min_sampling_time.writeValue();
+		above_hispeed_delay.writeValue();
+		timer_rate.writeValue();
+		timer_slack.writeValue();
+		boostpulse_duration.writeValue();
+		target_loads.writeValue();
+		input_boost.writeValue();
+		io_is_busy.writeValue();
+	}
 
-    public void writebatch(List<String> cmds) {
-        hispeed_freq.writeBatch(cmds);
-        go_hispeed_load.writeBatch(cmds);
-        min_sampling_time.writeBatch(cmds);
-        above_hispeed_delay.writeBatch(cmds);
-        timer_rate.writeBatch(cmds);
-        timer_slack.writeBatch(cmds);
-        boostpulse_duration.writeBatch(cmds);
-        target_loads.writeBatch(cmds);
-        input_boost.writeBatch(cmds);
-        io_is_busy.writeBatch(cmds);
-    }
+	public void writebatch(List<String> cmds) {
+		hispeed_freq.writeBatch(cmds);
+		go_hispeed_load.writeBatch(cmds);
+		min_sampling_time.writeBatch(cmds);
+		above_hispeed_delay.writeBatch(cmds);
+		timer_rate.writeBatch(cmds);
+		timer_slack.writeBatch(cmds);
+		boostpulse_duration.writeBatch(cmds);
+		target_loads.writeBatch(cmds);
+		input_boost.writeBatch(cmds);
+		io_is_busy.writeBatch(cmds);
+	}
 }

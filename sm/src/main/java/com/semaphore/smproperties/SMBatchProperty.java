@@ -11,7 +11,7 @@ package com.semaphore.smproperties;
 
 public abstract class SMBatchProperty extends SMBaseProperty {
 
-    public SMBatchProperty(String name) {
-        super(name);
-    }
+	public SMBatchProperty(String name) {
+		super(name);
+	}
 }

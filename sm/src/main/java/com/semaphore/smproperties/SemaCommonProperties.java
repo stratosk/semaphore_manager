@@ -13,24 +13,24 @@ import android.content.Context;
 
 public class SemaCommonProperties {
 
-    public SemaCommonProperties() {
-    }
+	public SemaCommonProperties() {
+	}
 
-    public void readValues() {
-    }
+	public void readValues() {
+	}
 
-    public void writeBatch() {
-    }
+	public void writeBatch() {
+	}
 
-    public void writeValues() {
-    }
+	public void writeValues() {
+	}
 
-    public void setPreferences(Context context) {
-    }
+	public void setPreferences(Context context) {
+	}
 
-    public void getPreferences(Context context) {
-    }
+	public void getPreferences(Context context) {
+	}
 
-    public void resetDefaults() {
-    }
+	public void resetDefaults() {
+	}
 }

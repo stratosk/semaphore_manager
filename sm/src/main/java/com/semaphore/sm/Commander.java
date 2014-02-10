@@ -28,224 +28,197 @@ import java.util.logging.Logger;
 
 public class Commander {
 
-    private static Commander instance = null;
-    private final List<String> errResult;
-    private final List<String> outResult;
-    private Process p;
-    OutputStreamWriter osw;
+	private static Commander instance = null;
+	private final List<String> errResult;
+	private final List<String> outResult;
+	private Process p;
+	OutputStreamWriter osw;
 
-    protected Commander() {
-        errResult = new ArrayList<>();
-        outResult = new ArrayList<>();
-    }
+	protected Commander() {
+		errResult = new ArrayList<>();
+		outResult = new ArrayList<>();
+	}
 
-    public static Commander getInstance() {
-        if (instance == null)
-            synchronized (Commander.class) {
-                if (instance == null)
-                    instance = new Commander();
-            }
-        return instance;
-    }
+	public static Commander getInstance() {
+		if (instance == null)
+			synchronized (Commander.class) {
+				if (instance == null)
+					instance = new Commander();
+			}
+		return instance;
+	}
 
-    public List<String> getErrResult() {
-        return errResult;
-    }
+	public List<String> getOutResult() {
+		return outResult;
+	}
 
-    public List<String> getOutResult() {
-        return outResult;
-    }
+	public boolean needSU(String path) {
+		File f = new File(path);
+		return !f.exists() || !f.isFile() || !f.canWrite();
+	}
 
-    public void openShell() {
-        ProcessBuilder pb = new ProcessBuilder("su", "-c", "/system/bin/sh");
-        try {
-            p = pb.start();
-            OutputStream os = p.getOutputStream();
-            osw = new OutputStreamWriter(os);
-        } catch (IOException ignored) {
-        }
-    }
+	public int readFile(String path) {
+		int result = 1;
 
-    public void closeShell() {
-        try {
-            // Close the terminal
-            osw.write("\nexit\n");
-            osw.close();
-        } catch (IOException ignored) {
-        }
-    }
+		outResult.clear();
+		File f = new File(path);
+		if (f.exists() && f.isFile() && f.canRead())
+			try {
+				BufferedReader br = new BufferedReader(new FileReader(f), 512);
+				String line;
+				try {
+					while ((line = br.readLine()) != null)
+						outResult.add(line);
 
-    public boolean needSU(String path) {
-        File f = new File(path);
-        return !f.exists() || !f.isFile() || !f.canWrite();
-    }
+					if (!outResult.isEmpty())
+						result = 0;
+					br.close();
+				} catch (IOException ex) {
+					Logger.getLogger(Commander.class.getName()).log(Level.SEVERE, null, ex);
+				}
 
-    public int readFile(String path) {
-        int result = 1;
+			} catch (FileNotFoundException ex) {
+				Log.e(Commander.class.getName(), "Error reading file: ".concat(path));
+			}
 
-        outResult.clear();
-        File f = new File(path);
-        if (f.exists() && f.isFile() && f.canRead())
-            try {
-                BufferedReader br = new BufferedReader(new FileReader(f), 512);
-                String line;
-                try {
-                    while ((line = br.readLine()) != null)
-                        outResult.add(line);
+		return result;
+	}
 
-                    if (!outResult.isEmpty())
-                        result = 0;
-                    br.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(Commander.class.getName()).log(Level.SEVERE, null, ex);
-                }
+	public int writeFile(String path, String value) {
+		try {
+			File file = new File(path);
 
-            } catch (FileNotFoundException ex) {
-                Log.e(Commander.class.getName(), "Error reading file: ".concat(path));
-            }
+			if (!file.exists() || !file.canWrite())
+				return 1;
 
-        return result;
-    }
+			FileWriter fw = new FileWriter(file.getAbsoluteFile());
+			fw.write(value);
+			fw.close();
 
-    public int writeFile(String path, String value) {
-        try {
-            File file = new File(path);
+			return 0;
+		} catch (IOException e) {
+			Log.e(Commander.class.getName(), "Error writing file: ".concat(path));
+			return 1;
+		}
+	}
 
-            if (!file.exists() || !file.canWrite())
-                return 1;
+	public int runSuBatch(List<String> cmds) {
+		int result;
+		int exitValue = -99;
 
-            FileWriter fw = new FileWriter(file.getAbsoluteFile());
-            fw.write(value);
-            fw.close();
+		ProcessBuilder pb = new ProcessBuilder("su", "-c", "/system/bin/sh");
+		try {
+			p = pb.start();
+			OutputStream os = p.getOutputStream();
+			osw = new OutputStreamWriter(os);
 
-            return 0;
-        } catch (IOException e) {
-            Log.e(Commander.class.getName(), "Error writing file: ".concat(path));
-            return 1;
-        }
-    }
+			for (String s : cmds)
+				osw.write(s + "\n");
+			osw.write("\nexit\n");
+			osw.flush();
+			osw.close();
 
-    public int runSuBatch(List<String> cmds) {
-        int result;
-        int exitValue = -99;
+			errResult.clear();
+			outResult.clear();
 
-        ProcessBuilder pb = new ProcessBuilder("su", "-c", "/system/bin/sh");
-        try {
-            p = pb.start();
-            OutputStream os = p.getOutputStream();
-            osw = new OutputStreamWriter(os);
+			Thread errt = new streamReader(p.getErrorStream(), errResult);
+			Thread outt = new streamReader(p.getInputStream(), outResult);
+			errt.start();
+			outt.start();
 
-            for (String s : cmds)
-                osw.write(s + "\n");
-            osw.write("\nexit\n");
-            osw.flush();
-            osw.close();
+			try {
+				exitValue = p.waitFor();
+				try {
+					errt.join();
+					outt.join();
+				} catch (InterruptedException ignored) {
+				}
 
-            errResult.clear();
-            outResult.clear();
+				if (exitValue == 0)
+					if (errResult.isEmpty())
+						result = 0;
+					else
+						result = 1;
+				else
+					result = 1;
+			} catch (InterruptedException e) {
+				result = 1;
+			}
+		} catch (IOException e) {
+			result = 1;
+		}
+		return result;
+	}
 
-            Thread errt = new streamReader(p.getErrorStream(), errResult);
-            Thread outt = new streamReader(p.getInputStream(), outResult);
-            errt.start();
-            outt.start();
+	public int run(String cmd, boolean su) {
+		int result;
 
-            try {
-                exitValue = p.waitFor();
-                try {
-                    errt.join();
-                    outt.join();
-                } catch (InterruptedException ignored) {
-                }
+		ProcessBuilder pb;
+		if (su)
+			pb = new ProcessBuilder("su", "-c", "/system/bin/sh");
+		else
+			pb = new ProcessBuilder("/system/bin/sh");
+		try {
+			p = pb.start();
+			OutputStream os = p.getOutputStream();
+			osw = new OutputStreamWriter(os);
 
-                if (exitValue == 0)
-                    if (errResult.isEmpty())
-                        result = 0;
-                    else
-                        result = 1;
-                else
-                    result = 1;
-            } catch (InterruptedException e) {
-                result = 1;
-            }
-        } catch (IOException e) {
-            result = 1;
-        }
-        return result;
-    }
+			osw.write(cmd);
+			osw.write("\nexit\n");
+			osw.flush();
+			osw.close();
 
-    public int run(String cmd, boolean su) {
-        int result;
+			errResult.clear();
+			outResult.clear();
 
-        ProcessBuilder pb;
-        if (su)
-            pb = new ProcessBuilder("su", "-c", "/system/bin/sh");
-        else
-            pb = new ProcessBuilder("/system/bin/sh");
-        try {
-            p = pb.start();
-            OutputStream os = p.getOutputStream();
-            osw = new OutputStreamWriter(os);
+			Thread errt = new streamReader(p.getErrorStream(), errResult);
+			Thread outt = new streamReader(p.getInputStream(), outResult);
+			errt.start();
+			outt.start();
 
-            osw.write(cmd);
-            osw.write("\nexit\n");
-            osw.flush();
-            osw.close();
+			try {
+				int exitVal = p.waitFor();
+				try {
+					errt.join();
+					outt.join();
+				} catch (InterruptedException ignored) {
+				}
 
-            errResult.clear();
-            outResult.clear();
+				if (exitVal == 0)
+					if (errResult.isEmpty())
+						result = 0;
+					else
+						result = 1;
+				else
+					result = 1;
+			} catch (InterruptedException e) {
+				result = 1;
+			}
+		} catch (IOException e) {
+			result = 1;
+		}
+		return result;
+	}
 
-            Thread errt = new streamReader(p.getErrorStream(), errResult);
-            Thread outt = new streamReader(p.getInputStream(), outResult);
-            errt.start();
-            outt.start();
+	private class streamReader extends Thread {
 
-            try {
-                int exitVal = p.waitFor();
-                try {
-                    errt.join();
-                    outt.join();
-                } catch (InterruptedException ignored) {
-                }
+		InputStream inputStream;
+		List<String> result;
 
-                if (exitVal == 0)
-                    if (errResult.isEmpty())
-                        result = 0;
-                    else
-                        result = 1;
-                else
-                    result = 1;
-            } catch (InterruptedException e) {
-                result = 1;
-            }
-        } catch (IOException e) {
-            result = 1;
-        }
-        return result;
-    }
+		streamReader(InputStream inputStream, List<String> result) {
+			this.inputStream = inputStream;
+			this.result = result;
+		}
 
-    private class streamReader extends Thread {
-
-        InputStream inputStream;
-        List<String> result;
-
-        streamReader(InputStream inputStream, List<String> result) {
-            this.inputStream = inputStream;
-            this.result = result;
-        }
-
-        @Override
-        public void run() {
-            try {
-                BufferedReader out = new BufferedReader(new InputStreamReader(inputStream));
-                String line;
-                while ((line = out.readLine()) != null)
-                    result.add(line);
-            } catch (java.io.IOException ignored) {
-            }
-        }
-
-        public List<String> getResult() {
-            return result;
-        }
-    }
+		@Override
+		public void run() {
+			try {
+				BufferedReader out = new BufferedReader(new InputStreamReader(inputStream));
+				String line;
+				while ((line = out.readLine()) != null)
+					result.add(line);
+			} catch (java.io.IOException ignored) {
+			}
+		}
+	}
 }

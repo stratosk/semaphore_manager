@@ -14,30 +14,33 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 
 public class SMGestureListener extends GestureDetector.SimpleOnGestureListener {
-    private static final int SWIPE_DISTANCE_THRESHOLD = 120; // was 100
-    private static final int SWIPE_VELOCITY_THRESHOLD = 80; // was 100
-    private Activity activity;
+	private static final int SWIPE_DISTANCE_THRESHOLD = 120;
+	private static final int SWIPE_OFF_PATH_THRESHOLD = 100;
+	private static final int SWIPE_VELOCITY_THRESHOLD = 80;
+	private Activity activity;
 
-    public SMGestureListener(Activity activity) {
-        this.activity = activity;
-    }
+	public SMGestureListener(Activity activity) {
+		this.activity = activity;
+	}
 
-    @Override
-    public boolean onDown(MotionEvent event) {
-        return true;
-    }
+	@Override
+	public boolean onDown(MotionEvent event) {
+		return true;
+	}
 
-    @Override
-    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        float distanceX = e2.getX() - e1.getX();
-        if (Math.abs(distanceX) > SWIPE_DISTANCE_THRESHOLD
-                && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
-            if (distanceX > 0)
-                ((MainActivity) activity).handleSwipeRightToLeft();
-            else
-                ((MainActivity) activity).handleSwipeLeftToRight();
-            return true;
-        }
-        return false;
-    }
+	@Override
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+		float distanceX = e2.getX() - e1.getX();
+		float distanceY = e2.getY() - e1.getY();
+		if (Math.abs(distanceY) < SWIPE_OFF_PATH_THRESHOLD
+				&& Math.abs(distanceX) > SWIPE_DISTANCE_THRESHOLD
+				&& Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+			if (distanceX > 0)
+				((MainActivity) activity).handleSwipeRightToLeft();
+			else
+				((MainActivity) activity).handleSwipeLeftToRight();
+			return true;
+		}
+		return false;
+	}
 }

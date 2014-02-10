@@ -13,32 +13,32 @@ import com.semaphore.sm.Commander;
 
 public class SAIBlinkLED extends Thread {
 
-    int mBlinkInterval;
+	int mBlinkInterval;
 
-    public SAIBlinkLED(int interval) {
-        mBlinkInterval = interval;
-    }
+	public SAIBlinkLED(int interval) {
+		mBlinkInterval = interval;
+	}
 
-    @Override
-    public void run() {
-        String path = "/sys/devices/virtual/misc/notification/led";
+	@Override
+	public void run() {
+		String path = "/sys/devices/virtual/misc/notification/led";
 
-        Commander cm = Commander.getInstance();
+		Commander cm = Commander.getInstance();
 
-        while (!isInterrupted()) {
-            cm.writeFile(path, "1");
-            try {
-                sleep(mBlinkInterval);
-            } catch (InterruptedException ex) {
-                break;
-            }
-            cm.writeFile(path, "0");
-            try {
-                sleep(mBlinkInterval);
-            } catch (InterruptedException ex) {
-                break;
-            }
-        }
-        cm.writeFile(path, "0");
-    }
+		while (!isInterrupted()) {
+			cm.writeFile(path, "1");
+			try {
+				sleep(mBlinkInterval);
+			} catch (InterruptedException ex) {
+				break;
+			}
+			cm.writeFile(path, "0");
+			try {
+				sleep(mBlinkInterval);
+			} catch (InterruptedException ex) {
+				break;
+			}
+		}
+		cm.writeFile(path, "0");
+	}
 }

@@ -77,8 +77,11 @@ public class TabTweaksFragment extends PreferenceFragment implements SharedPrefe
 			}
 		};
 
-		for (int i = 0; i < view.getChildCount(); i++)
-			view.getChildAt(i).setOnTouchListener(tl);
+		for (int i = 0; i < view.getChildCount(); i++) {
+			View child = view.getChildAt(i);
+			if (child != null)
+				child.setOnTouchListener(tl);
+		}
 
 		view.setOnTouchListener(new View.OnTouchListener() {
 			@Override
@@ -92,6 +95,12 @@ public class TabTweaksFragment extends PreferenceFragment implements SharedPrefe
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		((MainActivity) activity).onSectionAttached(2);
+	}
+
+	private void setEditSummary(String prefName) {
+		EditTextPreference pref = (EditTextPreference) findPreference(prefName);
+		if (pref != null)
+			pref.setSummary(pref.getText());
 	}
 
 	private void updateSummariesI9000() {
@@ -116,18 +125,12 @@ public class TabTweaksFragment extends PreferenceFragment implements SharedPrefe
 		pref = findPreference(sp.touch.getName());
 		pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
 
-		pref = findPreference(sp.autobr.min_brightness.getName());
-		pref.setSummary(((EditTextPreference) pref).getText());
-		pref = findPreference(sp.autobr.max_brightness.getName());
-		pref.setSummary(((EditTextPreference) pref).getText());
-		pref = findPreference(sp.autobr.max_lux.getName());
-		pref.setSummary(((EditTextPreference) pref).getText());
-		pref = findPreference(sp.autobr.instant_update_thres.getName());
-		pref.setSummary(((EditTextPreference) pref).getText());
-		pref = findPreference(sp.autobr.effect_delay_ms.getName());
-		pref.setSummary(((EditTextPreference) pref).getText());
-		pref = findPreference(sp.autobr.max_br_threshold.getName());
-		pref.setSummary(((EditTextPreference) pref).getText());
+		setEditSummary(sp.autobr.min_brightness.getName());
+		setEditSummary(sp.autobr.max_brightness.getName());
+		setEditSummary(sp.autobr.max_lux.getName());
+		setEditSummary(sp.autobr.instant_update_thres.getName());
+		setEditSummary(sp.autobr.effect_delay_ms.getName());
+		setEditSummary(sp.autobr.max_br_threshold.getName());
 	}
 
 	private void updateSummariesN4() {
@@ -177,21 +180,14 @@ public class TabTweaksFragment extends PreferenceFragment implements SharedPrefe
 		if (scPref != null)
 			scPref.setSummary(sp.taccuracy.accuracy_filter_enable.getValue() == 1 ? "Enabled" : "Disabled");
 
-		pref = findPreference(sp.taccuracy.ignore_pressure_gap.getName());
-		pref.setSummary(((EditTextPreference) pref).getText());
-		pref = findPreference(sp.taccuracy.delta_max.getName());
-		pref.setSummary(((EditTextPreference) pref).getText());
-		pref = findPreference(sp.taccuracy.touch_max_count.getName());
-		pref.setSummary(((EditTextPreference) pref).getText());
-		pref = findPreference(sp.taccuracy.max_pressure.getName());
-		pref.setSummary(((EditTextPreference) pref).getText());
-		pref = findPreference(sp.taccuracy.direction_count.getName());
-		pref.setSummary(((EditTextPreference) pref).getText());
-		pref = findPreference(sp.taccuracy.time_to_max_pressure.getName());
-		pref.setSummary(((EditTextPreference) pref).getText());
+		setEditSummary(sp.taccuracy.ignore_pressure_gap.getName());
+		setEditSummary(sp.taccuracy.delta_max.getName());
+		setEditSummary(sp.taccuracy.touch_max_count.getName());
+		setEditSummary(sp.taccuracy.max_pressure.getName());
+		setEditSummary(sp.taccuracy.direction_count.getName());
+		setEditSummary(sp.taccuracy.time_to_max_pressure.getName());
 
-		pref = findPreference(sp.tjitter.adjust_margin.getName());
-		pref.setSummary(((EditTextPreference) pref).getText());
+		setEditSummary(sp.tjitter.adjust_margin.getName());
 
 		pref = findPreference(sp.lcdtemp.lcd_red.getName());
 		pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
@@ -200,12 +196,9 @@ public class TabTweaksFragment extends PreferenceFragment implements SharedPrefe
 		pref = findPreference(sp.lcdtemp.lcd_blue.getName());
 		pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
 
-		pref = findPreference(sp.gamma_r.getName());
-		pref.setSummary(((EditTextPreference) pref).getText());
-		pref = findPreference(sp.gamma_g.getName());
-		pref.setSummary(((EditTextPreference) pref).getText());
-		pref = findPreference(sp.gamma_b.getName());
-		pref.setSummary(((EditTextPreference) pref).getText());
+		setEditSummary(sp.gamma_r.getName());
+		setEditSummary(sp.gamma_g.getName());
+		setEditSummary(sp.gamma_b.getName());
 	}
 
 	public void updateSummaries() {
@@ -230,19 +223,19 @@ public class TabTweaksFragment extends PreferenceFragment implements SharedPrefe
 			sp.vibrator.setValue(sharedPreferences.getInt(key, sp.vibrator.getDefault()));
 			sp.vibrator.writeValue();
 		} else if (key.equals(sp.touch_enable.getName())) {
-			sp.touch_enable.setValue(sharedPreferences.getBoolean(key, sp.touch_enable.getDefBoolean()) == true ? 1 : 0);
+			sp.touch_enable.setValue(sharedPreferences.getBoolean(key, sp.touch_enable.getDefBoolean()) ? 1 : 0);
 			sp.touch_enable.writeValue();
 		} else if (key.equals(sp.touch.getName())) {
 			sp.touch.setValue(sharedPreferences.getInt(key, sp.touch.getDefault()));
 			sp.touch.writeValue();
 		} else if (key.equals(sp.dt_wake_enabled.getName())) {
-			sp.dt_wake_enabled.setValue(sharedPreferences.getBoolean(key, sp.dt_wake_enabled.getDefBoolean()) == true ? 1 : 0);
+			sp.dt_wake_enabled.setValue(sharedPreferences.getBoolean(key, sp.dt_wake_enabled.getDefBoolean()) ? 1 : 0);
 			sp.dt_wake_enabled.writeValue();
 		} else if (key.equals(sp.tcp_congestion.getName())) {
 			sp.tcp_congestion.setValue(sharedPreferences.getString(key, sp.tcp_congestion.getDefValue()));
 			sp.tcp_congestion.writeValue();
 		} else if (key.equals(sp.taccuracy.accuracy_filter_enable.getName())) {
-			sp.taccuracy.accuracy_filter_enable.setValue(sharedPreferences.getBoolean(key, sp.taccuracy.accuracy_filter_enable.getDefBoolean()) == true ? 1 : 0);
+			sp.taccuracy.accuracy_filter_enable.setValue(sharedPreferences.getBoolean(key, sp.taccuracy.accuracy_filter_enable.getDefBoolean()) ? 1 : 0);
 			sp.taccuracy.writeValue();
 		} else if (key.equals(sp.taccuracy.ignore_pressure_gap.getName())) {
 			sp.taccuracy.ignore_pressure_gap.setValue(sharedPreferences.getString(key, sp.taccuracy.ignore_pressure_gap.getDefString()));
@@ -263,7 +256,7 @@ public class TabTweaksFragment extends PreferenceFragment implements SharedPrefe
 			sp.taccuracy.time_to_max_pressure.setValue(sharedPreferences.getString(key, sp.taccuracy.time_to_max_pressure.getDefString()));
 			sp.taccuracy.writeValue();
 		} else if (key.equals(sp.tjitter.jitter_enable.getName())) {
-			sp.tjitter.jitter_enable.setValue(sharedPreferences.getBoolean(key, sp.tjitter.jitter_enable.getDefBoolean()) == true ? 1 : 0);
+			sp.tjitter.jitter_enable.setValue(sharedPreferences.getBoolean(key, sp.tjitter.jitter_enable.getDefBoolean()) ? 1 : 0);
 			sp.tjitter.writeValue();
 		} else if (key.equals(sp.tjitter.adjust_margin.getName())) {
 			sp.tjitter.adjust_margin.setValue(sharedPreferences.getString(key, sp.tjitter.adjust_margin.getDefString()));
@@ -302,7 +295,7 @@ public class TabTweaksFragment extends PreferenceFragment implements SharedPrefe
 			sp.max_br.setValue(sharedPreferences.getInt(key, sp.max_br.getDefault()));
 			sp.max_br.writeValue();
 		} else if (key.equals(sp.br_mode.getName())) {
-			sp.br_mode.setValue(sharedPreferences.getBoolean(key, sp.br_mode.getDefBoolean()) == true ? 1 : 0);
+			sp.br_mode.setValue(sharedPreferences.getBoolean(key, sp.br_mode.getDefBoolean()) ? 1 : 0);
 			sp.br_mode.writeValue();
 		} else if (key.equals(sp.read_ahead.getName())) {
 			sp.read_ahead.setValue(sharedPreferences.getString(key, sp.read_ahead.getDefValue()));
@@ -364,19 +357,19 @@ public class TabTweaksFragment extends PreferenceFragment implements SharedPrefe
 			sp.vibrator.setValue(sharedPreferences.getInt(key, sp.vibrator.getDefault()));
 			sp.vibrator.writeValue();
 		} else if (key.equals(sp.touch_enable.getName())) {
-			sp.touch_enable.setValue(sharedPreferences.getBoolean(key, sp.touch_enable.getDefBoolean()) == true ? 1 : 0);
+			sp.touch_enable.setValue(sharedPreferences.getBoolean(key, sp.touch_enable.getDefBoolean()) ? 1 : 0);
 			sp.touch_enable.writeValue();
 		} else if (key.equals(sp.touch.getName())) {
 			sp.touch.setValue(sharedPreferences.getInt(key, sp.touch.getDefault()));
 			sp.touch.writeValue();
 		} else if (key.equals(sp.bigmem.getName())) {
-			sp.bigmem.setValue(sharedPreferences.getBoolean(key, sp.bigmem.getDefBoolean()) == true ? 1 : 0);
+			sp.bigmem.setValue(sharedPreferences.getBoolean(key, sp.bigmem.getDefBoolean()) ? 1 : 0);
 			sp.bigmem.writeValue();
 		} else if (key.equals(sp.wififast.getName())) {
-			sp.wififast.setValue(sharedPreferences.getBoolean(key, sp.wififast.getDefBoolean()) == true ? 1 : 0);
+			sp.wififast.setValue(sharedPreferences.getBoolean(key, sp.wififast.getDefBoolean()) ? 1 : 0);
 			sp.wififast.writeValue();
 		} else if (key.equals(sp.forcefastchg.getName())) {
-			sp.forcefastchg.setValue(sharedPreferences.getBoolean(key, sp.forcefastchg.getDefBoolean()) == true ? 1 : 0);
+			sp.forcefastchg.setValue(sharedPreferences.getBoolean(key, sp.forcefastchg.getDefBoolean()) ? 1 : 0);
 			sp.forcefastchg.writeValue();
 		} else if (key.equals(sp.read_ahead.getName())) {
 			sp.read_ahead.setValue(sharedPreferences.getString(key, sp.read_ahead.getDefValue()));
@@ -424,7 +417,7 @@ public class TabTweaksFragment extends PreferenceFragment implements SharedPrefe
 	}
 
 	public void vibratorTest() {
-		Vibrator v = (Vibrator) this.getActivity().getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+		Vibrator v = (Vibrator) getActivity().getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
 		v.vibrate(750);
 	}
 

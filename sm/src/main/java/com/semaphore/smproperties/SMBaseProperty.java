@@ -11,21 +11,21 @@ package com.semaphore.smproperties;
 
 public abstract class SMBaseProperty {
 
-    private String Name;
+	private String Name;
 
-    public String getName() {
-        return Name;
-    }
+	public String getName() {
+		return Name;
+	}
 
-    public void setName(String Name) {
-        this.Name = Name;
-    }
+	public void setName(String Name) {
+		this.Name = Name;
+	}
 
-    public SMBaseProperty(String name) {
-        Name = name;
-    }
+	public SMBaseProperty(String name) {
+		Name = name;
+	}
 
-    public abstract void readValue();
+	public abstract void readValue();
 
-    public abstract void writeValue();
+	public abstract void writeValue();
 }

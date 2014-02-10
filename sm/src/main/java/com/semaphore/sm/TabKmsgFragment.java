@@ -11,6 +11,7 @@ package com.semaphore.sm;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -149,7 +150,12 @@ public class TabKmsgFragment extends Fragment {
 			out.flush();
 			out.close();
 
-			Toast.makeText(getActivity().getApplicationContext(), getString(R.string.strMsgKmsgSaved) + kmsg_file, Toast.LENGTH_LONG).show();
+			Activity activity = getActivity();
+			if (activity != null) {
+				Context context = activity.getApplicationContext();
+				if (context != null)
+					Toast.makeText(context, getString(R.string.strMsgKmsgSaved) + kmsg_file, Toast.LENGTH_LONG).show();
+			}
 		} catch (IOException ignored) {
 		}
 	}

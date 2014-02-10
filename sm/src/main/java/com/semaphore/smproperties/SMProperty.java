@@ -11,32 +11,32 @@ package com.semaphore.smproperties;
 
 public abstract class SMProperty extends SMBaseProperty {
 
-    private String Path;
-    private boolean Dynamic;
+	private String Path;
+	private boolean Dynamic;
 
-    public boolean isDynamic() {
-        return Dynamic;
-    }
+	public boolean isDynamic() {
+		return Dynamic;
+	}
 
-    public void setDynamic(boolean Dynamic) {
-        this.Dynamic = Dynamic;
-    }
+	public void setDynamic(boolean Dynamic) {
+		this.Dynamic = Dynamic;
+	}
 
-    public String getPath() {
-        return Path;
-    }
+	public String getPath() {
+		return Path;
+	}
 
-    public void setPath(String Path) {
-        this.Path = Path;
-    }
+	public void setPath(String Path) {
+		this.Path = Path;
+	}
 
-    public SMProperty(String name, String path, boolean dynamic) {
-        super(name);
-        Path = path;
-        Dynamic = dynamic;
-    }
+	public SMProperty(String name, String path, boolean dynamic) {
+		super(name);
+		Path = path;
+		Dynamic = dynamic;
+	}
 
-    public abstract void readValue();
+	public abstract void readValue();
 
-    public abstract void writeValue();
+	public abstract void writeValue();
 }

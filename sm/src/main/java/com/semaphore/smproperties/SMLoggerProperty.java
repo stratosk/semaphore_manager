@@ -15,52 +15,52 @@ import java.util.List;
 
 public class SMLoggerProperty extends SMBaseProperty {
 
-    private boolean Value;
-    private boolean defValue;
-    private String modPath;
+	private boolean Value;
+	private boolean defValue;
+	private String modPath;
 
-    public boolean getDefValue() {
-        return defValue;
-    }
+	public boolean getDefValue() {
+		return defValue;
+	}
 
-    public boolean getValue() {
-        return Value;
-    }
+	public boolean getValue() {
+		return Value;
+	}
 
-    public void setValue(boolean Value) {
-        this.Value = Value;
-    }
+	public void setValue(boolean Value) {
+		this.Value = Value;
+	}
 
-    public SMLoggerProperty(String name, String modPath, boolean defValue) {
-        super(name);
+	public SMLoggerProperty(String name, String modPath, boolean defValue) {
+		super(name);
 
-        this.modPath = modPath;
-        this.defValue = defValue;
-    }
+		this.modPath = modPath;
+		this.defValue = defValue;
+	}
 
-    @Override
-    public void readValue() {
-        Commander cm = Commander.getInstance();
-        cm.run("ls /data/local/logger.ko | grep logger.ko", true);
-        if (cm.getOutResult().isEmpty())
-            setValue(false);
-        else
-            setValue(true);
-    }
+	@Override
+	public void readValue() {
+		Commander cm = Commander.getInstance();
+		cm.run("ls /data/local/logger.ko | grep logger.ko", true);
+		if (cm.getOutResult().isEmpty())
+			setValue(false);
+		else
+			setValue(true);
+	}
 
-    @Override
-    public void writeValue() {
-        Commander cm = Commander.getInstance();
-        if (Value)
-            cm.run("cp " + modPath + "/logger.ko /data/local/logger.ko", true);
-        else
-            cm.run("rm /data/local/logger.ko", true);
-    }
+	@Override
+	public void writeValue() {
+		Commander cm = Commander.getInstance();
+		if (Value)
+			cm.run("cp " + modPath + "/logger.ko /data/local/logger.ko", true);
+		else
+			cm.run("rm /data/local/logger.ko", true);
+	}
 
-    public void writeBatch(List<String> cmds) {
-        if (Value)
-            cmds.add("cp " + modPath + "logger.ko /data/local/logger.ko");
-        else
-            cmds.add("rm /data/local/logger.ko");
-    }
+	public void writeBatch(List<String> cmds) {
+		if (Value)
+			cmds.add("cp " + modPath + "logger.ko /data/local/logger.ko");
+		else
+			cmds.add("rm /data/local/logger.ko");
+	}
 }

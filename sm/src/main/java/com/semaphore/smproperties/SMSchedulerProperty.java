@@ -15,51 +15,53 @@ import java.util.List;
 
 public class SMSchedulerProperty extends SMBaseProperty {
 
-    private String Value;
-    private String defValue;
-    public String basepath;
+	private final String scriptsPath = "/data/data/com.semaphore.sm/scripts/";
+	private String Value;
+	private String defValue;
+	public String basepath;
 
-    public String getDefValue() {
-        return defValue;
-    }
+	public String getDefValue() {
+		return defValue;
+	}
 
-    public String getValue() {
-        return Value;
-    }
+	public String getValue() {
+		return Value;
+	}
 
-    public void setValue(String Value) {
-        this.Value = Value;
-    }
+	public void setValue(String Value) {
+		this.Value = Value;
+	}
 
-    public SMSchedulerProperty(String name, String defValue) {
-        super(name);
+	public SMSchedulerProperty(String name, String defValue) {
+		super(name);
 
-        this.defValue = defValue;
-    }
+		this.defValue = defValue;
+	}
 
-    @Override
-    public void readValue() {
-        Commander cm = Commander.getInstance();
-        cm.readFile("/sys/block/mmcblk0/queue/scheduler");
-        if (!cm.getOutResult().isEmpty()) {
-            String s = cm.getOutResult().get(0);
-            int start = s.indexOf('[');
-            int end = s.indexOf(']');
-            s = s.substring(start + 1, end);
-            setValue(s);
-        } else
-            setValue("");
-    }
+	@Override
+	public void readValue() {
+		Commander cm = Commander.getInstance();
+		String schedulerPath = "/sys/block/mmcblk0/queue/scheduler";
+		cm.readFile(schedulerPath);
+		if (!cm.getOutResult().isEmpty()) {
+			String s = cm.getOutResult().get(0);
+			int start = s.indexOf('[');
+			int end = s.indexOf(']');
+			s = s.substring(start + 1, end);
+			setValue(s);
+		} else
+			setValue("");
+	}
 
-    @Override
-    public void writeValue() {
-        Commander cm = Commander.getInstance();
-        if (!Value.isEmpty())
-            cm.run("/data/data/com.semaphore.sm/scripts/" + getValue(), true);
-    }
+	@Override
+	public void writeValue() {
+		Commander cm = Commander.getInstance();
+		if (!Value.isEmpty())
+			cm.run(scriptsPath + getValue(), true);
+	}
 
-    public void writeBatch(List<String> cmds) {
-        if (!Value.isEmpty())
-            cmds.add("/data/data/com.semaphore.sm/scripts/" + getValue());
-    }
+	public void writeBatch(List<String> cmds) {
+		if (!Value.isEmpty())
+			cmds.add(scriptsPath + getValue());
+	}
 }

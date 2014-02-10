@@ -13,48 +13,48 @@ import java.util.List;
 
 public class SMOndemandProperty extends SMBatchProperty {
 
-    public SMIntProperty io_is_busy;
-    public SMIntProperty sampling_down_factor;
-    public SMIntProperty sampling_rate;
-    public SMIntProperty up_threshold;
-    public SMIntProperty powersave_bias;
-    public String basepath;
+	public SMIntProperty io_is_busy;
+	public SMIntProperty sampling_down_factor;
+	public SMIntProperty sampling_rate;
+	public SMIntProperty up_threshold;
+	public SMIntProperty powersave_bias;
+	public String basepath;
 
-    public SMOndemandProperty() {
-        super("ondemand");
+	public SMOndemandProperty() {
+		super("ondemand");
 
-        basepath = "/sys/devices/system/cpu/cpufreq/ondemand/";
+		basepath = "/sys/devices/system/cpu/cpufreq/ondemand/";
 
-        io_is_busy = new SMIntProperty("o_io_is_busy", basepath.concat("io_is_busy"), false, 0, 1, 0);
-        sampling_down_factor = new SMIntProperty("o_sampling_down_factor", basepath.concat("sampling_down_factor"), false, 1, 1000, 1);
-        sampling_rate = new SMIntProperty("o_sampling_rate", basepath.concat("sampling_rate"), false, 10000, 80000, 20000);
-        up_threshold = new SMIntProperty("o_up_threshold", basepath.concat("up_threshold"), false, 11, 100, 85);
-        powersave_bias = new SMIntProperty("o_powersave_bias", basepath.concat("powersave_bias"), false, 0, 1000, 0);
-    }
+		io_is_busy = new SMIntProperty("o_io_is_busy", basepath.concat("io_is_busy"), false, 0, 1, 0);
+		sampling_down_factor = new SMIntProperty("o_sampling_down_factor", basepath.concat("sampling_down_factor"), false, 1, 1000, 1);
+		sampling_rate = new SMIntProperty("o_sampling_rate", basepath.concat("sampling_rate"), false, 10000, 80000, 20000);
+		up_threshold = new SMIntProperty("o_up_threshold", basepath.concat("up_threshold"), false, 11, 100, 85);
+		powersave_bias = new SMIntProperty("o_powersave_bias", basepath.concat("powersave_bias"), false, 0, 1000, 0);
+	}
 
-    @Override
-    public void readValue() {
-        io_is_busy.readValue();
-        sampling_down_factor.readValue();
-        sampling_rate.readValue();
-        up_threshold.readValue();
-        powersave_bias.readValue();
-    }
+	@Override
+	public void readValue() {
+		io_is_busy.readValue();
+		sampling_down_factor.readValue();
+		sampling_rate.readValue();
+		up_threshold.readValue();
+		powersave_bias.readValue();
+	}
 
-    @Override
-    public void writeValue() {
-        io_is_busy.writeValue();
-        sampling_down_factor.writeValue();
-        sampling_rate.writeValue();
-        up_threshold.writeValue();
-        powersave_bias.writeValue();
-    }
+	@Override
+	public void writeValue() {
+		io_is_busy.writeValue();
+		sampling_down_factor.writeValue();
+		sampling_rate.writeValue();
+		up_threshold.writeValue();
+		powersave_bias.writeValue();
+	}
 
-    public void writeBatch(List<String> cmds) {
-        io_is_busy.writeBatch(cmds);
-        sampling_down_factor.writeBatch(cmds);
-        sampling_rate.writeBatch(cmds);
-        up_threshold.writeBatch(cmds);
-        powersave_bias.writeBatch(cmds);
-    }
+	public void writeBatch(List<String> cmds) {
+		io_is_busy.writeBatch(cmds);
+		sampling_down_factor.writeBatch(cmds);
+		sampling_rate.writeBatch(cmds);
+		up_threshold.writeBatch(cmds);
+		powersave_bias.writeBatch(cmds);
+	}
 }

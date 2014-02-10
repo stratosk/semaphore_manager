@@ -17,125 +17,125 @@ import java.util.List;
 
 public class SMIntProperty extends SMProperty {
 
-    private int Value;
-    private int minValue;
-    private int maxValue;
-    private int defValue;
+	private int Value;
+	private int minValue;
+	private int maxValue;
+	private int defValue;
 
-    public int getDefault() {
-        return defValue;
-    }
+	public int getDefault() {
+		return defValue;
+	}
 
-    public void setDefault(int defValue) {
-        this.defValue = defValue;
-    }
+	public void setDefault(int defValue) {
+		this.defValue = defValue;
+	}
 
-    public String getDefString() {
-        return String.valueOf(defValue);
-    }
+	public String getDefString() {
+		return String.valueOf(defValue);
+	}
 
-    public String getValString() {
-        return String.valueOf(Value);
-    }
+	public String getValString() {
+		return String.valueOf(Value);
+	}
 
-    public int getMinValue() {
-        return minValue;
-    }
+	public int getMinValue() {
+		return minValue;
+	}
 
-    public void setMinValue(int minValue) {
-        this.minValue = minValue;
-    }
+	public void setMinValue(int minValue) {
+		this.minValue = minValue;
+	}
 
-    public int getMaxValue() {
-        return maxValue;
-    }
+	public int getMaxValue() {
+		return maxValue;
+	}
 
-    public void setMaxValue(int maxValue) {
-        this.maxValue = maxValue;
-    }
+	public void setMaxValue(int maxValue) {
+		this.maxValue = maxValue;
+	}
 
-    public int getValue() {
-        return Value;
-    }
+	public int getValue() {
+		return Value;
+	}
 
-    public boolean getBoolean() {
-        return Value > 0;
-    }
+	public boolean getBoolean() {
+		return Value > 0;
+	}
 
-    public boolean getDefBoolean() {
-        return defValue > 0;
-    }
+	public boolean getDefBoolean() {
+		return defValue > 0;
+	}
 
-    public void setValue(int Value) {
-        if (Value <= maxValue && Value >= minValue)
-            this.Value = Value;
-    }
+	public void setValue(int Value) {
+		if (Value <= maxValue && Value >= minValue)
+			this.Value = Value;
+	}
 
-    public void setValue(String Value) {
-        if (Value == null || Value.isEmpty())
-            setValue(getDefault());
-        else
-            try {
-                setValue(Integer.parseInt(Value));
-            } catch (NumberFormatException e) {
-                setValue(getDefault());
-            }
-    }
+	public void setValue(String Value) {
+		if (Value == null || Value.isEmpty())
+			setValue(getDefault());
+		else
+			try {
+				setValue(Integer.parseInt(Value));
+			} catch (NumberFormatException e) {
+				setValue(getDefault());
+			}
+	}
 
-    public void readValue() {
-        if (isDynamic()) {
-            setValue(defValue);
-            return;
-        }
-        Commander cm = Commander.getInstance();
-        int res = cm.readFile(getPath());
-        if (res == 0) {
-            String rt = cm.getOutResult().get(0);
-            if (rt.equals("Y"))
-                setValue(1);
-            else if (rt.equals("N"))
-                setValue(0);
-            else
-                try {
-                    setValue(Integer.parseInt(rt));
-                } catch (NumberFormatException numberFormatException) {
-                    Log.e("SM: ", numberFormatException.getMessage());
-                    setValue(getDefault());
-                }
-        } else
-            setValue(defValue);
-    }
+	public void readValue() {
+		if (isDynamic()) {
+			setValue(defValue);
+			return;
+		}
+		Commander cm = Commander.getInstance();
+		int res = cm.readFile(getPath());
+		if (res == 0) {
+			String rt = cm.getOutResult().get(0);
+			if (rt.equals("Y"))
+				setValue(1);
+			else if (rt.equals("N"))
+				setValue(0);
+			else
+				try {
+					setValue(Integer.parseInt(rt));
+				} catch (NumberFormatException numberFormatException) {
+					Log.e("SM: ", numberFormatException.getMessage());
+					setValue(getDefault());
+				}
+		} else
+			setValue(defValue);
+	}
 
-    public void writeValue(String path) {
-        Commander cm = Commander.getInstance();
-        String cmd = "echo \"".concat(String.valueOf(getValue())).concat("\" > ").concat(path);
+	public void writeValue(String path) {
+		Commander cm = Commander.getInstance();
+		String cmd = "echo \"".concat(String.valueOf(getValue())).concat("\" > ").concat(path);
 
-        cm.run(cmd, cm.needSU(path));
+		cm.run(cmd, cm.needSU(path));
 
-        if (getName().equals("oc"))
-            cm.run("echo \"".concat(String.valueOf(getValue() * 10000)).concat("\" > ").concat("/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"),
-                    cm.needSU("/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"));
-    }
+		if (getName().equals("oc"))
+			cm.run("echo \"".concat(String.valueOf(getValue() * 10000)).concat("\" > ").concat("/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"),
+					cm.needSU("/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"));
+	}
 
-    public void writeValue() {
-        writeValue(getPath());
-    }
+	public void writeValue() {
+		writeValue(getPath());
+	}
 
-    public void writeBatch(List<String> cmds, String path) {
-        cmds.add("echo \"".concat(String.valueOf(getValue())).concat("\" > ").concat(path));
-        if (getName().equals("oc"))
-            cmds.add("echo \"".concat(String.valueOf(getValue() * 10000)).concat("\" > ").concat("/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"));
-    }
+	public void writeBatch(List<String> cmds, String path) {
+		cmds.add("echo \"".concat(String.valueOf(getValue())).concat("\" > ").concat(path));
+		if (getName().equals("oc"))
+			cmds.add("echo \"".concat(String.valueOf(getValue() * 10000)).concat("\" > ").concat("/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"));
+	}
 
-    public void writeBatch(List<String> cmds) {
-        writeBatch(cmds, getPath());
-    }
+	public void writeBatch(List<String> cmds) {
+		writeBatch(cmds, getPath());
+	}
 
-    public SMIntProperty(String name, String path, boolean dynamic, int min, int max, int defvalue) {
-        super(name, path, dynamic);
+	public SMIntProperty(String name, String path, boolean dynamic, int min, int max, int defvalue) {
+		super(name, path, dynamic);
 
-        minValue = min;
-        maxValue = max;
-        defValue = defvalue;
-    }
+		minValue = min;
+		maxValue = max;
+		defValue = defvalue;
+	}
 }
