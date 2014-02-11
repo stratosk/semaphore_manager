@@ -12,20 +12,20 @@
   <string name="navigation_drawer_close">Fermer le volet de navigation</string>
   <string name="app_path">/data/data/com.semaphore.sm/scripts/</string>
   <string name="str_cat_oc_title">Overclock (OC)</string>
-  <string name="str_oc_title">OC en direct</string>
-  <string name="str_oc_summary">Changer la valeur d\'OC en direct</string>
-  <string name="str_gov_title">Gouverneur actif</string>
-  <string name="str_gov_summary">Changer le gouverneur du processeur</string>
-  <string name="str_cat_gov_title">Gouverneurs</string>
+  <string name="str_oc_title">LiveOC</string>
+  <string name="str_oc_summary">Changez la valeur de LiveOC</string>
+  <string name="str_gov_title">Governor actif</string>
+  <string name="str_gov_summary">Changer le governor du processeur</string>
+  <string name="str_cat_gov_title">Governors</string>
   <string name="str_scaling_min_freq_title">Fréquence minimum (MHz)</string>
   <string name="str_scaling_max_freq_title">Fréquence maximum (MHz)</string>
-  <string name="str_custom_volt_title">Voltages</string>
+  <string name="str_custom_volt_title">Tensions</string>
   <string name="str_cv_enable_title">Activé</string>
   <string name="str_cv_enable_summary">Utilisez à vos risques et périls</string>
   <string name="str_cv_apply_title">Enregistrer</string>
-  <string name="str_cv_apply_summary">Appliquer un voltage personnalisé</string>
+  <string name="str_cv_apply_summary">Appliquer une tension personnalisée</string>
   <string name="str_cv_reset_title">Réinitialiser</string>
-  <string name="str_cv_reset_summary">Réinitialiser le voltage à la valeur par défaut</string>
+  <string name="str_cv_reset_summary">Réinitialiser la tension à sa valeur par défaut</string>
   <string name="str_cv_apply_boot_title">Appliquer au démarrage</string>
   <string name="str_cv_apply_boot_summary">Sélectionner pour ré-appliquer au démarrage</string>
   <string name="str_max_arm_title">Voltage maximum</string>
@@ -35,24 +35,24 @@
   <string name="str_cv_l3_title">L3</string>
   <string name="str_cv_l4_title">L4</string>
   <string name="str_cpu_table_dialog_title">Tableau d\'informations processeur</string>
-  <string name="str_undervolt_title">Sous-voltage</string>
-  <string name="str_undervolt_screen_title">Paramètres de sous-voltage</string>
+  <string name="str_undervolt_title">Sous-tension</string>
+  <string name="str_undervolt_screen_title">Paramètres de sous-tension</string>
   <string name="str_uv_enabled_title">Activé</string>
   <string name="str_uv_enabled_summary">Utilisez à vos risques et périls</string>
   <string name="str_uv_apply_title">Enregistrer</string>
-  <string name="str_uv_apply_summary">Appliquer le sous-voltage</string>
+  <string name="str_uv_apply_summary">Appliquer la sous-tension</string>
   <string name="str_uv_reset_title">Réinitialiser</string>
-  <string name="str_uv_reset_summary">Réinitialiser le sous-voltage à la valeur par défaut</string>
+  <string name="str_uv_reset_summary">Réinitialiser la sous-tension à la valeur par défaut</string>
   <string name="str_uv_apply_boot_title">Appliquer au démarrage</string>
   <string name="str_uv_apply_boot_summary">Sélectionner pour ré-appliquer au démarrage</string>
   <string name="str_uv_cpu_table_title">Afficher le tableau processeur</string>
   <string name="str_uv_cpu_table_summary">Sélectionner pour afficher les informations du tableau processeur</string>
   <string name="str_uv_boost_title">Survolter</string>
   <string name="str_uv_boost_summary">Survolter par 25000 uV</string>
-  <string name="str_uv_lower_uv_title">Diminuer uV</string>
-  <string name="str_uv_lower_uv_summary">Sous-voltage pour les faibles fréquences</string>
-  <string name="str_uv_higher_uv_title">Augmenter uV</string>
-  <string name="str_uv_higher_uv_summary">Sous-voltage pour les fréquences élevées</string>
+  <string name="str_uv_lower_uv_title">uV inférieur</string>
+  <string name="str_uv_lower_uv_summary">Sous-tension pour les faibles fréquences</string>
+  <string name="str_uv_higher_uv_title">uV supérieur</string>
+  <string name="str_uv_higher_uv_summary">Sous-tension pour les fréquences supérieures</string>
   <string name="str_uv_higher_khz_thres_title">Seuil de fréquence supérieure</string>
   <string name="str_uv_higher_khz_thres_summary">Seuil des fréquences les plus élevées</string>
   <string name="str_hp_min_online_title">Nombre minimum de cœurs actifs</string>
@@ -76,7 +76,7 @@
   <string name="str_o_sampling_rate_summary">Valeurs valide 10000-100000</string>
   <string name="str_o_up_threshold_title">Seuil haut</string>
   <string name="str_o_up_threshold_summary">Valeurs valides 11-100</string>
-  <string name="str_o_powersave_bias_title">Économie d\'énergie Bias</string>
+  <string name="str_o_powersave_bias_title">Alignement de l\'économie d\'énergie</string>
   <string name="str_o_powersave_bias_summary">Valeurs valides 0-1000</string>
   <string name="str_o_smooth_ui_title">Interface fluide</string>
   <string name="str_o_touch_load_title">Force d\'appui</string>
@@ -95,22 +95,22 @@
   <string name="str_c_up_threshold_summary">Valeurs valides 1-100</string>
   <string name="str_c_down_threshold_title">Seuil bas</string>
   <string name="str_c_down_threshold_summary">Valeurs valides 1-100</string>
-  <string name="str_c_smooth_ui_title">Fluidité interface</string>
-  <string name="str_s_awake_ideal_freq_title">Fréquence idéale d\'éveil</string>
+  <string name="str_c_smooth_ui_title">Interface utilisateur fluide</string>
+  <string name="str_s_awake_ideal_freq_title">Fréquence idéale en veille</string>
   <string name="str_s_awake_ideal_freq_summary">Valeurs valides 1-100</string>
   <string name="str_s_up_rate_title">Taux supérieur</string>
   <string name="str_s_up_rate_summary">Valeurs valides 1-100</string>
   <string name="str_s_down_rate_title">Taux inférieur</string>
   <string name="str_s_down_rate_summary">Valeurs valides 1-100</string>
-  <string name="str_s_max_cpu_load_title">Charge max CPU</string>
+  <string name="str_s_max_cpu_load_title">Charge maximum processeur</string>
   <string name="str_s_max_cpu_load_summary">Valeurs valides 1-100</string>
-  <string name="str_s_min_cpu_load_title">Charge min CPU</string>
+  <string name="str_s_min_cpu_load_title">Charge minimum processeur</string>
   <string name="str_s_min_cpu_load_summary">Valeurs valides 1-100</string>
-  <string name="str_s_ramp_up_step_title">Étape de rampe montante</string>
+  <string name="str_s_ramp_up_step_title">Étape pour la montée en puissance</string>
   <string name="str_s_ramp_up_step_summary">Valeurs valides 1-100</string>
-  <string name="str_s_ramp_down_step_title">Étape de rampe descendante</string>
+  <string name="str_s_ramp_down_step_title">Étape pour la baisse de puissance</string>
   <string name="str_s_ramp_down_step_summary">Valeurs valides 1-100</string>
-  <string name="str_s_sleep_wakeup_freq_title">Fréquence de sortie de mise ne veille</string>
+  <string name="str_s_sleep_wakeup_freq_title">Fréquence de sortie de mise en veille</string>
   <string name="str_s_sleep_wakeup_freq_summary">Valeurs valides 1-100</string>
   <string name="str_s_sleep_ideal_freq_title">Fréquence idéale de mise en veille</string>
   <string name="str_s_sleep_ideal_freq_summary">Valeurs valides 1-100</string>
@@ -307,7 +307,7 @@ Voulez vous continuer?</string>
     <item>Interactive</item>
   </string-array>
   <string-array name="array_gov_values">
-    <item>OnDemand</item>
+    <item>ondemand</item>
     <item>conservative</item>
     <item>smartassV2</item>
     <item>interactive</item>
