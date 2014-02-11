@@ -504,7 +504,7 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 			if (sharedPreferences.getString(sp.gov.getName(), sp.gov.getDefValue()).equals(sp.ondemand.getName())) {
 				sp.gov.setValue(sharedPreferences.getString(key, sp.gov.getDefValue()));
 				sp.gov.writeValue();
-				((SwitchPreference) findPreference(sp.ondemand.io_is_busy.getName())).setChecked(sp.ondemand.io_is_busy.getBoolean());
+				((CheckBoxPreference) findPreference(sp.ondemand.io_is_busy.getName())).setChecked(sp.ondemand.io_is_busy.getBoolean());
 				((EditTextPreference) findPreference(sp.ondemand.sampling_down_factor.getName())).setText(sp.ondemand.sampling_down_factor.getValString());
 				((EditTextPreference) findPreference(sp.ondemand.sampling_down_max_momentum.getName())).setText(sp.ondemand.sampling_down_max_momentum.getValString());
 				((EditTextPreference) findPreference(sp.ondemand.sampling_rate.getName())).setText(sp.ondemand.sampling_rate.getValString());
