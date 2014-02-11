@@ -46,7 +46,6 @@ public class SAIService extends Service {
 	private int blinkInterval;
 	private boolean pickupPhone;
 	private boolean touchwake_disable;
-	private int touchwake_initial;
 	private SAIBlinkLED blink;
 	float[] I = new float[16];
 	float[] R = new float[16];
@@ -82,7 +81,6 @@ public class SAIService extends Service {
 		blinkInterval = prefs.getInt("blink_interval", 200);
 		pickupPhone = prefs.getBoolean("pickup_phone", false);
 		touchwake_disable = prefs.getBoolean("touchwake_disable", false);
-		getTouchwake();
 	}
 
 	@Override
@@ -104,13 +102,8 @@ public class SAIService extends Service {
 	}
 
 	private void answerCall() {
-		Intent buttonDown = new Intent(Intent.ACTION_MEDIA_BUTTON);
-		buttonDown.putExtra(Intent.EXTRA_KEY_EVENT, new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_HEADSETHOOK));
-		this.sendOrderedBroadcast(buttonDown, "android.permission.CALL_PRIVILEGED");
-
-		Intent buttonUp = new Intent(Intent.ACTION_MEDIA_BUTTON);
-		buttonUp.putExtra(Intent.EXTRA_KEY_EVENT, new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_HEADSETHOOK));
-		this.sendOrderedBroadcast(buttonUp, "android.permission.CALL_PRIVILEGED");
+		Commander cm = Commander.getInstance();
+		cm.run("input keyevent 5", true);
 
 		disableOrientationListener();
 	}
@@ -125,13 +118,6 @@ public class SAIService extends Service {
 			blink.interrupt();
 	}
 
-	private void getTouchwake() {
-		String path = "/sys/devices/virtual/misc/touchwake/enabled";
-
-		Commander cm = Commander.getInstance();
-		touchwake_initial = cm.readFile(path);
-	}
-
 	private void touchwake(int enabled) {
 		String path = "/sys/devices/virtual/misc/touchwake/enabled";
 		Commander cm = Commander.getInstance();
@@ -141,13 +127,12 @@ public class SAIService extends Service {
 
 	private void disableTouchwake() {
 		if (touchwake_disable) {
-			getTouchwake();
 			touchwake(0);
 		}
 	}
 
 	private void enableTouchwake() {
-		if (touchwake_disable && touchwake_initial == 1)
+		if (touchwake_disable)
 			touchwake(1);
 	}
 
