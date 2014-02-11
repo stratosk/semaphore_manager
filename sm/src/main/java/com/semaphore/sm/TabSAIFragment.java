@@ -22,6 +22,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
+import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.support.v4.view.GestureDetectorCompat;
@@ -158,6 +159,15 @@ public class TabSAIFragment extends PreferenceFragment implements SharedPreferen
 		if (activity == null)
 			return;
 
+		if (key.equals("touch_enable")) {
+			CheckBoxPreference pref = (CheckBoxPreference) findPreference("touchwake_disable");
+			if (pref != null) {
+				if (!sharedPreferences.getBoolean("touch_enable", false))
+					pref.setChecked(false);
+				pref.setEnabled(sharedPreferences.getBoolean("touch_enable", false));
+			}
+		}
+
 		if (key.equals("sai_enable"))
 			if (sharedPreferences.getBoolean(key, false)) {
 				if (!isSAIServiceRunning()) {
@@ -217,7 +227,6 @@ public class TabSAIFragment extends PreferenceFragment implements SharedPreferen
 		pref = findPreference("blink_interval");
 		if (pref != null)
 			pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
-
 	}
 
 	@Override
@@ -251,5 +260,12 @@ public class TabSAIFragment extends PreferenceFragment implements SharedPreferen
 		if (isSAIServiceRunning())
 			activity.bindService(new Intent(getActivity(), SAIService.class), mConnection,
 					Context.BIND_AUTO_CREATE);
+
+		CheckBoxPreference pref = (CheckBoxPreference) findPreference("touchwake_disable");
+		if (pref != null && sp != null) {
+			if (!sp.getBoolean("touch_enable", false))
+				pref.setChecked(false);
+			pref.setEnabled(sp.getBoolean("touch_enable", false));
+		}
 	}
 }
