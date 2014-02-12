@@ -12,6 +12,7 @@ package com.semaphore.sm;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -43,15 +44,19 @@ public class TabInfoFragment extends PreferenceFragment {
 		Commander cm = Commander.getInstance();
 		cm.readFile("/proc/version");
 		Preference pref = findPreference("kernel_version");
-		if (pref != null) {
+		if (pref != null)
 			pref.setSummary(cm.getOutResult().get(0));
-		}
 
 		pref = findPreference("Semaphore");
 		if (pref != null) {
 			String app_ver = "";
 			try {
-				app_ver = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0).versionName;
+				Activity activity = getActivity();
+				if (activity != null) {
+					PackageManager pm = activity.getPackageManager();
+					if (pm != null)
+						app_ver = pm.getPackageInfo(getActivity().getPackageName(), 0).versionName;
+				}
 			} catch (NameNotFoundException ignored) {
 			}
 			pref.setSummary(app_ver);
@@ -63,9 +68,9 @@ public class TabInfoFragment extends PreferenceFragment {
 		long totalMegs = mi.totalMem / 1048576L;
 
 		pref = findPreference("system_memory");
-		if (pref != null) {
+		if (pref != null)
 			pref.setSummary(String.valueOf(totalMegs) + " MB");
-		}
+
 		gestureDetector = new GestureDetectorCompat(getActivity(), new SMGestureListener(getActivity()));
 	}
 
