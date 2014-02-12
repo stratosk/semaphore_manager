@@ -214,22 +214,18 @@ public class MainActivity extends Activity
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		switch (item.getItemId()) {
-			case R.id.menuitem1: {
+			case R.id.menuitem1:
 				readProperties();
-			}
-			break;
-			case R.id.menuitem2: {
+				break;
+			case R.id.menuitem2:
 				resetDefault();
-			}
-			break;
-			case R.id.menuitem3: {
+				break;
+			case R.id.menuitem3:
 				clearInitd();
-			}
-			break;
-			case R.id.menuitem5: {
+				break;
+			case R.id.menuitem5:
 				changeTheme();
-			}
-			break;
+				break;
 			default:
 				break;
 		}
