@@ -32,6 +32,8 @@ import android.widget.LinearLayout;
 
 import com.semaphore.sai.SAIService;
 
+import java.util.List;
+
 public class TabSAIFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener, Preference.OnPreferenceClickListener {
 	private GestureDetectorCompat gestureDetector;
 	private static final String ARG_SECTION_NUMBER = "section_number";
@@ -197,13 +199,15 @@ public class TabSAIFragment extends PreferenceFragment implements SharedPreferen
 	private boolean isSAIServiceRunning() {
 		Activity activity = getActivity();
 		ActivityManager manager = null;
-		if (activity != null) {
+		if (activity != null)
 			manager = (ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE);
-		}
+
 		if (manager != null) {
-			for (RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE))
-				if (SAIService.class.getName().equals(service.service.getClassName()))
-					return true;
+			List<RunningServiceInfo> rsi = manager.getRunningServices(Integer.MAX_VALUE);
+			if (rsi != null)
+				for (RunningServiceInfo service : rsi)
+					if (service != null && SAIService.class.getName().equals(service.service.getClassName()))
+						return true;
 		}
 		return false;
 	}
