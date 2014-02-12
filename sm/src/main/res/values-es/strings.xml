@@ -13,17 +13,17 @@
   <string name="app_path">/data/data/com.semaphore.sm/scripts/</string>
   <string name="str_cat_oc_title">Overclocking</string>
   <string name="str_oc_title">LiveOC</string>
-  <string name="str_oc_summary">Cambiar el valor de LiveOC</string>
-  <string name="str_gov_title">Gobernador activo</string>
-  <string name="str_gov_summary">Cambiar el gobernador de la CPU</string>
-  <string name="str_cat_gov_title">Gobernadores</string>
+  <string name="str_oc_summary">Cambiar valor de LiveOC</string>
+  <string name="str_gov_title">Regulador activo</string>
+  <string name="str_gov_summary">Cambiar el regulador de la CPU</string>
+  <string name="str_cat_gov_title">Reguladores</string>
   <string name="str_scaling_min_freq_title">Frecuencia mínima (MHz)</string>
   <string name="str_scaling_max_freq_title">Frecuencia máxima (MHz)</string>
   <string name="str_custom_volt_title">Voltajes</string>
   <string name="str_cv_enable_title">Activado</string>
-  <string name="str_cv_enable_summary">Porfavor úselo bajo su propio riesgo</string>
+  <string name="str_cv_enable_summary">Por favor úselo bajo su propio riesgo</string>
   <string name="str_cv_apply_title">Aplicar</string>
-  <string name="str_cv_apply_summary">Aplicar voltajes de usuario</string>
+  <string name="str_cv_apply_summary">Aplicar voltajes personalizados</string>
   <string name="str_cv_reset_title">Restablecer</string>
   <string name="str_cv_reset_summary">Restablecer voltajes por defecto</string>
   <string name="str_cv_apply_boot_title">Aplicar al iniciar</string>
@@ -38,7 +38,7 @@
   <string name="str_undervolt_title">Undervolting</string>
   <string name="str_undervolt_screen_title">Parámetros de Undervolting</string>
   <string name="str_uv_enabled_title">Activado</string>
-  <string name="str_uv_enabled_summary">Porfavor úselo bajo su propio riesgo</string>
+  <string name="str_uv_enabled_summary">Por favor úselo bajo su propio riesgo</string>
   <string name="str_uv_apply_title">Aplicar</string>
   <string name="str_uv_apply_summary">Aplicar undervolt</string>
   <string name="str_uv_reset_title">Restablecer</string>
@@ -46,160 +46,160 @@
   <string name="str_uv_apply_boot_title">Aplicar al iniciar</string>
   <string name="str_uv_apply_boot_summary">Seleccione para volver a aplicar al iniciar el sistema</string>
   <string name="str_uv_cpu_table_title">Mostrar la tabla de la CPU</string>
-  <string name="str_uv_cpu_table_summary">Seleccione para mostrar una tabla con información de la CPU</string>
-  <string name="str_uv_boost_title">Boost voltages</string>
-  <string name="str_uv_boost_summary">Boost voltages by 25000uV</string>
-  <string name="str_uv_lower_uv_title">uV inferiores</string>
+  <string name="str_uv_cpu_table_summary">Seleccione para mostrar tabla de información de CPU</string>
+  <string name="str_uv_boost_title">Aumento de voltajes</string>
+  <string name="str_uv_boost_summary">Aumentar voltajes en 25000uV</string>
+  <string name="str_uv_lower_uv_title">uV inferior</string>
   <string name="str_uv_lower_uv_summary">Undervolt para las frecuencias bajas</string>
   <string name="str_uv_higher_uv_title">uV superior</string>
   <string name="str_uv_higher_uv_summary">Undervolt para las frecuencias altas</string>
-  <string name="str_uv_higher_khz_thres_title">Umbral de las frecuencias bajas/altas</string>
+  <string name="str_uv_higher_khz_thres_title">Umbral de frecuencias altas</string>
   <string name="str_uv_higher_khz_thres_summary">Umbral de frecuencias altas</string>
-  <string name="str_hp_min_online_title">Cantidad mínima de núcleos activos</string>
-  <string name="str_hp_max_online_title">Cantidad máxima de núcleos activos</string>
+  <string name="str_hp_min_online_title">Mínimos núcleos activos</string>
+  <string name="str_hp_max_online_title">Máximos núcleos activos</string>
   <string name="str_hp_enabled_title">Activado</string>
   <string name="str_hp_up_threshold_title">Umbral de subida</string>
-  <string name="str_hp_up_threshold_summary">Valores entre 1 y 100</string>
-  <string name="str_cat_leds_title">Opciones del LED</string>
+  <string name="str_hp_up_threshold_summary">Valores válidos 1-100</string>
+  <string name="str_cat_leds_title">Controles del LED</string>
   <string name="str_led_red_title">Rojo</string>
   <string name="str_led_green_title">Verde</string>
   <string name="str_led_blue_title">Azúl</string>
-  <string name="str_read_ahead_title">SD Card read ahead</string>
-  <string name="str_read_ahead_n4_title">SD read ahead</string>
+  <string name="str_read_ahead_title">Prelectura Tarjeta SD</string>
+  <string name="str_read_ahead_n4_title">Prelectura SD</string>
   <string name="str_touchscreen_title">Sensibilidad al tacto</string>
-  <string name="str_o_io_is_busy_title">IO is busy</string>
-  <string name="str_o_sampling_down_factor_title">Sampling down factor</string>
-  <string name="str_o_sampling_down_factor_summary">Valid values 1–100000</string>
+  <string name="str_o_io_is_busy_title">IO está ocupado</string>
+  <string name="str_o_sampling_down_factor_title">Factor de reducción de muestreo</string>
+  <string name="str_o_sampling_down_factor_summary">Valores válidos 1-100000</string>
   <string name="str_o_sampling_down_max_momentum_title">Sampling down max momentum</string>
-  <string name="str_o_sampling_down_max_momentum_summary">Valid values 1-1000</string>
-  <string name="str_o_sampling_rate_title">Frecuencia de muestreo</string>
-  <string name="str_o_sampling_rate_summary">Valores entre 10000-100000</string>
-  <string name="str_o_up_threshold_title">Up threshold</string>
-  <string name="str_o_up_threshold_summary">Valid values 11-100</string>
-  <string name="str_o_powersave_bias_title">Powersave bias</string>
-  <string name="str_o_powersave_bias_summary">Valores entre 0-1000</string>
-  <string name="str_o_smooth_ui_title">Smooth UI</string>
+  <string name="str_o_sampling_down_max_momentum_summary">Valores válidos 1-1000</string>
+  <string name="str_o_sampling_rate_title">Tasa de muestreo</string>
+  <string name="str_o_sampling_rate_summary">Valores válidos 10000-100000</string>
+  <string name="str_o_up_threshold_title">Umbral de subida</string>
+  <string name="str_o_up_threshold_summary">Valores válidos 11-100</string>
+  <string name="str_o_powersave_bias_title">Tendencia de ahorro de energía</string>
+  <string name="str_o_powersave_bias_summary">Valores válidos 0-1000</string>
+  <string name="str_o_smooth_ui_title">UI fluida</string>
   <string name="str_o_touch_load_title">Touch load</string>
-  <string name="str_o_touch_load_summary">Valid values 1-100</string>
+  <string name="str_o_touch_load_summary">Valores válidos 1-100</string>
   <string name="str_o_touch_load_threshold_title">Touch load threshold</string>
-  <string name="str_o_touch_load_threshold_summary">Valid values 1-100</string>
+  <string name="str_o_touch_load_threshold_summary">Valores válidos 1-100</string>
   <string name="str_o_touch_load_duration_title">Touch load duration</string>
-  <string name="str_o_touch_load_duration_summary">Valid values 1-1000000</string>
-  <string name="str_c_freq_step_title">Frequency step</string>
-  <string name="str_c_freq_step_summary">Valores entre 1 y 100</string>
-  <string name="str_c_sampling_down_factor_title">Sampling down factor</string>
-  <string name="str_c_sampling_down_factor_summary">Valid values 1-100000</string>
-  <string name="str_c_sampling_rate_title">Frecuencia de muestreo</string>
-  <string name="str_c_sampling_rate_summary">Valores entre 10000-100000</string>
-  <string name="str_c_up_threshold_title">Up threshold</string>
-  <string name="str_c_up_threshold_summary">Valid values 1-100</string>
-  <string name="str_c_down_threshold_title">Down threshold</string>
-  <string name="str_c_down_threshold_summary">Valid values 1-100</string>
-  <string name="str_c_smooth_ui_title">Smooth UI</string>
+  <string name="str_o_touch_load_duration_summary">Valores válidos 1-1000000</string>
+  <string name="str_c_freq_step_title">Paso de frecuencia</string>
+  <string name="str_c_freq_step_summary">Valores válidos 1-100</string>
+  <string name="str_c_sampling_down_factor_title">Umbral de bajada del muestreo</string>
+  <string name="str_c_sampling_down_factor_summary">Valores válidos 1-100000</string>
+  <string name="str_c_sampling_rate_title">Tasa de muestreo</string>
+  <string name="str_c_sampling_rate_summary">Valores válidos 10000-100000</string>
+  <string name="str_c_up_threshold_title">Umbral de subida</string>
+  <string name="str_c_up_threshold_summary">Valores válidos 1-100</string>
+  <string name="str_c_down_threshold_title">Umbral de bajada</string>
+  <string name="str_c_down_threshold_summary">Valores válidos 1-100</string>
+  <string name="str_c_smooth_ui_title">UI fluida</string>
   <string name="str_s_awake_ideal_freq_title">Awake ideal frequency</string>
-  <string name="str_s_awake_ideal_freq_summary">Valid values 1-100</string>
-  <string name="str_s_up_rate_title">Up rate</string>
-  <string name="str_s_up_rate_summary">Valid values 1-100</string>
-  <string name="str_s_down_rate_title">Down rate</string>
-  <string name="str_s_down_rate_summary">Valid values 1-100</string>
-  <string name="str_s_max_cpu_load_title">Carga MAX de la CPU</string>
-  <string name="str_s_max_cpu_load_summary">Valores entre 1 y 100</string>
-  <string name="str_s_min_cpu_load_title">Carga MIN de la CPU</string>
-  <string name="str_s_min_cpu_load_summary">Valores entre 1 y 100</string>
+  <string name="str_s_awake_ideal_freq_summary">Valores válidos 1-100</string>
+  <string name="str_s_up_rate_title">Tasa de subida</string>
+  <string name="str_s_up_rate_summary">Valores válidos 1-100</string>
+  <string name="str_s_down_rate_title">Tasa de bajada</string>
+  <string name="str_s_down_rate_summary">Valores válidos 1-100</string>
+  <string name="str_s_max_cpu_load_title">Carga Máx. de CPU</string>
+  <string name="str_s_max_cpu_load_summary">Valores válidos 1-100</string>
+  <string name="str_s_min_cpu_load_title">Carga Mín. de CPU</string>
+  <string name="str_s_min_cpu_load_summary">Valores válidos 1-100</string>
   <string name="str_s_ramp_up_step_title">Ramp up step</string>
-  <string name="str_s_ramp_up_step_summary">Valores entre 1 y 100</string>
+  <string name="str_s_ramp_up_step_summary">Valores válidos 1-100</string>
   <string name="str_s_ramp_down_step_title">Ramp down step</string>
-  <string name="str_s_ramp_down_step_summary">Valores entre 1 y 100</string>
+  <string name="str_s_ramp_down_step_summary">Valores válidos 1-100</string>
   <string name="str_s_sleep_wakeup_freq_title">Sleep wakeup frequency</string>
-  <string name="str_s_sleep_wakeup_freq_summary">Valores entre 1 y 100</string>
+  <string name="str_s_sleep_wakeup_freq_summary">Valores válidos 1-100</string>
   <string name="str_s_sleep_ideal_freq_title">Sleep ideal frequency</string>
-  <string name="str_s_sleep_ideal_freq_summary">Valores entre 1 y 100</string>
+  <string name="str_s_sleep_ideal_freq_summary">Valores válidos 1-100</string>
   <string name="str_s_sample_rate_jiffies_title">Sample rate jiffies</string>
-  <string name="str_s_sample_rate_jiffies_summary">Valid values 1-100</string>
-  <string name="str_s_smooth_ui_title">Smooth UI</string>
-  <string name="str_i_hispeed_freq_title">Hi speed frequency</string>
-  <string name="str_i_hispeed_freq_summary">Valores entre 1 y 100</string>
-  <string name="str_i_go_hispeed_load_title">Go hi speed load</string>
+  <string name="str_s_sample_rate_jiffies_summary">Valores válidos 1-100</string>
+  <string name="str_s_smooth_ui_title">UI fluida</string>
+  <string name="str_i_hispeed_freq_title">Frecuencia de alta velocidad</string>
+  <string name="str_i_hispeed_freq_summary">Valores válidos 1-100</string>
+  <string name="str_i_go_hispeed_load_title">Carga de activación de alta velocidad</string>
   <string name="str_i_go_hispeed_load_summary">Valores válidos 1-100000</string>
-  <string name="str_i_min_sampling_time_title">Min sampling time</string>
-  <string name="str_i_min_sampling_time_summary">Valid values 10000-100000</string>
+  <string name="str_i_min_sampling_time_title">Tiempo mínimo de muestreo</string>
+  <string name="str_i_min_sampling_time_summary">Valores válidos 10000-100000</string>
   <string name="str_i_above_hispeed_delay_title">Above hi speed delay</string>
-  <string name="str_i_above_hispeed_delay_summary">Valid values 1-100</string>
-  <string name="str_i_timer_rate_title">Timer rate</string>
-  <string name="str_i_timer_rate_summary">Valid values 10000-100000</string>
-  <string name="str_i_timer_slack_title">Timer slack</string>
-  <string name="str_i_timer_slack_summary">Valid values 10000-200000</string>
+  <string name="str_i_above_hispeed_delay_summary">Valores válidos 1-100</string>
+  <string name="str_i_timer_rate_title">Tasa del temporizador</string>
+  <string name="str_i_timer_rate_summary">Valores válidos 10000-100000</string>
+  <string name="str_i_timer_slack_title">Holgura del temporizador</string>
+  <string name="str_i_timer_slack_summary">Valores válidos 10000-200000</string>
   <string name="str_i_boostpulse_duration_title">Boostpulse duration</string>
-  <string name="str_i_boostpulse_duration_summary">Valid values 10000-200000</string>
+  <string name="str_i_boostpulse_duration_summary">Valores válidos 10000-200000</string>
   <string name="str_i_target_loads_title">Target loads</string>
-  <string name="str_i_target_loads_summary">Valid values 1-100</string>
-  <string name="str_i_io_is_busy_title">IO is busy</string>
+  <string name="str_i_target_loads_summary">Valores válidos 1-100</string>
+  <string name="str_i_io_is_busy_title">IO está ocupado</string>
   <string name="str_i_input_boost_title">Input boost</string>
   <string name="str_accuracy_title">Filtros de pantalla táctil</string>
-  <string name="str_accuracy_screen_title">Accuracy filter</string>
+  <string name="str_accuracy_screen_title">Filtro de precisión</string>
   <string name="str_accuracy_summary"></string>
   <string name="str_ac_enable_title">Activado</string>
-  <string name="str_ac_enable_summary">Enable accuracy filter</string>
+  <string name="str_ac_enable_summary">Activar filtro de precisión</string>
   <string name="str_ac_ignore_pressure_gap_title">Ignore pressure gap</string>
   <string name="str_ac_ignore_pressure_gap_summary">Valores válidos 1-255</string>
-  <string name="str_ac_delta_max_title">Delta max</string>
+  <string name="str_ac_delta_max_title">Incremento máximo</string>
   <string name="str_ac_delta_max_summary">Valores válidos 1-255</string>
   <string name="str_ac_touch_max_count_title">Touch max count</string>
-  <string name="str_ac_touch_max_count_summary">Valid values 1-255</string>
-  <string name="str_ac_max_pressure_title">Max pressure</string>
+  <string name="str_ac_touch_max_count_summary">Valores válidos 1-255</string>
+  <string name="str_ac_max_pressure_title">Presión máxima</string>
   <string name="str_ac_max_pressure_summary">Valores válidos 1-255</string>
-  <string name="str_ac_direction_count_title">Direction count</string>
+  <string name="str_ac_direction_count_title">Contador de dirección</string>
   <string name="str_ac_direction_count_summary">Valores válidos 1-255</string>
-  <string name="str_ac_time_to_max_pressure_title">Time to max pressure</string>
+  <string name="str_ac_time_to_max_pressure_title">Tiempo hasta máxima presión</string>
   <string name="str_ac_time_to_max_pressure_summary">Valores válidos 1-255</string>
-  <string name="str_jit_enable_title">Jitter filter</string>
-  <string name="str_jit_enable_summary">Enable jitter filter</string>
-  <string name="str_jit_adjust_margin_title">Jitter adjust margin</string>
+  <string name="str_jit_enable_title">Filtro jitter</string>
+  <string name="str_jit_enable_summary">Avtivar filtro jitter</string>
+  <string name="str_jit_adjust_margin_title">Margen de ajuste de jitter</string>
   <string name="str_jit_adjust_margin_summary">Valores válidos 1-255</string>
   <string name="str_touchwake_disable_title">Desactivar Touchwake</string>
   <string name="str_touchwake_disable_summary">Deshabilitar touchwake durante las llamadas</string>
   <string name="str_cat_deep_idle_title">Deep Idle</string>
   <string name="str_deep_idle_title">Activado</string>
-  <string name="str_deep_idle_stats_title">Statistics</string>
-  <string name="str_deep_idle_stats_show_title">Show statistics</string>
-  <string name="str_cpu_misc_title">Miscellaneous</string>
-  <string name="str_tweaks_misc_title">Miscellaneous</string>
-  <string name="str_lock_min_title">Lock min freq to 100MHz</string>
-  <string name="str_lock_min_summary">Lock min frequency to 100MHz when GPU inactive</string>
-  <string name="str_bluetooth_title">Power down bluetooth</string>
-  <string name="str_bluetooth_summary">Enabling again requires reboot</string>
+  <string name="str_deep_idle_stats_title">Estadísticas</string>
+  <string name="str_deep_idle_stats_show_title">Mostrar estadísticas</string>
+  <string name="str_cpu_misc_title">Varios</string>
+  <string name="str_tweaks_misc_title">Varios</string>
+  <string name="str_lock_min_title">Bloquear frec. mín. a 100MHz</string>
+  <string name="str_lock_min_summary">Bloquear frecuencia mínima a 100MHz con GPU inactiva</string>
+  <string name="str_bluetooth_title">Apagar bluetooth</string>
+  <string name="str_bluetooth_summary">Volver a activar requiere reinicio</string>
   <string name="str_logger_title">Logger</string>
-  <string name="str_logger_summary">must reboot</string>
+  <string name="str_logger_summary">requiere reinicio</string>
   <string name="str_tun_title">TUN</string>
-  <string name="str_tun_summary">for VPN</string>
+  <string name="str_tun_summary">para VPN</string>
   <string name="str_cifs_title">CIFS</string>
   <string name="str_cifs_summary">mount Windows shares</string>
   <string name="str_bigmem_title">Bigmem</string>
-  <string name="str_bigmem_summary">must reboot</string>
+  <string name="str_bigmem_summary">Requiere reiniciar</string>
   <string name="str_autobr_title">Brillo automático Semaphore</string>
   <string name="str_sema_autobr_title">Activado</string>
   <string name="str_ab_profiles_title">Perfiles</string>
-  <string name="str_sema_autobr_tunables_title">Tunables</string>
+  <string name="str_sema_autobr_tunables_title">Ajustables</string>
   <string name="str_ab_min_brightness_title">Brillo mínimo</string>
   <string name="str_ab_min_brightness_summary"></string>
   <string name="str_ab_max_brightness_title">Brillo máximo</string>
   <string name="str_ab_max_brightness_summary"></string>
-  <string name="str_ab_max_lux_title">Max lux</string>
+  <string name="str_ab_max_lux_title">Lux máximos</string>
   <string name="str_ab_max_lux_summary"></string>
   <string name="str_ab_instant_update_thres_title">Umbral de actualización instantánea</string>
   <string name="str_ab_instant_update_thres_summary"></string>
-  <string name="str_ab_effect_delay_ms_title">Effect delay</string>
+  <string name="str_ab_effect_delay_ms_title">Retraso del efecto</string>
   <string name="str_ab_effect_delay_ms_summary"></string>
-  <string name="str_ab_max_br_threshold_title">Max brightness threshold</string>
+  <string name="str_ab_max_br_threshold_title">Umbral de brillo máximo</string>
   <string name="str_ab_max_br_threshold_summary"></string>
-  <string name="str_cat_scheduler_title">Schedulers</string>
-  <string name="str_scheduler_title">Programador activo</string>
+  <string name="str_cat_scheduler_title">Planificadores</string>
+  <string name="str_scheduler_title">Planificador activo</string>
   <string name="str_vibrator_title">Vibrador</string>
   <string name="str_vibrator_dc_title">Nivel</string>
   <string name="str_vibrator_test_title">Probar</string>
   <string name="str_vibrator_test_summary">Toque para probar</string>
   <string name="str_tcp_congestion_title">Algoritmo</string>
-  <string name="str_lcd_calibration_title">Calibración de la pantalla</string>
+  <string name="str_lcd_calibration_title">Calibración del LCD</string>
   <string name="str_lcd_temperature_title">Temperatura del color</string>
   <string name="str_lcd_red_title">Rojo</string>
   <string name="str_lcd_green_title">Verde</string>
@@ -208,103 +208,100 @@
   <string name="str_gamma_r_title">Rojo</string>
   <string name="str_gamma_g_title">Verde</string>
   <string name="str_gamma_b_title">Azul</string>
-  <string name="str_lcd_backlight_title">Backlight brightness</string>
-  <string name="str_min_br_title">Valor mínimo</string>
-  <string name="str_max_br_title">Maximum</string>
-  <string name="str_br_mode_title">Linear mapping mode</string>
-  <string name="str_br_mode_summary">Uncheck to use exponential</string>
+  <string name="str_lcd_backlight_title">Brillo de retroiluminacion</string>
+  <string name="str_min_br_title">Mínimo</string>
+  <string name="str_max_br_title">Máximo</string>
+  <string name="str_br_mode_title">Modo de mapeo lineal</string>
+  <string name="str_br_mode_summary">Desmarcar para usar exponecial</string>
   <string name="str_configs_title">config.gz</string>
   <string name="str_configs_summary">/proc/config.gz</string>
   <string name="str_radio_si4709_i2c_title">Radio FM</string>
   <string name="str_radio_si4709_i2c_summary">si4709</string>
   <string name="str_usb_title">USB Host</string>
-  <string name="str_mousedev_title">Mouse</string>
+  <string name="str_mousedev_title">Ratón</string>
   <string name="str_mousedev_summary"></string>
-  <string name="str_xbox_title">X-Box pad</string>
+  <string name="str_xbox_title">mando de XBOX</string>
   <string name="str_xbox_summary"></string>
   <string name="str_usbhid_title">USB HID</string>
   <string name="str_usbhid_summary"></string>
   <string name="str_uhid_title">UHID</string>
   <string name="str_uhid_summary"></string>
-  <string name="str_fastchg_title">Fast charge</string>
-  <string name="str_fastchg_summary">Please use it at your own risk</string>
+  <string name="str_fastchg_title">Carga rápida</string>
+  <string name="str_fastchg_summary">Por favor úsalo bajo tu propio riesgo</string>
   <string name="str_wififast_title">WiFi PM FAST</string>
   <string name="str_wififast_summary">PM FAST when suspend</string>
   <string name="str_bln_title">BLN</string>
-  <string name="str_bln_summary">Use BLN instead of CM Led (must reboot)</string>
-  <string name="str_touch_enable_title">Enabled</string>
+  <string name="str_bln_summary">Usar BLN en lugar de CM Led (requiere reinicio)</string>
+  <string name="str_touch_enable_title">Activado</string>
   <string name="str_touch_enable_summary"></string>
-  <string name="str_touch_title">Delay</string>
-  <string name="str_touch_summary">Delay in seconds</string>
-  <string name="str_dt_wake_enabled_title">Enabled</string>
-  <string name="str_dt_wake_enabled_summary">Keeps the touchscreen always powered</string>
-  <string name="str_about_title">About</string>
+  <string name="str_touch_title">Retraso</string>
+  <string name="str_touch_summary">Retraso en segundos</string>
+  <string name="str_dt_wake_enabled_title">Activado</string>
+  <string name="str_dt_wake_enabled_summary">Mantener panel táctil siempre alimentado</string>
+  <string name="str_about_title">Acerca de</string>
   <string name="str_didle_dialog_title">Deep Idle Statistics</string>
-  <string name="str_idle_state">Idle</string>
+  <string name="str_idle_state">En reposo</string>
   <string name="str_top_on">TOP=ON</string>
   <string name="str_top_off">TOP=OFF</string>
-  <string name="str_sai_enable_title">Enabled</string>
-  <string name="str_vibrator_call_title">Vibrator on Phone ringing</string>
+  <string name="str_sai_enable_title">Activado</string>
+  <string name="str_vibrator_call_title">Vibrador en tono de llamada</string>
   <string name="str_vibrator_near_title">Proximity Near</string>
   <string name="str_vibrator_far_title">Proximity Far</string>
-  <string name="str_pickup_phone_cat_title">Pickup Phone</string>
-  <string name="str_pickup_phone_title">Enabled</string>
-  <string name="str_pickup_phone_summary">Pickup phone without touch the screen</string>
-  <string name="str_blink_leds_cat_title">Blink LEDs on Phone ringing</string>
-  <string name="str_blink_leds_title">Enabled</string>
-  <string name="str_blink_leds_summary">Blink LEDs on Phone ringing</string>
-  <string name="str_blink_interval_title">Blinking interval</string>
-  <string name="strConfInitd">All files in init.d directory will be deleted.
-Do you want to continue?</string>
-  <string name="strMsgInitd">init.d cleared successfully</string>
-  <string name="strMsgReading">Reading system settings, Please wait</string>
-  <string name="strMsgReset">Resetting system settings, Please wait</string>
-  <string name="strErrorRoot">No root access!
-Semaphore Manager needs root access to run.</string>
-  <string name="strErrorBusybox">No busybox found!
-Semaphore Manager needs busybox to run properly.</string>
-  <string name="strConfTheme">Toggle dark/light theme.
-Do you want to continue?</string>
-  <string name="strConfOverride">System settings maybe will override your personal settings.
-Do you want to continue?</string>
-  <string name="strConfReset">All settings will be reset to default.
-Do you want to continue?</string>
-  <string name="strBtnClose">Close</string>
+  <string name="str_pickup_phone_cat_title">Descolgar</string>
+  <string name="str_pickup_phone_title">Activado</string>
+  <string name="str_pickup_phone_summary">Responder llamada sin tocar pantalla</string>
+  <string name="str_blink_leds_cat_title">Papadear LEDs en tono de llamada</string>
+  <string name="str_blink_leds_title">Activado</string>
+  <string name="str_blink_leds_summary">Papadear LEDs en tono de llamada</string>
+  <string name="str_blink_interval_title">Intervalo de parpadeo</string>
+  <string name="strConfInitd">Todos los archivos en la carpeta init.d serán borrados. ¿Quieres continuar?</string>
+  <string name="strMsgInitd">init.d vaciado correctamente</string>
+  <string name="strMsgReading">Leyendo ajustes del sistema, por favor espera</string>
+  <string name="strMsgReset">Restableciendo ajustes del sistema, por favor espera</string>
+  <string name="strErrorRoot">¡Sin acceso root! Semaphore Manager necesita acceso root para ejecutarse.</string>
+  <string name="strErrorBusybox">¿Busybox no encontrado! Semaphore Manager necesita busybox para ejecutarse correctamente.</string>
+  <string name="strConfTheme">Alternar tema oscuro/claro.
+¿Quieres continuar?</string>
+  <string name="strConfOverride">Los ajustes del sistema prevalecerán sobre tus ajustes personales.
+¿Quieres continuar?</string>
+  <string name="strConfReset">Todos los ajustes se restablecerán a valores por defecto.
+¿Quieres continuar?</string>
+  <string name="strBtnClose">Cerrar</string>
   <string name="strBtnOK">OK</string>
-  <string name="strBtnCancel">Cancel</string>
-  <string name="strMsgCVapplied">Custom voltages applied</string>
-  <string name="strMsgCVReset">Custom voltages reset to default</string>
-  <string name="strMsgUVApplied">Undervolting applied</string>
-  <string name="strConfUVReset">Undervolting settings will be reset to default.\nDo you want to continue?</string>
-  <string name="strMsgUVReset">Undervolting values reset to default</string>
+  <string name="strBtnCancel">Cancelar</string>
+  <string name="strMsgCVapplied">Voltajes personalizados aplicados</string>
+  <string name="strMsgCVReset">Voltajes personalizados restablecidos a valores por defecto</string>
+  <string name="strMsgUVApplied">Undervolting aplicado</string>
+  <string name="strConfUVReset">Los ajustes de undervolting se restablecerán a valores por defecto.\n¿Quieres continuar?</string>
+  <string name="strMsgUVReset">Valores de undervolting restablecidos a valores por defectos</string>
   <string name="strMsgKmsgSaved">Se ha grabado kmsg exitosamente en
 </string>
-  <string name="strMsgMinCores">Mínimo numero de núcleos online (1-4)</string>
-  <string name="strMsgMaxCores">Máximo número de núcleos online (1-4)</string>
-  <string name="strMsgVoltage">Voltage (en uV)</string>
-  <string name="strMsgVoltage2">Voltage</string>
+  <string name="strMsgMinCores">Mínimo numero de núcleos activos (1-4)</string>
+  <string name="strMsgMaxCores">Máximo número de núcleos activos (1-4)</string>
+  <string name="strMsgVoltage">Voltaje (en uV)</string>
+  <string name="strMsgVoltage2">Voltaje</string>
   <string name="strInfoMemory">Memoria</string>
   <string name="strInfoKernel">Kernel</string>
   <string name="strInfoAuthor">Autor</string>
-  <string name="strInfoDonate">Dontar</string>
+  <string name="strInfoDonate">Donar</string>
   <string name="strInfoDonateSummary">Por favor dona para ayudar este desarrollo</string>
   <string name="strMsgVibrator">Vibrator duty cycle</string>
-  <string name="strMsgBlinking">Blinking interval</string>
-  <string name="strTCPCongestion">TCP congestion control</string>
-  <string name="strActionRefresh">Refrescar</string>
+  <string name="strMsgBlinking">Intervalo de parpadeo</string>
+  <string name="strTCPCongestion">Control de congestión TCP</string>
+  <string name="strActionRefresh">Actualizar</string>
   <string name="strActionSave">Grabar kmsg</string>
   <string name="strActionRead">Leer Ajustes del Sistema</string>
   <string name="strActionReset">Usar valores por defecto</string>
   <string name="strActionClear">Limpiar init.d</string>
-  <string name="strActionToggle">Toggle theme</string>
-  <string name="str_misc_title">Misceláneos</string>
+  <string name="strActionToggle">Alternar tema</string>
+  <string name="str_misc_title">Varios</string>
   <string name="strEmpty"> </string>
-  <string name="strMsgOverclock">Overclock %</string>
+  <string name="strMsgOverclock">% de overclock</string>
   <string-array name="array_gov_entries">
-    <item>Ondemand</item>
-    <item>Conservative</item>
+    <item>Bajo demanda</item>
+    <item>Conservador</item>
     <item>SmartassV2</item>
-    <item>Interactive</item>
+    <item>Interactivo</item>
   </string-array>
   <string-array name="array_gov_values">
     <item>ondemand</item>
@@ -313,9 +310,9 @@ Do you want to continue?</string>
     <item>interactive</item>
   </string-array>
   <string-array name="array_gov_entries_n4">
-    <item>Ondemand</item>
-    <item>Conservative</item>
-    <item>Interactive</item>
+    <item>Bajo demanda</item>
+    <item>Conservador</item>
+    <item>Interactivo</item>
   </string-array>
   <string-array name="array_gov_values_n4">
     <item>ondemand</item>
@@ -323,16 +320,16 @@ Do you want to continue?</string>
     <item>interactive</item>
   </string-array>
   <string-array name="array_led_entries">
-    <item>None</item>
+    <item>Ninguno</item>
     <item>Touchwake</item>
     <item>MMC</item>
     <item>Thermal</item>
-    <item>USB online</item>
-    <item>DC online</item>
-    <item>Wireless online</item>
-    <item>Battery charging or full</item>
-    <item>Battery charging</item>
-    <item>Battery full</item>
+    <item>Carga USB</item>
+    <item>Carga CA</item>
+    <item>Carga inalámbrica</item>
+    <item>Batería cargando o llena</item>
+    <item>Batería cargando</item>
+    <item>Batería llena</item>
   </string-array>
   <string-array name="array_led_values">
     <item>none</item>
@@ -386,7 +383,7 @@ Do you want to continue?</string>
     <item>2048</item>
   </string-array>
   <string-array name="array_ab_profiles_entries">
-    <item>Brillo</item>
+    <item>Claro</item>
     <item>Normal</item>
     <item>Oscuro</item>
   </string-array>

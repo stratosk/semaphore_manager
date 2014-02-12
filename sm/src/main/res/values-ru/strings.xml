@@ -167,58 +167,58 @@
   <string name="str_lock_min_title">Блокировка минимальной частоты до 100 МГц</string>
   <string name="str_lock_min_summary">Блокировка минимальной частоты до 100 МГц при неактивной обработке графики</string>
   <string name="str_bluetooth_title">Выключить bluetooth</string>
-  <string name="str_bluetooth_summary">Enabling again requires reboot</string>
-  <string name="str_logger_title">Logger</string>
-  <string name="str_logger_summary">must reboot</string>
+  <string name="str_bluetooth_summary">Включение снова требует перезагрузки</string>
+  <string name="str_logger_title">Регистратор</string>
+  <string name="str_logger_summary">необходимо перезагрузить</string>
   <string name="str_tun_title">TUN</string>
-  <string name="str_tun_summary">for VPN</string>
+  <string name="str_tun_summary">для VPN</string>
   <string name="str_cifs_title">CIFS</string>
-  <string name="str_cifs_summary">mount Windows shares</string>
+  <string name="str_cifs_summary">Загрузить Windows shares</string>
   <string name="str_bigmem_title">Bigmem</string>
-  <string name="str_bigmem_summary">must reboot</string>
-  <string name="str_autobr_title">Semaphore Auto Brightness</string>
-  <string name="str_sema_autobr_title">Enabled</string>
-  <string name="str_ab_profiles_title">Profiles</string>
-  <string name="str_sema_autobr_tunables_title">Tunables</string>
-  <string name="str_ab_min_brightness_title">Min brightness</string>
+  <string name="str_bigmem_summary">необходимо перезагрузить</string>
+  <string name="str_autobr_title">Семафор автояркость</string>
+  <string name="str_sema_autobr_title">Включено</string>
+  <string name="str_ab_profiles_title">Профили</string>
+  <string name="str_sema_autobr_tunables_title">Переменные</string>
+  <string name="str_ab_min_brightness_title">Мин яркость</string>
   <string name="str_ab_min_brightness_summary"></string>
-  <string name="str_ab_max_brightness_title">Max brightness</string>
+  <string name="str_ab_max_brightness_title">Макс яркость</string>
   <string name="str_ab_max_brightness_summary"></string>
-  <string name="str_ab_max_lux_title">Max lux</string>
+  <string name="str_ab_max_lux_title">Макс Lux</string>
   <string name="str_ab_max_lux_summary"></string>
-  <string name="str_ab_instant_update_thres_title">Instant update threshold</string>
+  <string name="str_ab_instant_update_thres_title">Мгновенное обновление порога</string>
   <string name="str_ab_instant_update_thres_summary"></string>
-  <string name="str_ab_effect_delay_ms_title">Effect delay</string>
+  <string name="str_ab_effect_delay_ms_title">Эффект задержки</string>
   <string name="str_ab_effect_delay_ms_summary"></string>
-  <string name="str_ab_max_br_threshold_title">Max brightness threshold</string>
+  <string name="str_ab_max_br_threshold_title">Максимальный порог яркости</string>
   <string name="str_ab_max_br_threshold_summary"></string>
-  <string name="str_cat_scheduler_title">Schedulers</string>
-  <string name="str_scheduler_title">Active scheduler</string>
-  <string name="str_vibrator_title">Vibrator</string>
-  <string name="str_vibrator_dc_title">Level</string>
-  <string name="str_vibrator_test_title">Test</string>
-  <string name="str_vibrator_test_summary">touch to test</string>
-  <string name="str_tcp_congestion_title">Algorithm</string>
-  <string name="str_lcd_calibration_title">LCD calibration</string>
-  <string name="str_lcd_temperature_title">Color temperature</string>
-  <string name="str_lcd_red_title">Red</string>
-  <string name="str_lcd_green_title">Green</string>
-  <string name="str_lcd_blue_title">Blue</string>
-  <string name="str_lcd_gamma_title">Gamma control</string>
-  <string name="str_gamma_r_title">Red</string>
-  <string name="str_gamma_g_title">Green</string>
-  <string name="str_gamma_b_title">Blue</string>
-  <string name="str_lcd_backlight_title">Backlight brightness</string>
-  <string name="str_min_br_title">Minimum</string>
-  <string name="str_max_br_title">Maximum</string>
-  <string name="str_br_mode_title">Linear mapping mode</string>
-  <string name="str_br_mode_summary">Uncheck to use exponential</string>
+  <string name="str_cat_scheduler_title">Планировщики</string>
+  <string name="str_scheduler_title">Активный планировщик</string>
+  <string name="str_vibrator_title">Вибрация</string>
+  <string name="str_vibrator_dc_title">Уровень</string>
+  <string name="str_vibrator_test_title">Тест</string>
+  <string name="str_vibrator_test_summary">Коснуться для проверки</string>
+  <string name="str_tcp_congestion_title">Алгоритм</string>
+  <string name="str_lcd_calibration_title">ЖК калибровка</string>
+  <string name="str_lcd_temperature_title">Цветовая температура</string>
+  <string name="str_lcd_red_title">Красный</string>
+  <string name="str_lcd_green_title">Зеленый</string>
+  <string name="str_lcd_blue_title">Синий</string>
+  <string name="str_lcd_gamma_title">Управление гаммой</string>
+  <string name="str_gamma_r_title">Красный</string>
+  <string name="str_gamma_g_title">Зеленый</string>
+  <string name="str_gamma_b_title">Синий</string>
+  <string name="str_lcd_backlight_title">Яркость подсветки</string>
+  <string name="str_min_br_title">Минимум</string>
+  <string name="str_max_br_title">Максимум</string>
+  <string name="str_br_mode_title">Линейный режим сопоставления</string>
+  <string name="str_br_mode_summary">Снимите флажок, чтобы использовать экспоненциальность</string>
   <string name="str_configs_title">config.gz</string>
   <string name="str_configs_summary">/proc/config.gz</string>
-  <string name="str_radio_si4709_i2c_title">Radio FM</string>
+  <string name="str_radio_si4709_i2c_title">Радио FM</string>
   <string name="str_radio_si4709_i2c_summary">si4709</string>
-  <string name="str_usb_title">USB Host</string>
-  <string name="str_mousedev_title">Mouse</string>
+  <string name="str_usb_title">USB-хост</string>
+  <string name="str_mousedev_title">Мышь</string>
   <string name="str_mousedev_summary"></string>
   <string name="str_xbox_title">X-Box pad</string>
   <string name="str_xbox_summary"></string>
@@ -226,16 +226,16 @@
   <string name="str_usbhid_summary"></string>
   <string name="str_uhid_title">UHID</string>
   <string name="str_uhid_summary"></string>
-  <string name="str_fastchg_title">Fast charge</string>
-  <string name="str_fastchg_summary">Please use it at your own risk</string>
-  <string name="str_wififast_title">WiFi PM FAST</string>
-  <string name="str_wififast_summary">PM FAST when suspend</string>
+  <string name="str_fastchg_title">Быстрая зарядка</string>
+  <string name="str_fastchg_summary">Использовать на свой страх и риск</string>
+  <string name="str_wififast_title">Быстрый WiFi PM</string>
+  <string name="str_wififast_summary">Быстрый PM при задержке</string>
   <string name="str_bln_title">BLN</string>
-  <string name="str_bln_summary">Use BLN instead of CM Led (must reboot)</string>
-  <string name="str_touch_enable_title">Enabled</string>
+  <string name="str_bln_summary">Использовать BLN вместо CM Led (требуется перезагрузка)</string>
+  <string name="str_touch_enable_title">Включено</string>
   <string name="str_touch_enable_summary"></string>
-  <string name="str_touch_title">Delay</string>
-  <string name="str_touch_summary">Delay in seconds</string>
+  <string name="str_touch_title">Задержка</string>
+  <string name="str_touch_summary">Задержка в секундах</string>
   <string name="str_dt_wake_enabled_title">Включено</string>
   <string name="str_dt_wake_enabled_summary">Не выключать сенсорный экран</string>
   <string name="str_about_title">О программе</string>
@@ -261,43 +261,40 @@
   <string name="strErrorRoot">Нет root! Семафор диспетчер нуждается в доступе с правами root для запуска.</string>
   <string name="strErrorBusybox">Busybox не найден! Семафор диспетчер нуждается в busybox для правильной работы.</string>
   <string name="strConfTheme">Переключение темной/светлой темы. Вы хотите продолжить?</string>
-  <string name="strConfOverride">System settings maybe will override your personal settings.
-Do you want to continue?</string>
-  <string name="strConfReset">All settings will be reset to default.
-Do you want to continue?</string>
-  <string name="strBtnClose">Close</string>
-  <string name="strBtnOK">OK</string>
-  <string name="strBtnCancel">Cancel</string>
-  <string name="strMsgCVapplied">Custom voltages applied</string>
-  <string name="strMsgCVReset">Custom voltages reset to default</string>
-  <string name="strMsgUVApplied">Undervolting applied</string>
-  <string name="strConfUVReset">Undervolting settings will be reset to default.\nDo you want to continue?</string>
-  <string name="strMsgUVReset">Undervolting values reset to default</string>
-  <string name="strMsgKmsgSaved">kmsg saved successfully in
-</string>
-  <string name="strMsgMinCores">Minimum number of online cores (1-4)</string>
-  <string name="strMsgMaxCores">Maximum number of online cores (1-4)</string>
-  <string name="strMsgVoltage">Voltage (in uV)</string>
-  <string name="strMsgVoltage2">Voltage</string>
-  <string name="strInfoMemory">Memory</string>
-  <string name="strInfoKernel">Kernel</string>
-  <string name="strInfoAuthor">Author</string>
-  <string name="strInfoDonate">Donate</string>
-  <string name="strInfoDonateSummary">Please donate to help development</string>
-  <string name="strMsgVibrator">Vibrator duty cycle</string>
-  <string name="strMsgBlinking">Blinking interval</string>
-  <string name="strTCPCongestion">TCP congestion control</string>
-  <string name="strActionRefresh">Refresh</string>
-  <string name="strActionSave">Save kmsg</string>
-  <string name="strActionRead">Read System Settings</string>
-  <string name="strActionReset">Reset to default</string>
-  <string name="strActionClear">Clear init.d</string>
-  <string name="strActionToggle">Toggle theme</string>
-  <string name="str_misc_title">miscellaneous</string>
+  <string name="strConfOverride">Параметры системы удалят ваши персональные настройки. Вы хотите продолжить?</string>
+  <string name="strConfReset">Все настройки сбросятся по умолчанию. Вы хотите продолжить?</string>
+  <string name="strBtnClose">Закрыть</string>
+  <string name="strBtnOK">Хорошо</string>
+  <string name="strBtnCancel">Отмена</string>
+  <string name="strMsgCVapplied">Применение пользовательских напряжений</string>
+  <string name="strMsgCVReset">Пользовательские напряжения сброшены</string>
+  <string name="strMsgUVApplied">Применено понижение напряжения</string>
+  <string name="strConfUVReset">Настройки понижения напряжения будут сброшены по умолчанию. Вы хотите продолжить?</string>
+  <string name="strMsgUVReset">Значения понижения напряжения сброшены по умолчанию</string>
+  <string name="strMsgKmsgSaved">kmsg успешно сохранены в</string>
+  <string name="strMsgMinCores">Минимальное количество ядер онлайн (1-4)</string>
+  <string name="strMsgMaxCores">Максимальное количество ядер онлайн (1-4)</string>
+  <string name="strMsgVoltage">Напряжение (в uV)</string>
+  <string name="strMsgVoltage2">Напряжение</string>
+  <string name="strInfoMemory">Память</string>
+  <string name="strInfoKernel">Ядро</string>
+  <string name="strInfoAuthor">Автор</string>
+  <string name="strInfoDonate">Пожертвовать</string>
+  <string name="strInfoDonateSummary">Пожалуйста, поддержите нас, чтобы помочь развитию</string>
+  <string name="strMsgVibrator">Рабочий цикл вибрации</string>
+  <string name="strMsgBlinking">Интервал мигания</string>
+  <string name="strTCPCongestion">Управление перегрузкой TCP</string>
+  <string name="strActionRefresh">Обновить</string>
+  <string name="strActionSave">Сохранить kmsg</string>
+  <string name="strActionRead">Чтение параметров системы</string>
+  <string name="strActionReset">Восстановить настройки по умолчанию</string>
+  <string name="strActionClear">Очистить init.d</string>
+  <string name="strActionToggle">Переключение темы</string>
+  <string name="str_misc_title">Прочее</string>
   <string name="strEmpty"> </string>
-  <string name="strMsgOverclock">Overclock %</string>
+  <string name="strMsgOverclock">Разгон %</string>
   <string-array name="array_gov_entries">
-    <item>Ondemand</item>
+    <item>OnDemand</item>
     <item>Conservative</item>
     <item>SmartassV2</item>
     <item>Interactive</item>
@@ -309,7 +306,7 @@ Do you want to continue?</string>
     <item>interactive</item>
   </string-array>
   <string-array name="array_gov_entries_n4">
-    <item>Ondemand</item>
+    <item>OnDemand</item>
     <item>Conservative</item>
     <item>Interactive</item>
   </string-array>
@@ -319,16 +316,16 @@ Do you want to continue?</string>
     <item>interactive</item>
   </string-array>
   <string-array name="array_led_entries">
-    <item>None</item>
+    <item>Нет</item>
     <item>Touchwake</item>
     <item>MMC</item>
-    <item>Thermal</item>
-    <item>USB online</item>
-    <item>DC online</item>
-    <item>Wireless online</item>
-    <item>Battery charging or full</item>
-    <item>Battery charging</item>
-    <item>Battery full</item>
+    <item>Тепловой</item>
+    <item>USB онлайн</item>
+    <item>DC онлайн</item>
+    <item>Беспроводной Интернет онлайн</item>
+    <item>Зарядка аккумулятора или полностью заряжен</item>
+    <item>Зарядка аккумулятора</item>
+    <item>Аккумулятор заряжен</item>
   </string-array>
   <string-array name="array_led_values">
     <item>none</item>
@@ -382,9 +379,9 @@ Do you want to continue?</string>
     <item>2048</item>
   </string-array>
   <string-array name="array_ab_profiles_entries">
-    <item>Bright</item>
-    <item>Normal</item>
-    <item>Dark</item>
+    <item>Яркий</item>
+    <item>Нормальный</item>
+    <item>Темный</item>
   </string-array>
   <string-array name="array_ab_profiles_values">
     <item>bright</item>
