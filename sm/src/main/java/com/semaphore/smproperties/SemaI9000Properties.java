@@ -26,14 +26,11 @@ public class SemaI9000Properties extends SemaCommonProperties {
 	public SMIntProperty scaling_min_freq;
 	public SMIntProperty scaling_max_freq;
 	public SMOndemandI9000Property ondemand;
-	public SMConservativeProperty conservative;
 	public SMSmartassProperty smartass;
-	public SMInteractiveProperty interactive;
 	public SMIntProperty deep_idle;
 	public SMIntProperty deep_idle_stats;
 	public SMIntProperty bluetooth;
 	public SMIntProperty lock_min;
-	public SMLoggerProperty logger;
 	public SMCifsProperty cifs;
 	public SMModuleProperty tun;
 	public SMModuleProperty configs;
@@ -42,11 +39,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
 	public SMXboxProperty xbox;
 	public SMModuleProperty usbhid;
 	public SMModuleProperty uhid;
-	public SMSchedulerProperty scheduler;
 	public SMAbProperty autobr;
-	public SMIntProperty vibrator;
-	public SMIntProperty touch_enable;
-	public SMIntProperty touch;
 	public SMIntProperty bigmem;
 	public SMIntProperty wififast;
 	public SMIntProperty forcefastchg;
@@ -55,6 +48,7 @@ public class SemaI9000Properties extends SemaCommonProperties {
 	public SMCVProperty cv;
 
 	public SemaI9000Properties() {
+		super();
 
 		oc = new SMIntProperty("oc", "/sys/devices/virtual/misc/liveoc/oc_value", false, 100, 120, 100);
 		gov = new SMStringProperty("gov", "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor", false, "ondemand");
@@ -62,15 +56,12 @@ public class SemaI9000Properties extends SemaCommonProperties {
 		scaling_max_freq = new SMIntProperty("scaling_max_freq", "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq", false, 100000, 1200000, 1000000);
 
 		ondemand = new SMOndemandI9000Property();
-		conservative = new SMConservativeProperty();
 		smartass = new SMSmartassProperty();
-		interactive = new SMInteractiveProperty();
 		deep_idle = new SMIntProperty("deep_idle", "/sys/devices/virtual/misc/deepidle/enabled", false, 0, 1, 0);
 		deep_idle_stats = new SMIntProperty("deep_idle_stats", "/sys/devices/virtual/misc/deepidle/stats_enabled", false, 0, 1, 0);
 		lock_min = new SMIntProperty("lock_min", "/sys/devices/system/cpu/cpu0/cpufreq/lock_scaling_min", false, 0, 1, 0);
 		bluetooth = new SMIntProperty("bluetooth", "/sys/devices/platform/bt_rfkill/rfkill/rfkill0/soft", false, 0, 1, 0);
 
-		logger = new SMLoggerProperty("logger", "/system/lib/modules", false);
 		tun = new SMModuleProperty("tun", "/system/lib/modules/tun", false);
 		cifs = new SMCifsProperty(false);
 		configs = new SMModuleProperty("configs", "/system/lib/modules/configs", false);
@@ -80,12 +71,8 @@ public class SemaI9000Properties extends SemaCommonProperties {
 		usbhid = new SMModuleProperty("usbhid", "/system/lib/modules/usbhid", false);
 		uhid = new SMModuleProperty("uhid", "/system/lib/modules/uhid", false);
 
-		scheduler = new SMSchedulerProperty("scheduler", "noop");
 		scheduler.basepath = "/sys/block/mmcblk0/queue/scheduler";
 		autobr = new SMAbProperty();
-		vibrator = new SMIntProperty("vibrator", "/sys/devices/virtual/misc/pwm_duty/pwm_duty", false, 0, 100, 100);
-		touch_enable = new SMIntProperty("touch_enable", "/sys/devices/virtual/misc/touchwake/enabled", false, 0, 1, 0);
-		touch = new SMIntProperty("touch", "/sys/devices/virtual/misc/touchwake/delay", false, 0, 300000, 30000);
 		bigmem = new SMIntProperty("bigmem", "sys/kernel/bigmem/enable", false, 0, 1, 0);
 		wififast = new SMIntProperty("wififast", "/sys/module/bcmdhd/parameters/wifi_pm", false, 0, 1, 0);
 		forcefastchg = new SMIntProperty("forcefastchg", "/sys/kernel/fast_charge/force_fast_charge", false, 0, 1, 0);

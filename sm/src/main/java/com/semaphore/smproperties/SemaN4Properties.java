@@ -23,18 +23,11 @@ public class SemaN4Properties extends SemaCommonProperties {
 
 	public SMCpufreqProperty cpufreq;
 	public SMOndemandN4Property ondemand;
-	public SMConservativeProperty conservative;
-	public SMInteractiveProperty interactive;
 	public SMUVProperty uv;
-	public SMSchedulerProperty scheduler;
-	public SMIntProperty vibrator;
-	public SMIntProperty touch_enable;
-	public SMIntProperty touch;
 	public SMIntProperty dt_wake_enabled;
 	public SMStringProperty tcp_congestion;
 	public SMTouchAccuracyProperty taccuracy;
 	public SMTouchJitterProperty tjitter;
-	public SMLoggerProperty logger;
 	public SMLEDTrigProperty led_red;
 	public SMLEDTrigProperty led_green;
 	public SMLEDTrigProperty led_blue;
@@ -52,16 +45,15 @@ public class SemaN4Properties extends SemaCommonProperties {
 	public SMIntProperty br_mode;
 
 	public SemaN4Properties() {
+		super();
 
 		cpufreq = new SMCpufreqProperty();
 		ondemand = new SMOndemandN4Property();
 
-		conservative = new SMConservativeProperty();
 		conservative.down_threshold.setDefault(20);
 		conservative.up_threshold.setDefault(80);
 		conservative.sampling_rate.setDefault(20000);
 
-		interactive = new SMInteractiveProperty();
 		interactive.hispeed_freq.setMaxValue(1512000);
 		interactive.hispeed_freq.setDefault(1512000);
 
@@ -72,12 +64,10 @@ public class SemaN4Properties extends SemaCommonProperties {
 		hp_min_online = new SMIntProperty("hp_min_online", "/sys/module/dyn_hotplug/parameters/min_online", false, 1, 4, 2);
 		hp_max_online = new SMIntProperty("hp_max_online", "/sys/module/dyn_hotplug/parameters/max_online", false, 1, 4, 4);
 
-		scheduler = new SMSchedulerProperty("scheduler", "noop");
 		scheduler.basepath = "/sys/block/mmcblk0/queue/scheduler";
 
-		vibrator = new SMIntProperty("vibrator", "/sys/class/timed_output/vibrator/amp", false, 0, 100, 70);
-		touch_enable = new SMIntProperty("touch_enable", "/sys/devices/virtual/misc/touchwake/enabled", false, 0, 1, 0);
-		touch = new SMIntProperty("touch", "/sys/devices/virtual/misc/touchwake/delay", false, 0, 300000, 30000);
+		vibrator.setPath("/sys/class/timed_output/vibrator/amp");
+		vibrator.setDefault(70);
 		dt_wake_enabled = new SMIntProperty("dt_wake_enabled", "/sys/devices/virtual/input/lge_touch/dt_wake_enabled", false, 0, 1, 0);
 
 		tcp_congestion = new SMStringProperty("tcp_congestion", "/proc/sys/net/ipv4/tcp_congestion_control", false, "cubic");
@@ -99,7 +89,7 @@ public class SemaN4Properties extends SemaCommonProperties {
 		max_br = new SMIntProperty("max_br", "/sys/devices/i2c-0/0-0038/lm3530_max_br", false, 2, 114, 114);
 		br_mode = new SMIntProperty("br_mode", "/sys/devices/i2c-0/0-0038/lm3530_br_mode", false, 0, 1, 1);
 
-		logger = new SMLoggerProperty("logger", "/lib/modules", false);
+		logger.setModPath("/lib/modules");
 	}
 
 	@Override

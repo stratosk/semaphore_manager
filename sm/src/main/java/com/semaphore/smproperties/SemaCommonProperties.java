@@ -13,7 +13,23 @@ import android.content.Context;
 
 public class SemaCommonProperties {
 
+	public SMConservativeProperty conservative;
+	public SMIntProperty touch_enable;
+	public SMIntProperty touch;
+	public SMSchedulerProperty scheduler;
+	public SMIntProperty vibrator;
+	public SMLoggerProperty logger;
+	public SMInteractiveProperty interactive;
+
 	public SemaCommonProperties() {
+		conservative = new SMConservativeProperty();
+		interactive = new SMInteractiveProperty();
+
+		touch = new SMIntProperty("touch", "/sys/devices/virtual/misc/touchwake/delay", false, 0, 300000, 30000);
+		touch_enable = new SMIntProperty("touch_enable", "/sys/devices/virtual/misc/touchwake/enabled", false, 0, 1, 0);
+		scheduler = new SMSchedulerProperty("scheduler", "noop");
+		vibrator = new SMIntProperty("vibrator", "/sys/devices/virtual/misc/pwm_duty/pwm_duty", false, 0, 100, 100);
+		logger = new SMLoggerProperty("logger", "/system/lib/modules", false);
 	}
 
 	public void readValues() {
