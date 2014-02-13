@@ -10,11 +10,11 @@
 package com.semaphore.sm;
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -225,12 +225,24 @@ public class TabTweaksFragment extends PreferenceFragment implements SharedPrefe
 		} else if (key.equals(sp.touch_enable.getName())) {
 			sp.touch_enable.setValue(sharedPreferences.getBoolean(key, sp.touch_enable.getDefBoolean()) ? 1 : 0);
 			sp.touch_enable.writeValue();
+			if (sp.touch_enable.getBoolean()) {
+				CheckBoxPreference pref = (CheckBoxPreference) findPreference(sp.dt_wake_enabled.getName());
+				if (pref != null) {
+					pref.setChecked(false);
+				}
+			}
 		} else if (key.equals(sp.touch.getName())) {
 			sp.touch.setValue(sharedPreferences.getInt(key, sp.touch.getDefault()));
 			sp.touch.writeValue();
 		} else if (key.equals(sp.dt_wake_enabled.getName())) {
 			sp.dt_wake_enabled.setValue(sharedPreferences.getBoolean(key, sp.dt_wake_enabled.getDefBoolean()) ? 1 : 0);
 			sp.dt_wake_enabled.writeValue();
+			if (sp.dt_wake_enabled.getBoolean()) {
+				SwitchPreference pref = (SwitchPreference) findPreference(sp.touch_enable.getName());
+				if (pref != null) {
+					pref.setChecked(false);
+				}
+			}
 		} else if (key.equals(sp.tcp_congestion.getName())) {
 			sp.tcp_congestion.setValue(sharedPreferences.getString(key, sp.tcp_congestion.getDefValue()));
 			sp.tcp_congestion.writeValue();
