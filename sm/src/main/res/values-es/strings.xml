@@ -70,7 +70,7 @@
   <string name="str_o_io_is_busy_title">IO está ocupado</string>
   <string name="str_o_sampling_down_factor_title">Factor de reducción de muestreo</string>
   <string name="str_o_sampling_down_factor_summary">Valores válidos 1-100000</string>
-  <string name="str_o_sampling_down_max_momentum_title">Sampling down max momentum</string>
+  <string name="str_o_sampling_down_max_momentum_title">Momentum máx de reducción de muestreo</string>
   <string name="str_o_sampling_down_max_momentum_summary">Valores válidos 1-1000</string>
   <string name="str_o_sampling_rate_title">Tasa de muestreo</string>
   <string name="str_o_sampling_rate_summary">Valores válidos 10000-100000</string>
@@ -229,7 +229,7 @@
   <string name="str_fastchg_title">Carga rápida</string>
   <string name="str_fastchg_summary">Por favor úsalo bajo tu propio riesgo</string>
   <string name="str_wififast_title">WiFi PM FAST</string>
-  <string name="str_wififast_summary">PM FAST when suspend</string>
+  <string name="str_wififast_summary">PM FAST en suspensión</string>
   <string name="str_bln_title">BLN</string>
   <string name="str_bln_summary">Usar BLN en lugar de CM Led (requiere reinicio)</string>
   <string name="str_touch_enable_title">Activado</string>
@@ -285,7 +285,7 @@
   <string name="strInfoAuthor">Autor</string>
   <string name="strInfoDonate">Donar</string>
   <string name="strInfoDonateSummary">Por favor dona para ayudar este desarrollo</string>
-  <string name="strMsgVibrator">Vibrator duty cycle</string>
+  <string name="strMsgVibrator">Ciclo de trabajo del vibrador</string>
   <string name="strMsgBlinking">Intervalo de parpadeo</string>
   <string name="strTCPCongestion">Control de congestión TCP</string>
   <string name="strActionRefresh">Actualizar</string>
