@@ -31,6 +31,10 @@ public class SMLoggerProperty extends SMBaseProperty {
 		this.Value = Value;
 	}
 
+	public void setModPath(String modPath) {
+		this.modPath = modPath;
+	}
+
 	public SMLoggerProperty(String name, String modPath, boolean defValue) {
 		super(name);
 
