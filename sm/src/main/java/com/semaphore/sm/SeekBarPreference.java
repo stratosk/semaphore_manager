@@ -66,6 +66,8 @@ public class SeekBarPreference extends DialogPreference implements SeekBar.OnSee
 		layout.setPadding(6, 20, 6, 50);
 
 		mSplashText = new TextView(mContext);
+		mSplashText.setGravity(Gravity.CENTER_HORIZONTAL);
+		mSplashText.setTextSize(14);
 		if (mDialogMessage != null)
 			mSplashText.setText(mDialogMessage);
 		layout.addView(mSplashText);
