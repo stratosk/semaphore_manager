@@ -36,8 +36,6 @@ import com.semaphore.smproperties.SemaCommonProperties;
 import com.semaphore.smproperties.SemaI9000Properties;
 import com.semaphore.smproperties.SemaN4Properties;
 
-import java.util.Iterator;
-
 public class TabCPUFragment extends PreferenceFragment implements OnSharedPreferenceChangeListener, OnPreferenceClickListener {
 
 	private SemaCommonProperties scp;
