@@ -79,11 +79,11 @@
   <string name="str_o_powersave_bias_title">Tendencia de ahorro de energía</string>
   <string name="str_o_powersave_bias_summary">Valores válidos 0-1000</string>
   <string name="str_o_smooth_ui_title">UI fluida</string>
-  <string name="str_o_touch_load_title">Touch load</string>
+  <string name="str_o_touch_load_title">Carga de toque</string>
   <string name="str_o_touch_load_summary">Valores válidos 1-100</string>
-  <string name="str_o_touch_load_threshold_title">Touch load threshold</string>
+  <string name="str_o_touch_load_threshold_title">Umbral de carga de toque</string>
   <string name="str_o_touch_load_threshold_summary">Valores válidos 1-100</string>
-  <string name="str_o_touch_load_duration_title">Touch load duration</string>
+  <string name="str_o_touch_load_duration_title">Duración de carga de toque</string>
   <string name="str_o_touch_load_duration_summary">Valores válidos 1-1000000</string>
   <string name="str_c_freq_step_title">Paso de frecuencia</string>
   <string name="str_c_freq_step_summary">Valores válidos 1-100</string>
@@ -96,7 +96,7 @@
   <string name="str_c_down_threshold_title">Umbral de bajada</string>
   <string name="str_c_down_threshold_summary">Valores válidos 1-100</string>
   <string name="str_c_smooth_ui_title">UI fluida</string>
-  <string name="str_s_awake_ideal_freq_title">Awake ideal frequency</string>
+  <string name="str_s_awake_ideal_freq_title">Frecuencia ideal despierto</string>
   <string name="str_s_awake_ideal_freq_summary">Valores válidos 1-100</string>
   <string name="str_s_up_rate_title">Tasa de subida</string>
   <string name="str_s_up_rate_summary">Valores válidos 1-100</string>
@@ -106,15 +106,15 @@
   <string name="str_s_max_cpu_load_summary">Valores válidos 1-100</string>
   <string name="str_s_min_cpu_load_title">Carga Mín. de CPU</string>
   <string name="str_s_min_cpu_load_summary">Valores válidos 1-100</string>
-  <string name="str_s_ramp_up_step_title">Ramp up step</string>
+  <string name="str_s_ramp_up_step_title">Paso de aumento de frec</string>
   <string name="str_s_ramp_up_step_summary">Valores válidos 1-100</string>
-  <string name="str_s_ramp_down_step_title">Ramp down step</string>
+  <string name="str_s_ramp_down_step_title">Paso de disminución de frec</string>
   <string name="str_s_ramp_down_step_summary">Valores válidos 1-100</string>
-  <string name="str_s_sleep_wakeup_freq_title">Sleep wakeup frequency</string>
+  <string name="str_s_sleep_wakeup_freq_title">Frecuencia al despertar</string>
   <string name="str_s_sleep_wakeup_freq_summary">Valores válidos 1-100</string>
-  <string name="str_s_sleep_ideal_freq_title">Sleep ideal frequency</string>
+  <string name="str_s_sleep_ideal_freq_title">Frecuencia ideal dormido</string>
   <string name="str_s_sleep_ideal_freq_summary">Valores válidos 1-100</string>
-  <string name="str_s_sample_rate_jiffies_title">Sample rate jiffies</string>
+  <string name="str_s_sample_rate_jiffies_title">Intervalos de muestreo</string>
   <string name="str_s_sample_rate_jiffies_summary">Valores válidos 1-100</string>
   <string name="str_s_smooth_ui_title">UI fluida</string>
   <string name="str_i_hispeed_freq_title">Frecuencia de alta velocidad</string>
@@ -123,28 +123,28 @@
   <string name="str_i_go_hispeed_load_summary">Valores válidos 1-100000</string>
   <string name="str_i_min_sampling_time_title">Tiempo mínimo de muestreo</string>
   <string name="str_i_min_sampling_time_summary">Valores válidos 10000-100000</string>
-  <string name="str_i_above_hispeed_delay_title">Above hi speed delay</string>
+  <string name="str_i_above_hispeed_delay_title">Retardo de aumento de velocidad</string>
   <string name="str_i_above_hispeed_delay_summary">Valores válidos 1-100</string>
   <string name="str_i_timer_rate_title">Tasa del temporizador</string>
   <string name="str_i_timer_rate_summary">Valores válidos 10000-100000</string>
   <string name="str_i_timer_slack_title">Holgura del temporizador</string>
   <string name="str_i_timer_slack_summary">Valores válidos 10000-200000</string>
-  <string name="str_i_boostpulse_duration_title">Boostpulse duration</string>
+  <string name="str_i_boostpulse_duration_title">Duración de impulso</string>
   <string name="str_i_boostpulse_duration_summary">Valores válidos 10000-200000</string>
-  <string name="str_i_target_loads_title">Target loads</string>
+  <string name="str_i_target_loads_title">Cargas objetivo</string>
   <string name="str_i_target_loads_summary">Valores válidos 1-100</string>
   <string name="str_i_io_is_busy_title">IO está ocupado</string>
-  <string name="str_i_input_boost_title">Input boost</string>
+  <string name="str_i_input_boost_title">Impulso en entrada</string>
   <string name="str_accuracy_title">Filtros de pantalla táctil</string>
   <string name="str_accuracy_screen_title">Filtro de precisión</string>
   <string name="str_accuracy_summary"></string>
   <string name="str_ac_enable_title">Activado</string>
   <string name="str_ac_enable_summary">Activar filtro de precisión</string>
-  <string name="str_ac_ignore_pressure_gap_title">Ignore pressure gap</string>
+  <string name="str_ac_ignore_pressure_gap_title">Ignorar salto de presión</string>
   <string name="str_ac_ignore_pressure_gap_summary">Valores válidos 1-255</string>
   <string name="str_ac_delta_max_title">Incremento máximo</string>
   <string name="str_ac_delta_max_summary">Valores válidos 1-255</string>
-  <string name="str_ac_touch_max_count_title">Touch max count</string>
+  <string name="str_ac_touch_max_count_title">Contador máx de toque</string>
   <string name="str_ac_touch_max_count_summary">Valores válidos 1-255</string>
   <string name="str_ac_max_pressure_title">Presión máxima</string>
   <string name="str_ac_max_pressure_summary">Valores válidos 1-255</string>
@@ -157,8 +157,8 @@
   <string name="str_jit_adjust_margin_title">Margen de ajuste de jitter</string>
   <string name="str_jit_adjust_margin_summary">Valores válidos 1-255</string>
   <string name="str_touchwake_disable_title">Desactivar Touchwake</string>
-  <string name="str_touchwake_disable_summary">Deshabilitar touchwake durante las llamadas</string>
-  <string name="str_cat_deep_idle_title">Deep Idle</string>
+  <string name="str_touchwake_disable_summary">Desactivar touchwake durante las llamadas</string>
+  <string name="str_cat_deep_idle_title">Ocioso profundo</string>
   <string name="str_deep_idle_title">Activado</string>
   <string name="str_deep_idle_stats_title">Estadísticas</string>
   <string name="str_deep_idle_stats_show_title">Mostrar estadísticas</string>
@@ -173,10 +173,10 @@
   <string name="str_tun_title">TUN</string>
   <string name="str_tun_summary">para VPN</string>
   <string name="str_cifs_title">CIFS</string>
-  <string name="str_cifs_summary">mount Windows shares</string>
+  <string name="str_cifs_summary">Montar compartidos de Windows</string>
   <string name="str_bigmem_title">Bigmem</string>
   <string name="str_bigmem_summary">Requiere reiniciar</string>
-  <string name="str_autobr_title">Brillo automático Semaphore</string>
+  <string name="str_autobr_title">Brillo automático de Semaphore</string>
   <string name="str_sema_autobr_title">Activado</string>
   <string name="str_ab_profiles_title">Perfiles</string>
   <string name="str_sema_autobr_tunables_title">Ajustables</string>
@@ -239,14 +239,14 @@
   <string name="str_dt_wake_enabled_title">Activado</string>
   <string name="str_dt_wake_enabled_summary">Mantener panel táctil siempre alimentado</string>
   <string name="str_about_title">Acerca de</string>
-  <string name="str_didle_dialog_title">Deep Idle Statistics</string>
+  <string name="str_didle_dialog_title">Estadísticas de ocioso profundo</string>
   <string name="str_idle_state">En reposo</string>
-  <string name="str_top_on">TOP=ON</string>
-  <string name="str_top_off">TOP=OFF</string>
+  <string name="str_top_on">TOP=Encendido</string>
+  <string name="str_top_off">TOP=Apagado</string>
   <string name="str_sai_enable_title">Activado</string>
   <string name="str_vibrator_call_title">Vibrador en tono de llamada</string>
-  <string name="str_vibrator_near_title">Proximity Near</string>
-  <string name="str_vibrator_far_title">Proximity Far</string>
+  <string name="str_vibrator_near_title">Sensor proximidad cerca</string>
+  <string name="str_vibrator_far_title">Sensor proximidad lejos</string>
   <string name="str_pickup_phone_cat_title">Descolgar</string>
   <string name="str_pickup_phone_title">Activado</string>
   <string name="str_pickup_phone_summary">Responder llamada sin tocar pantalla</string>
@@ -323,7 +323,7 @@
     <item>Ninguno</item>
     <item>Touchwake</item>
     <item>MMC</item>
-    <item>Thermal</item>
+    <item>Térmico</item>
     <item>Carga USB</item>
     <item>Carga CA</item>
     <item>Carga inalámbrica</item>

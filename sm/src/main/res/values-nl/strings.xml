@@ -194,7 +194,7 @@
   <string name="str_ab_max_br_threshold_summary"></string>
   <string name="str_cat_scheduler_title">Schedulers</string>
   <string name="str_scheduler_title">Actieve scheduler</string>
-  <string name="str_vibrator_title">Vibrator</string>
+  <string name="str_vibrator_title">Trilfunctie</string>
   <string name="str_vibrator_dc_title">Niveau</string>
   <string name="str_vibrator_test_title">Test</string>
   <string name="str_vibrator_test_summary">Aanraken om te testen</string>
@@ -244,7 +244,7 @@
   <string name="str_top_on">TOP=ON\"</string>
   <string name="str_top_off">TOP=OFF\"</string>
   <string name="str_sai_enable_title">Ingeschakeld</string>
-  <string name="str_vibrator_call_title">Vibrator bij overgaande telefoon</string>
+  <string name="str_vibrator_call_title">Trilsterkte bij overgaande telefoon</string>
   <string name="str_vibrator_near_title">Nabijheids-sensor Dichtbij</string>
   <string name="str_vibrator_far_title">Nabijheids-sensor Veraf</string>
   <string name="str_pickup_phone_cat_title">Neem telefoon op</string>
@@ -289,7 +289,7 @@ Wil je doorgaan?</string>
   <string name="strInfoAuthor">Auteur</string>
   <string name="strInfoDonate">Doneren</string>
   <string name="strInfoDonateSummary">Doneer alstublieft om ontwikkeling te ondersteuning</string>
-  <string name="strMsgVibrator">Vibratie activiteits cyclus</string>
+  <string name="strMsgVibrator">Trilsterkte per cyclus</string>
   <string name="strMsgBlinking">Knipper interval</string>
   <string name="strTCPCongestion">TCP congestion control</string>
   <string name="strActionRefresh">Vernieuwen</string>
