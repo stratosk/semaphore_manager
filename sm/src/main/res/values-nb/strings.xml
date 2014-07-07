@@ -60,12 +60,99 @@
   <string name="str_hp_enabled_title">Aktiver</string>
   <string name="str_hp_up_threshold_title">Opp terskel</string>
   <string name="str_hp_up_threshold_summary">Gyldige verdier 1-100</string>
+  <string name="str_hp_up_timer_cnt_title">Up timer counter</string>
+  <string name="str_hp_down_timer_cnt_title">Down timer counter</string>
+  <string-array name="array_gov_entries">
+    <item>Ondemand</item>
+    <item>Conservative</item>
+    <item>SmartassV2</item>
+    <item>Interactive</item>
+  </string-array>
+  <string-array name="array_gov_values">
+    <item>ondemand</item>
+    <item>conservative</item>
+    <item>smartassV2</item>
+    <item>interactive</item>
+  </string-array>
+  <string-array name="array_gov_entries_n4">
+    <item>Ondemand</item>
+    <item>Conservative</item>
+    <item>Interactive</item>
+  </string-array>
+  <string-array name="array_gov_values_n4">
+    <item>ondemand</item>
+    <item>conservative</item>
+    <item>interactive</item>
+  </string-array>
   <string name="str_cat_leds_title">LED trigger</string>
   <string name="str_led_red_title">R�d</string>
   <string name="str_led_green_title">Gr�nn</string>
   <string name="str_led_blue_title">Bl�</string>
+  <string-array name="array_led_entries">
+    <item>Ingen</item>
+    <item>Touchwake</item>
+    <item>MMC</item>
+    <item>Thermal</item>
+    <item>USB online</item>
+    <item>DC online</item>
+    <item>Tr�dl�s online</item>
+    <item>Batteri lader eller full</item>
+    <item>Batteri lader</item>
+    <item>Batteri full</item>
+  </string-array>
+  <string-array name="array_led_values">
+    <item>none</item>
+    <item>touchwake</item>
+    <item>mmc0</item>
+    <item>thermal</item>
+    <item>usb-online</item>
+    <item>pm8921-dc-online</item>
+    <item>wireless-online</item>
+    <item>battery-charging-or-full</item>
+    <item>battery-charging</item>
+    <item>battery-full</item>
+  </string-array>
+  <string-array name="scripts">
+    <item>noop</item>
+    <item>deadline</item>
+    <item>cfq</item>
+    <item>sio</item>
+    <item>row</item>
+    <item>read_ahead</item>
+    <item>touchscreen_0</item>
+    <item>touchscreen_1</item>
+    <item>touchscreen_2</item>
+  </string-array>
   <string name="str_read_ahead_title">SD Card read ahead</string>
+  <string-array name="array_read_ahead_entries">
+    <item>128KB</item>
+    <item>256KB</item>
+    <item>512KB</item>
+    <item>1024KB</item>
+    <item>2048KB</item>
+  </string-array>
+  <string-array name="array_read_ahead_values">
+    <item>128KB</item>
+    <item>256KB</item>
+    <item>512KB</item>
+    <item>1024KB</item>
+    <item>2048KB</item>
+  </string-array>
   <string name="str_read_ahead_n4_title">SD read ahead</string>
+  <string-array name="array_read_ahead_n4_entries">
+    <item>128KB</item>
+    <item>256KB</item>
+    <item>512KB</item>
+    <item>1024KB</item>
+    <item>2048KB</item>
+  </string-array>
+  <string-array name="array_read_ahead_n4_values">
+    <item>128</item>
+    <item>256</item>
+    <item>512</item>
+    <item>1024</item>
+    <item>2048</item>
+  </string-array>
   <string name="str_touchscreen_title">Touch sensitivitet</string>
   <string name="str_o_io_is_busy_title">IO er opptatt</string>
   <string name="str_o_sampling_down_factor_title">Sampling down faktor</string>
@@ -137,7 +224,6 @@
   <string name="str_i_input_boost_title">Input boost</string>
   <string name="str_accuracy_title">Touchscreen Filtre</string>
   <string name="str_accuracy_screen_title">N�yaktighets filter</string>
-  <string name="str_accuracy_summary"></string>
   <string name="str_ac_enable_title">Aktiver</string>
   <string name="str_ac_enable_summary">Aktiver n�yaktighets filter</string>
   <string name="str_ac_ignore_pressure_gap_title">Ignorer pressure gap</string>
@@ -181,23 +267,63 @@
   <string name="str_ab_profiles_title">Profiler</string>
   <string name="str_sema_autobr_tunables_title">Justerbar</string>
   <string name="str_ab_min_brightness_title">Min lysstyrke</string>
-  <string name="str_ab_min_brightness_summary"></string>
   <string name="str_ab_max_brightness_title">Max lysstyrke</string>
-  <string name="str_ab_max_brightness_summary"></string>
   <string name="str_ab_max_lux_title">Max lux</string>
-  <string name="str_ab_max_lux_summary"></string>
   <string name="str_ab_instant_update_thres_title">�yblikkelig uppdater terskel</string>
-  <string name="str_ab_instant_update_thres_summary"></string>
   <string name="str_ab_effect_delay_ms_title">Effekt forsinkelse</string>
-  <string name="str_ab_effect_delay_ms_summary"></string>
   <string name="str_ab_max_br_threshold_title">Max lysstyrke terskel</string>
-  <string name="str_ab_max_br_threshold_summary"></string>
+  <string-array name="array_ab_profiles_entries">
+    <item>Lys</item>
+    <item>Normal</item>
+    <item>M�rk</item>
+  </string-array>
+  <string-array name="array_ab_profiles_values">
+    <item>bright</item>
+    <item>normal</item>
+    <item>dark</item>
+  </string-array>
   <string name="str_cat_scheduler_title">Schedulers</string>
   <string name="str_scheduler_title">Aktiv Schedulers</string>
+  <string-array name="array_scheduler_N4_entries">
+    <item>No-op</item>
+    <item>CFQ</item>
+    <item>Deadline</item>
+    <item>Simple I/O</item>
+  </string-array>
+  <string-array name="array_scheduler_N4_values">
+    <item>noop</item>
+    <item>cfq</item>
+    <item>deadline</item>
+    <item>sio</item>
+  </string-array>
+  <string-array name="array_scheduler_entries">
+    <item>No-op</item>
+    <item>CFQ</item>
+    <item>Deadline</item>
+    <item>Simple I/O</item>
+    <item>ROW</item>
+  </string-array>
+  <string-array name="array_scheduler_values">
+    <item>noop</item>
+    <item>cfq</item>
+    <item>deadline</item>
+    <item>sio</item>
+    <item>row</item>
+  </string-array>
   <string name="str_vibrator_title">Vibrator</string>
   <string name="str_vibrator_dc_title">Level</string>
   <string name="str_vibrator_test_title">Test</string>
   <string name="str_vibrator_test_summary">Trykk for test</string>
+  <string-array name="array_tcp_congestion_entries">
+    <item>CuBIC</item>
+    <item>Reno</item>
+    <item>Westwood</item>
+  </string-array>
+  <string-array name="array_tcp_congestion_values">
+    <item>cubic</item>
+    <item>reno</item>
+    <item>westwood</item>
+  </string-array>
   <string name="str_tcp_congestion_title">Algoritme</string>
   <string name="str_lcd_calibration_title">LCD kalibrering</string>
   <string name="str_lcd_temperature_title">Farge temperatur</string>
@@ -219,13 +345,9 @@
   <string name="str_radio_si4709_i2c_summary">si4709</string>
   <string name="str_usb_title">USB Host</string>
   <string name="str_mousedev_title">Mus</string>
-  <string name="str_mousedev_summary"></string>
   <string name="str_xbox_title">X-Box pad</string>
-  <string name="str_xbox_summary"></string>
   <string name="str_usbhid_title">USB HID</string>
-  <string name="str_usbhid_summary"></string>
   <string name="str_uhid_title">UHID</string>
-  <string name="str_uhid_summary"></string>
   <string name="str_fastchg_title">Rask lading</string>
   <string name="str_fastchg_summary">Vennligst anvend p� egen risiko</string>
   <string name="str_wififast_title">WiFi PM FAST</string>
@@ -233,7 +355,6 @@
   <string name="str_bln_title">BLN</string>
   <string name="str_bln_summary">Bruk BLN istedenfor CM Led (krever omstart)</string>
   <string name="str_touch_enable_title">Aktiver</string>
-  <string name="str_touch_enable_summary"></string>
   <string name="str_touch_title">Utsette</string>
   <string name="str_touch_summary">Utsette i sekunder</string>
   <string name="str_dt_wake_enabled_title">Aktivere</string>
@@ -281,6 +402,8 @@ Semaphore Manager krever busybox for � kj�re.</string>
 </string>
   <string name="strMsgMinCores">Minimum nummer av online kjerner (1-4)</string>
   <string name="strMsgMaxCores">Maximum nummber of online kjerner (1-4)</string>
+  <string name="strMsgUpTimerCnt">Up timer counter (1-20)</string>
+  <string name="strMsgDownTimerCnt">Down timer counter (1-30)</string>
   <string name="strMsgVoltage">Volt (i uV)</string>
   <string name="strMsgVoltage2">Volt</string>
   <string name="strInfoMemory">Minne</string>
@@ -298,137 +421,5 @@ Semaphore Manager krever busybox for � kj�re.</string>
   <string name="strActionClear">T�mme init.d</string>
   <string name="strActionToggle">Veksle tema</string>
   <string name="str_misc_title">Diverse</string>
-  <string name="strEmpty"> </string>
   <string name="strMsgOverclock">Overklokke %</string>
-  <string-array name="array_gov_entries">
-    <item>Ondemand</item>
-    <item>Conservative</item>
-    <item>SmartassV2</item>
-    <item>Interactive</item>
-  </string-array>
-  <string-array name="array_gov_values">
-    <item>ondemand</item>
-    <item>conservative</item>
-    <item>smartassV2</item>
-    <item>interactive</item>
-  </string-array>
-  <string-array name="array_gov_entries_n4">
-    <item>Ondemand</item>
-    <item>Conservative</item>
-    <item>Interactive</item>
-  </string-array>
-  <string-array name="array_gov_values_n4">
-    <item>ondemand</item>
-    <item>conservative</item>
-    <item>interactive</item>
-  </string-array>
-  <string-array name="array_led_entries">
-    <item>Ingen</item>
-    <item>Touchwake</item>
-    <item>MMC</item>
-    <item>Thermal</item>
-    <item>USB online</item>
-    <item>DC online</item>
-    <item>Tr�dl�s online</item>
-    <item>Batteri lader eller full</item>
-    <item>Batteri lader</item>
-    <item>Batteri full</item>
-  </string-array>
-  <string-array name="array_led_values">
-    <item>none</item>
-    <item>touchwake</item>
-    <item>mmc0</item>
-    <item>thermal</item>
-    <item>usb-online</item>
-    <item>pm8921-dc-online</item>
-    <item>wireless-online</item>
-    <item>battery-charging-or-full</item>
-    <item>battery-charging</item>
-    <item>battery-full</item>
-  </string-array>
-  <string-array name="scripts">
-    <item>noop</item>
-    <item>deadline</item>
-    <item>cfq</item>
-    <item>sio</item>
-    <item>row</item>
-    <item>read_ahead</item>
-    <item>touchscreen_0</item>
-    <item>touchscreen_1</item>
-    <item>touchscreen_2</item>
-  </string-array>
-  <string-array name="array_read_ahead_entries">
-    <item>128KB</item>
-    <item>256KB</item>
-    <item>512KB</item>
-    <item>1024KB</item>
-    <item>2048KB</item>
-  </string-array>
-  <string-array name="array_read_ahead_values">
-    <item>128KB</item>
-    <item>256KB</item>
-    <item>512KB</item>
-    <item>1024KB</item>
-    <item>2048KB</item>
-  </string-array>
-  <string-array name="array_read_ahead_n4_entries">
-    <item>128KB</item>
-    <item>256KB</item>
-    <item>512KB</item>
-    <item>1024KB</item>
-    <item>2048KB</item>
-  </string-array>
-  <string-array name="array_read_ahead_n4_values">
-    <item>128</item>
-    <item>256</item>
-    <item>512</item>
-    <item>1024</item>
-    <item>2048</item>
-  </string-array>
-  <string-array name="array_ab_profiles_entries">
-    <item>Lys</item>
-    <item>Normal</item>
-    <item>M�rk</item>
-  </string-array>
-  <string-array name="array_ab_profiles_values">
-    <item>bright</item>
-    <item>normal</item>
-    <item>dark</item>
-  </string-array>
-  <string-array name="array_scheduler_N4_entries">
-    <item>No-op</item>
-    <item>CFQ</item>
-    <item>Deadline</item>
-    <item>Simple I/O</item>
-  </string-array>
-  <string-array name="array_scheduler_N4_values">
-    <item>noop</item>
-    <item>cfq</item>
-    <item>deadline</item>
-    <item>sio</item>
-  </string-array>
-  <string-array name="array_scheduler_entries">
-    <item>No-op</item>
-    <item>CFQ</item>
-    <item>Deadline</item>
-    <item>Simple I/O</item>
-    <item>ROW</item>
-  </string-array>
-  <string-array name="array_scheduler_values">
-    <item>noop</item>
-    <item>cfq</item>
-    <item>deadline</item>
-    <item>sio</item>
-    <item>row</item>
-  </string-array>
-  <string-array name="array_tcp_congestion_entries">
-    <item>CuBIC</item>
-    <item>Reno</item>
-    <item>Westwood</item>
-  </string-array>
-  <string-array name="array_tcp_congestion_values">
-    <item>cubic</item>
-    <item>reno</item>
-    <item>westwood</item>
-  </string-array>
 </resources>
