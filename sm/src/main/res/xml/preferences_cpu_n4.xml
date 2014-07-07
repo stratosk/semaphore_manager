@@ -188,6 +188,24 @@
             android:numeric="integer"
             android:inputType="number"
             android:dependency="hp_enabled" />
+        <com.semaphore.sm.SeekBarPreference
+            android:key="hp_up_timer_cnt"
+            android:title="@string/str_hp_up_timer_cnt_title"
+            android:dialogMessage="@string/strMsgUpTimerCnt"
+            android:defaultValue="2"
+            android:max="20"
+            semaphore:min="1"
+            semaphore:step="1"
+            android:dependency="hp_enabled" />
+        <com.semaphore.sm.SeekBarPreference
+            android:key="hp_down_timer_cnt"
+            android:title="@string/str_hp_down_timer_cnt_title"
+            android:dialogMessage="@string/strMsgDownTimerCnt"
+            android:defaultValue="10"
+            android:max="30"
+            semaphore:min="1"
+            semaphore:step="1"
+            android:dependency="hp_enabled" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/str_undervolt_title">

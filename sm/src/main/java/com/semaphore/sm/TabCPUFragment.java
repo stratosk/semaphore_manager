@@ -372,6 +372,12 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 		} else if (key.equals(sp.hp_up_threshold.getName())) {
 			sp.hp_up_threshold.setValue(sharedPreferences.getString(key, String.valueOf(sp.hp_up_threshold.getDefault())));
 			sp.hp_up_threshold.writeValue();
+		} else if (key.equals(sp.hp_up_timer_cnt.getName())) {
+			sp.hp_up_timer_cnt.setValue(sharedPreferences.getInt(key, sp.hp_up_timer_cnt.getDefault()));
+			sp.hp_up_timer_cnt.writeValue();
+		} else if (key.equals(sp.hp_down_timer_cnt.getName())) {
+			sp.hp_down_timer_cnt.setValue(sharedPreferences.getInt(key, sp.hp_down_timer_cnt.getDefault()));
+			sp.hp_down_timer_cnt.writeValue();
 		}
 	}
 
@@ -697,6 +703,10 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 		pref = findPreference(sp.hp_min_online.getName());
 		pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
 		pref = findPreference(sp.hp_max_online.getName());
+		pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+		pref = findPreference(sp.hp_up_timer_cnt.getName());
+		pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
+		pref = findPreference(sp.hp_down_timer_cnt.getName());
 		pref.setSummary(String.valueOf(((SeekBarPreference) pref).getValue()));
 	}
 

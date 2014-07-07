@@ -40,6 +40,8 @@ public class SemaN4Properties extends SemaCommonProperties {
 	public SMIntProperty hp_up_threshold;
 	public SMIntProperty hp_min_online;
 	public SMIntProperty hp_max_online;
+	public SMIntProperty hp_up_timer_cnt;
+	public SMIntProperty hp_down_timer_cnt;
 	public SMIntProperty min_br;
 	public SMIntProperty max_br;
 	public SMIntProperty br_mode;
@@ -63,6 +65,8 @@ public class SemaN4Properties extends SemaCommonProperties {
 		hp_up_threshold = new SMIntProperty("hp_up_threshold", "/sys/module/dyn_hotplug/parameters/up_threshold", false, 1, 100, 25);
 		hp_min_online = new SMIntProperty("hp_min_online", "/sys/module/dyn_hotplug/parameters/min_online", false, 1, 4, 2);
 		hp_max_online = new SMIntProperty("hp_max_online", "/sys/module/dyn_hotplug/parameters/max_online", false, 1, 4, 4);
+		hp_up_timer_cnt = new SMIntProperty("hp_up_timer_cnt", "/sys/module/dyn_hotplug/parameters/up_timer_cnt", false, 1, 20, 2);
+		hp_down_timer_cnt = new SMIntProperty("hp_down_timer_cnt", "/sys/module/dyn_hotplug/parameters/down_timer_cnt", false, 1, 30, 10);
 
 		scheduler.basepath = "/sys/block/mmcblk0/queue/scheduler";
 
@@ -105,6 +109,8 @@ public class SemaN4Properties extends SemaCommonProperties {
 		hp_up_threshold.readValue();
 		hp_min_online.readValue();
 		hp_max_online.readValue();
+		hp_up_timer_cnt.readValue();
+		hp_down_timer_cnt.readValue();
 
 		scheduler.readValue();
 		vibrator.readValue();
@@ -161,6 +167,8 @@ public class SemaN4Properties extends SemaCommonProperties {
 		hp_min_online.writeBatch(cmds);
 		hp_max_online.writeBatch(cmds);
 		hp_up_threshold.writeBatch(cmds);
+		hp_up_timer_cnt.writeBatch(cmds);
+		hp_down_timer_cnt.writeBatch(cmds);
 
 		scheduler.writeBatch(cmds);
 		vibrator.writeBatch(cmds);
@@ -216,6 +224,8 @@ public class SemaN4Properties extends SemaCommonProperties {
 		hp_up_threshold.writeValue();
 		hp_min_online.writeValue();
 		hp_max_online.writeValue();
+		hp_up_timer_cnt.writeValue();
+		hp_down_timer_cnt.writeValue();
 
 		scheduler.writeValue();
 		vibrator.writeValue();
@@ -292,6 +302,8 @@ public class SemaN4Properties extends SemaCommonProperties {
 		edit.putInt(hp_min_online.getName(), hp_min_online.getValue());
 		edit.putInt(hp_max_online.getName(), hp_max_online.getValue());
 		edit.putString(hp_up_threshold.getName(), hp_up_threshold.getValString());
+		edit.putInt(hp_up_timer_cnt.getName(), hp_up_timer_cnt.getValue());
+		edit.putInt(hp_down_timer_cnt.getName(), hp_down_timer_cnt.getValue());
 
 		edit.putString(scheduler.getName(), scheduler.getValue());
 		edit.putInt(vibrator.getName(), vibrator.getValue());
@@ -381,6 +393,8 @@ public class SemaN4Properties extends SemaCommonProperties {
 		hp_min_online.setValue(prefs.getInt(hp_min_online.getName(), hp_min_online.getDefault()));
 		hp_max_online.setValue(prefs.getInt(hp_max_online.getName(), hp_max_online.getDefault()));
 		hp_up_threshold.setValue(prefs.getString(hp_up_threshold.getName(), hp_up_threshold.getDefString()));
+		hp_up_timer_cnt.setValue(prefs.getInt(hp_up_timer_cnt.getName(), hp_up_timer_cnt.getDefault()));
+		hp_down_timer_cnt.setValue(prefs.getInt(hp_down_timer_cnt.getName(), hp_down_timer_cnt.getDefault()));
 
 		scheduler.setValue(prefs.getString(scheduler.getName(), scheduler.getDefValue()));
 		vibrator.setValue(prefs.getInt(vibrator.getName(), vibrator.getDefault()));
@@ -464,6 +478,8 @@ public class SemaN4Properties extends SemaCommonProperties {
 		hp_up_threshold.setValue(hp_up_threshold.getDefault());
 		hp_min_online.setValue(hp_min_online.getDefault());
 		hp_max_online.setValue(hp_max_online.getDefault());
+		hp_up_timer_cnt.setValue(hp_up_timer_cnt.getDefault());
+		hp_down_timer_cnt.setValue(hp_down_timer_cnt.getDefault());
 
 		scheduler.setValue(scheduler.getDefValue());
 		vibrator.setValue(vibrator.getDefault());

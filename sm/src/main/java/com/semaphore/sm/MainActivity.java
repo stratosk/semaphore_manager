@@ -252,7 +252,8 @@ public class MainActivity extends Activity
 			needRead = needRead || !prefs.contains("led_red") || !prefs.contains("read_ahead")
 					|| !prefs.contains("uv_lower_uv") || !prefs.contains("hp_enabled")
 					|| !prefs.contains("hp_max_online") || !prefs.contains("scaling_min_freq")
-					|| !prefs.contains("min_br") || !prefs.contains("dt_wake_enabled");
+					|| !prefs.contains("min_br") || !prefs.contains("dt_wake_enabled")
+					|| !prefs.contains("hp_up_timer_cnt");
 		if (Device == SemaDevices.I9000)
 			needRead = needRead || !prefs.contains("ab_max_br_threshold") || !prefs.contains("scaling_min_freq") ||
 					!prefs.contains("o_powersave_bias");

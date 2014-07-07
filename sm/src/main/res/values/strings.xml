@@ -11,7 +11,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="app_path">/data/data/com.semaphore.sm/scripts/"</string>
+    <string name="app_path">/data/data/com.semaphore.sm/scripts/</string>
 
     <string name="str_cat_oc_title">Overclocking</string>
     <string name="str_oc_title">LiveOC</string>
@@ -67,6 +67,8 @@
     <string name="str_hp_enabled_title">Enabled</string>
     <string name="str_hp_up_threshold_title">Up threshold</string>
     <string name="str_hp_up_threshold_summary">Valid values 1-100</string>
+    <string name="str_hp_up_timer_cnt_title">Up timer counter</string>
+    <string name="str_hp_down_timer_cnt_title">Down timer counter</string>
 
     <string-array name="array_gov_entries">
         <item>Ondemand</item>
@@ -479,6 +481,8 @@ Do you want to continue?</string>
 </string>
     <string name="strMsgMinCores">Minimum number of online cores (1-4)</string>
     <string name="strMsgMaxCores">Maximum number of online cores (1-4)</string>
+    <string name="strMsgUpTimerCnt">Up timer counter (1-20)</string>
+    <string name="strMsgDownTimerCnt">Down timer counter (1-30)</string>
     <string name="strMsgVoltage">Voltage (in uV)</string>
     <string name="strMsgVoltage2">Voltage</string>
     <string name="strInfoMemory">Memory</string>
