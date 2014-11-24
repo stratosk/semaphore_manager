@@ -9,7 +9,7 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/str_autobr_title">
 
-        <SwitchPreference
+        <com.semaphore.sm.SwitchCompatPreference
             android:key="sema_autobr"
             android:title="@string/str_sema_autobr_title" />
         <ListPreference
@@ -67,7 +67,7 @@
 
 
     <PreferenceCategory android:title="Touch Wake">
-        <SwitchPreference
+        <com.semaphore.sm.SwitchCompatPreference
             android:key="touch_enable"
             android:title="@string/str_touch_enable_title" />
 

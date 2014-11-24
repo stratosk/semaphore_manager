@@ -1,6 +1,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:semaphore="http://semaphore.gr">
-    <SwitchPreference
+    <com.semaphore.sm.SwitchCompatPreference
         android:key="sai_enable"
         android:title="@string/str_sai_enable_title" />
     <PreferenceCategory

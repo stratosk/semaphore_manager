@@ -160,7 +160,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory android:title="Dynamic Hotplug">
-        <SwitchPreference
+        <com.semaphore.sm.SwitchCompatPreference
             android:key="hp_enabled"
             android:title="@string/str_hp_enabled_title" />
         <com.semaphore.sm.SeekBarPreference
@@ -209,7 +209,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/str_undervolt_title">
-        <SwitchPreference
+        <com.semaphore.sm.SwitchCompatPreference
             android:key="uv_enabled"
             android:title="@string/str_uv_enabled_title"
             android:summary="@string/str_uv_enabled_summary" />

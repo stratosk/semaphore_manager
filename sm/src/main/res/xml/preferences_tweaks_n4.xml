@@ -23,7 +23,7 @@
 	</PreferenceCategory>
 
 	<PreferenceCategory android:title="Touch Wake">
-		<SwitchPreference
+		<com.semaphore.sm.SwitchCompatPreference
 			android:key="touch_enable"
 			android:title="@string/str_touch_enable_title"/>
 
@@ -150,7 +150,7 @@
 			android:title="@string/str_accuracy_screen_title"
 			android:summary="@string/str_ac_enable_summary">
 
-			<SwitchPreference
+			<com.semaphore.sm.SwitchCompatPreference
 				android:key="ac_enable"
 				android:title="@string/str_ac_enable_title"/>
 			<EditTextPreference

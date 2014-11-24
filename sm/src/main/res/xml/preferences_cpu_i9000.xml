@@ -61,7 +61,7 @@
                 android:summary="@string/str_o_powersave_bias_summary"
                 android:numeric="integer"
                 android:inputType="number" />
-            <SwitchPreference
+            <com.semaphore.sm.SwitchCompatPreference
                 android:key="o_smooth_ui"
                 android:title="@string/str_o_smooth_ui_title" />
 
@@ -99,7 +99,7 @@
                 android:summary="@string/str_c_down_threshold_summary"
                 android:numeric="integer"
                 android:inputType="number" />
-            <SwitchPreference
+            <com.semaphore.sm.SwitchCompatPreference
                 android:key="c_smooth_ui"
                 android:title="@string/str_c_smooth_ui_title" />
 
@@ -167,7 +167,7 @@
                 android:summary="@string/str_s_sample_rate_jiffies_summary"
                 android:numeric="integer"
                 android:inputType="number" />
-            <SwitchPreference
+            <com.semaphore.sm.SwitchCompatPreference
                 android:key="s_smooth_ui"
                 android:title="@string/str_s_smooth_ui_title" />
 
@@ -228,10 +228,10 @@
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/str_cat_deep_idle_title">
-        <SwitchPreference
+        <com.semaphore.sm.SwitchCompatPreference
             android:key="deep_idle"
             android:title="@string/str_deep_idle_title" />
-        <SwitchPreference
+        <com.semaphore.sm.SwitchCompatPreference
             android:key="deep_idle_stats"
             android:title="@string/str_deep_idle_stats_title"
             android:dependency="deep_idle" />
