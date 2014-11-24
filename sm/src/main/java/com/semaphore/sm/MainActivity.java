@@ -10,7 +10,6 @@
 package com.semaphore.sm;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -21,9 +20,12 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewConfiguration;
@@ -39,7 +41,7 @@ import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class MainActivity extends Activity
+public class MainActivity extends ActionBarActivity
 		implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
 	/**
@@ -51,20 +53,26 @@ public class MainActivity extends Activity
 	int fragmentPos = 0;
 	ArrayList<String> fragmentTitles;
 	private CharSequence mTitle;
+	private int leftToRight;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		boolean darktheme = prefs.getBoolean("darktheme", false);
 		if (darktheme)
-			setTheme(android.R.style.Theme_Holo);
-
-		if ("mako".equals(android.os.Build.DEVICE))
-			Device = SemaDevices.Mako;
+			setTheme(R.style.AppThemeDark);
 		else
+			setTheme(R.style.AppTheme);
+
+		if ("mako".equals(android.os.Build.DEVICE)) {
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+				Device = SemaDevices.MakoL;
+			else
+				Device = SemaDevices.Mako;
+		} else
 			Device = SemaDevices.I9000;
 
-		if (Device == SemaDevices.Mako)
+		if (Device == SemaDevices.Mako || Device == SemaDevices.MakoL)
 			sp = new SemaN4Properties();
 		else
 			sp = new SemaI9000Properties();
@@ -110,10 +118,18 @@ public class MainActivity extends Activity
 		} catch (Exception ignored) {
 		}
 
-		ActionBar actionBar = getActionBar();
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		if (toolbar != null) {
+			setSupportActionBar(toolbar);
+//			toolbar.setTitle(getString(R.string.app_name));
+//			toolbar.setSubtitle(SemaphoreVer);
+		}
+		android.support.v7.app.ActionBar actionBar = getSupportActionBar();
 		if (actionBar != null) {
-			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+			actionBar.setNavigationMode(android.support.v7.app.ActionBar.NAVIGATION_MODE_STANDARD);
 			actionBar.setDisplayShowTitleEnabled(true);
+			actionBar.setDisplayHomeAsUpEnabled(true);
+			actionBar.setDisplayOptions(android.support.v7.app.ActionBar.DISPLAY_HOME_AS_UP | android.support.v7.app.ActionBar.DISPLAY_SHOW_TITLE);
 
 			if (savedInstanceState == null)
 				actionBar.setTitle(getString(R.string.app_name));
@@ -124,13 +140,46 @@ public class MainActivity extends Activity
 	}
 
 	public void handleSwipeLeftToRight() {
-		if (fragmentPos < 5)
+		if (fragmentPos < 5) {
+			leftToRight = 1;
 			mNavigationDrawerFragment.selectItem(fragmentPos + 1);
+		}
 	}
 
 	public void handleSwipeRightToLeft() {
-		if (fragmentPos > 0)
+		if (fragmentPos > 0) {
+			leftToRight = 2;
 			mNavigationDrawerFragment.selectItem(fragmentPos - 1);
+		}
+	}
+
+	private Fragment createFragment(int i) {
+		Fragment fragment;
+
+		switch (i) {
+			case 0:
+				fragment = TabCPUFragment.newInstance(i);
+				break;
+			case 1:
+				fragment = TabTweaksFragment.newInstance(i);
+				break;
+			case 2:
+				fragment = TabModulesFragment.newInstance(i);
+				break;
+			case 3:
+				fragment = TabSAIFragment.newInstance(i);
+				break;
+			case 4:
+				fragment = TabInfoFragment.newInstance(i);
+				break;
+			case 5:
+				fragment = TabKmsgFragment.newInstance(i);
+				break;
+			default:
+				fragment = null;
+		}
+
+		return fragment;
 	}
 
 	@Override
@@ -140,29 +189,24 @@ public class MainActivity extends Activity
 		FragmentTransaction ft = fm.beginTransaction()
 				.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
 
+		boolean modulesOn = true;
+		if (MainActivity.Device == MainActivity.SemaDevices.MakoL)
+			modulesOn = false;
+		if (!modulesOn && position >= 2) {
+			if (leftToRight < 2)
+				position++;
+			else if (leftToRight == 2)
+				position--;
+			leftToRight = 0;
+		}
+
 		for (int i = 5; i >= 0; i--) {
+			if (!modulesOn && i == 2)
+				continue;
+
 			Fragment fragment = fm.findFragmentByTag(String.valueOf(i));
 			if (fragment == null && createFragments) {
-				switch (i) {
-					case 0:
-						fragment = TabCPUFragment.newInstance(i);
-						break;
-					case 1:
-						fragment = TabTweaksFragment.newInstance(i);
-						break;
-					case 2:
-						fragment = TabModulesFragment.newInstance(i);
-						break;
-					case 3:
-						fragment = TabSAIFragment.newInstance(i);
-						break;
-					case 4:
-						fragment = TabInfoFragment.newInstance(i);
-						break;
-					case 5:
-						fragment = TabKmsgFragment.newInstance(i);
-						break;
-				}
+				fragment = createFragment(i);
 				ft.add(R.id.container, fragment, String.valueOf(i));
 			}
 			if (i != position)
@@ -180,18 +224,17 @@ public class MainActivity extends Activity
 
 	public void onSectionAttached(int number) {
 		mTitle = fragmentTitles.get(number - 1);
-		ActionBar actionBar = getActionBar();
-		if (actionBar != null) {
-			actionBar.setTitle(mTitle);
+		android.support.v7.app.ActionBar toolbar = getSupportActionBar();
+		if (toolbar != null) {
+			toolbar.setTitle(mTitle);
 		}
 	}
 
 	public void restoreActionBar() {
-		ActionBar actionBar = getActionBar();
-		if (actionBar != null) {
-			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-			actionBar.setDisplayShowTitleEnabled(true);
-			actionBar.setTitle(mTitle);
+		android.support.v7.app.ActionBar toolbar = getSupportActionBar();
+		if (toolbar != null) {
+			toolbar.setDisplayShowTitleEnabled(true);
+			toolbar.setTitle(mTitle);
 		}
 	}
 
@@ -234,7 +277,7 @@ public class MainActivity extends Activity
 
 
 	public enum SemaDevices {
-		I9000, Mako
+		I9000, Mako, MakoL
 	}
 
 	public static SemaDevices Device;
@@ -248,7 +291,7 @@ public class MainActivity extends Activity
 
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
 		needRead = !prefs.contains("gov");
-		if (Device == SemaDevices.Mako)
+		if (Device == SemaDevices.Mako || Device == SemaDevices.MakoL)
 			needRead = needRead || !prefs.contains("led_red") || !prefs.contains("read_ahead")
 					|| !prefs.contains("uv_lower_uv") || !prefs.contains("hp_enabled")
 					|| !prefs.contains("hp_max_online") || !prefs.contains("scaling_min_freq")

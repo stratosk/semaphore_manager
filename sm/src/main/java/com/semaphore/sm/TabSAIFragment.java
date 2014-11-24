@@ -107,7 +107,7 @@ public class TabSAIFragment extends PreferenceFragment implements SharedPreferen
 		super.onCreate(savedInstanceState);
 		setRetainInstance(false);
 
-		if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+		if (MainActivity.Device == MainActivity.SemaDevices.Mako || MainActivity.Device == MainActivity.SemaDevices.MakoL)
 			addPreferencesFromResource(R.xml.preferences_sai_n4);
 		else
 			addPreferencesFromResource(R.xml.preferences_sai_i9000);

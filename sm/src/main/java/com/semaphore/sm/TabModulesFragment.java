@@ -40,7 +40,7 @@ public class TabModulesFragment extends PreferenceFragment implements SharedPref
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setRetainInstance(false);
-		if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+		if (MainActivity.Device == MainActivity.SemaDevices.Mako || MainActivity.Device == MainActivity.SemaDevices.MakoL)
 			addPreferencesFromResource(R.xml.preferences_modules_n4);
 		else
 			addPreferencesFromResource(R.xml.preferences_modules_i9000);
@@ -130,7 +130,7 @@ public class TabModulesFragment extends PreferenceFragment implements SharedPref
 			return;
 		scp = MainActivity.sp;
 
-		if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+		if (MainActivity.Device == MainActivity.SemaDevices.Mako || MainActivity.Device == MainActivity.SemaDevices.MakoL)
 			writeMako(sharedPreferences, key);
 		else
 			writeI9000(sharedPreferences, key);

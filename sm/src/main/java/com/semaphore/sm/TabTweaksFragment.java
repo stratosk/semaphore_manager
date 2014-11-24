@@ -48,7 +48,7 @@ public class TabTweaksFragment extends PreferenceFragment implements SharedPrefe
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setRetainInstance(false);
-		if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+		if (MainActivity.Device == MainActivity.SemaDevices.Mako || MainActivity.Device == MainActivity.SemaDevices.MakoL)
 			addPreferencesFromResource(R.xml.preferences_tweaks_n4);
 		else
 			addPreferencesFromResource(R.xml.preferences_tweaks_i9000);
@@ -207,7 +207,7 @@ public class TabTweaksFragment extends PreferenceFragment implements SharedPrefe
 		if (scp == null)
 			return;
 
-		if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+		if (MainActivity.Device == MainActivity.SemaDevices.Mako || MainActivity.Device == MainActivity.SemaDevices.MakoL)
 			updateSummariesN4();
 		else
 			updateSummariesI9000();
@@ -238,7 +238,7 @@ public class TabTweaksFragment extends PreferenceFragment implements SharedPrefe
 			sp.dt_wake_enabled.setValue(sharedPreferences.getBoolean(key, sp.dt_wake_enabled.getDefBoolean()) ? 1 : 0);
 			sp.dt_wake_enabled.writeValue();
 			if (sp.dt_wake_enabled.getBoolean()) {
-				SwitchPreference pref = (SwitchPreference) findPreference(sp.touch_enable.getName());
+				SwitchCompatPreference pref = (SwitchCompatPreference) findPreference(sp.touch_enable.getName());
 				if (pref != null) {
 					pref.setChecked(false);
 				}
@@ -408,11 +408,11 @@ public class TabTweaksFragment extends PreferenceFragment implements SharedPrefe
 				epref.setSummary(epref.getText());
 		}
 
-		if (MainActivity.Device == MainActivity.SemaDevices.Mako) {
+		if (MainActivity.Device == MainActivity.SemaDevices.Mako || MainActivity.Device == MainActivity.SemaDevices.MakoL) {
 			if (pref != null && scp != null && pref.getKey().equals(((SemaN4Properties) scp).taccuracy.accuracy_filter_enable.getName())) {
 				PreferenceScreen scPref = (PreferenceScreen) findPreference("accuracy_screen");
 				if (scPref != null)
-					scPref.setSummary(((SwitchPreference) pref).isChecked() ? "Enabled" : "Disabled");
+					scPref.setSummary(((SwitchCompatPreference) pref).isChecked() ? "Enabled" : "Disabled");
 			}
 			writeMako(sharedPreferences, key);
 		} else

@@ -24,7 +24,6 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.preference.SwitchPreference;
 import android.support.v4.view.GestureDetectorCompat;
 import android.view.MotionEvent;
 import android.view.View;
@@ -88,7 +87,7 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setRetainInstance(false);
-		if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+		if (MainActivity.Device == MainActivity.SemaDevices.Mako || MainActivity.Device == MainActivity.SemaDevices.MakoL)
 			addPreferencesFromResource(R.xml.preferences_cpu_n4);
 		else
 			addPreferencesFromResource(R.xml.preferences_cpu_i9000);
@@ -102,7 +101,7 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 			pref.setOnPreferenceClickListener(this);
 			pref = findPreference("cv_reset");
 			pref.setOnPreferenceClickListener(this);
-		} else if (MainActivity.Device == MainActivity.SemaDevices.Mako) {
+		} else if (MainActivity.Device == MainActivity.SemaDevices.Mako || MainActivity.Device == MainActivity.SemaDevices.MakoL) {
 			Preference pref = findPreference("uv_apply");
 			pref.setOnPreferenceClickListener(this);
 			pref = findPreference("uv_reset");
@@ -514,7 +513,7 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 				((EditTextPreference) findPreference(sp.ondemand.sampling_rate.getName())).setText(sp.ondemand.sampling_rate.getValString());
 				((EditTextPreference) findPreference(sp.ondemand.up_threshold.getName())).setText(sp.ondemand.up_threshold.getValString());
 				((EditTextPreference) findPreference(sp.ondemand.powersave_bias.getName())).setText(sp.ondemand.powersave_bias.getValString());
-				((SwitchPreference) findPreference(sp.ondemand.smooth_ui.getName())).setChecked(sp.ondemand.smooth_ui.getBoolean());
+				((SwitchCompatPreference) findPreference(sp.ondemand.smooth_ui.getName())).setChecked(sp.ondemand.smooth_ui.getBoolean());
 				sp.conservative.cons.setValue(false);
 				sp.conservative.cons.writeValue();
 			} else if (sharedPreferences.getString(sp.gov.getName(), sp.gov.getDefValue()).equals(sp.conservative.getName())) {
@@ -527,7 +526,7 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 				((EditTextPreference) findPreference(sp.conservative.sampling_rate.getName())).setText(sp.conservative.sampling_rate.getValString());
 				((EditTextPreference) findPreference(sp.conservative.up_threshold.getName())).setText(sp.conservative.up_threshold.getValString());
 				((EditTextPreference) findPreference(sp.conservative.down_threshold.getName())).setText(sp.conservative.down_threshold.getValString());
-				((SwitchPreference) findPreference(sp.conservative.smooth_ui.getName())).setChecked(sp.conservative.smooth_ui.getBoolean());
+				((SwitchCompatPreference) findPreference(sp.conservative.smooth_ui.getName())).setChecked(sp.conservative.smooth_ui.getBoolean());
 			} else if (sharedPreferences.getString(sp.gov.getName(), sp.gov.getDefValue()).equals(sp.smartass.getName())) {
 				sp.smartass.smart.setValue(true);
 				sp.smartass.smart.writeValue();
@@ -543,7 +542,7 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 				((EditTextPreference) findPreference(sp.smartass.sleep_wakeup_freq.getName())).setText(sp.smartass.sleep_wakeup_freq.getValString());
 				((EditTextPreference) findPreference(sp.smartass.sleep_ideal_freq.getName())).setText(sp.smartass.sleep_ideal_freq.getValString());
 				((EditTextPreference) findPreference(sp.smartass.sample_rate_jiffies.getName())).setText(sp.smartass.sample_rate_jiffies.getValString());
-				((SwitchPreference) findPreference(sp.smartass.smooth_ui.getName())).setChecked(sp.smartass.smooth_ui.getBoolean());
+				((SwitchCompatPreference) findPreference(sp.smartass.smooth_ui.getName())).setChecked(sp.smartass.smooth_ui.getBoolean());
 				sp.conservative.cons.setValue(false);
 				sp.conservative.cons.writeValue();
 			} else if (sharedPreferences.getString(sp.gov.getName(), sp.gov.getDefValue()).equals(sp.interactive.getName())) {
@@ -623,7 +622,7 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 
 		scp = MainActivity.sp;
 
-		if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+		if (MainActivity.Device == MainActivity.SemaDevices.Mako || MainActivity.Device == MainActivity.SemaDevices.MakoL)
 			writeMako(sharedPreferences, key);
 		else
 			writeI9000(sharedPreferences, key);
@@ -635,7 +634,7 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 		if (scp == null)
 			return;
 
-		if (MainActivity.Device == MainActivity.SemaDevices.Mako)
+		if (MainActivity.Device == MainActivity.SemaDevices.Mako || MainActivity.Device == MainActivity.SemaDevices.MakoL)
 			updateSummariesN4();
 		else
 			updateSummariesI9000();
