@@ -44,7 +44,7 @@ public class TabInfoFragment extends PreferenceFragment {
 		Commander cm = Commander.getInstance();
 		cm.readFile("/proc/version");
 		Preference pref = findPreference("kernel_version");
-		if (pref != null)
+		if (pref != null && !cm.getOutResult().isEmpty())
 			pref.setSummary(cm.getOutResult().get(0));
 
 		pref = findPreference("Semaphore");
