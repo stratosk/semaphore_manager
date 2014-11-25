@@ -193,10 +193,14 @@ public class MainActivity extends ActionBarActivity
 		if (MainActivity.Device == MainActivity.SemaDevices.MakoL)
 			modulesOn = false;
 		if (!modulesOn && position >= 2) {
-			if (leftToRight < 2)
+			if (leftToRight == 0)
 				position++;
-			else if (leftToRight == 2)
-				position--;
+			if (position == 2) {
+				if (leftToRight == 1)
+					position++;
+				else if (leftToRight == 2)
+					position--;
+			}
 			leftToRight = 0;
 		}
 
