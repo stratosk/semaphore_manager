@@ -190,7 +190,7 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 
 	private void showCPUTableDialog() {
 		Commander cm = Commander.getInstance();
-		cm.readFile("/sys/kernel/debug/acpuclk/acpu_table");
+		cm.run("cat /sys/kernel/debug/acpuclk/acpu_table", true);
 
 		if (cm.getOutResult().isEmpty())
 			return;
