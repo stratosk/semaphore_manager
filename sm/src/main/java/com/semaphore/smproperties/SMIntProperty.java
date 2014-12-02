@@ -89,7 +89,7 @@ public class SMIntProperty extends SMProperty {
 		}
 		Commander cm = Commander.getInstance();
 		int res = cm.readFile(getPath());
-		if (res == 0) {
+		if (res == 0 && !cm.getOutResult().isEmpty()) {
 			String rt = cm.getOutResult().get(0);
 			if (rt.equals("Y"))
 				setValue(1);
