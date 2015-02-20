@@ -9,7 +9,6 @@
  */
 package com.semaphore.sm;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -17,6 +16,7 @@ import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
@@ -42,14 +42,15 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity
-		implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+		implements NavigationDrawerFragment.NavigationDrawerCallbacks, TabInfoFragment.OnDonationListener {
 
 	/**
 	 * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
 	 */
 	private NavigationDrawerFragment mNavigationDrawerFragment;
 	private boolean createFragments = true;
-
+	private static final int NUMBER_OF_TABS = 5;
+	protected static final int REQUEST_CODE_DONATION = 1;
 	int fragmentPos = 0;
 	ArrayList<String> fragmentTitles;
 	private CharSequence mTitle;
@@ -140,7 +141,7 @@ public class MainActivity extends ActionBarActivity
 	}
 
 	public void handleSwipeLeftToRight() {
-		if (fragmentPos < 5) {
+		if (fragmentPos < NUMBER_OF_TABS) {
 			leftToRight = 1;
 			mNavigationDrawerFragment.selectItem(fragmentPos + 1);
 		}
@@ -204,7 +205,7 @@ public class MainActivity extends ActionBarActivity
 			leftToRight = 0;
 		}
 
-		for (int i = 5; i >= 0; i--) {
+		for (int i = NUMBER_OF_TABS; i >= 0; i--) {
 			if (!modulesOn && i == 2)
 				continue;
 
@@ -273,12 +274,23 @@ public class MainActivity extends ActionBarActivity
 			case R.id.menuitem5:
 				changeTheme();
 				break;
+			case R.id.menuitem4:
+				startActivityDonation();
 			default:
 				break;
 		}
 		return super.onOptionsItemSelected(item);
 	}
 
+	private void startActivityDonation() {
+		Intent intent = new Intent(this, DonationActivity.class);
+		startActivityForResult(intent, REQUEST_CODE_DONATION);
+	}
+
+	@Override
+	public void onDonation() {
+		startActivityDonation();
+	}
 
 	public enum SemaDevices {
 		I9000, Mako, MakoL
@@ -425,6 +437,17 @@ public class MainActivity extends ActionBarActivity
 		TabSAIFragment sai = (TabSAIFragment) fm.findFragmentByTag("3");
 		if (sai != null)
 			sai.updateSummaries();
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (requestCode == REQUEST_CODE_DONATION) {
+			if (resultCode == RESULT_OK) {
+			}
+			if (resultCode == RESULT_CANCELED) {
+			}
+		}
 	}
 
 	private class PropTask extends AsyncTask<SemaCommonProperties, Void, String> {

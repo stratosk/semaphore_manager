@@ -4,36 +4,42 @@
         <Preference
             android:key="Semaphore"
             android:title="@string/app_name"
-            android:summary="" />
+            android:summary=""/>
         <Preference
             android:key="kernel_version"
             android:title="@string/strInfoKernel"
-            android:summary="version" />
+            android:summary="version"/>
         <Preference
             android:key="system_memory"
             android:title="@string/strInfoMemory"
-            android:summary="MB" />
+            android:summary="MB"/>
     </PreferenceCategory>
     <Preference
         android:title="@string/strInfoAuthor"
         android:summary="Stratos Karafotis (stratosk)">
         <intent
             android:action="android.intent.action.VIEW"
-            android:data="https://plus.google.com/100220263241141148640" />
-    </Preference>
-    <Preference
-        android:title="@string/strInfoDonate"
-        android:summary="@string/strInfoDonateSummary">
-        <intent
-            android:action="android.intent.action.VIEW"
-            android:data="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=stratosk%40semaphore%2egr&amp;lc=GB&amp;item_name=Semaphore%20Manager&amp;no_note=0&amp;currency_code=USD&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG_global%2egif%3aNonHostedGuest" />
+            android:data="https://plus.google.com/100220263241141148640"/>
     </Preference>
     <PreferenceScreen android:title="www.semaphore.gr">
 
         <intent
             android:action="android.intent.action.VIEW"
-            android:data="http://www.semaphore.gr" />
+            android:data="http://www.semaphore.gr"/>
 
     </PreferenceScreen>
-
+    <PreferenceCategory android:title="@string/strInfoDonate">
+        <Preference
+            android:key="donate_google"
+            android:title="@string/strGoogleWallet"
+            android:summary="@string/strGoogleWalletSummary">
+        </Preference>
+        <Preference
+            android:title="@string/strInfoPaypal"
+            android:summary="@string/strInfoPaypalSummary">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=stratosk%40semaphore%2egr&amp;lc=GB&amp;item_name=Semaphore%20Manager&amp;no_note=0&amp;currency_code=USD&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG_global%2egif%3aNonHostedGuest"/>
+        </Preference>
+    </PreferenceCategory>
 </PreferenceScreen>

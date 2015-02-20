@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/menuitem1"
-        android:showAsAction="never"
-        android:title="@string/strActionRead" />
+        app:showAsAction="never"
+        android:title="@string/strActionRead"
+        android:orderInCategory="100"/>
     <item
         android:id="@+id/menuitem2"
-        android:showAsAction="never"
-        android:title="@string/strActionReset" />
+        app:showAsAction="never"
+        android:title="@string/strActionReset"
+        android:orderInCategory="200"/>
     <item
         android:id="@+id/menuitem3"
-        android:showAsAction="never"
-        android:title="@string/strActionClear" />
+        app:showAsAction="never"
+        android:title="@string/strActionClear"
+        android:orderInCategory="300"/>
     <item
         android:id="@+id/menuitem5"
-        android:showAsAction="never"
-        android:title="@string/strActionToggle" />
+        app:showAsAction="never"
+        android:title="@string/strActionToggle"
+        android:orderInCategory="400"/>
+    <item
+        android:id="@+id/menuitem4"
+        app:showAsAction="never"
+        android:title="@string/strActionDonate"
+        android:orderInCategory="500"/>
+
 </menu> 

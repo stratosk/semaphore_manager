@@ -24,8 +24,14 @@ import android.widget.LinearLayout;
 import static android.content.pm.PackageManager.NameNotFoundException;
 
 public class TabInfoFragment extends PreferenceFragment {
+
+	public interface OnDonationListener {
+		public void onDonation();
+	}
+
 	private GestureDetectorCompat gestureDetector;
 	private static final String ARG_SECTION_NUMBER = "section_number";
+	private OnDonationListener mListener;
 
 	public static TabInfoFragment newInstance(int sectionNumber) {
 		TabInfoFragment fragment = new TabInfoFragment();
@@ -71,6 +77,17 @@ public class TabInfoFragment extends PreferenceFragment {
 		if (pref != null)
 			pref.setSummary(String.valueOf(totalMegs) + " MB");
 
+		pref = findPreference("donate_google");
+		if (pref != null) {
+			pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+				@Override
+				public boolean onPreferenceClick(Preference preference) {
+					mListener.onDonation();
+					return false;
+				}
+			});
+		}
+
 		gestureDetector = new GestureDetectorCompat(getActivity(), new SMGestureListener(getActivity()));
 	}
 
@@ -108,5 +125,17 @@ public class TabInfoFragment extends PreferenceFragment {
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		((MainActivity) activity).onSectionAttached(5);
+		try {
+			mListener = (OnDonationListener) activity;
+		} catch (ClassCastException e) {
+			throw new ClassCastException(activity.toString()
+					+ " must implement TabInfoFragment listeners");
+		}
+	}
+
+	@Override
+	public void onDetach() {
+		super.onDetach();
+		mListener = null;
 	}
 }
