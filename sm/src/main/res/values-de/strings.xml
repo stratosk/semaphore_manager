@@ -101,14 +101,14 @@
     <item>Akku voll</item>
   </string-array>
   <string-array name="array_led_values">
-    <item>none</item>
-    <item>touchwake</item>
+    <item>ohne</item>
+    <item>Touchwake</item>
     <item>mmc0</item>
     <item>thermal</item>
-    <item>usb-online</item>
+    <item>USB-online</item>
     <item>pm8921-dc-online</item>
-    <item>wireless-online</item>
-    <item>battery-charging-or-full</item>
+    <item>Wireless-online</item>
+    <item>Akku-lädt-oder-voll</item>
     <item>Akku lädt</item>
     <item>Akku voll</item>
   </string-array>
@@ -360,7 +360,7 @@
   <string name="str_dt_wake_enabled_title">Aktiviert</string>
   <string name="str_dt_wake_enabled_summary">Hält den Touchscreen wach</string>
   <string name="str_about_title">Über</string>
-  <string name="str_didle_dialog_title">Deep Idle Statistiken</string>
+  <string name="str_didle_dialog_title">Deep Idle Statistics</string>
   <string name="str_idle_state">Idle</string>
   <string name="str_top_on">TOP=ON</string>
   <string name="str_top_off">TOP=OFF</string>
@@ -407,6 +407,9 @@ Möchten Sie fortfahren?</string>
   <string name="strInfoAuthor">Autor</string>
   <string name="strInfoDonate">Spenden</string>
   <string name="strInfoDonateSummary">Bitte spenden Sie, um mir bei der Entwicklung zu helfen</string>
+  <string name="strInfoDonateSuccess">Thank you for your support!</string>
+  <string name="strInfoDonateFail">There was an error during donation. Please try again later</string>
+  <string name="strDonationHint">Select the desired \"size\"</string>
   <string name="strMsgVibrator">Vibrationsstärke</string>
   <string name="strMsgBlinking">Blinkintervall</string>
   <string name="strTCPCongestion">TCP Überlastungsalgorithmus</string>
@@ -418,4 +421,13 @@ Möchten Sie fortfahren?</string>
   <string name="strActionToggle">Wechsle Oberflächenstil</string>
   <string name="str_misc_title">Sonstiges</string>
   <string name="strMsgOverclock">Übertakten %</string>
+  <string name="strActionDonate">Donate</string>
+  <string name="str_donate_small">Small</string>
+  <string name="str_donate_medium">Medium</string>
+  <string name="str_donate_large">Large</string>
+  <string name="str_donate_xlarge">X Large</string>
+  <string name="strInfoPaypalSummary">Donate using PayPal</string>
+  <string name="strInfoPaypal">PayPal</string>
+  <string name="strGoogleWallet">Google Wallet</string>
+  <string name="strGoogleWalletSummary">Donate using in-app billing</string>
 </resources>

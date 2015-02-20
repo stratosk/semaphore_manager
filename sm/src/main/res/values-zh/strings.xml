@@ -3,7 +3,7 @@
 <resources>
   <string name="app_name">Semaphore Manager</string>
   <string name="title_section_cpu">CPU</string>
-  <string name="title_section_tweaks">优化</string>
+  <string name="title_section_tweaks">优化配置</string>
   <string name="title_section_modules">模块</string>
   <string name="title_section_sai">SAI</string>
   <string name="title_section_info">关于</string>
@@ -14,7 +14,7 @@
   <string name="str_cat_oc_title">超频</string>
   <string name="str_oc_title">LiveOC</string>
   <string name="str_oc_summary">更改 LiveOC 值</string>
-  <string name="str_gov_title">当前调度器</string>
+  <string name="str_gov_title">当前 CPU 调度器</string>
   <string name="str_gov_summary">更改 CPU 调度器</string>
   <string name="str_cat_gov_title">调度器</string>
   <string name="str_scaling_min_freq_title">最小频率(MHz)</string>
@@ -58,10 +58,10 @@
   <string name="str_hp_min_online_title">最小运行核心数</string>
   <string name="str_hp_max_online_title">最大运行核心数</string>
   <string name="str_hp_enabled_title">已启用</string>
-  <string name="str_hp_up_threshold_title">上调阀值</string>
+  <string name="str_hp_up_threshold_title">负载上调阀值</string>
   <string name="str_hp_up_threshold_summary">有效值 1-100</string>
-  <string name="str_hp_up_timer_cnt_title">Up timer counter</string>
-  <string name="str_hp_down_timer_cnt_title">Down timer counter</string>
+  <string name="str_hp_up_timer_cnt_title">负载上调计数器</string>
+  <string name="str_hp_down_timer_cnt_title">负载下调计数器</string>
   <string-array name="array_gov_entries">
     <item>Ondemand</item>
     <item>Conservative</item>
@@ -92,7 +92,7 @@
     <item>无</item>
     <item>触屏唤醒</item>
     <item>MMC</item>
-    <item>散热</item>
+    <item>温控</item>
     <item>USB 在线</item>
     <item>直流在线</item>
     <item>无线网络</item>
@@ -104,7 +104,7 @@
     <item>无</item>
     <item>触屏唤醒</item>
     <item>mmc0</item>
-    <item>散热</item>
+    <item>温控</item>
     <item>usb-online</item>
     <item>pm8921-dc-online</item>
     <item>wireless-online</item>
@@ -123,7 +123,7 @@
     <item>touchscreen_1</item>
     <item>touchscreen_2</item>
   </string-array>
-  <string name="str_read_ahead_title">SD Card 预读值</string>
+  <string name="str_read_ahead_title">SD 卡预读值</string>
   <string-array name="array_read_ahead_entries">
     <item>128KB</item>
     <item>256KB</item>
@@ -138,7 +138,7 @@
     <item>1024KB</item>
     <item>2048KB</item>
   </string-array>
-  <string name="str_read_ahead_n4_title">SD Card 预读值</string>
+  <string name="str_read_ahead_n4_title">SD 卡预读值</string>
   <string-array name="array_read_ahead_n4_entries">
     <item>128KB</item>
     <item>256KB</item>
@@ -154,81 +154,81 @@
     <item>2048</item>
   </string-array>
   <string name="str_touchscreen_title">触屏灵敏度</string>
-  <string name="str_o_io_is_busy_title">IO is busy</string>
-  <string name="str_o_sampling_down_factor_title">Sampling down factor</string>
+  <string name="str_o_io_is_busy_title">IO 非空闲</string>
+  <string name="str_o_sampling_down_factor_title">采样下调因子</string>
   <string name="str_o_sampling_down_factor_summary">有效值 1-100000</string>
-  <string name="str_o_sampling_down_max_momentum_title">Sampling down max momentum</string>
+  <string name="str_o_sampling_down_max_momentum_title">采样下调最大量</string>
   <string name="str_o_sampling_down_max_momentum_summary">有效值 1-1000</string>
   <string name="str_o_sampling_rate_title">采样率</string>
   <string name="str_o_sampling_rate_summary">有效值 10000-100000</string>
-  <string name="str_o_up_threshold_title">上调阀值</string>
+  <string name="str_o_up_threshold_title">负载上调阀值</string>
   <string name="str_o_up_threshold_summary">有效值 11-100</string>
-  <string name="str_o_powersave_bias_title">Powersave bias</string>
+  <string name="str_o_powersave_bias_title">节能偏好</string>
   <string name="str_o_powersave_bias_summary">有效值 0-1000</string>
   <string name="str_o_smooth_ui_title">顺滑界面</string>
-  <string name="str_o_touch_load_title">触摸负载</string>
+  <string name="str_o_touch_load_title">触屏目标负载</string>
   <string name="str_o_touch_load_summary">有效值 1-100</string>
-  <string name="str_o_touch_load_threshold_title">触摸负载阈值</string>
+  <string name="str_o_touch_load_threshold_title">触屏目标负载阈值</string>
   <string name="str_o_touch_load_threshold_summary">有效值 1-100</string>
-  <string name="str_o_touch_load_duration_title">触摸负载持续时间</string>
+  <string name="str_o_touch_load_duration_title">触屏目标负载持续时间</string>
   <string name="str_o_touch_load_duration_summary">有效值 1-1000000</string>
   <string name="str_c_freq_step_title">频率阶跃</string>
-  <string name="str_c_freq_step_summary">Valid values 1-100</string>
-  <string name="str_c_sampling_down_factor_title">Sampling down factor</string>
-  <string name="str_c_sampling_down_factor_summary">Valid values 1-100000</string>
-  <string name="str_c_sampling_rate_title">Sampling rate</string>
-  <string name="str_c_sampling_rate_summary">Valid values 10000-100000</string>
-  <string name="str_c_up_threshold_title">Up threshold</string>
-  <string name="str_c_up_threshold_summary">Valid values 1-100</string>
-  <string name="str_c_down_threshold_title">Down threshold</string>
-  <string name="str_c_down_threshold_summary">Valid values 1-100</string>
-  <string name="str_c_smooth_ui_title">Smooth UI</string>
-  <string name="str_s_awake_ideal_freq_title">Awake ideal frequency</string>
-  <string name="str_s_awake_ideal_freq_summary">Valid values 1-100</string>
-  <string name="str_s_up_rate_title">Up rate</string>
-  <string name="str_s_up_rate_summary">Valid values 1-100</string>
-  <string name="str_s_down_rate_title">Down rate</string>
-  <string name="str_s_down_rate_summary">Valid values 1-100</string>
-  <string name="str_s_max_cpu_load_title">Max CPU load</string>
-  <string name="str_s_max_cpu_load_summary">Valid values 1-100</string>
-  <string name="str_s_min_cpu_load_title">Min CPU load</string>
-  <string name="str_s_min_cpu_load_summary">Valid values 1-100</string>
-  <string name="str_s_ramp_up_step_title">Ramp up step</string>
-  <string name="str_s_ramp_up_step_summary">Valid values 1-100</string>
-  <string name="str_s_ramp_down_step_title">Ramp down step</string>
-  <string name="str_s_ramp_down_step_summary">Valid values 1-100</string>
-  <string name="str_s_sleep_wakeup_freq_title">Sleep wakeup frequency</string>
-  <string name="str_s_sleep_wakeup_freq_summary">Valid values 1-100</string>
-  <string name="str_s_sleep_ideal_freq_title">Sleep ideal frequency</string>
-  <string name="str_s_sleep_ideal_freq_summary">Valid values 1-100</string>
-  <string name="str_s_sample_rate_jiffies_title">Sample rate jiffies</string>
-  <string name="str_s_sample_rate_jiffies_summary">Valid values 1-100</string>
-  <string name="str_s_smooth_ui_title">Smooth UI</string>
-  <string name="str_i_hispeed_freq_title">Hi speed frequency</string>
-  <string name="str_i_hispeed_freq_summary">Valid values 1-100</string>
-  <string name="str_i_go_hispeed_load_title">Go hi speed load</string>
-  <string name="str_i_go_hispeed_load_summary">Valid values 1-100000</string>
-  <string name="str_i_min_sampling_time_title">Min sampling time</string>
-  <string name="str_i_min_sampling_time_summary">Valid values 10000-100000</string>
-  <string name="str_i_above_hispeed_delay_title">Above hi speed delay</string>
-  <string name="str_i_above_hispeed_delay_summary">Valid values 1-100</string>
-  <string name="str_i_timer_rate_title">Timer rate</string>
-  <string name="str_i_timer_rate_summary">Valid values 10000-100000</string>
-  <string name="str_i_timer_slack_title">Timer slack</string>
-  <string name="str_i_timer_slack_summary">Valid values 10000-200000</string>
-  <string name="str_i_boostpulse_duration_title">Boostpulse duration</string>
-  <string name="str_i_boostpulse_duration_summary">Valid values 10000-200000</string>
-  <string name="str_i_target_loads_title">Target loads</string>
-  <string name="str_i_target_loads_summary">Valid values 1-100</string>
-  <string name="str_i_io_is_busy_title">IO is busy</string>
-  <string name="str_i_input_boost_title">Input boost</string>
+  <string name="str_c_freq_step_summary">有效值 1-100</string>
+  <string name="str_c_sampling_down_factor_title">采样下调因子</string>
+  <string name="str_c_sampling_down_factor_summary">有效值 1-1000000</string>
+  <string name="str_c_sampling_rate_title">采样率</string>
+  <string name="str_c_sampling_rate_summary">有效值 10000-100000</string>
+  <string name="str_c_up_threshold_title">负载上调阀值</string>
+  <string name="str_c_up_threshold_summary">有效值 1-100</string>
+  <string name="str_c_down_threshold_title">负载下调阀值</string>
+  <string name="str_c_down_threshold_summary">有效值 1-100</string>
+  <string name="str_c_smooth_ui_title">顺滑界面</string>
+  <string name="str_s_awake_ideal_freq_title">唤醒最佳频率</string>
+  <string name="str_s_awake_ideal_freq_summary">有效值 1-100</string>
+  <string name="str_s_up_rate_title">上调率</string>
+  <string name="str_s_up_rate_summary">有效值 1-100</string>
+  <string name="str_s_down_rate_title">下调率</string>
+  <string name="str_s_down_rate_summary">有效值 1-100</string>
+  <string name="str_s_max_cpu_load_title">最大 CPU 负载</string>
+  <string name="str_s_max_cpu_load_summary">有效值 1-100</string>
+  <string name="str_s_min_cpu_load_title">最小 CPU 负载</string>
+  <string name="str_s_min_cpu_load_summary">有效值 1-100</string>
+  <string name="str_s_ramp_up_step_title">提升阶跃</string>
+  <string name="str_s_ramp_up_step_summary">有效值 1-100</string>
+  <string name="str_s_ramp_down_step_title">下降阶跃</string>
+  <string name="str_s_ramp_down_step_summary">有效值 1-100</string>
+  <string name="str_s_sleep_wakeup_freq_title">睡眠唤醒频率</string>
+  <string name="str_s_sleep_wakeup_freq_summary">有效值 1-100</string>
+  <string name="str_s_sleep_ideal_freq_title">睡眠最佳频率</string>
+  <string name="str_s_sleep_ideal_freq_summary">有效值 1-100</string>
+  <string name="str_s_sample_rate_jiffies_title">样本率抖动</string>
+  <string name="str_s_sample_rate_jiffies_summary">有效值 1-100</string>
+  <string name="str_s_smooth_ui_title">顺滑界面</string>
+  <string name="str_i_hispeed_freq_title">巡航频率</string>
+  <string name="str_i_hispeed_freq_summary">有效值 1-100</string>
+  <string name="str_i_go_hispeed_load_title">巡航负载</string>
+  <string name="str_i_go_hispeed_load_summary">有效值 1-1000000</string>
+  <string name="str_i_min_sampling_time_title">最小采样时间</string>
+  <string name="str_i_min_sampling_time_summary">有效值 10000-100000</string>
+  <string name="str_i_above_hispeed_delay_title">巡航保持时间</string>
+  <string name="str_i_above_hispeed_delay_summary">有效值 1-100</string>
+  <string name="str_i_timer_rate_title">计时器率</string>
+  <string name="str_i_timer_rate_summary">有效值 10000-100000</string>
+  <string name="str_i_timer_slack_title">计时器松弛</string>
+  <string name="str_i_timer_slack_summary">有效值 10000-200000</string>
+  <string name="str_i_boostpulse_duration_title">Boostpulse 持续时间</string>
+  <string name="str_i_boostpulse_duration_summary">有效值 10000-200000</string>
+  <string name="str_i_target_loads_title">目标负载</string>
+  <string name="str_i_target_loads_summary">有效值 1-100</string>
+  <string name="str_i_io_is_busy_title">IO 非空闲</string>
+  <string name="str_i_input_boost_title">输入增强</string>
   <string name="str_accuracy_title">触屏唤醒筛选器</string>
   <string name="str_accuracy_screen_title">精密过滤系统</string>
   <string name="str_ac_enable_title">已启用</string>
   <string name="str_ac_enable_summary">启用精度筛选器</string>
   <string name="str_ac_ignore_pressure_gap_title">忽略压力差距</string>
   <string name="str_ac_ignore_pressure_gap_summary">有效值 1-255</string>
-  <string name="str_ac_delta_max_title">Delta max</string>
+  <string name="str_ac_delta_max_title">最大差别</string>
   <string name="str_ac_delta_max_summary">有效值 1-255</string>
   <string name="str_ac_touch_max_count_title">触摸最大计数</string>
   <string name="str_ac_touch_max_count_summary">有效值 1-255</string>
@@ -257,10 +257,10 @@
   <string name="str_logger_title">调试器</string>
   <string name="str_logger_summary">必须重新启动</string>
   <string name="str_tun_title">TUN</string>
-  <string name="str_tun_summary">for VPN</string>
+  <string name="str_tun_summary">VPN</string>
   <string name="str_cifs_title">CIFS</string>
   <string name="str_cifs_summary">装载 Windows 共享</string>
-  <string name="str_bigmem_title">Bigmem</string>
+  <string name="str_bigmem_title">大内存</string>
   <string name="str_bigmem_summary">必须重新启动</string>
   <string name="str_autobr_title">Semaphore 自动调整亮度</string>
   <string name="str_sema_autobr_title">已启用</string>
@@ -283,7 +283,7 @@
     <item>dark</item>
   </string-array>
   <string name="str_cat_scheduler_title">调度器</string>
-  <string name="str_scheduler_title">当前调度器</string>
+  <string name="str_scheduler_title">当前 IO 调度器</string>
   <string-array name="array_scheduler_N4_entries">
     <item>No-op</item>
     <item>CFQ</item>
@@ -313,7 +313,7 @@
   <string name="str_vibrator_title">振动器</string>
   <string name="str_vibrator_dc_title">水平</string>
   <string name="str_vibrator_test_title">测试</string>
-  <string name="str_vibrator_test_summary">触屏后测试</string>
+  <string name="str_vibrator_test_summary">点击以测试</string>
   <string-array name="array_tcp_congestion_entries">
     <item>CuBIC</item>
     <item>Reno</item>
@@ -336,14 +336,14 @@
   <string name="str_gamma_b_title">蓝色</string>
   <string name="str_lcd_backlight_title">背光亮度</string>
   <string name="str_min_br_title">最小值</string>
-  <string name="str_max_br_title">Maximum</string>
-  <string name="str_br_mode_title">Linear mapping mode</string>
+  <string name="str_max_br_title">最大值</string>
+  <string name="str_br_mode_title">线性映射模式</string>
   <string name="str_br_mode_summary">取消选中使用指数</string>
   <string name="str_configs_title">config.gz</string>
   <string name="str_configs_summary">/proc/config.gz</string>
   <string name="str_radio_si4709_i2c_title">收音机</string>
   <string name="str_radio_si4709_i2c_summary">si4709</string>
-  <string name="str_usb_title">USB Host</string>
+  <string name="str_usb_title">USB 主机</string>
   <string name="str_mousedev_title">鼠标</string>
   <string name="str_xbox_title">X-Box 垫</string>
   <string name="str_usbhid_title">USB HID</string>
@@ -360,10 +360,10 @@
   <string name="str_dt_wake_enabled_title">已启用</string>
   <string name="str_dt_wake_enabled_summary">保持触摸屏常亮</string>
   <string name="str_about_title">关于</string>
-  <string name="str_didle_dialog_title">深空闲统计\"</string>
-  <string name="str_idle_state">空闲\"</string>
-  <string name="str_top_on">TOP=ON\"</string>
-  <string name="str_top_off">TOP=OFF\"</string>
+  <string name="str_didle_dialog_title">Deep Idle Statistics</string>
+  <string name="str_idle_state">Idle</string>
+  <string name="str_top_on">TOP=ON</string>
+  <string name="str_top_off">TOP=OFF</string>
   <string name="str_sai_enable_title">已启用</string>
   <string name="str_vibrator_call_title">来电振动</string>
   <string name="str_vibrator_near_title">距离感应器较近</string>
@@ -388,32 +388,44 @@
   <string name="strBtnOK">确定</string>
   <string name="strBtnCancel">取消</string>
   <string name="strMsgCVapplied">自定义电压</string>
-  <string name="strMsgCVReset">Custom voltages reset to default</string>
-  <string name="strMsgUVApplied">Undervolting applied</string>
-  <string name="strConfUVReset">Undervolting settings will be reset to default.\nDo you want to continue?</string>
-  <string name="strMsgUVReset">Undervolting values reset to default</string>
-  <string name="strMsgKmsgSaved">kmsg saved successfully in
+  <string name="strMsgCVReset">重置电压</string>
+  <string name="strMsgUVApplied">降压已应用</string>
+  <string name="strConfUVReset">降压设置将被重置。 \n您要继续吗？</string>
+  <string name="strMsgUVReset">降压值被重置</string>
+  <string name="strMsgKmsgSaved">kmsg 成功保存
 </string>
-  <string name="strMsgMinCores">Minimum number of online cores (1-4)</string>
-  <string name="strMsgMaxCores">Maximum number of online cores (1-4)</string>
-  <string name="strMsgUpTimerCnt">Up timer counter (1-20)</string>
-  <string name="strMsgDownTimerCnt">Down timer counter (1-30)</string>
-  <string name="strMsgVoltage">Voltage (in uV)</string>
-  <string name="strMsgVoltage2">Voltage</string>
-  <string name="strInfoMemory">Memory</string>
-  <string name="strInfoKernel">Kernel</string>
-  <string name="strInfoAuthor">Author</string>
-  <string name="strInfoDonate">Donate</string>
-  <string name="strInfoDonateSummary">Please donate to help development</string>
-  <string name="strMsgVibrator">Vibrator duty cycle</string>
-  <string name="strMsgBlinking">Blinking interval</string>
-  <string name="strTCPCongestion">TCP congestion control</string>
-  <string name="strActionRefresh">Refresh</string>
-  <string name="strActionSave">Save kmsg</string>
-  <string name="strActionRead">Read System Settings</string>
-  <string name="strActionReset">Reset to default</string>
-  <string name="strActionClear">Clear init.d</string>
-  <string name="strActionToggle">Toggle theme</string>
-  <string name="str_misc_title">miscellaneous</string>
-  <string name="strMsgOverclock">Overclock %</string>
+  <string name="strMsgMinCores">最小在线核心数</string>
+  <string name="strMsgMaxCores">最大在线核心数</string>
+  <string name="strMsgUpTimerCnt">上调计算器(1-20)</string>
+  <string name="strMsgDownTimerCnt">下调计数器(1-30)</string>
+  <string name="strMsgVoltage">电压(uV)</string>
+  <string name="strMsgVoltage2">电压</string>
+  <string name="strInfoMemory">内存</string>
+  <string name="strInfoKernel">内核</string>
+  <string name="strInfoAuthor">作者</string>
+  <string name="strInfoDonate">捐款</string>
+  <string name="strInfoDonateSummary">请捐赠以帮助发展</string>
+  <string name="strInfoDonateSuccess">Thank you for your support!</string>
+  <string name="strInfoDonateFail">There was an error during donation. Please try again later</string>
+  <string name="strDonationHint">Select the desired \"size\"</string>
+  <string name="strMsgVibrator">振动器占空比</string>
+  <string name="strMsgBlinking">闪烁时间间隔</string>
+  <string name="strTCPCongestion">TCP 拥塞控制</string>
+  <string name="strActionRefresh">立刻刷新</string>
+  <string name="strActionSave">保存 kmsg</string>
+  <string name="strActionRead">读取系统设置</string>
+  <string name="strActionReset">重置为默认值</string>
+  <string name="strActionClear">清除 init.d</string>
+  <string name="strActionToggle">切换主题</string>
+  <string name="str_misc_title">其他</string>
+  <string name="strMsgOverclock">超频 %</string>
+  <string name="strActionDonate">Donate</string>
+  <string name="str_donate_small">Small</string>
+  <string name="str_donate_medium">Medium</string>
+  <string name="str_donate_large">Large</string>
+  <string name="str_donate_xlarge">X Large</string>
+  <string name="strInfoPaypalSummary">Donate using PayPal</string>
+  <string name="strInfoPaypal">PayPal</string>
+  <string name="strGoogleWallet">Google Wallet</string>
+  <string name="strGoogleWalletSummary">Donate using in-app billing</string>
 </resources>

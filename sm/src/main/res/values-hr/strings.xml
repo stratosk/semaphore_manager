@@ -411,6 +411,9 @@ Semaphore Manager treba busybox kako bi radio ispravno.</string>
   <string name="strInfoAuthor">Autor</string>
   <string name="strInfoDonate">Doniraj</string>
   <string name="strInfoDonateSummary">Molim Vas donirajte kako biste pomogli u daljnjem razvoju</string>
+  <string name="strInfoDonateSuccess">Thank you for your support!</string>
+  <string name="strInfoDonateFail">There was an error during donation. Please try again later</string>
+  <string name="strDonationHint">Select the desired \"size\"</string>
   <string name="strMsgVibrator">Jačina vibratora</string>
   <string name="strMsgBlinking">Interval treptanja</string>
   <string name="strTCPCongestion">TCP congestion control</string>
@@ -422,4 +425,13 @@ Semaphore Manager treba busybox kako bi radio ispravno.</string>
   <string name="strActionToggle">Promijeni temu</string>
   <string name="str_misc_title">ostalo</string>
   <string name="strMsgOverclock">Overclock %</string>
+  <string name="strActionDonate">Donate</string>
+  <string name="str_donate_small">Small</string>
+  <string name="str_donate_medium">Medium</string>
+  <string name="str_donate_large">Large</string>
+  <string name="str_donate_xlarge">X Large</string>
+  <string name="strInfoPaypalSummary">Donate using PayPal</string>
+  <string name="strInfoPaypal">PayPal</string>
+  <string name="strGoogleWallet">Google Wallet</string>
+  <string name="strGoogleWalletSummary">Donate using in-app billing</string>
 </resources>

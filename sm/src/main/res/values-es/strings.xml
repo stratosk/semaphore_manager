@@ -60,7 +60,7 @@
   <string name="str_hp_enabled_title">Activado</string>
   <string name="str_hp_up_threshold_title">Umbral de subida</string>
   <string name="str_hp_up_threshold_summary">Valores válidos 1-100</string>
-  <string name="str_hp_up_timer_cnt_title">Up timer counter</string>
+  <string name="str_hp_up_timer_cnt_title">Contador de tiempo activo</string>
   <string name="str_hp_down_timer_cnt_title">Down timer counter</string>
   <string-array name="array_gov_entries">
     <item>Bajo demanda</item>
@@ -408,6 +408,9 @@
   <string name="strInfoAuthor">Autor</string>
   <string name="strInfoDonate">Donar</string>
   <string name="strInfoDonateSummary">Por favor dona para ayudar este desarrollo</string>
+  <string name="strInfoDonateSuccess">Thank you for your support!</string>
+  <string name="strInfoDonateFail">There was an error during donation. Please try again later</string>
+  <string name="strDonationHint">Select the desired \"size\"</string>
   <string name="strMsgVibrator">Ciclo de trabajo del vibrador</string>
   <string name="strMsgBlinking">Intervalo de parpadeo</string>
   <string name="strTCPCongestion">Control de congestión TCP</string>
@@ -419,4 +422,13 @@
   <string name="strActionToggle">Alternar tema</string>
   <string name="str_misc_title">Varios</string>
   <string name="strMsgOverclock">% de overclock</string>
+  <string name="strActionDonate">Donate</string>
+  <string name="str_donate_small">Small</string>
+  <string name="str_donate_medium">Medium</string>
+  <string name="str_donate_large">Large</string>
+  <string name="str_donate_xlarge">X Large</string>
+  <string name="strInfoPaypalSummary">Donate using PayPal</string>
+  <string name="strInfoPaypal">PayPal</string>
+  <string name="strGoogleWallet">Google Wallet</string>
+  <string name="strGoogleWalletSummary">Donate using in-app billing</string>
 </resources>

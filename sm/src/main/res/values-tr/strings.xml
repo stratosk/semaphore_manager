@@ -411,6 +411,9 @@ Do you want to continue?</string>
   <string name="strInfoAuthor">Author</string>
   <string name="strInfoDonate">Donate</string>
   <string name="strInfoDonateSummary">Please donate to help development</string>
+  <string name="strInfoDonateSuccess">Thank you for your support!</string>
+  <string name="strInfoDonateFail">There was an error during donation. Please try again later</string>
+  <string name="strDonationHint">Select the desired \"size\"</string>
   <string name="strMsgVibrator">Vibrator duty cycle</string>
   <string name="strMsgBlinking">Blinking interval</string>
   <string name="strTCPCongestion">TCP congestion control</string>
@@ -422,4 +425,13 @@ Do you want to continue?</string>
   <string name="strActionToggle">Toggle theme</string>
   <string name="str_misc_title">miscellaneous</string>
   <string name="strMsgOverclock">Overclock %</string>
+  <string name="strActionDonate">Donate</string>
+  <string name="str_donate_small">Small</string>
+  <string name="str_donate_medium">Medium</string>
+  <string name="str_donate_large">Large</string>
+  <string name="str_donate_xlarge">X Large</string>
+  <string name="strInfoPaypalSummary">Donate using PayPal</string>
+  <string name="strInfoPaypal">PayPal</string>
+  <string name="strGoogleWallet">Google Wallet</string>
+  <string name="strGoogleWalletSummary">Donate using in-app billing</string>
 </resources>
