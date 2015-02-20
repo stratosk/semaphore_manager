@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SemaphoreManager.iml" filepath="$PROJECT_DIR$/SemaphoreManager.iml" />
       <module fileurl="file://$PROJECT_DIR$/semaphore_manager.iml" filepath="$PROJECT_DIR$/semaphore_manager.iml" />
       <module fileurl="file://$PROJECT_DIR$/sm/sm.iml" filepath="$PROJECT_DIR$/sm/sm.iml" />
     </modules>
