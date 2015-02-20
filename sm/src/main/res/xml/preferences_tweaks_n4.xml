@@ -38,7 +38,7 @@
 	</PreferenceCategory>
 
 	<PreferenceCategory android:title="Double Tap to Wake">
-		<CheckBoxPreference
+        <com.semaphore.sm.SwitchCompatPreference
 			android:key="dt_wake_enabled"
 			android:title="@string/str_dt_wake_enabled_title"
 			android:summary="@string/str_dt_wake_enabled_summary"/>

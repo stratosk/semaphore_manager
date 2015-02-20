@@ -226,7 +226,7 @@ public class TabTweaksFragment extends PreferenceFragment implements SharedPrefe
 			sp.touch_enable.setValue(sharedPreferences.getBoolean(key, sp.touch_enable.getDefBoolean()) ? 1 : 0);
 			sp.touch_enable.writeValue();
 			if (sp.touch_enable.getBoolean()) {
-				CheckBoxPreference pref = (CheckBoxPreference) findPreference(sp.dt_wake_enabled.getName());
+				SwitchCompatPreference pref = (SwitchCompatPreference) findPreference(sp.dt_wake_enabled.getName());
 				if (pref != null) {
 					pref.setChecked(false);
 				}
