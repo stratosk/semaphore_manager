@@ -19,6 +19,7 @@
   <string name="str_cat_gov_title">Governorer</string>
   <string name="str_scaling_min_freq_title">Min frekvens (MHz)</string>
   <string name="str_scaling_max_freq_title">Max frekvens (MHz)</string>
+  <string name="str_util_threshold_title">Utilization threshold</string>
   <string name="str_custom_volt_title">Volt</string>
   <string name="str_cv_enable_title">Aktiver</string>
   <string name="str_cv_enable_summary">Vennligst anvend p� egen risiko</string>
@@ -360,10 +361,10 @@
   <string name="str_dt_wake_enabled_title">Aktivere</string>
   <string name="str_dt_wake_enabled_summary">Hold skjermen p�</string>
   <string name="str_about_title">Om</string>
-  <string name="str_didle_dialog_title">Deep Idle Statistkk\"</string>
-  <string name="str_idle_state">Idle\"</string>
-  <string name="str_top_on">TOP=ON\"</string>
-  <string name="str_top_off">TOP=OFF\"</string>
+  <string name="str_didle_dialog_title">Deep Idle Statistics</string>
+  <string name="str_idle_state">Idle</string>
+  <string name="str_top_on">TOP=ON</string>
+  <string name="str_top_off">TOP=OFF</string>
   <string name="str_sai_enable_title">Aktivere</string>
   <string name="str_vibrator_call_title">Vibrasjon p� Telefon ringer</string>
   <string name="str_vibrator_near_title">Proximity N�r</string>

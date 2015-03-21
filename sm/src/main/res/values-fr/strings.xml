@@ -19,6 +19,7 @@
   <string name="str_cat_gov_title">Governors</string>
   <string name="str_scaling_min_freq_title">Fréquence minimum (MHz)</string>
   <string name="str_scaling_max_freq_title">Fréquence maximum (MHz)</string>
+  <string name="str_util_threshold_title">Utilization threshold</string>
   <string name="str_custom_volt_title">Tensions</string>
   <string name="str_cv_enable_title">Activé</string>
   <string name="str_cv_enable_summary">Utilisez à vos risques et périls</string>
@@ -360,8 +361,8 @@
   <string name="str_dt_wake_enabled_title">Activer</string>
   <string name="str_dt_wake_enabled_summary">Garder l\'écran toujours alimenté</string>
   <string name="str_about_title">À propos</string>
-  <string name="str_didle_dialog_title">Statistiques veille profonde\"</string>
-  <string name="str_idle_state">Au repos\"</string>
+  <string name="str_didle_dialog_title">Deep Idle Statistics</string>
+  <string name="str_idle_state">Idle</string>
   <string name="str_top_on">TOP=ON</string>
   <string name="str_top_off">TOP=OFF</string>
   <string name="str_sai_enable_title">Activé</string>

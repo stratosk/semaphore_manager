@@ -8,8 +8,8 @@
   <string name="title_section_sai">SAI</string>
   <string name="title_section_info">Informacje</string>
   <string name="title_section_kmsg">Logi kmsg</string>
-  <string name="navigation_drawer_open">Open navigation drawer</string>
-  <string name="navigation_drawer_close">Close navigation drawer</string>
+  <string name="navigation_drawer_open">Otwórz panel nawigacyjny</string>
+  <string name="navigation_drawer_close">Zamknij panel nawigacyjny</string>
   <string name="app_path">/data/data/com.semaphore.sm/scripts/</string>
   <string name="str_cat_oc_title">Podkręcanie</string>
   <string name="str_oc_title">LiveOC</string>
@@ -19,6 +19,7 @@
   <string name="str_cat_gov_title">Zarządcy</string>
   <string name="str_scaling_min_freq_title">Min częstotliwość (MHz)</string>
   <string name="str_scaling_max_freq_title">Max częstotliwosć (MHz)</string>
+  <string name="str_util_threshold_title">Utilization threshold</string>
   <string name="str_custom_volt_title">Napięcia</string>
   <string name="str_cv_enable_title">Włączone</string>
   <string name="str_cv_enable_summary">Używasz na własną odpowiedzialność!</string>

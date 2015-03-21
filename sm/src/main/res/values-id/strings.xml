@@ -19,6 +19,7 @@
   <string name="str_cat_gov_title">Governors</string>
   <string name="str_scaling_min_freq_title">Min frekuensi (MHz)</string>
   <string name="str_scaling_max_freq_title">Max frekuensi (MHz)</string>
+  <string name="str_util_threshold_title">Utilization threshold</string>
   <string name="str_custom_volt_title">Voltase</string>
   <string name="str_cv_enable_title">Diaktifkan</string>
   <string name="str_cv_enable_summary">Beresiko, gunakan dengan waspada</string>
@@ -360,10 +361,10 @@
   <string name="str_dt_wake_enabled_title">Diaktifkan</string>
   <string name="str_dt_wake_enabled_summary">Selalu beri power pada layar sentuh</string>
   <string name="str_about_title">Tentang</string>
-  <string name="str_didle_dialog_title">Statistik Deep Idle\"</string>
-  <string name="str_idle_state">Idle\"</string>
-  <string name="str_top_on">TOP=ON\"</string>
-  <string name="str_top_off">TOP=OFF\"</string>
+  <string name="str_didle_dialog_title">Statistik Deep Idle</string>
+  <string name="str_idle_state">Siaga</string>
+  <string name="str_top_on">TOP = ON</string>
+  <string name="str_top_off">TOP = OFF</string>
   <string name="str_sai_enable_title">Diaktifkan</string>
   <string name="str_vibrator_call_title">Getar pada nada panggil</string>
   <string name="str_vibrator_near_title">Proximity Dekat</string>
@@ -410,9 +411,9 @@ Apakah mau melanjutkan?</string>
   <string name="strInfoAuthor">Pengembang</string>
   <string name="strInfoDonate">Donasi</string>
   <string name="strInfoDonateSummary">Donasi anda diharapkan untuk pengembangan</string>
-  <string name="strInfoDonateSuccess">Thank you for your support!</string>
-  <string name="strInfoDonateFail">There was an error during donation. Please try again later</string>
-  <string name="strDonationHint">Select the desired \"size\"</string>
+  <string name="strInfoDonateSuccess">Terima kasih atas dukungan Anda!</string>
+  <string name="strInfoDonateFail">Ada error selama donasi. Harap coba lagi nanti</string>
+  <string name="strDonationHint">Pilih ukuran yang diinginkan</string>
   <string name="strMsgVibrator">Siklus tugas getar</string>
   <string name="strMsgBlinking">Interval kedip</string>
   <string name="strTCPCongestion">TCP congestion control</string>
@@ -424,13 +425,13 @@ Apakah mau melanjutkan?</string>
   <string name="strActionToggle">Ganti theme</string>
   <string name="str_misc_title">lainnya</string>
   <string name="strMsgOverclock">Overclock %</string>
-  <string name="strActionDonate">Donate</string>
-  <string name="str_donate_small">Small</string>
-  <string name="str_donate_medium">Medium</string>
-  <string name="str_donate_large">Large</string>
-  <string name="str_donate_xlarge">X Large</string>
-  <string name="strInfoPaypalSummary">Donate using PayPal</string>
+  <string name="strActionDonate">Donasi</string>
+  <string name="str_donate_small">Kecil</string>
+  <string name="str_donate_medium">Sedang</string>
+  <string name="str_donate_large">Besar</string>
+  <string name="str_donate_xlarge">Extra Besar</string>
+  <string name="strInfoPaypalSummary">Donasi menggunakan PayPal</string>
   <string name="strInfoPaypal">PayPal</string>
   <string name="strGoogleWallet">Google Wallet</string>
-  <string name="strGoogleWalletSummary">Donate using in-app billing</string>
+  <string name="strGoogleWalletSummary">Menyumbang menggunakan penagihan melalui aplikasi</string>
 </resources>

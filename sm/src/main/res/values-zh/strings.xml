@@ -19,6 +19,7 @@
   <string name="str_cat_gov_title">调度器</string>
   <string name="str_scaling_min_freq_title">最小频率(MHz)</string>
   <string name="str_scaling_max_freq_title">最大频率(MHz)</string>
+  <string name="str_util_threshold_title">Utilization threshold</string>
   <string name="str_custom_volt_title">电压</string>
   <string name="str_cv_enable_title">已启用</string>
   <string name="str_cv_enable_summary">风险自担</string>
@@ -360,8 +361,8 @@
   <string name="str_dt_wake_enabled_title">已启用</string>
   <string name="str_dt_wake_enabled_summary">保持触摸屏常亮</string>
   <string name="str_about_title">关于</string>
-  <string name="str_didle_dialog_title">Deep Idle Statistics</string>
-  <string name="str_idle_state">Idle</string>
+  <string name="str_didle_dialog_title">深空闲统计</string>
+  <string name="str_idle_state">空闲</string>
   <string name="str_top_on">TOP=ON</string>
   <string name="str_top_off">TOP=OFF</string>
   <string name="str_sai_enable_title">已启用</string>
@@ -405,9 +406,9 @@
   <string name="strInfoAuthor">作者</string>
   <string name="strInfoDonate">捐款</string>
   <string name="strInfoDonateSummary">请捐赠以帮助发展</string>
-  <string name="strInfoDonateSuccess">Thank you for your support!</string>
-  <string name="strInfoDonateFail">There was an error during donation. Please try again later</string>
-  <string name="strDonationHint">Select the desired \"size\"</string>
+  <string name="strInfoDonateSuccess">谢谢您的支持 ！</string>
+  <string name="strInfoDonateFail">捐助出错。请稍后再试</string>
+  <string name="strDonationHint">选择所需的\"份量\"</string>
   <string name="strMsgVibrator">振动器占空比</string>
   <string name="strMsgBlinking">闪烁时间间隔</string>
   <string name="strTCPCongestion">TCP 拥塞控制</string>
@@ -419,13 +420,13 @@
   <string name="strActionToggle">切换主题</string>
   <string name="str_misc_title">其他</string>
   <string name="strMsgOverclock">超频 %</string>
-  <string name="strActionDonate">Donate</string>
-  <string name="str_donate_small">Small</string>
-  <string name="str_donate_medium">Medium</string>
-  <string name="str_donate_large">Large</string>
-  <string name="str_donate_xlarge">X Large</string>
-  <string name="strInfoPaypalSummary">Donate using PayPal</string>
+  <string name="strActionDonate">捐款</string>
+  <string name="str_donate_small">小</string>
+  <string name="str_donate_medium">中</string>
+  <string name="str_donate_large">大</string>
+  <string name="str_donate_xlarge">特大</string>
+  <string name="strInfoPaypalSummary">使用贝宝捐赠</string>
   <string name="strInfoPaypal">PayPal</string>
   <string name="strGoogleWallet">Google Wallet</string>
-  <string name="strGoogleWalletSummary">Donate using in-app billing</string>
+  <string name="strGoogleWalletSummary">使用应用程序内计费捐赠</string>
 </resources>

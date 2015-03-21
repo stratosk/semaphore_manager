@@ -19,6 +19,7 @@
   <string name="str_cat_gov_title">Reguladores</string>
   <string name="str_scaling_min_freq_title">Frecuencia mínima (MHz)</string>
   <string name="str_scaling_max_freq_title">Frecuencia máxima (MHz)</string>
+  <string name="str_util_threshold_title">Utilization threshold</string>
   <string name="str_custom_volt_title">Voltajes</string>
   <string name="str_cv_enable_title">Activado</string>
   <string name="str_cv_enable_summary">Por favor úselo bajo su propio riesgo</string>
@@ -55,13 +56,13 @@
   <string name="str_uv_higher_uv_summary">Undervolt para las frecuencias altas</string>
   <string name="str_uv_higher_khz_thres_title">Umbral de frecuencias altas</string>
   <string name="str_uv_higher_khz_thres_summary">Umbral de frecuencias altas</string>
-  <string name="str_hp_min_online_title">Mínimos núcleos activos</string>
-  <string name="str_hp_max_online_title">Máximos núcleos activos</string>
+  <string name="str_hp_min_online_title">Cantidad mínima de núcleos activos</string>
+  <string name="str_hp_max_online_title">Cantidad máxima de núcleos activos</string>
   <string name="str_hp_enabled_title">Activado</string>
   <string name="str_hp_up_threshold_title">Umbral de subida</string>
   <string name="str_hp_up_threshold_summary">Valores válidos 1-100</string>
   <string name="str_hp_up_timer_cnt_title">Contador de tiempo activo</string>
-  <string name="str_hp_down_timer_cnt_title">Down timer counter</string>
+  <string name="str_hp_down_timer_cnt_title">Contador de tiempo inactivo</string>
   <string-array name="array_gov_entries">
     <item>Bajo demanda</item>
     <item>Conservador</item>
@@ -76,7 +77,7 @@
   </string-array>
   <string-array name="array_gov_entries_n4">
     <item>Bajo demanda</item>
-    <item>Conservador</item>
+    <item>Conservativo</item>
     <item>Interactivo</item>
   </string-array>
   <string-array name="array_gov_values_n4">
@@ -102,7 +103,7 @@
   </string-array>
   <string-array name="array_led_values">
     <item>Ninguno</item>
-    <item>touchwake</item>
+    <item>Tocar para despertar</item>
     <item>mmc0</item>
     <item>Térmico</item>
     <item>USB-Conectado</item>
@@ -157,7 +158,7 @@
   <string name="str_o_io_is_busy_title">IO está ocupado</string>
   <string name="str_o_sampling_down_factor_title">Factor de reducción de muestreo</string>
   <string name="str_o_sampling_down_factor_summary">Valores válidos 1-100000</string>
-  <string name="str_o_sampling_down_max_momentum_title">Momentum máx de reducción de muestreo</string>
+  <string name="str_o_sampling_down_max_momentum_title">Impulso máx de reducción de muestreo</string>
   <string name="str_o_sampling_down_max_momentum_summary">Valores válidos 1-1000</string>
   <string name="str_o_sampling_rate_title">Tasa de muestreo</string>
   <string name="str_o_sampling_rate_summary">Valores válidos 10000-100000</string>
@@ -176,7 +177,7 @@
   <string name="str_c_freq_step_summary">Valores válidos 1-100</string>
   <string name="str_c_sampling_down_factor_title">Umbral de bajada del muestreo</string>
   <string name="str_c_sampling_down_factor_summary">Valores válidos 1-100000</string>
-  <string name="str_c_sampling_rate_title">Tasa de muestreo</string>
+  <string name="str_c_sampling_rate_title">Frecuencia de muestreo</string>
   <string name="str_c_sampling_rate_summary">Valores válidos 10000-100000</string>
   <string name="str_c_up_threshold_title">Umbral de subida</string>
   <string name="str_c_up_threshold_summary">Valores válidos 1-100</string>
@@ -244,7 +245,7 @@
   <string name="str_jit_adjust_margin_summary">Valores válidos 1-255</string>
   <string name="str_touchwake_disable_title">Desactivar Touchwake</string>
   <string name="str_touchwake_disable_summary">Desactivar touchwake durante las llamadas</string>
-  <string name="str_cat_deep_idle_title">Ocioso profundo</string>
+  <string name="str_cat_deep_idle_title">Reposo profundo</string>
   <string name="str_deep_idle_title">Activado</string>
   <string name="str_deep_idle_stats_title">Estadísticas</string>
   <string name="str_deep_idle_stats_show_title">Mostrar estadísticas</string>
@@ -278,9 +279,9 @@
     <item>Oscuro</item>
   </string-array>
   <string-array name="array_ab_profiles_values">
-    <item>bright</item>
-    <item>normal</item>
-    <item>dark</item>
+    <item>Claro</item>
+    <item>Normal</item>
+    <item>Oscuro</item>
   </string-array>
   <string name="str_cat_scheduler_title">Planificadores</string>
   <string name="str_scheduler_title">Planificador activo</string>
@@ -338,7 +339,7 @@
   <string name="str_min_br_title">Mínimo</string>
   <string name="str_max_br_title">Máximo</string>
   <string name="str_br_mode_title">Modo de mapeo lineal</string>
-  <string name="str_br_mode_summary">Desmarcar para usar exponecial</string>
+  <string name="str_br_mode_summary">Desmarcar para usar exponencial</string>
   <string name="str_configs_title">config.gz</string>
   <string name="str_configs_summary">/proc/config.gz</string>
   <string name="str_radio_si4709_i2c_title">Radio FM</string>
@@ -360,14 +361,14 @@
   <string name="str_dt_wake_enabled_title">Activado</string>
   <string name="str_dt_wake_enabled_summary">Mantener panel táctil siempre alimentado</string>
   <string name="str_about_title">Acerca de</string>
-  <string name="str_didle_dialog_title">Estadísticas de ocioso profundo</string>
+  <string name="str_didle_dialog_title">Estadísticas en inactividad profunda</string>
   <string name="str_idle_state">En reposo</string>
-  <string name="str_top_on">TOP=Encendido</string>
-  <string name="str_top_off">TOP=Apagado</string>
+  <string name="str_top_on">TOP=ON</string>
+  <string name="str_top_off">TOP=OFF</string>
   <string name="str_sai_enable_title">Activado</string>
   <string name="str_vibrator_call_title">Vibrador en tono de llamada</string>
-  <string name="str_vibrator_near_title">Sensor proximidad cerca</string>
-  <string name="str_vibrator_far_title">Sensor proximidad lejos</string>
+  <string name="str_vibrator_near_title">Proximidad cercana</string>
+  <string name="str_vibrator_far_title">Proximidad lejana</string>
   <string name="str_pickup_phone_cat_title">Descolgar</string>
   <string name="str_pickup_phone_title">Activado</string>
   <string name="str_pickup_phone_summary">Responder llamada sin tocar pantalla</string>
@@ -385,8 +386,7 @@
 ¿Quieres continuar?</string>
   <string name="strConfOverride">Los ajustes del sistema prevalecerán sobre tus ajustes personales.
 ¿Quieres continuar?</string>
-  <string name="strConfReset">Todos los ajustes se restablecerán a valores por defecto.
-¿Quieres continuar?</string>
+  <string name="strConfReset">Se restablecerán todos los ajustes por defecto. ¿Quieres continuar?</string>
   <string name="strBtnClose">Cerrar</string>
   <string name="strBtnOK">OK</string>
   <string name="strBtnCancel">Cancelar</string>
@@ -399,8 +399,8 @@
 </string>
   <string name="strMsgMinCores">Mínimo numero de núcleos activos (1-4)</string>
   <string name="strMsgMaxCores">Máximo número de núcleos activos (1-4)</string>
-  <string name="strMsgUpTimerCnt">Up timer counter (1-20)</string>
-  <string name="strMsgDownTimerCnt">Down timer counter (1-30)</string>
+  <string name="strMsgUpTimerCnt">Contador de tiempo activo (1-20)</string>
+  <string name="strMsgDownTimerCnt">Contador de tiempo inactivo (1-30)</string>
   <string name="strMsgVoltage">Voltaje (en uV)</string>
   <string name="strMsgVoltage2">Voltaje</string>
   <string name="strInfoMemory">Memoria</string>
@@ -408,9 +408,9 @@
   <string name="strInfoAuthor">Autor</string>
   <string name="strInfoDonate">Donar</string>
   <string name="strInfoDonateSummary">Por favor dona para ayudar este desarrollo</string>
-  <string name="strInfoDonateSuccess">Thank you for your support!</string>
-  <string name="strInfoDonateFail">There was an error during donation. Please try again later</string>
-  <string name="strDonationHint">Select the desired \"size\"</string>
+  <string name="strInfoDonateSuccess">¡Gracias por tu ayuda!</string>
+  <string name="strInfoDonateFail">Hubo un error durante la donación. Por favor, prueba más tarde</string>
+  <string name="strDonationHint">Elige el \"tamaño\" deseado</string>
   <string name="strMsgVibrator">Ciclo de trabajo del vibrador</string>
   <string name="strMsgBlinking">Intervalo de parpadeo</string>
   <string name="strTCPCongestion">Control de congestión TCP</string>
@@ -422,13 +422,13 @@
   <string name="strActionToggle">Alternar tema</string>
   <string name="str_misc_title">Varios</string>
   <string name="strMsgOverclock">% de overclock</string>
-  <string name="strActionDonate">Donate</string>
-  <string name="str_donate_small">Small</string>
-  <string name="str_donate_medium">Medium</string>
-  <string name="str_donate_large">Large</string>
-  <string name="str_donate_xlarge">X Large</string>
-  <string name="strInfoPaypalSummary">Donate using PayPal</string>
+  <string name="strActionDonate">Donar</string>
+  <string name="str_donate_small">Pequeña</string>
+  <string name="str_donate_medium">Mediana</string>
+  <string name="str_donate_large">Grande</string>
+  <string name="str_donate_xlarge">Extra grande</string>
+  <string name="strInfoPaypalSummary">Donar usando PayPal</string>
   <string name="strInfoPaypal">PayPal</string>
   <string name="strGoogleWallet">Google Wallet</string>
-  <string name="strGoogleWalletSummary">Donate using in-app billing</string>
+  <string name="strGoogleWalletSummary">Donar usando compras en aplicación</string>
 </resources>

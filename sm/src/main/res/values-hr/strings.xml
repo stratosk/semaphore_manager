@@ -19,6 +19,7 @@
   <string name="str_cat_gov_title">Upravitelji</string>
   <string name="str_scaling_min_freq_title">Min frekvencija (MHz)</string>
   <string name="str_scaling_max_freq_title">Max frekvencija (MHz)</string>
+  <string name="str_util_threshold_title">Utilization threshold</string>
   <string name="str_custom_volt_title">Napon</string>
   <string name="str_cv_enable_title">Omogućeno</string>
   <string name="str_cv_enable_summary">Koristite na vlastiti rizik</string>

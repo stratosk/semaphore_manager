@@ -19,6 +19,7 @@
   <string name="str_cat_gov_title">Governors</string>
   <string name="str_scaling_min_freq_title">Min. Taktfrequenz (MHz)</string>
   <string name="str_scaling_max_freq_title">Max. Taktfrequenz (MHz)</string>
+  <string name="str_util_threshold_title">Utilization threshold</string>
   <string name="str_custom_volt_title">Spannungen</string>
   <string name="str_cv_enable_title">Aktiviert</string>
   <string name="str_cv_enable_summary">Benutzung auf eigene Gefahr</string>

@@ -19,6 +19,7 @@
   <string name="str_cat_gov_title">Governors</string>
   <string name="str_scaling_min_freq_title">Frequenza minima (MHz)</string>
   <string name="str_scaling_max_freq_title">Frequenza massima (MHz)</string>
+  <string name="str_util_threshold_title">Utilization threshold</string>
   <string name="str_custom_volt_title">Voltaggi</string>
   <string name="str_cv_enable_title">Abilita</string>
   <string name="str_cv_enable_summary">Usa a tuo rischio</string>

@@ -19,6 +19,7 @@
   <string name="str_cat_gov_title">Режимы</string>
   <string name="str_scaling_min_freq_title">Минимальная частота (мГц)</string>
   <string name="str_scaling_max_freq_title">Максимальная частота (мГц)</string>
+  <string name="str_util_threshold_title">Utilization threshold</string>
   <string name="str_custom_volt_title">Напряжение</string>
   <string name="str_cv_enable_title">Включено</string>
   <string name="str_cv_enable_summary">Использовать на свой страх и риск</string>
