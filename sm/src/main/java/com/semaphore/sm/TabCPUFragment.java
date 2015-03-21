@@ -249,6 +249,7 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 		((EditTextPreference) findPreference(sp.ondemand.sampling_down_factor.getName())).setText(sp.ondemand.sampling_down_factor.getValString());
 		((EditTextPreference) findPreference(sp.ondemand.sampling_rate.getName())).setText(sp.ondemand.sampling_rate.getValString());
 		((EditTextPreference) findPreference(sp.ondemand.up_threshold.getName())).setText(sp.ondemand.up_threshold.getValString());
+		((EditTextPreference) findPreference(sp.ondemand.down_threshold.getName())).setText(sp.ondemand.down_threshold.getValString());
 		((EditTextPreference) findPreference(sp.ondemand.powersave_bias.getName())).setText(sp.ondemand.powersave_bias.getValString());
 		((EditTextPreference) findPreference(sp.ondemand.touch_load.getName())).setText(sp.ondemand.touch_load.getValString());
 		((EditTextPreference) findPreference(sp.ondemand.touch_load_duration.getName())).setText(sp.ondemand.touch_load_duration.getValString());
@@ -303,6 +304,9 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 		} else if (key.equals(sp.ondemand.up_threshold.getName())) {
 			sp.ondemand.up_threshold.setValue(sharedPreferences.getString(key, String.valueOf(sp.ondemand.up_threshold.getDefault())));
 			sp.ondemand.up_threshold.writeValue();
+		} else if (key.equals(sp.ondemand.down_threshold.getName())) {
+			sp.ondemand.down_threshold.setValue(sharedPreferences.getString(key, String.valueOf(sp.ondemand.down_threshold.getDefault())));
+			sp.ondemand.down_threshold.writeValue();
 		} else if (key.equals(sp.ondemand.powersave_bias.getName())) {
 			sp.ondemand.powersave_bias.setValue(sharedPreferences.getString(key, String.valueOf(sp.ondemand.powersave_bias.getDefault())));
 			sp.ondemand.powersave_bias.writeValue();

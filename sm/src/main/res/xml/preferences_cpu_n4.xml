@@ -106,6 +106,12 @@
                 android:numeric="integer"
                 android:inputType="number"/>
             <EditTextPreference
+                android:key="o_down_threshold"
+                android:title="@string/str_o_down_threshold_title"
+                android:summary="@string/str_o_down_threshold_summary"
+                android:numeric="integer"
+                android:inputType="number"/>
+            <EditTextPreference
                 android:key="o_powersave_bias"
                 android:title="@string/str_o_powersave_bias_title"
                 android:summary="@string/str_o_powersave_bias_summary"

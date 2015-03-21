@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 - 2014 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2015 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -13,6 +13,7 @@ import java.util.List;
 
 public class SMOndemandN4Property extends SMOndemandProperty {
 
+	public SMIntProperty down_threshold;
 	public SMIntProperty touch_load;
 	public SMIntProperty touch_load_threshold;
 	public SMIntProperty touch_load_duration;
@@ -28,6 +29,7 @@ public class SMOndemandN4Property extends SMOndemandProperty {
 		up_threshold.setDefault(95);
 		up_threshold.setValue(95);
 
+		down_threshold = new SMIntProperty("o_down_threshold", basepath.concat("down_threshold"), false, 1, 90, 5);
 		touch_load = new SMIntProperty("o_touch_load", basepath.concat("touch_load"), false, 0, 100, 65);
 		touch_load_threshold = new SMIntProperty("o_touch_load_threshold", basepath.concat("touch_load_threshold"), false, 0, 100, 10);
 		touch_load_duration = new SMIntProperty("o_touch_load_duration", basepath.concat("touch_load_duration"), false, 1, 10000, 1100);
@@ -36,6 +38,7 @@ public class SMOndemandN4Property extends SMOndemandProperty {
 	@Override
 	public void readValue() {
 		super.readValue();
+		down_threshold.readValue();
 		touch_load.readValue();
 		touch_load_threshold.readValue();
 		touch_load_duration.readValue();
@@ -44,6 +47,7 @@ public class SMOndemandN4Property extends SMOndemandProperty {
 	@Override
 	public void writeValue() {
 		super.writeValue();
+		down_threshold.writeValue();
 		touch_load.writeValue();
 		touch_load_threshold.writeValue();
 		touch_load_duration.writeValue();
@@ -52,6 +56,7 @@ public class SMOndemandN4Property extends SMOndemandProperty {
 	@Override
 	public void writeBatch(List<String> cmds) {
 		super.writeBatch(cmds);
+		down_threshold.writeBatch(cmds);
 		touch_load.writeBatch(cmds);
 		touch_load_threshold.writeBatch(cmds);
 		touch_load_duration.writeBatch(cmds);
