@@ -1,16 +1,84 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:semaphore="http://semaphore.gr">
-    <ListPreference
-        android:key="gov"
-        android:entries="@array/array_gov_entries_n4"
-        android:entryValues="@array/array_gov_values_n4"
-        android:title="@string/str_gov_title" />
-    <ListPreference
-        android:key="scaling_min_freq"
-        android:title="@string/str_scaling_min_freq_title" />
-    <ListPreference
-        android:key="scaling_max_freq"
-        android:title="@string/str_scaling_max_freq_title" />
+                  xmlns:semaphore="http://semaphore.gr">
+    <PreferenceScreen android:title="CPU 0">
+        <ListPreference
+            android:key="cpu0_gov"
+            android:entries="@array/array_gov_entries_n4"
+            android:entryValues="@array/array_gov_values_n4"
+            android:title="@string/str_gov_title"/>
+        <ListPreference
+            android:key="cpu0_scaling_min_freq"
+            android:title="@string/str_scaling_min_freq_title"/>
+        <ListPreference
+            android:key="cpu0_scaling_max_freq"
+            android:title="@string/str_scaling_max_freq_title"/>
+        <EditTextPreference
+            android:key="cpu0_util_threshold"
+            android:title="@string/str_util_threshold_title"
+            android:summary="@string/str_o_touch_load_threshold_summary"
+            android:numeric="integer"
+            android:inputType="number"/>
+    </PreferenceScreen>
+
+    <PreferenceScreen android:title="CPU 1">
+        <ListPreference
+            android:key="cpu1_gov"
+            android:entries="@array/array_gov_entries_n4"
+            android:entryValues="@array/array_gov_values_n4"
+            android:title="@string/str_gov_title"/>
+        <ListPreference
+            android:key="cpu1_scaling_min_freq"
+            android:title="@string/str_scaling_min_freq_title"/>
+        <ListPreference
+            android:key="cpu1_scaling_max_freq"
+            android:title="@string/str_scaling_max_freq_title"/>
+        <EditTextPreference
+            android:key="cpu1_util_threshold"
+            android:title="@string/str_util_threshold_title"
+            android:summary="@string/str_o_touch_load_threshold_summary"
+            android:numeric="integer"
+            android:inputType="number"/>
+    </PreferenceScreen>
+
+    <PreferenceScreen android:title="CPU 2">
+        <ListPreference
+            android:key="cpu2_gov"
+            android:entries="@array/array_gov_entries_n4"
+            android:entryValues="@array/array_gov_values_n4"
+            android:title="@string/str_gov_title"/>
+        <ListPreference
+            android:key="cpu2_scaling_min_freq"
+            android:title="@string/str_scaling_min_freq_title"/>
+        <ListPreference
+            android:key="cpu2_scaling_max_freq"
+            android:title="@string/str_scaling_max_freq_title"/>
+        <EditTextPreference
+            android:key="cpu2_util_threshold"
+            android:title="@string/str_util_threshold_title"
+            android:summary="@string/str_o_touch_load_threshold_summary"
+            android:numeric="integer"
+            android:inputType="number"/>
+    </PreferenceScreen>
+
+    <PreferenceScreen android:title="CPU 3">
+        <ListPreference
+            android:key="cpu3_gov"
+            android:entries="@array/array_gov_entries_n4"
+            android:entryValues="@array/array_gov_values_n4"
+            android:title="@string/str_gov_title"/>
+        <ListPreference
+            android:key="cpu3_scaling_min_freq"
+            android:title="@string/str_scaling_min_freq_title"/>
+        <ListPreference
+            android:key="cpu3_scaling_max_freq"
+            android:title="@string/str_scaling_max_freq_title"/>
+        <EditTextPreference
+            android:key="cpu3_util_threshold"
+            android:title="@string/str_util_threshold_title"
+            android:summary="@string/str_o_touch_load_threshold_summary"
+            android:numeric="integer"
+            android:inputType="number"/>
+    </PreferenceScreen>
 
     <PreferenceCategory android:title="@string/str_cat_gov_title">
         <PreferenceScreen android:title="Ondemand">
@@ -18,49 +86,49 @@
 
             <CheckBoxPreference
                 android:key="o_io_is_busy"
-                android:title="@string/str_o_io_is_busy_title" />
+                android:title="@string/str_o_io_is_busy_title"/>
             <EditTextPreference
                 android:key="o_sampling_down_factor"
                 android:title="@string/str_o_sampling_down_factor_title"
                 android:summary="@string/str_o_sampling_down_factor_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
             <EditTextPreference
                 android:key="o_sampling_rate"
                 android:title="@string/str_o_sampling_rate_title"
                 android:summary="@string/str_o_sampling_rate_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
             <EditTextPreference
                 android:key="o_up_threshold"
                 android:title="@string/str_o_up_threshold_title"
                 android:summary="@string/str_o_up_threshold_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
             <EditTextPreference
                 android:key="o_powersave_bias"
                 android:title="@string/str_o_powersave_bias_title"
                 android:summary="@string/str_o_powersave_bias_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
             <EditTextPreference
                 android:key="o_touch_load"
                 android:title="@string/str_o_touch_load_title"
                 android:summary="@string/str_o_touch_load_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
             <EditTextPreference
                 android:key="o_touch_load_threshold"
                 android:title="@string/str_o_touch_load_threshold_title"
                 android:summary="@string/str_o_touch_load_threshold_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
             <EditTextPreference
                 android:key="o_touch_load_duration"
                 android:title="@string/str_o_touch_load_duration_title"
                 android:summary="@string/str_o_touch_load_duration_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
 
         </PreferenceScreen>
         <PreferenceScreen android:title="Conservative">
@@ -71,31 +139,31 @@
                 android:title="@string/str_c_sampling_down_factor_title"
                 android:summary="@string/str_c_sampling_down_factor_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
             <EditTextPreference
                 android:key="c_freq_step"
                 android:title="@string/str_c_freq_step_title"
                 android:summary="@string/str_c_freq_step_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
             <EditTextPreference
                 android:key="c_sampling_rate"
                 android:title="@string/str_c_sampling_rate_title"
                 android:summary="@string/str_c_sampling_rate_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
             <EditTextPreference
                 android:key="c_up_threshold"
                 android:title="@string/str_c_up_threshold_title"
                 android:summary="@string/str_c_up_threshold_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
             <EditTextPreference
                 android:key="c_down_threshold"
                 android:title="@string/str_c_down_threshold_title"
                 android:summary="@string/str_c_down_threshold_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
 
         </PreferenceScreen>
         <PreferenceScreen android:title="Interactive">
@@ -106,55 +174,55 @@
                 android:title="@string/str_i_hispeed_freq_title"
                 android:summary="@string/str_i_hispeed_freq_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
             <EditTextPreference
                 android:key="i_go_hispeed_load"
                 android:title="@string/str_i_go_hispeed_load_title"
                 android:summary="@string/str_i_go_hispeed_load_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
             <EditTextPreference
                 android:key="i_min_sampling_time"
                 android:title="@string/str_i_min_sampling_time_title"
                 android:summary="@string/str_i_min_sampling_time_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
             <EditTextPreference
                 android:key="i_above_hispeed_delay"
                 android:title="@string/str_i_above_hispeed_delay_title"
                 android:summary="@string/str_i_above_hispeed_delay_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
             <EditTextPreference
                 android:key="i_timer_rate"
                 android:title="@string/str_i_timer_rate_title"
                 android:summary="@string/str_i_timer_rate_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
             <EditTextPreference
                 android:key="i_timer_slack"
                 android:title="@string/str_i_timer_slack_title"
                 android:summary="@string/str_i_timer_slack_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
             <EditTextPreference
                 android:key="i_boostpulse_duration"
                 android:title="@string/str_i_boostpulse_duration_title"
                 android:summary="@string/str_i_boostpulse_duration_summary"
                 android:numeric="integer"
-                android:inputType="number" />
+                android:inputType="number"/>
             <EditTextPreference
                 android:key="i_target_loads"
                 android:title="@string/str_i_target_loads_title"
                 android:summary="@string/str_i_target_loads_summary"
                 android:numeric="integer"
-                android:inputType="textNoSuggestions" />
+                android:inputType="textNoSuggestions"/>
             <CheckBoxPreference
                 android:key="i_io_is_busy"
-                android:title="@string/str_i_io_is_busy_title" />
+                android:title="@string/str_i_io_is_busy_title"/>
             <CheckBoxPreference
                 android:key="i_input_boost"
-                android:title="@string/str_i_input_boost_title" />
+                android:title="@string/str_i_input_boost_title"/>
 
         </PreferenceScreen>
     </PreferenceCategory>
@@ -162,7 +230,7 @@
     <PreferenceCategory android:title="Dynamic Hotplug">
         <com.semaphore.sm.SwitchCompatPreference
             android:key="hp_enabled"
-            android:title="@string/str_hp_enabled_title" />
+            android:title="@string/str_hp_enabled_title"/>
         <com.semaphore.sm.SeekBarPreference
             android:key="hp_min_online"
             android:title="@string/str_hp_min_online_title"
@@ -171,7 +239,7 @@
             android:max="4"
             semaphore:min="1"
             semaphore:step="1"
-            android:dependency="hp_enabled" />
+            android:dependency="hp_enabled"/>
         <com.semaphore.sm.SeekBarPreference
             android:key="hp_max_online"
             android:title="@string/str_hp_max_online_title"
@@ -180,14 +248,14 @@
             android:max="4"
             semaphore:min="1"
             semaphore:step="1"
-            android:dependency="hp_enabled" />
+            android:dependency="hp_enabled"/>
         <EditTextPreference
             android:key="hp_up_threshold"
             android:title="@string/str_hp_up_threshold_title"
             android:summary="@string/str_hp_up_threshold_summary"
             android:numeric="integer"
             android:inputType="number"
-            android:dependency="hp_enabled" />
+            android:dependency="hp_enabled"/>
         <com.semaphore.sm.SeekBarPreference
             android:key="hp_up_timer_cnt"
             android:title="@string/str_hp_up_timer_cnt_title"
@@ -196,7 +264,7 @@
             android:max="20"
             semaphore:min="1"
             semaphore:step="1"
-            android:dependency="hp_enabled" />
+            android:dependency="hp_enabled"/>
         <com.semaphore.sm.SeekBarPreference
             android:key="hp_down_timer_cnt"
             android:title="@string/str_hp_down_timer_cnt_title"
@@ -205,14 +273,14 @@
             android:max="30"
             semaphore:min="1"
             semaphore:step="1"
-            android:dependency="hp_enabled" />
+            android:dependency="hp_enabled"/>
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/str_undervolt_title">
         <com.semaphore.sm.SwitchCompatPreference
             android:key="uv_enabled"
             android:title="@string/str_uv_enabled_title"
-            android:summary="@string/str_uv_enabled_summary" />
+            android:summary="@string/str_uv_enabled_summary"/>
         <PreferenceScreen
             android:key="uv_uv"
             android:title="@string/str_undervolt_screen_title"
@@ -221,7 +289,7 @@
                 android:key="uv_boost"
                 android:title="@string/str_uv_boost_title"
                 android:summary="@string/str_uv_boost_summary"
-                android:dependency="uv_enabled" />
+                android:dependency="uv_enabled"/>
             <com.semaphore.sm.SeekBarPreference
                 android:key="uv_lower_uv"
                 android:title="@string/str_uv_lower_uv_title"
@@ -230,7 +298,7 @@
                 android:text=" uV"
                 semaphore:min="0"
                 android:max="150000"
-                semaphore:step="12500" />
+                semaphore:step="12500"/>
             <com.semaphore.sm.SeekBarPreference
                 android:key="uv_higher_uv"
                 android:title="@string/str_uv_higher_uv_title"
@@ -239,35 +307,35 @@
                 android:text=" uV"
                 semaphore:min="0"
                 android:max="150000"
-                semaphore:step="12500" />
+                semaphore:step="12500"/>
             <EditTextPreference
                 android:key="uv_higher_khz_thres"
                 android:title="@string/str_uv_higher_khz_thres_title"
                 android:summary="@string/str_uv_higher_khz_thres_summary"
                 android:numeric="integer"
                 android:inputType="number"
-                android:dependency="uv_enabled" />
+                android:dependency="uv_enabled"/>
             <Preference
                 android:key="uv_apply"
                 android:title="@string/str_uv_apply_title"
                 android:summary="@string/str_uv_apply_summary"
-                android:dependency="uv_enabled" />
+                android:dependency="uv_enabled"/>
             <Preference
                 android:key="uv_cpu_table"
                 android:title="@string/str_uv_cpu_table_title"
                 android:summary="@string/str_uv_cpu_table_summary"
-                android:dependency="uv_enabled" />
+                android:dependency="uv_enabled"/>
             <Preference
                 android:key="uv_reset"
                 android:title="@string/str_uv_reset_title"
                 android:summary="@string/str_uv_reset_summary"
-                android:dependency="uv_enabled" />
+                android:dependency="uv_enabled"/>
         </PreferenceScreen>
 
         <CheckBoxPreference
             android:key="uv_apply_boot"
             android:title="@string/str_uv_apply_boot_title"
             android:summary="@string/str_uv_apply_boot_summary"
-            android:dependency="uv_enabled" />
+            android:dependency="uv_enabled"/>
     </PreferenceCategory>
 </PreferenceScreen>

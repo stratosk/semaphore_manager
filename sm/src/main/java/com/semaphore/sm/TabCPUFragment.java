@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 - 2014 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2015 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -71,12 +71,42 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 			csmhz[i] = String.valueOf(Integer.valueOf((String) cs[i]) / 1000);
 		}
 
-		ListPreference lpref = (ListPreference) findPreference("scaling_min_freq");
+		ListPreference lpref = (ListPreference) findPreference("cpu0_scaling_min_freq");
 		if (lpref != null) {
 			lpref.setEntries(csmhz);
 			lpref.setEntryValues(cs);
 		}
-		lpref = (ListPreference) findPreference("scaling_max_freq");
+		lpref = (ListPreference) findPreference("cpu0_scaling_max_freq");
+		if (lpref != null) {
+			lpref.setEntries(csmhz);
+			lpref.setEntryValues(cs);
+		}
+		lpref = (ListPreference) findPreference("cpu1_scaling_min_freq");
+		if (lpref != null) {
+			lpref.setEntries(csmhz);
+			lpref.setEntryValues(cs);
+		}
+		lpref = (ListPreference) findPreference("cpu1_scaling_max_freq");
+		if (lpref != null) {
+			lpref.setEntries(csmhz);
+			lpref.setEntryValues(cs);
+		}
+		lpref = (ListPreference) findPreference("cpu2_scaling_min_freq");
+		if (lpref != null) {
+			lpref.setEntries(csmhz);
+			lpref.setEntryValues(cs);
+		}
+		lpref = (ListPreference) findPreference("cpu2_scaling_max_freq");
+		if (lpref != null) {
+			lpref.setEntries(csmhz);
+			lpref.setEntryValues(cs);
+		}
+		lpref = (ListPreference) findPreference("cpu3_scaling_min_freq");
+		if (lpref != null) {
+			lpref.setEntries(csmhz);
+			lpref.setEntryValues(cs);
+		}
+		lpref = (ListPreference) findPreference("cpu3_scaling_max_freq");
 		if (lpref != null) {
 			lpref.setEntries(csmhz);
 			lpref.setEntryValues(cs);
@@ -214,6 +244,38 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 	public void onPreferenceChange(Preference preference, Object newValue) {
 	}
 
+	private void setOndemandPref(SemaN4Properties sp) {
+		((CheckBoxPreference) findPreference(sp.ondemand.io_is_busy.getName())).setChecked(sp.ondemand.io_is_busy.getBoolean());
+		((EditTextPreference) findPreference(sp.ondemand.sampling_down_factor.getName())).setText(sp.ondemand.sampling_down_factor.getValString());
+		((EditTextPreference) findPreference(sp.ondemand.sampling_rate.getName())).setText(sp.ondemand.sampling_rate.getValString());
+		((EditTextPreference) findPreference(sp.ondemand.up_threshold.getName())).setText(sp.ondemand.up_threshold.getValString());
+		((EditTextPreference) findPreference(sp.ondemand.powersave_bias.getName())).setText(sp.ondemand.powersave_bias.getValString());
+		((EditTextPreference) findPreference(sp.ondemand.touch_load.getName())).setText(sp.ondemand.touch_load.getValString());
+		((EditTextPreference) findPreference(sp.ondemand.touch_load_duration.getName())).setText(sp.ondemand.touch_load_duration.getValString());
+		((EditTextPreference) findPreference(sp.ondemand.touch_load_threshold.getName())).setText(sp.ondemand.touch_load_threshold.getValString());
+	}
+
+	private void setInteractivePref(SemaN4Properties sp) {
+		((EditTextPreference) findPreference(sp.interactive.hispeed_freq.getName())).setText(sp.interactive.hispeed_freq.getValString());
+		((EditTextPreference) findPreference(sp.interactive.go_hispeed_load.getName())).setText(sp.interactive.go_hispeed_load.getValString());
+		((EditTextPreference) findPreference(sp.interactive.min_sampling_time.getName())).setText(sp.interactive.min_sampling_time.getValString());
+		((EditTextPreference) findPreference(sp.interactive.above_hispeed_delay.getName())).setText(sp.interactive.above_hispeed_delay.getValString());
+		((EditTextPreference) findPreference(sp.interactive.timer_rate.getName())).setText(sp.interactive.timer_rate.getValString());
+		((EditTextPreference) findPreference(sp.interactive.timer_slack.getName())).setText(sp.interactive.timer_slack.getValString());
+		((EditTextPreference) findPreference(sp.interactive.boostpulse_duration.getName())).setText(sp.interactive.boostpulse_duration.getValString());
+		((EditTextPreference) findPreference(sp.interactive.target_loads.getName())).setText(sp.interactive.target_loads.getValue());
+		((CheckBoxPreference) findPreference(sp.interactive.io_is_busy.getName())).setChecked(sp.interactive.io_is_busy.getBoolean());
+		((CheckBoxPreference) findPreference(sp.interactive.input_boost.getName())).setChecked(sp.interactive.input_boost.getBoolean());
+	}
+
+	private void setConservativePref(SemaN4Properties sp) {
+		((EditTextPreference) findPreference(sp.conservative.freq_step.getName())).setText(sp.conservative.freq_step.getValString());
+		((EditTextPreference) findPreference(sp.conservative.sampling_down_factor.getName())).setText(sp.conservative.sampling_down_factor.getValString());
+		((EditTextPreference) findPreference(sp.conservative.sampling_rate.getName())).setText(sp.conservative.sampling_rate.getValString());
+		((EditTextPreference) findPreference(sp.conservative.up_threshold.getName())).setText(sp.conservative.up_threshold.getValString());
+		((EditTextPreference) findPreference(sp.conservative.down_threshold.getName())).setText(sp.conservative.down_threshold.getValString());
+	}
+
 	private void writeMako(SharedPreferences sharedPreferences, String key) {
 		SemaN4Properties sp = (SemaN4Properties) scp;
 
@@ -298,51 +360,130 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 		} else if (key.equals(sp.interactive.input_boost.getName())) {
 			sp.interactive.input_boost.setValue(sharedPreferences.getBoolean(key, sp.interactive.input_boost.getDefBoolean()) == true ? 1 : 0);
 			sp.interactive.input_boost.writeValue();
-		} else if (key.equals(sp.cpufreq.gov.getName())) {
-			if (sharedPreferences.getString(sp.cpufreq.gov.getName(), sp.cpufreq.gov.getDefValue()).equals(sp.ondemand.getName())) {
-				sp.cpufreq.gov.setValue(sharedPreferences.getString(key, sp.cpufreq.gov.getDefValue()));
+		} else if (key.equals(sp.cpufreq.cpu[0].gov.getName())) {
+			if (sharedPreferences.getString(sp.cpufreq.cpu[0].gov.getName(), sp.cpufreq.cpu[0].gov.getDefValue()).equals(sp.ondemand.getName())) {
+				sp.cpufreq.cpu[0].gov.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[0].gov.getDefValue()));
 				sp.cpufreq.writeValue();
-				((CheckBoxPreference) findPreference(sp.ondemand.io_is_busy.getName())).setChecked(sp.ondemand.io_is_busy.getBoolean());
-				((EditTextPreference) findPreference(sp.ondemand.sampling_down_factor.getName())).setText(sp.ondemand.sampling_down_factor.getValString());
-				((EditTextPreference) findPreference(sp.ondemand.sampling_rate.getName())).setText(sp.ondemand.sampling_rate.getValString());
-				((EditTextPreference) findPreference(sp.ondemand.up_threshold.getName())).setText(sp.ondemand.up_threshold.getValString());
-				((EditTextPreference) findPreference(sp.ondemand.powersave_bias.getName())).setText(sp.ondemand.powersave_bias.getValString());
+				setOndemandPref(sp);
 				sp.conservative.cons.setValue(false);
 				sp.conservative.cons.writeValue();
-			} else if (sharedPreferences.getString(sp.cpufreq.gov.getName(), sp.cpufreq.gov.getDefValue()).equals(sp.conservative.getName())) {
+			} else if (sharedPreferences.getString(sp.cpufreq.cpu[0].gov.getName(), sp.cpufreq.cpu[0].gov.getDefValue()).equals(sp.conservative.getName())) {
 				sp.conservative.cons.setValue(true);
 				sp.conservative.cons.writeValue();
-				sp.cpufreq.gov.setValue(sharedPreferences.getString(key, sp.cpufreq.gov.getDefValue()));
+				sp.cpufreq.cpu[0].gov.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[0].gov.getDefValue()));
 				sp.cpufreq.writeValue();
-				((EditTextPreference) findPreference(sp.conservative.freq_step.getName())).setText(sp.conservative.freq_step.getValString());
-				((EditTextPreference) findPreference(sp.conservative.sampling_down_factor.getName())).setText(sp.conservative.sampling_down_factor.getValString());
-				((EditTextPreference) findPreference(sp.conservative.sampling_rate.getName())).setText(sp.conservative.sampling_rate.getValString());
-				((EditTextPreference) findPreference(sp.conservative.up_threshold.getName())).setText(sp.conservative.up_threshold.getValString());
-				((EditTextPreference) findPreference(sp.conservative.down_threshold.getName())).setText(sp.conservative.down_threshold.getValString());
-			} else if (sharedPreferences.getString(sp.cpufreq.gov.getName(), sp.cpufreq.gov.getDefValue()).equals(sp.interactive.getName())) {
+				setConservativePref(sp);
+			} else if (sharedPreferences.getString(sp.cpufreq.cpu[0].gov.getName(), sp.cpufreq.cpu[0].gov.getDefValue()).equals(sp.interactive.getName())) {
 				sp.interactive.inter.setValue(true);
 				sp.interactive.inter.writeValue();
-				sp.cpufreq.gov.setValue(sharedPreferences.getString(key, sp.cpufreq.gov.getDefValue()));
+				sp.cpufreq.cpu[0].gov.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[0].gov.getDefValue()));
 				sp.cpufreq.writeValue();
-				((EditTextPreference) findPreference(sp.interactive.hispeed_freq.getName())).setText(sp.interactive.hispeed_freq.getValString());
-				((EditTextPreference) findPreference(sp.interactive.go_hispeed_load.getName())).setText(sp.interactive.go_hispeed_load.getValString());
-				((EditTextPreference) findPreference(sp.interactive.min_sampling_time.getName())).setText(sp.interactive.min_sampling_time.getValString());
-				((EditTextPreference) findPreference(sp.interactive.above_hispeed_delay.getName())).setText(sp.interactive.above_hispeed_delay.getValString());
-				((EditTextPreference) findPreference(sp.interactive.timer_rate.getName())).setText(sp.interactive.timer_rate.getValString());
-				((EditTextPreference) findPreference(sp.interactive.timer_slack.getName())).setText(sp.interactive.timer_slack.getValString());
-				((EditTextPreference) findPreference(sp.interactive.boostpulse_duration.getName())).setText(sp.interactive.boostpulse_duration.getValString());
-				((EditTextPreference) findPreference(sp.interactive.target_loads.getName())).setText(sp.interactive.target_loads.getValue());
-				((CheckBoxPreference) findPreference(sp.interactive.io_is_busy.getName())).setChecked(sp.interactive.io_is_busy.getBoolean());
-				((CheckBoxPreference) findPreference(sp.interactive.input_boost.getName())).setChecked(sp.interactive.input_boost.getBoolean());
+				setInteractivePref(sp);
 				sp.conservative.cons.setValue(false);
 				sp.conservative.cons.writeValue();
 			}
-		} else if (key.equals(sp.cpufreq.scaling_min_freq.getName())) {
-			sp.cpufreq.scaling_min_freq.setValue(sharedPreferences.getString(key, sp.cpufreq.scaling_min_freq.getDefString()));
-			sp.cpufreq.writeValue();
-		} else if (key.equals(sp.cpufreq.scaling_max_freq.getName())) {
-			sp.cpufreq.scaling_max_freq.setValue(sharedPreferences.getString(key, sp.cpufreq.scaling_max_freq.getDefString()));
-			sp.cpufreq.writeValue();
+		} else if (key.equals(sp.cpufreq.cpu[1].gov.getName())) {
+			if (sharedPreferences.getString(sp.cpufreq.cpu[1].gov.getName(), sp.cpufreq.cpu[1].gov.getDefValue()).equals(sp.ondemand.getName())) {
+				sp.cpufreq.cpu[1].gov.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[1].gov.getDefValue()));
+				sp.cpufreq.writeValue();
+				setOndemandPref(sp);
+				sp.conservative.cons.setValue(false);
+				sp.conservative.cons.writeValue();
+			} else if (sharedPreferences.getString(sp.cpufreq.cpu[1].gov.getName(), sp.cpufreq.cpu[1].gov.getDefValue()).equals(sp.conservative.getName())) {
+				sp.conservative.cons.setValue(true);
+				sp.conservative.cons.writeValue();
+				sp.cpufreq.cpu[1].gov.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[1].gov.getDefValue()));
+				sp.cpufreq.writeValue();
+				setConservativePref(sp);
+			} else if (sharedPreferences.getString(sp.cpufreq.cpu[1].gov.getName(), sp.cpufreq.cpu[1].gov.getDefValue()).equals(sp.interactive.getName())) {
+				sp.interactive.inter.setValue(true);
+				sp.interactive.inter.writeValue();
+				sp.cpufreq.cpu[1].gov.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[1].gov.getDefValue()));
+				sp.cpufreq.writeValue();
+				setInteractivePref(sp);
+				sp.conservative.cons.setValue(false);
+				sp.conservative.cons.writeValue();
+			}
+		} else if (key.equals(sp.cpufreq.cpu[2].gov.getName())) {
+			if (sharedPreferences.getString(sp.cpufreq.cpu[2].gov.getName(), sp.cpufreq.cpu[2].gov.getDefValue()).equals(sp.ondemand.getName())) {
+				sp.cpufreq.cpu[2].gov.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[2].gov.getDefValue()));
+				sp.cpufreq.writeValue();
+				setOndemandPref(sp);
+				sp.conservative.cons.setValue(false);
+				sp.conservative.cons.writeValue();
+			} else if (sharedPreferences.getString(sp.cpufreq.cpu[2].gov.getName(), sp.cpufreq.cpu[2].gov.getDefValue()).equals(sp.conservative.getName())) {
+				sp.conservative.cons.setValue(true);
+				sp.conservative.cons.writeValue();
+				sp.cpufreq.cpu[2].gov.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[2].gov.getDefValue()));
+				sp.cpufreq.writeValue();
+				setConservativePref(sp);
+			} else if (sharedPreferences.getString(sp.cpufreq.cpu[2].gov.getName(), sp.cpufreq.cpu[2].gov.getDefValue()).equals(sp.interactive.getName())) {
+				sp.interactive.inter.setValue(true);
+				sp.interactive.inter.writeValue();
+				sp.cpufreq.cpu[2].gov.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[2].gov.getDefValue()));
+				sp.cpufreq.writeValue();
+				setInteractivePref(sp);
+				sp.conservative.cons.setValue(false);
+				sp.conservative.cons.writeValue();
+			}
+		} else if (key.equals(sp.cpufreq.cpu[3].gov.getName())) {
+			if (sharedPreferences.getString(sp.cpufreq.cpu[3].gov.getName(), sp.cpufreq.cpu[3].gov.getDefValue()).equals(sp.ondemand.getName())) {
+				sp.cpufreq.cpu[3].gov.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[3].gov.getDefValue()));
+				sp.cpufreq.writeValue();
+				setOndemandPref(sp);
+				sp.conservative.cons.setValue(false);
+				sp.conservative.cons.writeValue();
+			} else if (sharedPreferences.getString(sp.cpufreq.cpu[3].gov.getName(), sp.cpufreq.cpu[3].gov.getDefValue()).equals(sp.conservative.getName())) {
+				sp.conservative.cons.setValue(true);
+				sp.conservative.cons.writeValue();
+				sp.cpufreq.cpu[3].gov.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[3].gov.getDefValue()));
+				sp.cpufreq.writeValue();
+				setConservativePref(sp);
+			} else if (sharedPreferences.getString(sp.cpufreq.cpu[3].gov.getName(), sp.cpufreq.cpu[3].gov.getDefValue()).equals(sp.interactive.getName())) {
+				sp.interactive.inter.setValue(true);
+				sp.interactive.inter.writeValue();
+				sp.cpufreq.cpu[3].gov.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[3].gov.getDefValue()));
+				sp.cpufreq.writeValue();
+				setInteractivePref(sp);
+				sp.conservative.cons.setValue(false);
+				sp.conservative.cons.writeValue();
+			}
+		} else if (key.equals(sp.cpufreq.cpu[0].scaling_min_freq.getName())) {
+			sp.cpufreq.cpu[0].scaling_min_freq.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[0].scaling_min_freq.getDefString()));
+			sp.cpufreq.cpu[0].writeValue();
+		} else if (key.equals(sp.cpufreq.cpu[0].scaling_max_freq.getName())) {
+			sp.cpufreq.cpu[0].scaling_max_freq.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[0].scaling_max_freq.getDefString()));
+			sp.cpufreq.cpu[0].writeValue();
+		} else if (key.equals(sp.cpufreq.cpu[0].util_threshold.getName())) {
+			sp.cpufreq.cpu[0].util_threshold.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[0].util_threshold.getDefString()));
+			sp.cpufreq.cpu[0].writeValue();
+		} else if (key.equals(sp.cpufreq.cpu[1].scaling_min_freq.getName())) {
+			sp.cpufreq.cpu[1].scaling_min_freq.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[1].scaling_min_freq.getDefString()));
+			sp.cpufreq.cpu[1].writeValue();
+		} else if (key.equals(sp.cpufreq.cpu[1].scaling_max_freq.getName())) {
+			sp.cpufreq.cpu[1].scaling_max_freq.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[1].scaling_max_freq.getDefString()));
+			sp.cpufreq.cpu[1].writeValue();
+		} else if (key.equals(sp.cpufreq.cpu[1].util_threshold.getName())) {
+			sp.cpufreq.cpu[1].util_threshold.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[1].util_threshold.getDefString()));
+			sp.cpufreq.cpu[1].writeValue();
+		} else if (key.equals(sp.cpufreq.cpu[2].scaling_min_freq.getName())) {
+			sp.cpufreq.cpu[2].scaling_min_freq.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[2].scaling_min_freq.getDefString()));
+			sp.cpufreq.cpu[2].writeValue();
+		} else if (key.equals(sp.cpufreq.cpu[2].scaling_max_freq.getName())) {
+			sp.cpufreq.cpu[2].scaling_max_freq.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[2].scaling_max_freq.getDefString()));
+			sp.cpufreq.cpu[2].writeValue();
+		} else if (key.equals(sp.cpufreq.cpu[2].util_threshold.getName())) {
+			sp.cpufreq.cpu[2].util_threshold.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[2].util_threshold.getDefString()));
+			sp.cpufreq.cpu[2].writeValue();
+		} else if (key.equals(sp.cpufreq.cpu[3].scaling_min_freq.getName())) {
+			sp.cpufreq.cpu[3].scaling_min_freq.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[3].scaling_min_freq.getDefString()));
+			sp.cpufreq.cpu[3].writeValue();
+		} else if (key.equals(sp.cpufreq.cpu[3].scaling_max_freq.getName())) {
+			sp.cpufreq.cpu[3].scaling_max_freq.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[3].scaling_max_freq.getDefString()));
+			sp.cpufreq.cpu[3].writeValue();
+		} else if (key.equals(sp.cpufreq.cpu[3].util_threshold.getName())) {
+			sp.cpufreq.cpu[3].util_threshold.setValue(sharedPreferences.getString(key, sp.cpufreq.cpu[3].util_threshold.getDefString()));
+			sp.cpufreq.cpu[3].writeValue();
 		} else if (key.equals("uv_apply_boot"))
 			sp.uv.apply_boot = sharedPreferences.getBoolean(key, false);
 		else if (key.equals("uv_enabled")) {
@@ -649,26 +790,94 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 	private void updateSummariesN4() {
 		SemaN4Properties sp = (SemaN4Properties) scp;
 
-		Preference pref = findPreference(sp.cpufreq.gov.getName());
+		Preference pref = findPreference(sp.cpufreq.cpu[0].gov.getName());
 		if (pref == null)
 			return;
 
 		if (((ListPreference) pref).getEntry() != null)
 			pref.setSummary(((ListPreference) pref).getEntry().toString());
 
-		pref = findPreference(sp.cpufreq.scaling_min_freq.getName());
+		pref = findPreference(sp.cpufreq.cpu[1].gov.getName());
 		if (pref == null)
 			return;
 
 		if (((ListPreference) pref).getEntry() != null)
 			pref.setSummary(((ListPreference) pref).getEntry().toString());
 
-		pref = findPreference(sp.cpufreq.scaling_max_freq.getName());
+		pref = findPreference(sp.cpufreq.cpu[2].gov.getName());
 		if (pref == null)
 			return;
 
 		if (((ListPreference) pref).getEntry() != null)
 			pref.setSummary(((ListPreference) pref).getEntry().toString());
+
+		pref = findPreference(sp.cpufreq.cpu[3].gov.getName());
+		if (pref == null)
+			return;
+
+		if (((ListPreference) pref).getEntry() != null)
+			pref.setSummary(((ListPreference) pref).getEntry().toString());
+
+		pref = findPreference(sp.cpufreq.cpu[0].scaling_min_freq.getName());
+		if (pref == null)
+			return;
+
+		if (((ListPreference) pref).getEntry() != null)
+			pref.setSummary(((ListPreference) pref).getEntry().toString());
+
+		pref = findPreference(sp.cpufreq.cpu[0].scaling_max_freq.getName());
+		if (pref == null)
+			return;
+
+		if (((ListPreference) pref).getEntry() != null)
+			pref.setSummary(((ListPreference) pref).getEntry().toString());
+
+		pref = findPreference(sp.cpufreq.cpu[1].scaling_min_freq.getName());
+		if (pref == null)
+			return;
+
+		if (((ListPreference) pref).getEntry() != null)
+			pref.setSummary(((ListPreference) pref).getEntry().toString());
+
+		pref = findPreference(sp.cpufreq.cpu[1].scaling_max_freq.getName());
+		if (pref == null)
+			return;
+
+		if (((ListPreference) pref).getEntry() != null)
+			pref.setSummary(((ListPreference) pref).getEntry().toString());
+
+		pref = findPreference(sp.cpufreq.cpu[2].scaling_min_freq.getName());
+		if (pref == null)
+			return;
+
+		if (((ListPreference) pref).getEntry() != null)
+			pref.setSummary(((ListPreference) pref).getEntry().toString());
+
+		pref = findPreference(sp.cpufreq.cpu[2].scaling_max_freq.getName());
+		if (pref == null)
+			return;
+
+		if (((ListPreference) pref).getEntry() != null)
+			pref.setSummary(((ListPreference) pref).getEntry().toString());
+
+		pref = findPreference(sp.cpufreq.cpu[3].scaling_min_freq.getName());
+		if (pref == null)
+			return;
+
+		if (((ListPreference) pref).getEntry() != null)
+			pref.setSummary(((ListPreference) pref).getEntry().toString());
+
+		pref = findPreference(sp.cpufreq.cpu[3].scaling_max_freq.getName());
+		if (pref == null)
+			return;
+
+		if (((ListPreference) pref).getEntry() != null)
+			pref.setSummary(((ListPreference) pref).getEntry().toString());
+
+		setEditSummary(sp.cpufreq.cpu[0].util_threshold.getName());
+		setEditSummary(sp.cpufreq.cpu[1].util_threshold.getName());
+		setEditSummary(sp.cpufreq.cpu[2].util_threshold.getName());
+		setEditSummary(sp.cpufreq.cpu[3].util_threshold.getName());
 
 		setEditSummary(sp.ondemand.sampling_down_factor.getName());
 		setEditSummary(sp.ondemand.sampling_rate.getName());

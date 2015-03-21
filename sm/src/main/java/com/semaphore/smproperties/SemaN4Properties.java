@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *  
- *   Copyright (c) 2012 - 2014 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2015 Stratos Karafotis (stratosk@semaphore.gr)
  *   
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -144,18 +144,6 @@ public class SemaN4Properties extends SemaCommonProperties {
 	public void writeBatch() {
 		List<String> cmds = new ArrayList<>();
 
-		if (cpufreq.gov.getValue().equals(conservative.getName())) {
-			conservative.cons.setValue(true);
-			interactive.inter.setValue(false);
-			conservative.cons.writeBatch(cmds);
-		} else if (cpufreq.gov.getValue().equals(interactive.getName())) {
-			conservative.cons.setValue(false);
-			interactive.inter.setValue(true);
-			interactive.inter.writeBatch(cmds);
-		} else {
-			conservative.cons.setValue(false);
-			interactive.inter.setValue(false);
-		}
 		cpufreq.writeBatch(cmds);
 		ondemand.writeBatch(cmds);
 		conservative.writebatch(cmds);
@@ -201,18 +189,6 @@ public class SemaN4Properties extends SemaCommonProperties {
 
 	@Override
 	public void writeValues() {
-		if (cpufreq.gov.getValue().equals(conservative.getName())) {
-			conservative.cons.setValue(true);
-			interactive.inter.setValue(false);
-			conservative.cons.writeValue();
-		} else if (cpufreq.gov.getValue().equals(interactive.getName())) {
-			conservative.cons.setValue(false);
-			interactive.inter.setValue(true);
-			interactive.inter.writeValue();
-		} else {
-			conservative.cons.setValue(false);
-			interactive.inter.setValue(false);
-		}
 		cpufreq.writeValue();
 		ondemand.writeValue();
 		conservative.writeValue();
@@ -260,9 +236,22 @@ public class SemaN4Properties extends SemaCommonProperties {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		Editor edit = prefs.edit();
 
-		edit.putString(cpufreq.gov.getName(), cpufreq.gov.getValue());
-		edit.putString(cpufreq.scaling_min_freq.getName(), cpufreq.scaling_min_freq.getValString());
-		edit.putString(cpufreq.scaling_max_freq.getName(), cpufreq.scaling_max_freq.getValString());
+		edit.putString(cpufreq.cpu[0].gov.getName(), cpufreq.cpu[0].gov.getValue());
+		edit.putString(cpufreq.cpu[0].scaling_min_freq.getName(), cpufreq.cpu[0].scaling_min_freq.getValString());
+		edit.putString(cpufreq.cpu[0].scaling_max_freq.getName(), cpufreq.cpu[0].scaling_max_freq.getValString());
+		edit.putString(cpufreq.cpu[0].util_threshold.getName(), cpufreq.cpu[0].util_threshold.getValString());
+		edit.putString(cpufreq.cpu[1].gov.getName(), cpufreq.cpu[1].gov.getValue());
+		edit.putString(cpufreq.cpu[1].scaling_min_freq.getName(), cpufreq.cpu[1].scaling_min_freq.getValString());
+		edit.putString(cpufreq.cpu[1].scaling_max_freq.getName(), cpufreq.cpu[1].scaling_max_freq.getValString());
+		edit.putString(cpufreq.cpu[1].util_threshold.getName(), cpufreq.cpu[1].util_threshold.getValString());
+		edit.putString(cpufreq.cpu[2].gov.getName(), cpufreq.cpu[2].gov.getValue());
+		edit.putString(cpufreq.cpu[2].scaling_min_freq.getName(), cpufreq.cpu[2].scaling_min_freq.getValString());
+		edit.putString(cpufreq.cpu[2].scaling_max_freq.getName(), cpufreq.cpu[2].scaling_max_freq.getValString());
+		edit.putString(cpufreq.cpu[2].util_threshold.getName(), cpufreq.cpu[2].util_threshold.getValString());
+		edit.putString(cpufreq.cpu[3].gov.getName(), cpufreq.cpu[3].gov.getValue());
+		edit.putString(cpufreq.cpu[3].scaling_min_freq.getName(), cpufreq.cpu[3].scaling_min_freq.getValString());
+		edit.putString(cpufreq.cpu[3].scaling_max_freq.getName(), cpufreq.cpu[3].scaling_max_freq.getValString());
+		edit.putString(cpufreq.cpu[3].util_threshold.getName(), cpufreq.cpu[3].util_threshold.getValString());
 		// ondemand tunables
 		edit.putBoolean(ondemand.io_is_busy.getName(), ondemand.io_is_busy.getBoolean());
 		edit.putString(ondemand.sampling_down_factor.getName(), ondemand.sampling_down_factor.getValString());
@@ -349,9 +338,25 @@ public class SemaN4Properties extends SemaCommonProperties {
 	public void getPreferences(Context context) {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
-		cpufreq.gov.setValue(prefs.getString(cpufreq.gov.getName(), cpufreq.gov.getDefValue()));
-		cpufreq.scaling_min_freq.setValue(prefs.getString(cpufreq.scaling_min_freq.getName(), cpufreq.scaling_min_freq.getDefString()));
-		cpufreq.scaling_max_freq.setValue(prefs.getString(cpufreq.scaling_max_freq.getName(), cpufreq.scaling_max_freq.getDefString()));
+		cpufreq.cpu[0].gov.setValue(prefs.getString(cpufreq.cpu[0].gov.getName(), cpufreq.cpu[0].gov.getDefValue()));
+		cpufreq.cpu[0].scaling_min_freq.setValue(prefs.getString(cpufreq.cpu[0].scaling_min_freq.getName(), cpufreq.cpu[0].scaling_min_freq.getDefString()));
+		cpufreq.cpu[0].scaling_max_freq.setValue(prefs.getString(cpufreq.cpu[0].scaling_max_freq.getName(), cpufreq.cpu[0].scaling_max_freq.getDefString()));
+		cpufreq.cpu[0].util_threshold.setValue(prefs.getString(cpufreq.cpu[0].util_threshold.getName(), cpufreq.cpu[0].util_threshold.getDefString()));
+
+		cpufreq.cpu[1].gov.setValue(prefs.getString(cpufreq.cpu[1].gov.getName(), cpufreq.cpu[1].gov.getDefValue()));
+		cpufreq.cpu[1].scaling_min_freq.setValue(prefs.getString(cpufreq.cpu[1].scaling_min_freq.getName(), cpufreq.cpu[1].scaling_min_freq.getDefString()));
+		cpufreq.cpu[1].scaling_max_freq.setValue(prefs.getString(cpufreq.cpu[1].scaling_max_freq.getName(), cpufreq.cpu[1].scaling_max_freq.getDefString()));
+		cpufreq.cpu[1].util_threshold.setValue(prefs.getString(cpufreq.cpu[1].util_threshold.getName(), cpufreq.cpu[1].util_threshold.getDefString()));
+
+		cpufreq.cpu[2].gov.setValue(prefs.getString(cpufreq.cpu[2].gov.getName(), cpufreq.cpu[2].gov.getDefValue()));
+		cpufreq.cpu[2].scaling_min_freq.setValue(prefs.getString(cpufreq.cpu[2].scaling_min_freq.getName(), cpufreq.cpu[2].scaling_min_freq.getDefString()));
+		cpufreq.cpu[2].scaling_max_freq.setValue(prefs.getString(cpufreq.cpu[2].scaling_max_freq.getName(), cpufreq.cpu[2].scaling_max_freq.getDefString()));
+		cpufreq.cpu[2].util_threshold.setValue(prefs.getString(cpufreq.cpu[2].util_threshold.getName(), cpufreq.cpu[2].util_threshold.getDefString()));
+
+		cpufreq.cpu[3].gov.setValue(prefs.getString(cpufreq.cpu[3].gov.getName(), cpufreq.cpu[3].gov.getDefValue()));
+		cpufreq.cpu[3].scaling_min_freq.setValue(prefs.getString(cpufreq.cpu[3].scaling_min_freq.getName(), cpufreq.cpu[3].scaling_min_freq.getDefString()));
+		cpufreq.cpu[3].scaling_max_freq.setValue(prefs.getString(cpufreq.cpu[3].scaling_max_freq.getName(), cpufreq.cpu[3].scaling_max_freq.getDefString()));
+		cpufreq.cpu[3].util_threshold.setValue(prefs.getString(cpufreq.cpu[3].util_threshold.getName(), cpufreq.cpu[3].util_threshold.getDefString()));
 
 		ondemand.io_is_busy.setValue(prefs.getBoolean(ondemand.io_is_busy.getName(), ondemand.io_is_busy.getDefBoolean()) ? 1 : 0);
 		ondemand.sampling_down_factor.setValue(prefs.getString(ondemand.sampling_down_factor.getName(), ondemand.sampling_down_factor.getDefString()));
@@ -436,9 +441,25 @@ public class SemaN4Properties extends SemaCommonProperties {
 
 	@Override
 	public void resetDefaults() {
-		cpufreq.gov.setValue(cpufreq.gov.getDefValue());
-		cpufreq.scaling_min_freq.setValue(cpufreq.scaling_min_freq.getDefault());
-		cpufreq.scaling_max_freq.setValue(cpufreq.scaling_max_freq.getDefault());
+		cpufreq.cpu[0].gov.setValue(cpufreq.cpu[0].gov.getDefValue());
+		cpufreq.cpu[0].scaling_min_freq.setValue(cpufreq.cpu[0].scaling_min_freq.getDefault());
+		cpufreq.cpu[0].scaling_max_freq.setValue(cpufreq.cpu[0].scaling_max_freq.getDefault());
+		cpufreq.cpu[0].util_threshold.setValue(cpufreq.cpu[0].util_threshold.getDefault());
+
+		cpufreq.cpu[1].gov.setValue(cpufreq.cpu[1].gov.getDefValue());
+		cpufreq.cpu[1].scaling_min_freq.setValue(cpufreq.cpu[1].scaling_min_freq.getDefault());
+		cpufreq.cpu[1].scaling_max_freq.setValue(cpufreq.cpu[1].scaling_max_freq.getDefault());
+		cpufreq.cpu[1].util_threshold.setValue(cpufreq.cpu[1].util_threshold.getDefault());
+
+		cpufreq.cpu[2].gov.setValue(cpufreq.cpu[2].gov.getDefValue());
+		cpufreq.cpu[2].scaling_min_freq.setValue(cpufreq.cpu[2].scaling_min_freq.getDefault());
+		cpufreq.cpu[2].scaling_max_freq.setValue(cpufreq.cpu[2].scaling_max_freq.getDefault());
+		cpufreq.cpu[2].util_threshold.setValue(cpufreq.cpu[2].util_threshold.getDefault());
+
+		cpufreq.cpu[3].gov.setValue(cpufreq.cpu[3].gov.getDefValue());
+		cpufreq.cpu[3].scaling_min_freq.setValue(cpufreq.cpu[3].scaling_min_freq.getDefault());
+		cpufreq.cpu[3].scaling_max_freq.setValue(cpufreq.cpu[3].scaling_max_freq.getDefault());
+		cpufreq.cpu[3].util_threshold.setValue(cpufreq.cpu[3].util_threshold.getDefault());
 
 		ondemand.io_is_busy.setValue(ondemand.io_is_busy.getDefault());
 		ondemand.sampling_down_factor.setValue(ondemand.sampling_down_factor.getDefault());

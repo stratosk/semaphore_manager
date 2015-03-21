@@ -1,6 +1,6 @@
 /*  Semaphore Manager
  *
- *   Copyright (c) 2012 - 2014 Stratos Karafotis (stratosk@semaphore.gr)
+ *   Copyright (c) 2012 - 2015 Stratos Karafotis (stratosk@semaphore.gr)
  *
  *
  * This program is free software; you can redistribute it and/or modify
@@ -306,11 +306,11 @@ public class MainActivity extends ActionBarActivity
 		boolean needRead;
 
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-		needRead = !prefs.contains("gov");
+		needRead = !prefs.contains("cpu0_gov");
 		if (Device == SemaDevices.Mako || Device == SemaDevices.MakoL)
 			needRead = needRead || !prefs.contains("led_red") || !prefs.contains("read_ahead")
 					|| !prefs.contains("uv_lower_uv") || !prefs.contains("hp_enabled")
-					|| !prefs.contains("hp_max_online") || !prefs.contains("scaling_min_freq")
+					|| !prefs.contains("hp_max_online") || !prefs.contains("cpu0_scaling_min_freq")
 					|| !prefs.contains("min_br") || !prefs.contains("dt_wake_enabled")
 					|| !prefs.contains("hp_up_timer_cnt");
 		if (Device == SemaDevices.I9000)
