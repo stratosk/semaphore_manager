@@ -886,6 +886,7 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 		setEditSummary(sp.ondemand.sampling_down_factor.getName());
 		setEditSummary(sp.ondemand.sampling_rate.getName());
 		setEditSummary(sp.ondemand.up_threshold.getName());
+		setEditSummary(sp.ondemand.down_threshold.getName());
 		setEditSummary(sp.ondemand.powersave_bias.getName());
 		setEditSummary(sp.ondemand.touch_load.getName());
 		setEditSummary(sp.ondemand.touch_load_threshold.getName());

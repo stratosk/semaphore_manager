@@ -257,6 +257,7 @@ public class SemaN4Properties extends SemaCommonProperties {
 		edit.putString(ondemand.sampling_down_factor.getName(), ondemand.sampling_down_factor.getValString());
 		edit.putString(ondemand.sampling_rate.getName(), ondemand.sampling_rate.getValString());
 		edit.putString(ondemand.up_threshold.getName(), ondemand.up_threshold.getValString());
+		edit.putString(ondemand.down_threshold.getName(), ondemand.down_threshold.getValString());
 		edit.putString(ondemand.powersave_bias.getName(), ondemand.powersave_bias.getValString());
 		edit.putString(ondemand.touch_load.getName(), ondemand.touch_load.getValString());
 		edit.putString(ondemand.touch_load_threshold.getName(), ondemand.touch_load_threshold.getValString());
@@ -362,6 +363,7 @@ public class SemaN4Properties extends SemaCommonProperties {
 		ondemand.sampling_down_factor.setValue(prefs.getString(ondemand.sampling_down_factor.getName(), ondemand.sampling_down_factor.getDefString()));
 		ondemand.sampling_rate.setValue(prefs.getString(ondemand.sampling_rate.getName(), ondemand.sampling_rate.getDefString()));
 		ondemand.up_threshold.setValue(prefs.getString(ondemand.up_threshold.getName(), ondemand.up_threshold.getDefString()));
+		ondemand.down_threshold.setValue(prefs.getString(ondemand.down_threshold.getName(), ondemand.down_threshold.getDefString()));
 		ondemand.powersave_bias.setValue(prefs.getString(ondemand.powersave_bias.getName(), ondemand.powersave_bias.getDefString()));
 		ondemand.touch_load.setValue(prefs.getString(ondemand.touch_load.getName(), ondemand.touch_load.getDefString()));
 		ondemand.touch_load_threshold.setValue(prefs.getString(ondemand.touch_load_threshold.getName(), ondemand.touch_load_threshold.getDefString()));
@@ -465,6 +467,7 @@ public class SemaN4Properties extends SemaCommonProperties {
 		ondemand.sampling_down_factor.setValue(ondemand.sampling_down_factor.getDefault());
 		ondemand.sampling_rate.setValue(ondemand.sampling_rate.getDefault());
 		ondemand.up_threshold.setValue(ondemand.up_threshold.getDefault());
+		ondemand.down_threshold.setValue(ondemand.down_threshold.getDefault());
 		ondemand.powersave_bias.setValue(ondemand.powersave_bias.getDefault());
 		ondemand.touch_load.setValue(ondemand.touch_load.getDefault());
 		ondemand.touch_load_threshold.setValue(ondemand.touch_load_threshold.getDefault());
