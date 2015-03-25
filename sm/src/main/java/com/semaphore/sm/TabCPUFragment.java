@@ -71,45 +71,59 @@ public class TabCPUFragment extends PreferenceFragment implements OnSharedPrefer
 			csmhz[i] = String.valueOf(Integer.valueOf((String) cs[i]) / 1000);
 		}
 
-		ListPreference lpref = (ListPreference) findPreference("cpu0_scaling_min_freq");
-		if (lpref != null) {
-			lpref.setEntries(csmhz);
-			lpref.setEntryValues(cs);
-		}
-		lpref = (ListPreference) findPreference("cpu0_scaling_max_freq");
-		if (lpref != null) {
-			lpref.setEntries(csmhz);
-			lpref.setEntryValues(cs);
-		}
-		lpref = (ListPreference) findPreference("cpu1_scaling_min_freq");
-		if (lpref != null) {
-			lpref.setEntries(csmhz);
-			lpref.setEntryValues(cs);
-		}
-		lpref = (ListPreference) findPreference("cpu1_scaling_max_freq");
-		if (lpref != null) {
-			lpref.setEntries(csmhz);
-			lpref.setEntryValues(cs);
-		}
-		lpref = (ListPreference) findPreference("cpu2_scaling_min_freq");
-		if (lpref != null) {
-			lpref.setEntries(csmhz);
-			lpref.setEntryValues(cs);
-		}
-		lpref = (ListPreference) findPreference("cpu2_scaling_max_freq");
-		if (lpref != null) {
-			lpref.setEntries(csmhz);
-			lpref.setEntryValues(cs);
-		}
-		lpref = (ListPreference) findPreference("cpu3_scaling_min_freq");
-		if (lpref != null) {
-			lpref.setEntries(csmhz);
-			lpref.setEntryValues(cs);
-		}
-		lpref = (ListPreference) findPreference("cpu3_scaling_max_freq");
-		if (lpref != null) {
-			lpref.setEntries(csmhz);
-			lpref.setEntryValues(cs);
+		ListPreference lpref;
+		if (MainActivity.Device == MainActivity.SemaDevices.Mako || MainActivity.Device == MainActivity.SemaDevices.MakoL) {
+			lpref = (ListPreference) findPreference("cpu0_scaling_min_freq");
+			if (lpref != null) {
+				lpref.setEntries(csmhz);
+				lpref.setEntryValues(cs);
+			}
+			lpref = (ListPreference) findPreference("cpu0_scaling_max_freq");
+			if (lpref != null) {
+				lpref.setEntries(csmhz);
+				lpref.setEntryValues(cs);
+			}
+			lpref = (ListPreference) findPreference("cpu1_scaling_min_freq");
+			if (lpref != null) {
+				lpref.setEntries(csmhz);
+				lpref.setEntryValues(cs);
+			}
+			lpref = (ListPreference) findPreference("cpu1_scaling_max_freq");
+			if (lpref != null) {
+				lpref.setEntries(csmhz);
+				lpref.setEntryValues(cs);
+			}
+			lpref = (ListPreference) findPreference("cpu2_scaling_min_freq");
+			if (lpref != null) {
+				lpref.setEntries(csmhz);
+				lpref.setEntryValues(cs);
+			}
+			lpref = (ListPreference) findPreference("cpu2_scaling_max_freq");
+			if (lpref != null) {
+				lpref.setEntries(csmhz);
+				lpref.setEntryValues(cs);
+			}
+			lpref = (ListPreference) findPreference("cpu3_scaling_min_freq");
+			if (lpref != null) {
+				lpref.setEntries(csmhz);
+				lpref.setEntryValues(cs);
+			}
+			lpref = (ListPreference) findPreference("cpu3_scaling_max_freq");
+			if (lpref != null) {
+				lpref.setEntries(csmhz);
+				lpref.setEntryValues(cs);
+			}
+		} else {
+			lpref = (ListPreference) findPreference("scaling_min_freq");
+			if (lpref != null) {
+				lpref.setEntries(csmhz);
+				lpref.setEntryValues(cs);
+			}
+			lpref = (ListPreference) findPreference("scaling_max_freq");
+			if (lpref != null) {
+				lpref.setEntries(csmhz);
+				lpref.setEntryValues(cs);
+			}
 		}
 	}
 
